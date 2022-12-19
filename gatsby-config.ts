@@ -15,6 +15,7 @@ export default {
       resolve: 'gatsby-source-filesystem',
     },
     'gatsby-transformer-sharp',
+    'gatsby-plugin-netlify',
     'gatsby-plugin-sharp',
     {
       options: {
