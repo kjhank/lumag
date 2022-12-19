@@ -1,31 +1,12 @@
-// import path from 'path';
-
-// const gatsbyRequiredRules = path.join(
-//   process.cwd(),
-//   'node_modules',
-//   'gatsby',
-//   'dist',
-//   'utils',
-//   'eslint-rules'
-// );
-
 export default {
   plugins: [
     'gatsby-plugin-tsconfig-paths',
-    'gatsby-plugin-typescript',
-    // {
-    //   exclude: [
-    //     'node_modules',
-    //     '.cache',
-    //     'public',
-    //   ],
-    //   options: {
-    //     extensions: ['ts', 'tsx'],
-    //     // rulePaths: [gatsbyRequiredRules],
-    //     stages: ['develop'],
-    //   },
-    //   resolve: 'gatsby-plugin-eslint',
-    // },
+    {
+      options: {
+        jsxPragma: 'React',
+      },
+      resolve: 'gatsby-plugin-typescript',
+    },
     {
       options: {
         name: 'images',

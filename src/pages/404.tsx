@@ -1,9 +1,5 @@
-import React from 'react';
-
-import { NotFoundContainer } from '@/containers';
-
 const NotFoundPage = () => (
-  <NotFoundContainer />
+  <>not found</>
 );
 
 export default NotFoundPage;
