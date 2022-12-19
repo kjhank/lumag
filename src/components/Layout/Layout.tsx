@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { GlobalStyle, Theme } from '@/theme';
 import { Container } from '@/components';
 import { LayoutProps } from './Layout.types';
