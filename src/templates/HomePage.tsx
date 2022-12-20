@@ -1,7 +1,7 @@
 import React from 'react';
-import { PageProps } from 'gatsby';
-
-export const Head = () => <title>I am a title</title>;
+import { Link, PageProps } from 'gatsby';
+import { CustomPageProps } from '@/types';
+import { Meta } from '@/components/Layout/Meta';
 
 const HomePage = (
   {
@@ -13,7 +13,12 @@ const HomePage = (
     {' '}
     {location.host}
     {children}
+    <Link to="/aktualnosci/">news</Link>
   </>
+);
+
+export const Head = ({ pageContext } : CustomPageProps) => (
+  <Meta metadata={pageContext.metadata} />
 );
 
 export default HomePage;

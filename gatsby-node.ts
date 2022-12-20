@@ -100,11 +100,13 @@ const getContext = ({
     date,
     id,
     lang,
-    meta,
+    metadata: {
+      ...meta,
+      title,
+    },
     parentId,
     slug,
     status,
-    title,
   };
 
   // TODO: translations slugs + ACF parsing

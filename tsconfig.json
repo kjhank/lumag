@@ -20,6 +20,9 @@
         "src/*"
       ]
     },
+    "typeRoots": [
+      "./src/custom.d.ts"
+    ]
   },
   "exclude": [
     "node_modules",
@@ -30,7 +33,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    // "./gatsby-config.ts",
+    "./gatsby-config.ts",
     "./gatsby-*.ts",
     "./gatsby-*.tsx"
   ]
