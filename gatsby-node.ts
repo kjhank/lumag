@@ -2,9 +2,10 @@ import type { GatsbyNode } from 'gatsby';
 import * as dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import path from 'path';
+import { PageACF } from './src/types/wordpress';
 import { Endpoints } from './src/constants/endpoints';
 import {
-  Languages, Page, Post,
+  Languages, Page, Post, Template,
 } from './src/types';
 import { RequestParams } from '@/types/global';
 
@@ -12,7 +13,7 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const templates = {
+const templates: { [key in Template]: string } = {
   about: path.resolve('./src/templates/AboutPage.tsx'),
   contact: path.resolve('./src/templates/ContactPage.tsx'),
   csr: path.resolve('./src/templates/CSRPage.tsx'),
@@ -94,8 +95,9 @@ const parsePost = (postData: Post) => ({
 });
 
 const getContext = ({
-  id, date, slug, status, title, parent: parentId, meta, lang,
+  acf, id, date, slug, status, title, parent: parentId, meta, lang,
 } : Page) => {
+  const { template: { value: template } }: PageACF = acf;
   const globalContext = {
     date,
     id,
@@ -110,6 +112,13 @@ const getContext = ({
   };
 
   // TODO: translations slugs + ACF parsing
+
+  if (template === 'home') {
+    return {
+      ...globalContext,
+      content: acf,
+    };
+  }
 
   return globalContext;
 };

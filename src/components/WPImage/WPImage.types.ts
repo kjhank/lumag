@@ -1,7 +1,8 @@
-import { Image } from '@/types';
+import { ACFImage } from '@/types';
 
 export type WPImageProps = {
-  alt: string;
-  imageData: Image;
-  isLazy: boolean;
-} & HTMLPictureElement;
+  alt?: string;
+  className?: string;
+  imageData: ACFImage;
+  isLazy?: boolean;
+};

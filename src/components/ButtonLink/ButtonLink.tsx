@@ -1,8 +1,9 @@
 import { ButtonLinkProps } from './ButtonLink.types';
 import { LinkNode } from './ButtonLink.styled';
+import { ArrowRight } from '@/static';
 
 export const ButtonLink = ({
-  children, className, style, to, ...props
+  children, className, hasArrow = true, style, to, ...props
 } : ButtonLinkProps) => (
   <LinkNode
     className={className} style={style}
@@ -10,5 +11,6 @@ export const ButtonLink = ({
     {...props}
   >
     {children}
+    {hasArrow && <ArrowRight />}
   </LinkNode>
 );
