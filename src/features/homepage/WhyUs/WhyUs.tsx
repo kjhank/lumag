@@ -10,10 +10,11 @@ import { getIcon } from '@/utils';
 
 export const WhyUs = ({ data }: WhyUsProps) => (
   <Section>
-    <Background imageData={data.background} />
+    {data?.background && <Background imageData={data.background} />}
     <Container>
-      <Heading>{data.heading}</Heading>
-      <Text>{data.text}</Text>
+      <Heading>{data?.heading}</Heading>
+      <Text>{data?.text}</Text>
+      {data?.icons?.length > 0 && (
       <List>
         {data.icons.map(icon => {
           const Icon = getIcon(icon.svgSlug.value);
@@ -31,6 +32,7 @@ export const WhyUs = ({ data }: WhyUsProps) => (
           );
         })}
       </List>
+      )}
     </Container>
   </Section>
 );

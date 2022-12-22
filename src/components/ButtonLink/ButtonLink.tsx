@@ -5,7 +5,9 @@ import { ArrowRight } from '@/static';
 export const ButtonLink = ({
   children, className, hasArrow = true, style, to, ...props
 } : ButtonLinkProps) => {
-  const isExternal = to.startsWith('http');
+  const isExternal = to?.startsWith('http');
+
+  if (!to) return null;
 
   if (isExternal) {
     return (

@@ -9,8 +9,8 @@ export const Subsidies = ({ images, text } : SubsidiesProps) => (
   <Section>
     <Container>
       <ImageGrid>
-        {images.map(({ image }) => (
-          <ImageElem key={image.filename}>
+        {images?.length > 0 && images.map(({ image }) => (
+          <ImageElem key={image?.filename}>
             <Image imageData={image} />
           </ImageElem>
         ))}

@@ -12,8 +12,8 @@ export const Tiles = ({ items }: TilesProps) => (
           <Background imageData={tile.background} />
           <Heading>{tile.heading}</Heading>
           <Text>{tile.content}</Text>
-          <ButtonLink to={tile.link.slug.url}>
-            {tile.link.text}
+          <ButtonLink to={tile?.link?.slug?.url}>
+            {tile?.link?.text}
           </ButtonLink>
         </SingleTile>
       ))}

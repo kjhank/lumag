@@ -3,6 +3,8 @@ import { GlobalStyle, Theme } from '@/theme';
 import { Container } from '@/components';
 import { LayoutProps } from './Layout.types';
 
+// TODO: global header & footer as slices
+
 const Layout = ({ children }: LayoutProps) => (
   <Theme>
     <GlobalStyle />

@@ -12,26 +12,26 @@ export const NewsPromos = ({
 }: NewsPromosProps) => (
   <Section>
     <Container>
-      <NewsHeading>{news.heading}</NewsHeading>
+      <NewsHeading>{news?.heading}</NewsHeading>
       <News>
         <NewsList>
-          {posts.map(post => (
+          {posts.length > 0 && posts.map(post => (
             <NewsItem
-              key={post.title.rendered} linkLabel={news.linkLabel}
+              key={post.title.rendered} linkLabel={news?.linkLabel}
               post={post}
             />
           ))}
         </NewsList>
-        <ButtonLink to="/aktualnosci">{news.newsLinkLabel}</ButtonLink>
+        {news?.newsLinkLabel && <ButtonLink to="/aktualnosci">{news.newsLinkLabel}</ButtonLink>}
       </News>
       <Promos>
-        {promoAside.map(promo => (
-          <SinglePromo key={promo.text}>
-            <Image imageData={promo.image} />
+        {promoAside?.length > 0 && promoAside.map(promo => (
+          <SinglePromo key={promo?.text}>
+            <Image imageData={promo?.image} />
             <PromoText>
-              {promo.text}
+              {promo?.text}
             </PromoText>
-            <ButtonLink to={promo.link.url.url}>{promo.link.Label}</ButtonLink>
+            <ButtonLink to={promo?.link?.url?.url}>{promo?.link?.Label}</ButtonLink>
           </SinglePromo>
         ))}
       </Promos>
