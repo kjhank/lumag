@@ -1,4 +1,5 @@
 import 'styled-components';
+import { HomePage } from './HomePage';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -10,6 +11,7 @@ declare module 'styled-components' {
     };
     fonts: {
       types: {
+        alt: string;
         heading: string;
         text: string;
       };
@@ -41,7 +43,7 @@ declare module 'styled-components' {
         buttonSize: string;
         paddingBlock: string;
         linkGap: string;
-      }
+      };
       footer: {
         backgroundColor: string;
         bannerFontSize: string;
@@ -54,7 +56,7 @@ declare module 'styled-components' {
         linkLineHeight: string | number;
         paddingBlock: string;
         separator: string;
-      },
+      };
       promoted: {
         headingFontSize: string;
         headingPaddingBlockEnd: string;
@@ -68,12 +70,23 @@ declare module 'styled-components' {
         linkTranslate: string;
         paddingBlock: string;
         gap: string;
-      },
+      };
+    };
+    helpers: {
+      getClamped: (sizePx: number) => string;
+      getMax: (sizePx: number) => string;
+      getMin: (sizePx: number) => string;
+    };
+    radii: {
+      buttonLink: string;
     };
     transitions: {
       fast?: string;
       default: string;
       slow?: string;
+    };
+    pages: {
+      homePage: HomePage;
     };
   }
 }

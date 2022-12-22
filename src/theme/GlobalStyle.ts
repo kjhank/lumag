@@ -122,7 +122,8 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    font-family: sans-serif;
+    color: ${({ theme }) => theme.colors.neutral[100]};
+    font-family: ${({ theme }) => theme.fonts.types.text};
     line-height: 1.2;
   }
 

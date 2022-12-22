@@ -1,7 +1,10 @@
 /* eslint-disable sort-keys */
 import React from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
-import { getClamped, getMin } from './helpers';
+import {
+  getClamped, getMax, getMin,
+} from './helpers';
+import { homePageStyles } from './HomePage';
 import { ThemeProps } from './theme.types';
 
 const theme: DefaultTheme = {
@@ -11,6 +14,8 @@ const theme: DefaultTheme = {
       5: '#ffffff',
       10: '#fdfdfd',
       15: '#f6f7f6',
+      20: '#d7d8d7',
+      25: '#c4c4c4',
       30: '#acaeb1',
       55: '#969696',
       50: '#929292',
@@ -31,6 +36,7 @@ const theme: DefaultTheme = {
       xxs: getClamped(12),
     },
     types: {
+      alt: 'Lato, sans-serif',
       heading: 'Avenir, serif',
       text: 'Helvetica, sans-serif',
     },
@@ -81,8 +87,20 @@ const theme: DefaultTheme = {
       paddingBlock: getMin(55),
     },
   },
+  helpers: {
+    getClamped,
+    getMax,
+    getMin,
+  },
+  pages: {
+    homePage: homePageStyles,
+  },
+  radii: {
+    buttonLink: '50px',
+  },
   transitions: {
     default: '0.4s',
+    fast: '0.2s',
   },
 };
 
