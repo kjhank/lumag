@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { getMin } from '@/theme/helpers';
 import { WPImage } from '@/components/WPImage/WPImage';
 
 export const Section = styled.section`
@@ -32,12 +31,12 @@ export const Item = styled.li<{ isActive: boolean }>`
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: ${() => getMin(11)};
+    gap: ${({ theme }) => theme.helpers.getMin(11)};
     height: 100%;
     padding-inline: ${({ theme }) => theme.pages.homePage.carousel.paddingInline};
 
     > a {
-      margin-top: ${() => getMin(50)};
+      margin-top: ${({ theme }) => theme.helpers.getMin(50)};
     }
   }
 `;

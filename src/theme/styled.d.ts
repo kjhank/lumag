@@ -11,6 +11,7 @@ declare module 'styled-components' {
     };
     fonts: {
       types: {
+        alt: string;
         heading: string;
         text: string;
       };
@@ -70,6 +71,11 @@ declare module 'styled-components' {
         paddingBlock: string;
         gap: string;
       };
+    };
+    helpers: {
+      getClamped: (sizePx: number) => string;
+      getMax: (sizePx: number) => string;
+      getMin: (sizePx: number) => string;
     };
     radii: {
       buttonLink: string;

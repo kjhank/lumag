@@ -96,7 +96,7 @@ const parsePost = (postData: Post) => ({
 
 const getContext = ({
   acf, id, date, slug, status, title, parent: parentId, meta, lang,
-} : Page) => {
+} : Page, posts: Array<Post>) => {
   const { template: { value: template } }: PageACF = acf;
   const globalContext = {
     date,
@@ -117,6 +117,14 @@ const getContext = ({
     return {
       ...globalContext,
       content: acf,
+      posts: posts.slice(0, acf?.posts?.postCount ?? posts.length),
+    };
+  }
+
+  if (template === 'news') {
+    return {
+      ...globalContext,
+      posts,
     };
   }
 
@@ -152,8 +160,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
 
   pages.forEach(page => {
     if (page === undefined) return;
+
     const pagePath = getPath(page);
-    const context = getContext(page);
+    const context = getContext(page, posts);
     const template = getTemplate(page);
 
     createPage({

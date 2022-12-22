@@ -1,19 +1,18 @@
 import { Link } from 'gatsby';
-import styled from 'styled-components';
-import { getClamped, getMin } from '@/theme/helpers';
+import styled, { css } from 'styled-components';
 
-export const LinkNode = styled(Link)`
+export const buttonLinkStyle = css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: ${() => getMin(24)};
+  gap: ${({ theme }) => theme.helpers.getMin(24)};
   border-radius: ${({ theme }) => theme.radii.buttonLink};
   background-color: ${({ theme }) => theme.colors.brand};
   color: ${({ theme }) => theme.colors.neutral[100]};
   font-weight: bold;
-  font-size: ${() => getClamped(17)};
-  padding-block: ${() => getMin(15)};
-  padding-inline: ${() => getMin(37)};
+  font-size: ${({ theme }) => theme.helpers.getClamped(17)};
+  padding-block: ${({ theme }) => theme.helpers.getMin(15)};
+  padding-inline: ${({ theme }) => theme.helpers.getMin(37)};
   transition: filter ${({ theme }) => theme.transitions.fast};
 
   :hover {
@@ -32,4 +31,12 @@ export const LinkNode = styled(Link)`
     stroke: currentColor;
     transition: translate ${({ theme }) => theme.transitions.fast};
   }
+`;
+
+export const GatsbyLink = styled(Link)`
+  ${buttonLinkStyle}
+`;
+
+export const Anchor = styled.a`
+  ${buttonLinkStyle}
 `;

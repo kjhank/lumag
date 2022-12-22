@@ -9,5 +9,5 @@ export type WrapPageProps = {
   element: React.ReactNode;
   props: {
     [key: string]: unknown;
-  }
+  };
 };

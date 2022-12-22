@@ -1,4 +1,5 @@
 import { PageProps } from 'gatsby';
+import { IconSlug } from './global';
 import {
   ACFImage, Languages, Post, Template,
 } from './wordpress';
@@ -56,18 +57,20 @@ export type Tile = {
 };
 
 export type WhyUs = {
+  background: ACFImage;
   heading: string;
   text: string;
   icons: Array<{
     label: string;
     svgSlug: {
-      value: string;
+      value: IconSlug;
       label: string;
     };
   }>;
 };
 
 export type News = {
+  heading: string;
   postCount: string;
   linkLabel: string;
   newsLinkLabel: string;
@@ -87,7 +90,7 @@ export type PromoItem = {
 };
 
 export type Subsidies = {
-  images: Array<ACFImage>;
+  images: Array<{ image: ACFImage }>;
   text: string;
 };
 
@@ -107,5 +110,6 @@ export type HomePageContent = {
 export type HomePageProps = PageProps & {
   pageContext: PageContext & {
     content: HomePageContent;
+    posts: Array<Post>;
   };
 };

@@ -10,17 +10,15 @@ export const WPImage = ({
   // TODO: avif maybe?
 
   return (
-    <PictureNode
-      className={className}
-      height={imageData.height}
-      width={imageData.width}
-    >
+    <PictureNode className={className}>
       <source src={webpPath} type="webp" />
       <source src={pngPath} type="png" />
       <img
         alt={imageData.alt ?? alt}
+        height={imageData.height}
         loading={isLazy ? 'lazy' : 'eager'}
         src={pngPath}
+        width={imageData.width}
       />
     </PictureNode>
   );

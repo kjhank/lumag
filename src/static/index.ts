@@ -1,4 +1,4 @@
-// @ts-nocheck // TODO: do something with these types
+// @ts-nocheck // TODO: fix those types somehow
 export { default as Agency } from './agency.svg';
 export { default as ArrowDown } from './arrow_down.svg';
 export { default as ArrowRight } from './arrow_right.svg';
@@ -8,6 +8,7 @@ export { default as Chip } from './chip.svg';
 export { default as CircleIcon } from './circle_icon.svg';
 export { default as CircleCheck } from './circle-check.svg';
 export { default as Circles } from './circles.svg';
+export { default as CircleCutout } from './circle-cutout.svg';
 export { default as ClockIcon } from './clock_icon.svg';
 export { default as CogTank } from './cog-tank.svg';
 export { default as GlobePeople } from './globe-people.svg';
@@ -19,7 +20,7 @@ export { default as Pin } from './pin.svg';
 export { default as Play } from './play.svg';
 export { default as ProductLogo } from './product-logo.svg';
 export { default as Scale } from './scale.svg';
-export { default as ShieldCheck } from './shield-check.svg';
+export { default as ShieldTick } from './shield-tick.svg';
 export { default as Facebook } from './social-facebook.svg';
 export { default as Linkedin } from './social-linkedin.svg';
 export { default as Twitter } from './social-twitter.svg';

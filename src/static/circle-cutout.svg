@@ -1,0 +1,12 @@
+<svg class="circle-cutout" viewBox='0 0 100 100'>
+  <style>
+    .circle-cutout {
+      height: 100px;
+      width: 100px;
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+  </style>
+  <path d='M95,50 A45,45 0 0,1 5,50 A45,45 0 0,1 50,5' />
+</svg>

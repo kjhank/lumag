@@ -16,3 +16,10 @@ export const getMin = (sizePx: number): string => {
 
   return `min(${sizePx}px, ${Math.ceil((sizePx / viewportBase) * coefficient) / coefficient}vw)`;
 };
+
+export const getMax = (sizePx: number): string => {
+  const precision = 2;
+  const coefficient = 10 ** precision;
+
+  return `max(${sizePx}px, ${Math.ceil((sizePx / viewportBase) * coefficient) / coefficient}vw)`;
+};

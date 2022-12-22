@@ -37,6 +37,9 @@ type Excerpt = {
 export type PostType = 'page' | 'post';
 
 export type PageACF = {
+  posts?: {
+    postCount?: number;
+  };
   template: {
     label: string;
     value: Template;
