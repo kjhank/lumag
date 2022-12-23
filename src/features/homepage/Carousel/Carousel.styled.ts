@@ -5,6 +5,7 @@ export const Section = styled.section`
   position: relative;
   z-index: 1;
   aspect-ratio: 1920/718;
+  margin-top: ${({ theme }) => theme.helpers.getMin(80)};
 `;
 
 export const Background = styled(WPImage)`

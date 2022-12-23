@@ -179,6 +179,16 @@ export const GlobalStyle = createGlobalStyle`
     vertical-align: sub;
   }
 
+  .visually-hidden:not(:focus):not(:active) {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    clip-path: inset(100%);
+    height: 1px;
+    white-space: nowrap;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * {
       transition-duration: 0.01ms !important;

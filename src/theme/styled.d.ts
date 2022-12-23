@@ -34,7 +34,7 @@ declare module 'styled-components' {
         newsletterSubmitFontSize: string;
         newsletterSubmitBackgroundColor: string;
         newsletterSubmitColor: string;
-        newsletterSubmitPaddingBlock: string;
+        newsletterSubmitLineHeight: string;
         socialsLinkSize: string;
         logoWidth: string;
       };
@@ -42,12 +42,13 @@ declare module 'styled-components' {
         buttonsGap: string;
         buttonSize: string;
         paddingBlock: string;
+        paddingInline: string;
         linkGap: string;
       };
       footer: {
         backgroundColor: string;
         bannerFontSize: string;
-        bannerLogoWidth: string;
+        bannerLogoHeight: string;
         bannerPaddingBlock: string;
         bannerGap: string;
         heading: string;

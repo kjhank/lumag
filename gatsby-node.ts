@@ -2,7 +2,9 @@ import type { GatsbyNode } from 'gatsby';
 import * as dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import path from 'path';
-import { PageACF } from './src/types/wordpress';
+import {
+  Options, PageACF, ParsedOptions, Translations,
+} from './src/types/wordpress';
 import { Endpoints } from './src/constants/endpoints';
 import {
   Languages, Page, Post, Template,
@@ -43,15 +45,6 @@ const getUrl = (endpoint: string = '', params?: RequestParams) => {
 
   return baseUrl;
 };
-
-// export const pingDb = async () => {
-//   const url = getUrl();
-
-//   const response = await fetch(url);
-//   const result = await response.json();
-
-//   return result;
-// };
 
 const fetchEntities = async (
   entity: Endpoints,
@@ -94,24 +87,110 @@ const parsePost = (postData: Post) => ({
   translations: postData.translations,
 });
 
-const getContext = ({
-  acf, id, date, slug, status, title, parent: parentId, meta, lang,
-} : Page, posts: Array<Post>) => {
+const parseOptions = (options: Options): ParsedOptions => ({
+  address: options.address.address,
+  footer: {
+    background: options.address.background,
+    copyright: options.footerText,
+    nav: options.footerNav.map(item => ({
+      heading: item.heading,
+      subitems: item.list.map(subitem => ({
+        isBold: subitem.isBold,
+        label: subitem.label,
+        slug: subitem.page.post_name,
+        title: subitem.page.post_title,
+      })),
+    })),
+  },
+  nav: {
+    mainMenu: options.nav.mainMenu.map(item => {
+      const common = {
+        itemType: item.itemType,
+        label: item.label,
+      };
+
+      if (item.itemType === 'page') {
+        return {
+          ...common,
+          page: {
+            slug: item.page?.post_name,
+            title: item.page?.post_title,
+          },
+        };
+      }
+
+      return {
+        ...common,
+        submenu: [
+          ...item.submenu.map(subitem => ({
+            label: subitem.label || null,
+            page: {
+              slug: subitem.page.post_name,
+              title: subitem.page.post_title,
+            },
+          })),
+        ],
+      };
+    }),
+  },
+  newsletter: options.newsletter,
+  socials: options.address.socials,
+});
+
+const getPath = ({
+  slug, lang,
+}: Page) => {
+  if (lang === Languages.polish) {
+    return slug === 'home' ? '/' : `/${slug}/`;
+  }
+
+  if (lang === Languages.russian) {
+    return `/${lang}/${decodeURIComponent(slug)}`;
+  }
+
+  return `/${lang}/${slug}`;
+};
+
+const getPageLangs = async (translations: Translations) => {
+  const langs = {} as { [key in keyof Translations]: string };
+  const keys = Object.keys(translations);
+
+  await Promise.all(keys.map(async key => {
+    const url = getUrl(`${Endpoints.PAGES}${translations[key as keyof Translations]}`);
+
+    const response = await fetch(url);
+    const result = await response.json();
+
+    langs[key as keyof Translations] = getPath(result);
+  }));
+
+  return langs;
+};
+
+const getContext = async ({
+  acf, content, id, date, slug, status, title, parent: parentId, meta, lang, translations,
+} : Page, posts: Array<Post>, options: Options) => {
+  const i18Slugs = await getPageLangs(translations);
+
   const { template: { value: template } }: PageACF = acf;
   const globalContext = {
     date,
+    i18n: {
+      slugs: i18Slugs,
+    },
     id,
     lang,
     metadata: {
       ...meta,
       title,
     },
+    options: Object.keys(options).length > 0 ? parseOptions(options) : undefined,
     parentId,
     slug,
     status,
   };
 
-  // TODO: translations slugs + ACF parsing
+  // TODO: improve acf parsing per page
 
   if (template === 'home') {
     return {
@@ -128,7 +207,14 @@ const getContext = ({
     };
   }
 
-  return globalContext;
+  return {
+    ...globalContext,
+    content,
+    header: {
+      background: acf?.header?.background,
+      title,
+    },
+  };
 };
 
 const getTemplate = ({
@@ -139,30 +225,21 @@ const getTemplate = ({
   },
 }: Page) => templates[pageTemplate as keyof typeof templates];
 
-const getPath = ({
-  slug, lang,
-}: Page) => {
-  if (lang === Languages.polish) {
-    return slug === 'home' ? '/' : `/${slug}/`;
-  }
-
-  if (lang === Languages.russian) {
-    return `/${lang}/${decodeURIComponent(slug)}`;
-  }
-
-  return `/${lang}/${slug}`;
-};
-
 export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
   const { createPage } = actions;
   const pages: Array<Page> = await fetchEntities(Endpoints.PAGES, undefined, { per_page: '30' }, true);
   const posts: Array<Post> = await fetchEntities(Endpoints.POSTS);
 
-  pages.forEach(page => {
+  await Promise.all(pages.map(async page => {
     if (page === undefined) return;
 
+    const options: { acf: Options } = await fetchEntities(
+      Endpoints.GLOBALS,
+      undefined,
+      { lang: page.lang }
+    );
     const pagePath = getPath(page);
-    const context = getContext(page, posts);
+    const context = await getContext(page, posts, options.acf);
     const template = getTemplate(page);
 
     createPage({
@@ -175,7 +252,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
         : context,
       path: pagePath,
     });
-  });
+  }));
 };
 
 export const onCreateBabelConfig: GatsbyNode['onCreateBabelConfig'] = ({ actions }) => {

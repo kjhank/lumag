@@ -14,11 +14,11 @@ export const WPImage = ({
       <source src={webpPath} type="webp" />
       <source src={pngPath} type="png" />
       <img
-        alt={imageData.alt ?? alt}
-        height={imageData.height}
+        alt={imageData?.alt ?? alt}
+        height={imageData?.height}
         loading={isLazy ? 'lazy' : 'eager'}
         src={pngPath}
-        width={imageData.width}
+        width={imageData?.width}
       />
     </PictureNode>
   );

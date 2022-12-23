@@ -1,9 +1,12 @@
 import { ExternalLinkProps } from './ExternalLink.types';
 
-export const ExternalLink = ({ children, ...props }: ExternalLinkProps) => (
+export const ExternalLink = ({
+  children, href = '/', rel = 'noreferrer', target = '_blank', ...props
+}: ExternalLinkProps) => (
   <a
-    rel="noreferrer"
-    target="_blank"
+    href={href}
+    rel={rel}
+    target={target}
     {...props}
   >
     {children}

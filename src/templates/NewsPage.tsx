@@ -1,4 +1,4 @@
-import { Meta } from '@/components/Layout/Meta';
+import { Meta } from '@/components/Layout/components/Meta';
 import { CustomPageProps } from '@/types';
 
 const NewsPage = () => (<h1>news</h1>);
