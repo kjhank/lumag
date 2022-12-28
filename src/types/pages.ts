@@ -1,7 +1,7 @@
 import { PageProps } from 'gatsby';
 import { IconSlug } from './global';
 import {
-  ACFImage, Languages, Post, Template,
+  ACFImage, Languages, ParsedOptions, Post, Template, Translations,
 } from './wordpress';
 
 export type PageMeta = {
@@ -10,14 +10,20 @@ export type PageMeta = {
   };
 };
 
+export type I18n = {
+  slugs: { [key in keyof Translations]: string };
+};
+
 export type PageContext = {
   content: {
     [key: string]: string | number | {} | [];
   };
   date: string;
   id: number;
+  i18n: I18n;
   lang: Languages;
   metadata: PageMeta;
+  options: ParsedOptions;
   parentId?: number;
   slug: string;
 };
@@ -29,6 +35,15 @@ export type CustomPageProps = PageProps & {
 export type NewsPageProps = PageProps & {
   pageContext: PageContext & {
     posts: Array<Post>;
+  };
+};
+
+export type GenericPageProps = PageProps & {
+  pageContext: Omit<PageContext, 'content'> & {
+    content:
+    { rendered: string }; header: {
+      background: ACFImage;
+    };
   };
 };
 

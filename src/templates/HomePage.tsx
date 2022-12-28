@@ -1,11 +1,9 @@
 import React from 'react';
 import { HomePageProps } from '@/types';
-import { Meta } from '@/components/Layout/Meta';
-import { Carousel } from '@/features/homepage/Carousel/Carousel';
-import { Tiles } from '@/features/homepage/Tiles/Tiles';
-import { WhyUs } from '@/features/homepage/WhyUs/WhyUs';
-import { NewsPromos } from '@/features/homepage/NewsPromos/NewsPromos';
-import { Subsidies } from '@/features/homepage/Subsidies/Subsidies';
+import { Meta } from '@/components/Layout/components/Meta';
+import {
+  Carousel, NewsPromos, Subsidies, Tiles, WhyUs,
+} from '@/features/homepage';
 
 const HomePage = (
   {

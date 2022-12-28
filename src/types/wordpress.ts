@@ -1,3 +1,5 @@
+import { IconSlug } from './global';
+
 export type ResponseJSON = {
   [key: string] : string | number;
 };
@@ -37,6 +39,9 @@ type Excerpt = {
 export type PostType = 'page' | 'post';
 
 export type PageACF = {
+  header?: {
+    background?: ACFImage;
+  };
   posts?: {
     postCount?: number;
   };
@@ -324,4 +329,154 @@ export type ACFImage = {
   width: number;
   height: number;
   sizes: MediaSizes;
+};
+
+export type MenuItem = {
+  label?: string;
+  page: ACFPage;
+};
+
+export type ACFPage = {
+  ID: number;
+  post_author: string;
+  post_date: string;
+  post_date_gmt: string;
+  post_content: string;
+  post_title: string;
+  post_excerpt: string;
+  post_status: string;
+  comment_status: string;
+  ping_status: string;
+  post_password: string;
+  post_name: string;
+  to_ping: string;
+  pinged: string;
+  post_modified: string;
+  post_modified_gmt: string;
+  post_content_filtered: string;
+  post_parent: number;
+  guid: string;
+  menu_order: number;
+  post_type: string;
+  post_mime_type: string;
+  comment_count: string;
+  filter: string;
+};
+
+export type ParsedACFPage = {
+  slug: string;
+  title: string;
+};
+
+export type ACFMenu = {
+  label: string;
+} & ({
+  itemType: 'submenu';
+  page?: never;
+  submenu: Array<MenuItem>;
+} | {
+  itemType: 'page';
+  page: ACFPage;
+  submenu?: never;
+});
+
+export type ACFFooterMenu = {
+  page: {
+    ID: number;
+    post_author: string;
+    post_date: string;
+    post_date_gmt: string;
+    post_content: string;
+    post_title: string;
+    post_excerpt: string;
+    post_status: string;
+    comment_status: string;
+    ping_status: string;
+    post_password: string;
+    post_name: string;
+    to_ping: string;
+    pinged: string;
+    post_modified: string;
+    post_modified_gmt: string;
+    post_content_filtered: string;
+    post_parent: number;
+    guid: string;
+    menu_order: number;
+    post_type: string;
+    post_mime_type: string;
+    comment_count: string;
+    filter: string;
+  };
+  label: string;
+  isBold: boolean;
+};
+
+export type ParsedMenu = {
+  label: string;
+} & ({
+  itemType: 'submenu';
+  page?: never;
+  submenu: Array<{
+    label: string;
+    page: ParsedACFPage;
+  }>;
+} | {
+  itemType: 'page';
+  page: ParsedACFPage;
+  submenu?: never;
+});
+
+export type Social = {
+  iconSlug: IconSlug;
+  url: string;
+};
+
+export type Options = {
+  address: {
+    address: string;
+    background: ACFImage;
+    socials: Array<Social>;
+  };
+  nav: {
+    mainMenu: Array<ACFMenu>;
+  };
+  newsletter: Newsletter;
+  footerNav: Array<{
+    heading: string;
+    list: Array<ACFFooterMenu>;
+  }>;
+  footerText: string;
+};
+
+export type FooterSubmenu = {
+  isBold: boolean;
+  label: string;
+  slug: string;
+  title: string;
+};
+
+export type FooterMenu = {
+  heading: string;
+  subitems: Array<FooterSubmenu>;
+};
+
+export type Newsletter = {
+  agreement: string;
+  buttonText: string;
+  heading: string;
+  placeholder: string;
+};
+
+export type ParsedOptions = {
+  address: string;
+  footer: {
+    background: ACFImage;
+    copyright: string;
+    nav: Array<FooterMenu>;
+  };
+  nav: {
+    mainMenu: Array<ParsedMenu>;
+  };
+  newsletter: Newsletter;
+  socials: Array<Social>;
 };
