@@ -3,7 +3,7 @@ import { WPImage } from '@/components/WPImage/WPImage';
 
 export const Section = styled.section`
   position: relative;
-  margin-block-start: ${({ theme }) => theme.helpers.getMin(-80)};
+  margin-block-start: ${({ theme }) => theme.helpers.getMax(-80)};
   padding-block-start: ${({ theme }) => theme.helpers.getMin(80)};
   padding-block-end: ${({ theme }) => theme.helpers.getMin(133)};
   text-align: center;
@@ -21,12 +21,12 @@ export const Heading = styled.h2`
   padding-block-start: ${({ theme }) => theme.helpers.getMin(40)};
   color: ${({ theme }) => theme.colors.brand};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.fonts.sizes.xl};
+  ${({ theme }) => theme.fonts.sizes.xl};
 `;
 
 export const Text = styled.p`
   color: ${({ theme }) => theme.colors.neutral[30]};
-  font-size: ${({ theme }) => theme.helpers.getClamped(18)};
+  ${({ theme }) => theme.helpers.getClamped(18)};
   font-family: ${({ theme }) => theme.fonts.types.alt};
   line-height: 1.5;
 `;
@@ -64,7 +64,7 @@ export const Label = styled.figcaption`
   padding-block-start: ${({ theme }) => theme.helpers.getMin(18)};
   color: ${({ theme }) => theme.colors.brand};
   font-weight: 300;
-  font-size: ${({ theme }) => theme.fonts.types.heading};
+  ${({ theme }) => theme.fonts.types.heading};
   text-transform: uppercase;
 `;
 

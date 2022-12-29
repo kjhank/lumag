@@ -1,7 +1,7 @@
 import { IconSlug } from './global';
 
 export type ResponseJSON = {
-  [key: string] : string | number;
+  [key: string]: string | number;
 };
 
 export enum Languages {
@@ -331,8 +331,54 @@ export type ACFImage = {
   sizes: MediaSizes;
 };
 
+export type ACFFile = {
+  ID: number;
+  id: number;
+  title: string;
+  filename: string;
+  filesize: number;
+  url: string;
+  link: string;
+  alt: string;
+  author: string;
+  description: string;
+  caption: string;
+  name: string;
+  status: string;
+  uploaded_to: number;
+  date: string;
+  modified: string;
+  menu_order: number;
+  mime_type: string;
+  type: string;
+  subtype: string;
+  icon: string;
+  width: number;
+  height: number;
+  sizes: {
+    thumbnail: string;
+    'thumbnail-width': number;
+    'thumbnail-height': number;
+    medium: string;
+    'medium-width': number;
+    'medium-height': number;
+    medium_large: string;
+    'medium_large-width': number;
+    'medium_large-height': number;
+    large: string;
+    'large-width': number;
+    'large-height': number;
+    '1536x1536': string;
+    '1536x1536-width': number;
+    '1536x1536-height': number;
+    '2048x2048': string;
+    '2048x2048-width': number;
+    '2048x2048-height': number;
+  };
+};
+
 export type MenuItem = {
-  label?: string;
+  label: string;
   page: ACFPage;
 };
 
@@ -414,16 +460,14 @@ export type ACFFooterMenu = {
 export type ParsedMenu = {
   label: string;
 } & ({
+  itemType: 'page';
+  page: ParsedACFPage;
+} | {
   itemType: 'submenu';
-  page?: never;
   submenu: Array<{
     label: string;
     page: ParsedACFPage;
   }>;
-} | {
-  itemType: 'page';
-  page: ParsedACFPage;
-  submenu?: never;
 });
 
 export type Social = {
@@ -467,6 +511,20 @@ export type Newsletter = {
   placeholder: string;
 };
 
+export type ParsedMainNav = {
+  itemType: 'page' | 'submenu';
+  label: string;
+} & ({
+  page: ParsedACFPage;
+  submenu?: never;
+} | {
+  page?: never;
+  submenu: Array<{
+    label: string;
+    page: ParsedACFPage;
+  }>;
+});
+
 export type ParsedOptions = {
   address: string;
   footer: {
@@ -474,9 +532,7 @@ export type ParsedOptions = {
     copyright: string;
     nav: Array<FooterMenu>;
   };
-  nav: {
-    mainMenu: Array<ParsedMenu>;
-  };
+  nav: Array<ParsedMainNav>;
   newsletter: Newsletter;
   socials: Array<Social>;
 };

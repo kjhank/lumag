@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { WPImage } from '@/components';
 
-export const Wrapper = styled.article`
-  main {
-    margin-block-start: ${({ theme }) => theme.helpers.getMax(-220)};
-  }
-`;
-
 export const Background = styled(WPImage)`
   position: absolute;
   inset: 0;

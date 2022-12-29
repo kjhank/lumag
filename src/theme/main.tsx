@@ -2,7 +2,7 @@
 import React from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import {
-  getClamped, getMax, getMin,
+  clampBuilder, getClamped, getMax, getMin,
 } from './helpers';
 import { homePageStyles } from './HomePage';
 import { ThemeProps } from './theme.types';
@@ -27,14 +27,14 @@ const theme: DefaultTheme = {
   },
   fonts: {
     sizes: {
-      hero: getClamped(71),
-      xxl: getClamped(56),
-      xl: getClamped(40),
-      l: getClamped(34),
-      m: getClamped(28),
-      s: getClamped(20),
-      xs: getClamped(14),
-      xxs: getClamped(12),
+      hero: clampBuilder(71),
+      xxl: clampBuilder(56),
+      xl: clampBuilder(40),
+      l: clampBuilder(34),
+      m: clampBuilder(28),
+      s: clampBuilder(20),
+      xs: clampBuilder(14),
+      xxs: clampBuilder(12),
     },
     types: {
       alt: 'Lato, sans-serif',
@@ -44,10 +44,10 @@ const theme: DefaultTheme = {
   },
   global: {
     contact: {
-      addressFontSize: getClamped(14),
-      newsletterFontSize: getClamped(12),
-      newsletterHeadingSize: getClamped(34),
-      newsletterSubmitFontSize: getClamped(14),
+      addressFontSize: clampBuilder(14),
+      newsletterFontSize: clampBuilder(12),
+      newsletterHeadingSize: clampBuilder(34),
+      newsletterSubmitFontSize: clampBuilder(14),
       newsletterSubmitLineHeight: getMin(40),
       get newsletterSubmitBackgroundColor() { return theme.colors.neutral['100']; },
       get newsletterSubmitColor() { return theme.colors.neutral['5']; },
@@ -90,6 +90,7 @@ const theme: DefaultTheme = {
     },
   },
   helpers: {
+    clampBuilder,
     getClamped,
     getMax,
     getMin,
@@ -99,6 +100,7 @@ const theme: DefaultTheme = {
   },
   radii: {
     buttonLink: '50px',
+    input: '4px',
   },
   transitions: {
     default: '0.4s',

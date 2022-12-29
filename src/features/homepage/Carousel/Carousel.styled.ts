@@ -5,7 +5,7 @@ export const Section = styled.section`
   position: relative;
   z-index: 1;
   aspect-ratio: 1920/718;
-  margin-top: ${({ theme }) => theme.helpers.getMin(80)};
+  margin-block-start: ${({ theme }) => theme.helpers.getMin(80)};
 `;
 
 export const Background = styled(WPImage)`
@@ -37,7 +37,7 @@ export const Item = styled.li<{ isActive: boolean }>`
     padding-inline: ${({ theme }) => theme.pages.homePage.carousel.paddingInline};
 
     > a {
-      margin-top: ${({ theme }) => theme.helpers.getMin(50)};
+      margin-block-start: ${({ theme }) => theme.helpers.getMin(50)};
     }
   }
 `;
@@ -45,12 +45,12 @@ export const Item = styled.li<{ isActive: boolean }>`
 export const Heading = styled.h2`
   color: ${({ theme }) => theme.colors.neutral[10]};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.fonts.sizes.hero};
+  ${({ theme }) => theme.fonts.sizes.hero};
   line-height: 1;
 `;
 
 export const Text = styled.p`
   color: ${({ theme }) => theme.colors.brand};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.pages.homePage.carousel.textSize};
+  ${({ theme }) => theme.pages.homePage.carousel.textSize};
 `;

@@ -1,3 +1,4 @@
+import { Meta } from '@/components/Layout/components/Meta';
 import { GenericPageRenderer } from '@/features/genericpage/GenericPageRenderer';
 import { GenericPageProps } from '@/types';
 
@@ -8,6 +9,10 @@ const GenericPage = ({ pageContext }: GenericPageProps) => (
       title: pageContext.metadata.title.rendered,
     }}
   />
+);
+
+export const Head = ({ pageContext } : GenericPageProps) => (
+  <Meta metadata={pageContext.metadata} />
 );
 
 export default GenericPage;

@@ -9,7 +9,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => (
   <menu>
     {menuItems?.length > 0 && menuItems.map(item => (
       <NavItem key={item.label}>
-        {item.itemType === 'page'
+        {item.page
           ? <Link to={`/${item.page.slug}`}>{item.label}</Link>
           : (
             <>
@@ -19,8 +19,8 @@ export const Navigation = ({ menuItems }: NavigationProps) => (
                 <ArrowDown />
               </NavLabel>
               <Submenu>
-                {item.submenu.map(subitem => (
-                  <Subitem key={subitem.label ?? subitem.page.title}>
+                {item?.submenu?.map(subitem => (
+                  <Subitem key={subitem.label || subitem.page.title}>
                     <Link to={`/${subitem.page.slug}`}>{subitem.page.title}</Link>
                   </Subitem>
                 ))}

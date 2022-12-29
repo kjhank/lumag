@@ -17,6 +17,7 @@ export const Header = ({
 } : HeaderProps) => {
   const langsRef = useRef<HTMLButtonElement>(null);
   const searchRef = useRef<HTMLButtonElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [isLangOpen, setLangOpen] = useState(false);
 
@@ -34,7 +35,7 @@ export const Header = ({
   return (
     <HeaderNode>
       <Container>
-        <Link to={`/${pageLang}`}>
+        <Link to={pageLang === 'pl' ? '/' : `/${pageLang}`}>
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
