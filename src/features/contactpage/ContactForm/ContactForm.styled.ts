@@ -24,7 +24,7 @@ export const Heading = styled.h2`
 
 export const Subheading = styled.h3`
   font-weight: bold;
-  ${({ theme }) => theme.helpers.clampBuilder(30)};
+  ${({ theme }) => theme.helpers.getClamped(30)};
 `;
 
 export const Description = styled.p`
@@ -35,12 +35,23 @@ export const Description = styled.p`
 export const Form = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: ${({ theme }) => theme.helpers.getMin(80)};
+  gap: ${({ theme }) => `${theme.helpers.getMin(32)} ${theme.helpers.getMin(80)}`};
   margin-block-start: ${({ theme }) => theme.helpers.getMin(128)};
+`;
+
+export const Footer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.helpers.getMin(20)};
+  grid-column: -1/1;
+  font-size: ${({ theme }) => theme.fonts.sizes.xs};
 
   > p {
-    grid-column: -1/1;
-    font-size: ${({ theme }) => theme.fonts.sizes.xs};
+    padding-inline-start: ${({ theme }) => theme.helpers.getMin(45)};
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.brand};
   }
 `;
 
@@ -85,6 +96,6 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
-  ${({ theme }) => theme.helpers.clampBuilder(18)};
+  ${({ theme }) => theme.helpers.getClamped(18)};
   padding-inline-start: ${({ theme }) => theme.helpers.getMin(12)};
 `;

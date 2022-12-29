@@ -9,7 +9,7 @@ export const Section = styled.section`
   background-color: ${({ theme }) => theme.colors.neutral[100]};
   color: ${({ theme }) => theme.colors.neutral[5]};
   font-weight: 300;
-  ${({ theme }) => theme.helpers.clampBuilder(22.5)};
+  ${({ theme }) => theme.helpers.getClamped(22.5)};
 
   > div {
     display: flex;

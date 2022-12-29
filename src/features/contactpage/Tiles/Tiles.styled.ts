@@ -18,7 +18,7 @@ export const Tile = styled.article`
   padding-block: ${({ theme }) => theme.helpers.getMin(47)};
   padding-inline: ${({ theme }) => theme.helpers.getMin(57)};
   background-color: ${({ theme }) => theme.colors.neutral[15]};
-  ${({ theme }) => theme.helpers.clampBuilder(18)};
+  ${({ theme }) => theme.helpers.getClamped(18)};
   text-align: center;
 
   h3 {

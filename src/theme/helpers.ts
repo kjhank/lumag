@@ -40,7 +40,7 @@ export const parseUnit = (value: string): [string, string, number] => {
   ];
 };
 
-function convertToRem(value: string, root: number): number {
+const convertToRem = (value: string, root: number): number => {
   const [num, unit] = parseUnit(value);
 
   if (unit === 'rem') {
@@ -48,13 +48,11 @@ function convertToRem(value: string, root: number): number {
   }
 
   return parseFloat(num) / root;
-}
+};
 
-function toFixed(value: number) {
-  return parseFloat(value.toFixed(4));
-}
+const toFixed = (value: number) => parseFloat(value.toFixed(4));
 
-export const clampBuilder = (
+export const getClamped = (
   maxPx: number,
   minPx?: number,
   rootPx?: number
@@ -88,15 +86,15 @@ export const clampBuilder = (
   `;
 };
 
-export const getClamped = (sizePx: number): string => {
-  const optimum = `0.5rem + ${Math.ceil((sizePx - 8) / viewportBase)}vw`;
+// export const getClamped = (sizePx: number): string => {
+//   const optimum = `0.5rem + ${Math.ceil((sizePx - 8) / viewportBase)}vw`;
 
-  if (sizePx <= 16) {
-    return `clamp(8px, ${optimum}, ${sizePx}px)`;
-  }
+//   if (sizePx <= 16) {
+//     return `clamp(8px, ${optimum}, ${sizePx}px)`;
+//   }
 
-  return `clamp(${Math.ceil(sizePx / 2)}px, ${optimum}, ${sizePx}px)`;
-};
+//   return `clamp(${Math.ceil(sizePx / 2)}px, ${optimum}, ${sizePx}px)`;
+// };
 
 export const getMin = (sizePx: number): string => {
   const precision = 2;

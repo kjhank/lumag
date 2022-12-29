@@ -1,13 +1,15 @@
 /* eslint-disable sort-keys */
 import {
-  ChangeEvent, FormEvent, useState,
+  ChangeEvent, FormEvent, useRef, useState,
 } from 'react';
+import sanitize, { IOptions } from 'sanitize-html';
 import { ButtonLink, Container } from '@/components';
 import {
-  Description, FieldWrapper, Form, Heading, Input, Label, Section, Subheading,
+  Description, FieldWrapper, Footer, Form, Heading, Input, Label, Section, Subheading,
 } from './ContactForm.styled';
 import { ContactFormProps, FormElements } from './ContactForm.types';
 import { FormFieldName } from '@/types';
+import { useAnchors } from '@/hooks';
 
 export const initialFormState: {
   [key in FormFieldName]: string;
@@ -18,6 +20,10 @@ export const initialFormState: {
   phone: '',
   subject: '',
   message: '',
+};
+
+const sanitizeConfig: IOptions = {
+  allowedTags: ['a'],
 };
 
 export const ContactForm = ({
@@ -36,6 +42,8 @@ export const ContactForm = ({
     ...previous,
     [current.slug]: false,
   }), {}));
+
+  const footerRef = useRef(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFormState(current => ({
@@ -68,6 +76,8 @@ export const ContactForm = ({
 
     console.log(data);
   };
+
+  useAnchors(footerRef);
 
   return (
     <Section id="contactForm">
@@ -131,24 +141,31 @@ export const ContactForm = ({
               {submitText}
             </ButtonLink>
           </FieldWrapper>
-          {legal.map(checkbox => (
-            <FieldWrapper
-              isFullWidth key={checkbox.slug}
-              variant="checkbox"
-            >
-              <input
-                checked={legals[checkbox.slug]}
-                id={checkbox.slug}
-                name={checkbox.slug}
-                onChange={handleCheckbox}
-                required={checkbox.isRequired}
-                type="checkbox"
-                value={checkbox.slug}
-              />
-              <Label htmlFor={checkbox.slug}>{checkbox.content}</Label>
-            </FieldWrapper>
-          ))}
-          <p>{footer}</p>
+          <Footer ref={footerRef}>
+            {legal.map(checkbox => (
+              <FieldWrapper
+                isFullWidth key={checkbox.slug}
+                variant="checkbox"
+              >
+                <input
+                  checked={legals[checkbox.slug]}
+                  id={checkbox.slug}
+                  name={checkbox.slug}
+                  onChange={handleCheckbox}
+                  required={checkbox.isRequired}
+                  type="checkbox"
+                  value={checkbox.slug}
+                />
+                <Label
+                  dangerouslySetInnerHTML={{ __html: sanitize(checkbox.content, sanitizeConfig) }}
+                  htmlFor={checkbox.slug}
+                />
+              </FieldWrapper>
+            ))}
+            <p
+              dangerouslySetInnerHTML={{ __html: sanitize(footer, sanitizeConfig) }}
+            />
+          </Footer>
         </Form>
       </Container>
     </Section>

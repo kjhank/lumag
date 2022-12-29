@@ -1,5 +1,5 @@
 import {
-  clampBuilder, getMin,
+  getClamped, getMin,
 } from './helpers';
 
 export type HomePage = {
@@ -17,10 +17,10 @@ export const homePageStyles = {
   carousel: {
     lineHeight: 1,
     paddingInline: getMin(115),
-    textSize: clampBuilder(25),
+    textSize: getClamped(25),
   },
   tiles: {
-    headingSize: clampBuilder(24),
+    headingSize: getClamped(24),
     tileBlockPadding: `${getMin(43)} ${getMin(30)}`,
     tileInlinePadding: getMin(115),
   },
