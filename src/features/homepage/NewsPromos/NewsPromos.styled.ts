@@ -25,7 +25,7 @@ export const NewsHeading = styled.h2`
   background-color: ${({ theme }) => theme.colors.neutral[5]};
   color: ${({ theme }) => theme.colors.brand};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.helpers.getClamped(30)};
+  ${({ theme }) => theme.helpers.getClamped(30)};
 
   ::before {
     content: '';
@@ -68,7 +68,7 @@ export const NewsNode = styled.li`
 
 export const Heading = styled.h3`
   font-weight: bold;
-  font-size: ${({ theme }) => theme.helpers.getClamped(17.5)};
+  ${({ theme }) => theme.helpers.getClamped(17.5)};
 `;
 
 export const DateElem = styled.span`
@@ -76,7 +76,7 @@ export const DateElem = styled.span`
   align-items: center;
   gap: ${({ theme }) => theme.helpers.getMin(7)};
   color: ${({ theme }) => theme.colors.neutral[50]};
-  font-size: ${({ theme }) => theme.helpers.getClamped(13)};
+  ${({ theme }) => theme.helpers.getClamped(13)};
 
   > svg {
     width: auto;
@@ -88,7 +88,7 @@ export const DateElem = styled.span`
 
 export const Excerpt = styled.p`
   font-weight: 300;
-  font-size: ${({ theme }) => theme.helpers.getClamped(15)};
+  ${({ theme }) => theme.helpers.getClamped(15)};
 `;
 
 export const NewsLink = styled(Link)`
@@ -97,7 +97,7 @@ export const NewsLink = styled(Link)`
   gap: 1ch;
   color: ${({ theme }) => theme.colors.brand};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.helpers.getClamped(13)};
+  ${({ theme }) => theme.helpers.getClamped(13)};
   text-transform: uppercase;
 
   > svg {
@@ -123,7 +123,7 @@ export const Promos = styled.aside`
 
 export const SinglePromo = styled.article`
   position: relative;
-  filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(-41)} ${helpers.getMin(41)} ${helpers.getMin(35)} ${colors.neutral[100]}79)`};
+  filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMax(-41)} ${helpers.getMin(41)} ${helpers.getMin(35)} ${colors.neutral[100]}79)`};
   aspect-ratio: 579/338;
   display: flex;
   flex-direction: column;
@@ -142,7 +142,7 @@ export const PromoText = styled.p`
   z-index: 1;
   color: ${({ theme }) => theme.colors.neutral[5]};
   font-weight: 900;
-  font-size: ${({ theme }) => theme.helpers.getClamped(16)};
+  ${({ theme }) => theme.helpers.getClamped(16)};
   font-family: ${({ theme }) => theme.fonts.types.alt};
   text-align: center;
   white-space: pre-line;

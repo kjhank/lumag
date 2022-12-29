@@ -90,6 +90,7 @@ const theme: DefaultTheme = {
     },
   },
   helpers: {
+    // clampBuilder,
     getClamped,
     getMax,
     getMin,
@@ -99,6 +100,7 @@ const theme: DefaultTheme = {
   },
   radii: {
     buttonLink: '50px',
+    input: '4px',
   },
   transitions: {
     default: '0.4s',

@@ -4,7 +4,7 @@ import { WPImage } from '@/components/WPImage/WPImage';
 export const Section = styled.section`
   position: relative;
   z-index: 2;
-  margin-top: ${({ theme }) => theme.helpers.getMin(-120)};
+  margin-block-start: ${({ theme }) => theme.helpers.getMax(-120)};
 
   > div {
     display: grid;
@@ -39,15 +39,15 @@ export const SingleTile = styled.article`
 `;
 
 export const Heading = styled.h2`
-  margin-bottom: ${({ theme }) => theme.helpers.getMin(20)};
+  margin-block-end: ${({ theme }) => theme.helpers.getMin(20)};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.pages.homePage.tiles.headingSize};
+  ${({ theme }) => theme.pages.homePage.tiles.headingSize};
   white-space: pre-line;
 
   ::before {
     content: '';
     position: absolute;
-    inset: auto auto 0 ${({ theme }) => theme.helpers.getMin(-20)};
+    inset: auto auto 0 ${({ theme }) => theme.helpers.getMax(-20)};
     width: ${({ theme }) => theme.helpers.getMin(3)};
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.brand};
@@ -56,7 +56,7 @@ export const Heading = styled.h2`
 
 export const Text = styled.p`
   font-weight: 300;
-  font-size: ${({ theme }) => theme.fonts.sizes.xs};
+  ${({ theme }) => theme.fonts.sizes.xs};
 `;
 
 export const Background = styled(WPImage)`

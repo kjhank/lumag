@@ -3,7 +3,7 @@ import React from 'react';
 import {
   ACFImage,
   FooterMenu,
-  I18n, Languages, Newsletter, PageContext, ParsedMenu, Social,
+  I18n, Languages, Newsletter, PageContext, ParsedMainNav, Social,
 } from '@/types';
 
 export type LayoutProps = {
@@ -11,13 +11,13 @@ export type LayoutProps = {
 } & PageProps & { pageContext: PageContext };
 
 export type HeaderProps = {
-  menuItems: Array<ParsedMenu>;
+  menuItems: Array<ParsedMainNav>;
   i18n: I18n;
   pageLang: Languages;
 };
 
 export type NavigationProps = {
-  menuItems: Array<ParsedMenu>;
+  menuItems: Array<ParsedMainNav>;
 };
 
 export type LanguageSwitcherProps = {

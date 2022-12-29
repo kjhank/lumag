@@ -102,53 +102,51 @@ const parseOptions = (options: Options): ParsedOptions => ({
       })),
     })),
   },
-  nav: {
-    mainMenu: options.nav.mainMenu.map(item => {
-      const common = {
-        itemType: item.itemType,
-        label: item.label,
-      };
+  nav: options.nav.mainMenu.map(item => {
+    const common = {
+      itemType: item.itemType,
+      label: item.label,
+    };
 
-      if (item.itemType === 'page') {
-        return {
-          ...common,
-          page: {
-            slug: item.page?.post_name,
-            title: item.page?.post_title,
-          },
-        };
-      }
-
+    if (item.itemType === 'page') {
       return {
         ...common,
-        submenu: [
-          ...item.submenu.map(subitem => ({
-            label: subitem.label || null,
-            page: {
-              slug: subitem.page.post_name,
-              title: subitem.page.post_title,
-            },
-          })),
-        ],
+        page: {
+          slug: item.page.post_name,
+          title: item.page.post_title,
+        },
       };
-    }),
-  },
+    }
+
+    return {
+      ...common,
+      submenu: item?.submenu?.map(subitem => ({
+        label: subitem.label,
+        page: {
+          slug: subitem.page.post_name,
+          title: subitem.page.post_title,
+        },
+      })),
+    };
+  }),
   newsletter: options.newsletter,
   socials: options.address.socials,
 });
 
 const getPath = ({
-  slug, lang,
+  acf: { template: { value: template } }, slug, lang,
 }: Page) => {
-  if (lang === Languages.polish) {
-    return slug === 'home' ? '/' : `/${slug}/`;
+  const prefix = lang === Languages.polish ? '/' : `/${lang}/`;
+
+  if (template === 'home') {
+    return prefix;
   }
 
   if (lang === Languages.russian) {
     return `/${lang}/${decodeURIComponent(slug)}`;
   }
 
-  return `/${lang}/${slug}`;
+  return `${prefix}${slug}`;
 };
 
 const getPageLangs = async (translations: Translations) => {
@@ -182,6 +180,7 @@ const getContext = async ({
     lang,
     metadata: {
       ...meta,
+      lang,
       title,
     },
     options: Object.keys(options).length > 0 ? parseOptions(options) : undefined,
@@ -197,6 +196,13 @@ const getContext = async ({
       ...globalContext,
       content: acf,
       posts: posts.slice(0, acf?.posts?.postCount ?? posts.length),
+    };
+  }
+
+  if (template === 'contact') {
+    return {
+      ...globalContext,
+      content: acf,
     };
   }
 

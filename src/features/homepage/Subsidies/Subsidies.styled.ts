@@ -24,5 +24,5 @@ export const Image = styled(WPImage)`
 export const Text = styled.p`
   margin-block-start: ${({ theme }) => theme.helpers.getMin(18)};
   font-weight: 300;
-  font-size: ${({ theme }) => theme.helpers.getClamped(16)};
+  ${({ theme }) => theme.helpers.getClamped(16)};
 `;

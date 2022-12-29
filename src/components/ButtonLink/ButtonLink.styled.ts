@@ -10,10 +10,11 @@ export const buttonLinkStyle = css`
   background-color: ${({ theme }) => theme.colors.brand};
   color: ${({ theme }) => theme.colors.neutral[100]};
   font-weight: bold;
-  font-size: ${({ theme }) => theme.helpers.getClamped(17)};
+  ${({ theme }) => theme.helpers.getClamped(17)};
   padding-block: ${({ theme }) => theme.helpers.getMin(15)};
   padding-inline: ${({ theme }) => theme.helpers.getMin(37)};
   transition: filter ${({ theme }) => theme.transitions.fast};
+  cursor: pointer;
 
   :hover {
     filter: contrast(120%);
@@ -38,5 +39,9 @@ export const GatsbyLink = styled(Link)`
 `;
 
 export const Anchor = styled.a`
+  ${buttonLinkStyle}
+`;
+
+export const Button = styled.button`
   ${buttonLinkStyle}
 `;

@@ -10,7 +10,7 @@ const Layout = ({ children, pageContext }: LayoutProps) => (
   <Theme>
     <GlobalStyle />
     <Header
-      i18n={pageContext?.i18n} menuItems={pageContext?.options?.nav?.mainMenu}
+      i18n={pageContext?.i18n} menuItems={pageContext?.options?.nav}
       pageLang={pageContext?.lang}
     />
     {children}

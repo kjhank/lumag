@@ -1,4 +1,6 @@
-import { getClamped, getMin } from './helpers';
+import {
+  getClamped, getMin,
+} from './helpers';
 
 export type HomePage = {
   carousel: {

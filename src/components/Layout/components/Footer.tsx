@@ -39,6 +39,8 @@ export const Footer = ({
 
   const handleNewsletter = (event: FormEvent) => {
     event.preventDefault();
+    // TODO: integration
+    // eslint-disable-next-line no-alert
     alert(`email will be sent to ${event.target[0].value}`);
   };
 
@@ -95,7 +97,7 @@ export const Footer = ({
               <LinksList>
                 {item.subitems.map(subitem => (
                   <li key={`${subitem.slug}-${subitem.label}`}>
-                    <Link to={subitem.slug}>
+                    <Link to={`/${subitem.slug}/`}>
                       {subitem.label || subitem.title}
                     </Link>
                   </li>

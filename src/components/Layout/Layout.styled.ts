@@ -26,7 +26,7 @@ export const NavigationNode = styled.nav`
   gap: ${({ theme }) => theme.global.header.linkGap};
   background-color: ${({ theme }) => theme.colors.neutral[5]};
   font-weight: 400;
-  font-size: ${({ theme }) => theme.fonts.sizes.xs};
+  ${({ theme }) => theme.fonts.sizes.xs};
   font-family: ${({ theme }) => theme.fonts.types.alt};
   text-transform: uppercase;
 
@@ -43,7 +43,7 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.global.header.buttonsGap};
   color: ${({ theme }) => theme.colors.neutral[5]};
-  font-size: ${({ theme }) => theme.fonts.sizes.xxs};
+  ${({ theme }) => theme.fonts.sizes.xxs};
 `;
 
 export const NavButton = styled.button.attrs({ type: 'button' })`
@@ -191,20 +191,20 @@ export const ActionSection = styled.section`
 
       > svg {
         width: ${({ theme }) => theme.helpers.getMin(249)};
-        margin-bottom: ${({ theme }) => theme.helpers.getMin(20)};
+        margin-block-end: ${({ theme }) => theme.helpers.getMin(20)};
       }
 
       :last-child {
         padding-block-end: ${({ theme }) => theme.helpers.getMin(18)};
         padding-inline: ${({ theme }) => theme.helpers.getMin(61)};
-        font-size: ${({ theme }) => theme.global.contact.newsletterFontSize};
+        ${({ theme }) => theme.global.contact.newsletterFontSize};
       }
     }
   }
 `;
 
 export const Address = styled.address`
-  font-size: ${({ theme }) => theme.global.contact.addressFontSize};
+  ${({ theme }) => theme.global.contact.addressFontSize};
   text-align: center;
   white-space: pre-line;
 
@@ -238,7 +238,7 @@ export const LinksWrapper = styled.ul`
 
 export const NewsletterHeading = styled.h2`
   font-weight: 900;
-  font-size: ${({ theme }) => theme.global.contact.newsletterHeadingSize};
+  ${({ theme }) => theme.global.contact.newsletterHeadingSize};
 `;
 
 export const NewsletterInput = styled.input`
@@ -246,7 +246,7 @@ export const NewsletterInput = styled.input`
   border: ${({ theme }) => `${theme.helpers.getMin(1)} solid ${theme.colors.neutral[100]}`};
   border-radius: 100vw;
   background-color: transparent;
-  font-size: ${({ theme }) => theme.global.contact.newsletterFontSize};
+  ${({ theme }) => theme.global.contact.newsletterFontSize};
   font-family: ${({ theme }) => theme.fonts.types.alt};
   line-height: ${({ theme }) => theme.helpers.getMin(60)};
   text-align: center;
@@ -268,7 +268,7 @@ export const NewsletterSubmit = styled.button`
   background-color: ${({ theme }) => theme.global.contact.newsletterSubmitBackgroundColor};
   color: ${({ theme }) => theme.global.contact.newsletterSubmitColor};
   font-weight: 300;
-  font-size: ${({ theme }) => theme.global.contact.newsletterSubmitFontSize};
+  ${({ theme }) => theme.global.contact.newsletterSubmitFontSize};
   font-family: ${({ theme }) => theme.fonts.types.alt};
   line-height: ${({ theme }) => theme.global.contact.newsletterSubmitLineHeight};
   text-transform: uppercase;
@@ -324,7 +324,7 @@ export const Copyright = styled.footer`
     align-items: center;
     gap: ${({ theme }) => theme.global.footer.bannerGap};
     padding: ${({ theme }) => theme.global.footer.bannerPaddingBlock};
-    font-size: ${({ theme }) => theme.global.footer.bannerFontSize};
+    ${({ theme }) => theme.global.footer.bannerFontSize};
 
     > svg {
       width: auto;

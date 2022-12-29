@@ -1,17 +1,47 @@
 import { ButtonLinkProps } from './ButtonLink.types';
-import { Anchor, GatsbyLink } from './ButtonLink.styled';
+import {
+  Anchor, Button, GatsbyLink,
+} from './ButtonLink.styled';
 import { ArrowRight } from '@/static';
 
 export const ButtonLink = ({
-  children, className, hasArrow = true, style, to, ...props
+  children, className,
+  disabled, hasArrow = true,
+  isButton = false, onClick,
+  style, to,
+  type = 'button', ...props
 } : ButtonLinkProps) => {
-  const isExternal = to?.startsWith('http');
+  const rules = [
+    'http',
+    './#',
+    'mailto:',
+    'tel',
+  ];
+
+  if (onClick || isButton) {
+    return (
+      <Button
+        className={className}
+        disabled={disabled}
+        onClick={onClick}
+        type={type}
+      >
+        {children}
+        {hasArrow && <ArrowRight />}
+      </Button>
+    );
+  }
 
   if (!to) return null;
 
+  const isExternal = !!rules.find(rule => to.startsWith(rule));
+
   if (isExternal) {
     return (
-      <Anchor href={to} {...props}>
+      <Anchor
+        className={className} href={to}
+        {...props}
+      >
         {children}
         {hasArrow && <ArrowRight />}
       </Anchor>
