@@ -11,7 +11,7 @@ export const breakpoints: {
   m: '920px',
   s: '768px',
   xs: '480px',
-  xxs: '36px',
+  xxs: '360px',
 };
 
 export const mediaQueries: {

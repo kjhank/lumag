@@ -23,6 +23,7 @@ export const Heading = styled.h2`
   color: ${({ theme }) => theme.colors.brand};
   font-weight: bold;
   ${({ theme }) => theme.fonts.sizes.xl};
+  text-align: center;
 `;
 
 export const Regions = styled.ul`

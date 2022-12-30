@@ -27,6 +27,11 @@ export const HeaderNode = styled.header`
   h2 {
     padding-inline: 25%;
     color: ${({ theme }) => theme.colors.brand};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        padding-inline: 0;
+      }
+    `}
   }
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {

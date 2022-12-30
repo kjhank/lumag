@@ -8,8 +8,13 @@ export const Container = styled.div`
   margin: 0 auto;
   font-family: ${({ theme }) => theme.fonts.types.text};
   ${({ theme }) => css`
-    ${theme.mediaQueries.xs} {
+    ${theme.mediaQueries.s} {
       width: min(45.6vw, 342px);
+    }
+  `}
+  ${({ theme }) => css`
+    ${theme.mediaQueries.xs} {
+      width: 80vw;
     }
   `}
 `;

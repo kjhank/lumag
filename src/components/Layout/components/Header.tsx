@@ -50,7 +50,7 @@ export const Header = ({
   return (
     <HeaderNode>
       <Container>
-        <Link to={pageLang}>
+        <Link to={pageLang === 'pl' ? '/' : `${pageLang}`}>
           <LogoWrapper>
             <Logo />
           </LogoWrapper>

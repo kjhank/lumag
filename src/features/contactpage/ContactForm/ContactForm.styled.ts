@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   padding-block: ${({ theme }) => theme.helpers.getMin(120)};
@@ -37,6 +37,11 @@ export const Form = styled.form`
   grid-template-columns: repeat(2, 1fr);
   gap: ${({ theme }) => `${theme.helpers.getMin(32)} ${theme.helpers.getMin(80)}`};
   margin-block-start: ${({ theme }) => theme.helpers.getMin(128)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      grid-template-columns: 1fr;
+    }
+  `}
 `;
 
 export const Footer = styled.footer`
