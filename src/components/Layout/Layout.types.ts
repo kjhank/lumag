@@ -14,6 +14,7 @@ export type HeaderProps = {
   menuItems: Array<ParsedMainNav>;
   i18n: I18n;
   pageLang: Languages;
+  search: string;
 };
 
 export type NavigationProps = {
@@ -32,4 +33,8 @@ export type FooterProps = {
   nav: Array<FooterMenu>;
   newsletter: Newsletter;
   socials: Array<Social>;
+};
+
+export type SearchProps = {
+  placeholder: string;
 };

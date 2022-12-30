@@ -45,6 +45,7 @@ const Layout = ({ children, pageContext }: LayoutProps) => {
       <Header
         i18n={pageContext?.i18n} menuItems={pageContext?.options?.nav}
         pageLang={pageContext?.lang}
+        search={pageContext.options.search}
       />
       {children}
       <Footer

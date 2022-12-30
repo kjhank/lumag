@@ -132,6 +132,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
     };
   }),
   newsletter: options.newsletter,
+  search: options.search,
   socials: options.address.socials,
 });
 

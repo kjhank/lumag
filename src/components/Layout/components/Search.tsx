@@ -6,8 +6,9 @@ import {
   SearchButton, SearchForm, SearchInput, SearchNode,
 } from '../Layout.styled';
 import { Spyglass } from '@/static';
+import { SearchProps } from '../Layout.types';
 
-export const Search = () => {
+export const Search = ({ placeholder }: SearchProps) => {
   const [query, setQuery] = useState('');
   const debouncedValue = useDebounce(query);
 
@@ -45,7 +46,7 @@ export const Search = () => {
         <SearchInput
           id="search" name="search"
           onChange={handleChange}
-          placeholder="szukaj" value={query}
+          placeholder={placeholder} value={query}
         />
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label className="visually-hidden" htmlFor="search">search</label>

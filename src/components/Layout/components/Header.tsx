@@ -14,7 +14,7 @@ import { Search } from './Search';
 
 // TODO: slices
 export const Header = ({
-  menuItems, i18n, pageLang,
+  menuItems, i18n, pageLang, search,
 } : HeaderProps) => {
   const langsRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -50,7 +50,7 @@ export const Header = ({
                 </span>
                 <Spyglass />
               </NavButton>
-              {isSearchOpen && <Search />}
+              {isSearchOpen && <Search placeholder={search} />}
             </div>
             <LanguagesWrapper ref={langsRef}>
               <NavButton onClick={handleLangMenu}>

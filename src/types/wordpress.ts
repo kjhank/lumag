@@ -487,6 +487,7 @@ export type Options = {
     mainMenu: Array<ACFMenu>;
   };
   newsletter: Newsletter;
+  search: string;
   footerNav: Array<{
     heading: string;
     list: Array<ACFFooterMenu>;
@@ -538,5 +539,6 @@ export type ParsedOptions = {
   };
   nav: Array<ParsedMainNav>;
   newsletter: Newsletter;
+  search: string;
   socials: Array<Social>;
 };
