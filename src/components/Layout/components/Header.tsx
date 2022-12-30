@@ -22,6 +22,7 @@ export const Header = ({
 }: HeaderProps) => {
   const langsRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [isLangOpen, setLangOpen] = useState(false);
   const [isNavOpen, setNavOpen] = useState(false);
@@ -40,6 +41,7 @@ export const Header = ({
 
   useOutsideClick(langsRef, () => setLangOpen(false));
   useOutsideClick(searchRef, () => setSearchOpen(false));
+  useOutsideClick(navRef, () => setNavOpen(false));
 
   useEffect(() => {
     setLangOpen(false);
@@ -49,8 +51,8 @@ export const Header = ({
 
   return (
     <HeaderNode>
-      <Container>
-        <Link to={pageLang === 'pl' ? '/' : `${pageLang}`}>
+      <Container ref={navRef}>
+        <Link to={pageLang === 'pl' ? '/' : `/${pageLang}`}>
           <LogoWrapper>
             <Logo />
           </LogoWrapper>

@@ -207,6 +207,7 @@ export const Submenu = styled.menu`
       position: static;
       filter: unset;
       pointer-events: all;
+      white-space: normal;
     }
   `}
 `;
