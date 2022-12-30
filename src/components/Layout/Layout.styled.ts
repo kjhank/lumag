@@ -45,6 +45,11 @@ export const NavigationNode = styled.nav<{ isOpen?: boolean }>`
         width: 100%;
         background-color: ${theme.colors.neutral[5]};
         flex-direction: column;
+        gap: 1em;
+
+        a {
+          text-transform: none;
+        }
       }
     `}
   }

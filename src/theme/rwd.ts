@@ -17,26 +17,26 @@ export const breakpoints: {
 export const mediaQueries: {
   [key in QueryKey]: string;
 } = {
-  landscape: '@media((orientation: landscape))',
-  nonTouch: '@media((pointer: fine))',
-  touch: '@media((hover: none) and (pointer: coarse))',
-  portrait: '@media((orientation: portrait))',
+  landscape: '@media(orientation: landscape)',
+  nonTouch: '@media(pointer: fine)',
+  touch: '@media(hover: none) and (pointer: coarse)',
+  portrait: '@media(orientation: portrait)',
   ...Object.keys(breakpoints).reduce((prev, curr) => ({
     ...prev,
-    [curr]: `@media((max-width: ${breakpoints[curr as Breakpoint]}))`,
+    [curr]: `@media(max-width: ${breakpoints[curr as Breakpoint]})`,
   }), {} as { [key in Breakpoint]: string }),
 };
 
 const mfQueries: {
   [key in QueryKey]: string;
 } = {
-  landscape: '@media((orientation: landscape))',
-  nonTouch: '@media((pointer: fine))',
-  touch: '@media((hover: none) and (pointer: coarse))',
-  portrait: '@media((orientation: portrait))',
+  landscape: '@media(orientation: landscape)',
+  nonTouch: '@media(pointer: fine)',
+  touch: '@media(hover: none) and (pointer: coarse)',
+  portrait: '@media(orientation: portrait)',
   ...Object.keys(breakpoints).reduce((prev, curr) => ({
     ...prev,
-    [curr]: `@media((min-width: ${breakpoints[curr as Breakpoint]}))`,
+    [curr]: `@media(min-width: ${breakpoints[curr as Breakpoint]})`,
   }), {} as { [key in Breakpoint]: string }),
 };
 /* eslint-enable sort-keys */
@@ -44,7 +44,3 @@ const mfQueries: {
 Object.keys(breakpoints).forEach(size => {
   mfQueries[size as QueryKey] = `(min-width: ${breakpoints[size as Breakpoint]})`;
 });
-
-// export {
-//   mfQueries,
-// };
