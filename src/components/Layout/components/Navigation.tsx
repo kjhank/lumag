@@ -5,12 +5,12 @@ import {
 } from '../Layout.styled';
 import { NavigationProps } from '../Layout.types';
 
-export const Navigation = ({ menuItems }: NavigationProps) => (
+export const Navigation = ({ menuItems, langPrefix }: NavigationProps) => (
   <menu>
     {menuItems?.length > 0 && menuItems.map(item => (
       <NavItem key={item.label || item.page?.title}>
         {item.page
-          ? <Link to={`/${item.page.slug}`}>{item.label || item.page.title}</Link>
+          ? <Link to={`${langPrefix}/${item.page.slug}`}>{item.label || item.page.title}</Link>
           : (
             <>
               <NavLabel>
@@ -21,7 +21,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => (
               <Submenu>
                 {item?.submenu?.map(subitem => (
                   <Subitem key={subitem.label || subitem.page.title}>
-                    <Link to={`/${subitem.page.slug}`}>{subitem.label || subitem.page.title}</Link>
+                    <Link to={`${langPrefix}/${subitem.page.slug}`}>{subitem.label || subitem.page.title}</Link>
                   </Subitem>
                 ))}
               </Submenu>

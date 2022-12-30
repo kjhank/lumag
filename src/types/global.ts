@@ -29,6 +29,7 @@ export type IconSlug = 'agency' |
 'logo' |
 'mapPin' |
 'medal' |
+'menu' |
 'pin' |
 'play' |
 'productLogo' |

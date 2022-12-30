@@ -31,4 +31,9 @@ export const Main = styled.article`
   a {
     text-decoration: underline;
   }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;

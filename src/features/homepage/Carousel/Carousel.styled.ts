@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '@/components/WPImage/WPImage';
 
 export const Section = styled.section`
@@ -6,12 +6,23 @@ export const Section = styled.section`
   z-index: 1;
   aspect-ratio: 1920/718;
   margin-block-start: ${({ theme }) => theme.helpers.getMin(80)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      aspect-ratio: 750/570;
+    }
+  `}
 `;
 
 export const Background = styled(WPImage)`
   position: absolute;
   inset: 0;
   z-index: -1;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const List = styled.ul`
@@ -47,6 +58,11 @@ export const Heading = styled.h2`
   font-weight: bold;
   ${({ theme }) => theme.fonts.sizes.hero};
   line-height: 1;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.xs} {
+      ${theme.fonts.sizes.xl}
+    }
+  `}
 `;
 
 export const Text = styled.p`

@@ -482,6 +482,7 @@ export type Options = {
     address: string;
     background: ACFImage;
     socials: Array<Social>;
+    verticalBackground: ACFImage;
   };
   nav: {
     mainMenu: Array<ACFMenu>;
@@ -536,6 +537,7 @@ export type ParsedOptions = {
     background: ACFImage;
     copyright: string;
     nav: Array<FooterMenu>;
+    verticalBackground: ACFImage;
   };
   nav: Array<ParsedMainNav>;
   newsletter: Newsletter;

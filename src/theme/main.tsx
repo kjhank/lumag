@@ -5,6 +5,7 @@ import {
   getClamped, getMax, getMin,
 } from './helpers';
 import { homePageStyles } from './HomePage';
+import { mediaQueries } from './rwd';
 import { ThemeProps } from './theme.types';
 
 const theme: DefaultTheme = {
@@ -101,6 +102,7 @@ const theme: DefaultTheme = {
     buttonLink: '50px',
     input: '4px',
   },
+  mediaQueries,
   transitions: {
     default: '0.4s',
     fast: '0.2s',

@@ -27,3 +27,4 @@ export { default as Twitter } from './social-twitter.svg';
 export { default as Youtube } from './social-youtube.svg';
 export { default as Spyglass } from './spyglass.svg';
 export { default as Zoom } from './zoom.svg';
+export { default as Menu } from './menu.svg';

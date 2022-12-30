@@ -20,6 +20,12 @@
         "src/*"
       ]
     },
+    "plugins": [{
+      "lint": {
+        "colon-expected": "ignore"
+      },
+      "name": "@styled/typescript-styled-plugin"
+    }],
     "typeRoots": [
       "./src/custom.d.ts"
     ]

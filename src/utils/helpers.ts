@@ -32,6 +32,7 @@ export const getIcon = (slug: IconSlug) => {
     logo: iconComponents.Logo,
     mapPin: iconComponents.MapPin,
     medal: iconComponents.Medal,
+    menu: iconComponents.Menu,
     pin: iconComponents.Pin,
     play: iconComponents.Play,
     productLogo: iconComponents.ProductLogo,

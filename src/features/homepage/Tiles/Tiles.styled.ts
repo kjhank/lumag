@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '@/components/WPImage/WPImage';
 
 export const Section = styled.section`
@@ -11,6 +11,11 @@ export const Section = styled.section`
     grid-template-columns: repeat(2, 1fr);
     gap: ${({ theme }) => theme.helpers.getMin(5)};
     background-color: ${({ theme }) => theme.colors.neutral[5]};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        grid-template-columns: 1fr;
+      }
+    `}
   }
 `;
 
@@ -35,6 +40,11 @@ export const SingleTile = styled.article`
   :last-child:not(:nth-child(even)) {
     grid-column: -1 / 1;
     padding-inline-end: 50%;
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        padding-inline-end: ${theme.pages.homePage.tiles.tileInlinePadding};
+      }
+    `}
   }
 `;
 

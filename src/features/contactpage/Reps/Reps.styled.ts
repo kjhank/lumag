@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '@/components';
 
 export const Section = styled.section`
@@ -47,6 +47,11 @@ export const ContactSplitter = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: ${({ theme }) => theme.helpers.getMin(32)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      grid-template-columns: 1fr;
+    }
+  `}
 `;
 
 export const RegionName = styled.h3`

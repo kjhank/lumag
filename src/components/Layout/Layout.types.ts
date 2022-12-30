@@ -14,11 +14,13 @@ export type HeaderProps = {
   menuItems: Array<ParsedMainNav>;
   i18n: I18n;
   pageLang: Languages;
+  pathname: string;
   search: string;
 };
 
 export type NavigationProps = {
   menuItems: Array<ParsedMainNav>;
+  langPrefix: string;
 };
 
 export type LanguageSwitcherProps = {
@@ -33,6 +35,7 @@ export type FooterProps = {
   nav: Array<FooterMenu>;
   newsletter: Newsletter;
   socials: Array<Social>;
+  verticalBackground: ACFImage;
 };
 
 export type SearchProps = {

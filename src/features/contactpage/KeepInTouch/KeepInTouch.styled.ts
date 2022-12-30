@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WYSIWYG } from '@/components';
 
 export const Section = styled.section`
@@ -13,13 +13,16 @@ export const List = styled.ul`
 `;
 
 export const Map = styled.iframe.attrs({ loading: 'lazy' })`
-  /* aspect-ratio: 583/645; */
   width: 100%;
   height: 100%;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      aspect-ratio: 750/570;
+    }
+  `}
 `;
 
 export const Content = styled(WYSIWYG)`
-  /* width: 50%; */
   padding: ${({ theme }) => theme.helpers.getMin(64)};
   font-weight: 300;
   ${({ theme }) => theme.fonts.sizes.s};
@@ -38,6 +41,11 @@ export const Content = styled(WYSIWYG)`
   strong {
     font-weight: bold;
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding-inline: 10%;
+    }
+  `}
 `;
 
 export const Item = styled.li`
@@ -47,10 +55,25 @@ export const Item = styled.li`
   :nth-child(even) {
     ${Map} {
       order: 1;
+      ${({ theme }) => css`
+        ${theme.mediaQueries.s} {
+          order: unset;
+        }
+      `}
     }
 
     ${Content} {
       order: 2;
+      ${({ theme }) => css`
+        ${theme.mediaQueries.s} {
+          order: unset;
+        }
+      `}
     }
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      grid-template-columns: 1fr;
+    }
+  `}
 `;
