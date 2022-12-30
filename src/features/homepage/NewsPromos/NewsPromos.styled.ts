@@ -121,6 +121,18 @@ export const Promos = styled.aside`
   gap: ${({ theme }) => theme.helpers.getMin(85)};
 `;
 
+export const Image = styled(WPImage)`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+
+  > img {
+    transition: ${({ theme }) => `scale ${theme.transitions.slow}`};
+    object-fit: cover;
+  }
+`;
+
 export const SinglePromo = styled.article`
   position: relative;
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMax(-41)} ${helpers.getMin(41)} ${helpers.getMin(35)} ${colors.neutral[100]}79)`};
@@ -135,6 +147,14 @@ export const SinglePromo = styled.article`
     z-index: 1;
     translate: 0 50% 0;
   }
+
+  :hover {
+    ${Image} {
+      > img {
+        scale: 1.025;
+      }
+    }
+  }
 `;
 
 export const PromoText = styled.p`
@@ -146,14 +166,4 @@ export const PromoText = styled.p`
   font-family: ${({ theme }) => theme.fonts.types.alt};
   text-align: center;
   white-space: pre-line;
-`;
-
-export const Image = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  > img {
-    object-fit: cover;
-  }
 `;

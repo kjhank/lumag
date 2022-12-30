@@ -8,7 +8,7 @@ import { NavigationProps } from '../Layout.types';
 export const Navigation = ({ menuItems }: NavigationProps) => (
   <menu>
     {menuItems?.length > 0 && menuItems.map(item => (
-      <NavItem key={item.label}>
+      <NavItem key={item.label || item.page?.title}>
         {item.page
           ? <Link to={`/${item.page.slug}`}>{item.label || item.page.title}</Link>
           : (

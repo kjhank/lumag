@@ -89,6 +89,8 @@ const parsePost = (postData: Post) => ({
 
 const parseOptions = (options: Options): ParsedOptions => ({
   address: options.address.address,
+  cookiesButtonText: options.cookiesButtonText,
+  cookiesText: options.cookiesText,
   footer: {
     background: options.address.background,
     copyright: options.footerText,

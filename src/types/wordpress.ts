@@ -476,6 +476,8 @@ export type Social = {
 };
 
 export type Options = {
+  cookiesText: string;
+  cookiesButtonText: string;
   address: {
     address: string;
     background: ACFImage;
@@ -527,6 +529,8 @@ export type ParsedMainNav = {
 
 export type ParsedOptions = {
   address: string;
+  cookiesText: string;
+  cookiesButtonText: string;
   footer: {
     background: ACFImage;
     copyright: string;
