@@ -239,6 +239,7 @@ export const LinksWrapper = styled.ul`
 export const NewsletterHeading = styled.h2`
   font-weight: 900;
   ${({ theme }) => theme.global.contact.newsletterHeadingSize};
+  text-align: center;
 `;
 
 export const NewsletterInput = styled.input`
@@ -344,3 +345,77 @@ export const ActionBackground = styled(WPImage)`
     object-fit: cover;
   }
 `;
+
+export const CookiesDialog = styled.aside<{ isVisible?: boolean }>`
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 1000;
+  background-color: ${({ theme }) => theme.colors.neutral[5]};
+  padding-block: ${({ theme }) => theme.helpers.getMin(8)};
+  transition: ${({ theme }) => `translate ${theme.transitions.default}`};
+  translate: ${({ isVisible }) => (isVisible ? 0 : '0 100% 0')};
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: ${({ theme }) => theme.helpers.getMin(45)};
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.brand};
+  }
+`;
+
+export const SearchNode = styled.aside`
+  position: absolute;
+  z-index: 10;
+  inset: 0 0 0 50%;
+  display: grid;
+  place-items: center;
+  background-color: ${({ theme }) => theme.colors.neutral[5]};
+  translate: -50% 0 0;
+
+  ::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 100%;
+    width: 50vw;
+    background-color: ${({ theme }) => theme.colors.neutral[5]};
+  }
+`;
+
+export const SearchForm = styled.form`
+  width: 100%;
+  ${({ theme }) => theme.helpers.getClamped(16)};
+`;
+
+export const SearchInput = styled.input`
+  display: block;
+  width: 100%;
+  border: none;
+  padding-inline: ${({ theme }) => theme.helpers.getMin(32)};
+  background-color: ${({ theme }) => theme.colors.neutral[15]};
+  line-height: 2;
+  text-transform: uppercase;
+
+  :focus {
+    outline-color: ${({ theme }) => theme.colors.brand};
+  }
+`;
+
+export const SearchButton = styled.button`
+  position: absolute;
+  inset: ${({ type }) => (type === 'reset' ? '50% 0.25em auto auto' : '50% auto auto 0.25em')};
+  width: 1em;
+  height: 1em;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.neutral[100]};
+  translate: 0 -50% 0;
+
+  svg {
+    /* stylelint-disable-next-line value-keyword-case */
+    fill: currentColor;
+  }
+`;
+

@@ -90,7 +90,6 @@ const theme: DefaultTheme = {
     },
   },
   helpers: {
-    // clampBuilder,
     getClamped,
     getMax,
     getMin,
@@ -105,6 +104,7 @@ const theme: DefaultTheme = {
   transitions: {
     default: '0.4s',
     fast: '0.2s',
+    slow: '0.8s',
   },
 };
 

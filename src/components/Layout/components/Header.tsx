@@ -10,14 +10,14 @@ import { HeaderProps } from '../Layout.types';
 import { Navigation } from './Navigation';
 import { Container } from '@/components';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { Search } from './Search';
 
 // TODO: slices
 export const Header = ({
-  menuItems, i18n, pageLang,
+  menuItems, i18n, pageLang, search,
 } : HeaderProps) => {
-  const langsRef = useRef<HTMLButtonElement>(null);
-  const searchRef = useRef<HTMLButtonElement>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const langsRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [isLangOpen, setLangOpen] = useState(false);
 
@@ -42,15 +42,18 @@ export const Header = ({
         </Link>
         <NavigationNode>
           <Navigation menuItems={menuItems} />
-          <ButtonsWrapper>
-            <NavButton onClick={handleSearchMenu} ref={searchRef}>
-              <span className="visually-hidden">
-                search
-              </span>
-              <Spyglass />
-            </NavButton>
-            <LanguagesWrapper>
-              <NavButton onClick={handleLangMenu} ref={langsRef}>
+          <ButtonsWrapper ref={searchRef}>
+            <div>
+              <NavButton onClick={handleSearchMenu}>
+                <span className="visually-hidden">
+                  search
+                </span>
+                <Spyglass />
+              </NavButton>
+              {isSearchOpen && <Search placeholder={search} />}
+            </div>
+            <LanguagesWrapper ref={langsRef}>
+              <NavButton onClick={handleLangMenu}>
                 <span className="visually-hidden">
                   lang
                 </span>

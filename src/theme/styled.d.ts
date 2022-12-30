@@ -74,8 +74,7 @@ declare module 'styled-components' {
       };
     };
     helpers: {
-      clampBuilder: (maxPx: number, minPx?: number, rootPx?: number) => string;
-      getClamped: (sizePx: number) => string;
+      getClamped: (maxPx: number, minPx?: number, rootPx?: number) => string;
       getMax: (sizePx: number) => string;
       getMin: (sizePx: number) => string;
     };
