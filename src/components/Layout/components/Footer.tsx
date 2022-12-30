@@ -8,7 +8,7 @@ import {
   ActionSection, Address,
   BottomNav, Copyright, LinksHeading,
   LinksList, LinksWrapper, NewsletterAgreement, NewsletterHeading,
-  NewsletterInput, NewsletterSubmit,
+  NewsletterInput, NewsletterSubmit, VerticalBackground,
 } from '../Layout.styled';
 import { FooterProps } from '../Layout.types';
 import {
@@ -24,7 +24,7 @@ const icons = {
 
 // TODO: slices
 export const Footer = ({
-  address, background, copyright, nav, newsletter, socials,
+  address, background, copyright, nav, newsletter, socials, verticalBackground,
 }: FooterProps) => {
   const [email, setEmail] = useState('');
   const [isAgreed, setAgreed] = useState(false);
@@ -37,17 +37,18 @@ export const Footer = ({
     setAgreed(current => !current);
   };
 
-  const handleNewsletter = (event: FormEvent) => {
+  const handleNewsletter = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // TODO: integration
     // eslint-disable-next-line no-alert
-    alert(`email will be sent to ${event.target[0].value}`);
+    alert(`email will be sent to ${event.currentTarget.elements.namedItem('email')}`);
   };
 
   return (
     <>
       <ActionSection>
         <ActionBackground imageData={background} />
+        <VerticalBackground imageData={verticalBackground} />
         <Container>
           <div>
             <Logo />
@@ -56,7 +57,7 @@ export const Footer = ({
             </Address>
             <LinksWrapper>
               {socials?.map(social => {
-                const Icon = icons[social.iconSlug];
+                const Icon = icons[social.iconSlug as keyof typeof icons];
 
                 return (
                   <li key={social.url}>

@@ -1,3 +1,4 @@
+import { QueryKey } from '@/utils/utils.types';
 import 'styled-components';
 import { HomePage } from './HomePage';
 
@@ -81,6 +82,9 @@ declare module 'styled-components' {
     radii: {
       buttonLink: string;
       input: string;
+    };
+    mediaQueries: {
+      [key in QueryKey]: string;
     };
     transitions: {
       fast?: string;

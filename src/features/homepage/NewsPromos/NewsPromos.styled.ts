@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '@/components/WPImage/WPImage';
 
 export const Section = styled.section`
@@ -13,6 +13,11 @@ export const Section = styled.section`
     padding-block-start: ${({ theme }) => theme.helpers.getMin(70)};
     padding-block-end: ${({ theme }) => theme.helpers.getMin(75)};
     border-block-end: ${({ theme }) => `${theme.helpers.getMin(2)} solid ${theme.colors.neutral[25]}`};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        grid-template-columns: 1fr;
+      }
+    `}
   }
 `;
 
@@ -41,6 +46,14 @@ export const News = styled.section`
   flex-direction: column;
   align-items: flex-start;
   gap: ${({ theme }) => theme.helpers.getMin(43)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding-block-end: ${theme.helpers.getMin(64)};
+      > a {
+        margin: auto;
+      }
+    }
+  `}
 `;
 
 export const NewsList = styled.ul`
@@ -63,6 +76,11 @@ export const NewsNode = styled.li`
     height: ${({ theme }) => theme.helpers.getMin(2)};
     margin-block-start: ${({ theme }) => theme.helpers.getMin(16)};
     background-color: ${({ theme }) => theme.colors.neutral[25]};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        width: 100%;
+      }
+    `}
   }
 `;
 
@@ -142,6 +160,7 @@ export const SinglePromo = styled.article`
   justify-content: flex-end;
   align-items: center;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   > a {
     position: relative;
     z-index: 1;

@@ -10,3 +10,7 @@ export type WrapPageProps = {
     [key: string]: unknown;
   };
 };
+
+export type Breakpoint = 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
+
+export type QueryKey = 'landscape' | 'touch' | 'nonTouch' | 'portrait' | Breakpoint;

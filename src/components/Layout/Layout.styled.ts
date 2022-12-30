@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 
 export const HeaderNode = styled.header`
@@ -17,9 +17,15 @@ export const HeaderNode = styled.header`
 
 export const LogoWrapper = styled.h1`
   width: ${({ theme }) => theme.helpers.getMin(159)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: min(131px, 18vw);
+      padding-block: 13%;
+    }
+  `}
 `;
 
-export const NavigationNode = styled.nav`
+export const NavigationNode = styled.nav<{ isOpen?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +40,45 @@ export const NavigationNode = styled.nav`
     display: inherit;
     justify-content: inherit;
     align-items: inherit;
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        width: 100%;
+        background-color: ${theme.colors.neutral[5]};
+        flex-direction: column;
+      }
+    `}
   }
+  ${({ theme, isOpen }) => css`
+    ${theme.mediaQueries.s} {
+      position: absolute;
+      inset: 0 0 auto;
+      flex-direction: column;
+      padding-block-end: 5%;
+      background-color: ${theme.colors.neutral[5]};
+      ${theme.fonts.sizes.m};
+      translate: ${isOpen ? '0 min(71px, 9.467vw) 0' : '100vw min(71px, 9.467vw) 0'};
+      transition: translate ${theme.transitions.default};
+    }
+  `}
+`;
+
+export const NavToggle = styled.button.attrs({ type: 'button' })`
+  display: none;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      display: grid;
+      place-items: center;
+      width: min(50px, 6.667vw);
+      aspect-ratio: 1;
+      background-color: transparent;
+      padding: 0;
+
+      > svg {
+        width: 80%;
+        height: auto;
+      }
+    }
+  `}
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -44,6 +88,11 @@ export const ButtonsWrapper = styled.div`
   gap: ${({ theme }) => theme.global.header.buttonsGap};
   color: ${({ theme }) => theme.colors.neutral[5]};
   ${({ theme }) => theme.fonts.sizes.xxs};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      ${theme.fonts.sizes.m};
+    }
+  `}
 `;
 
 export const NavButton = styled.button.attrs({ type: 'button' })`
@@ -63,6 +112,13 @@ export const NavButton = styled.button.attrs({ type: 'button' })`
     /* stylelint-disable-next-line value-keyword-case */
     fill: currentColor;
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: min(50px, 6.667vw);
+      height: min(50px, 6.667vw);
+      border-radius: 50%;
+    }
+  `}
 `;
 
 export const LanguageMenu = styled.menu`
@@ -79,6 +135,14 @@ export const LanguageMenu = styled.menu`
   padding-block: 1.5em 1em;
   background-color: ${({ theme }) => theme.colors.brand};
   list-style-type: none;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: min(50px, 6.667vw);
+      border-radius: 100px;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+  `}
 `;
 
 export const LanguagesWrapper = styled.nav`
@@ -111,7 +175,18 @@ export const NavLabel = styled.p`
     /* stylelint-disable-next-line value-keyword-case */
     fill: currentColor;
     transition: ${({ theme }) => `color ${theme.transitions.fast}`};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        display: none;
+      }
+    `}
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      display: block;
+      text-align: center;
+    }
+  `}
 `;
 
 export const Submenu = styled.menu`
@@ -127,6 +202,13 @@ export const Submenu = styled.menu`
   white-space: nowrap;
   transition: ${({ theme }) => `background-color ${theme.transitions.fast}, filter ${theme.transitions.fast}`};
   pointer-events: none;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      position: static;
+      filter: unset;
+      pointer-events: all;
+    }
+  `}
 `;
 
 export const Subitem = styled.li`
@@ -170,6 +252,11 @@ export const NavItem = styled.li`
       pointer-events: all;
     }
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: 75%;
+    }
+  `}
 `;
 
 export const ActionSection = styled.section`
@@ -192,6 +279,11 @@ export const ActionSection = styled.section`
       > svg {
         width: ${({ theme }) => theme.helpers.getMin(249)};
         margin-block-end: ${({ theme }) => theme.helpers.getMin(20)};
+        ${({ theme }) => css`
+          ${theme.mediaQueries.s} {
+            width: 48%;
+          }
+        `}
       }
 
       :last-child {
@@ -200,6 +292,12 @@ export const ActionSection = styled.section`
         ${({ theme }) => theme.global.contact.newsletterFontSize};
       }
     }
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+      }
+    `}
   }
 `;
 
@@ -228,12 +326,22 @@ export const LinksWrapper = styled.ul`
       width: ${({ theme }) => theme.global.contact.socialsLinkSize};
       height: auto;
       border-radius: 50%;
+      ${({ theme }) => css`
+        ${theme.mediaQueries.s} {
+          width: min(35px, 10vw);
+        }
+      `}
 
       > svg {
         fill: ${({ theme }) => theme.colors.neutral[100]};
       }
     }
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding-block-end: 10%;
+    }
+  `}
 `;
 
 export const NewsletterHeading = styled.h2`
@@ -284,6 +392,7 @@ export const NewsletterSubmit = styled.button`
 export const BottomNav = styled.nav`
   background-color: ${({ theme }) => theme.global.footer.backgroundColor};
   padding-block: ${({ theme }) => theme.helpers.getMin(60)};
+  font-size: ${({ theme }) => theme.fonts.sizes.xs};
 
   > div {
     display: grid;
@@ -338,6 +447,29 @@ export const ActionBackground = styled(WPImage)`
   position: absolute;
   inset: 0;
   z-index: 0;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      display: none;
+    }
+  `}
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const VerticalBackground = styled(WPImage)`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: none;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      display: block;
+    }
+  `}
 
   > img {
     width: 100%;
@@ -382,7 +514,18 @@ export const SearchNode = styled.aside`
     inset: 0 auto 0 100%;
     width: 50vw;
     background-color: ${({ theme }) => theme.colors.neutral[5]};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        content: none;
+      }
+    `}
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      inset: 100% 10% auto;
+      translate: 0;
+    }
+  `}
 `;
 
 export const SearchForm = styled.form`
@@ -402,6 +545,12 @@ export const SearchInput = styled.input`
   :focus {
     outline-color: ${({ theme }) => theme.colors.brand};
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      line-height: 3;
+      padding-inline: min(32px, 4.267vw);
+    }
+  `}
 `;
 
 export const SearchButton = styled.button`
@@ -417,5 +566,10 @@ export const SearchButton = styled.button`
     /* stylelint-disable-next-line value-keyword-case */
     fill: currentColor;
   }
+  ${({ theme, type }) => css`
+    ${theme.mediaQueries.s} {
+    inset: ${type === 'reset' ? '50% 1em auto auto' : '50% auto auto 1em'};
+    }
+  `}
 `;
 

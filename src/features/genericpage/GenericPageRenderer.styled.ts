@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '@/components';
 
 export const Wrapper = styled.article`
@@ -10,6 +10,12 @@ export const Wrapper = styled.article`
 export const Background = styled(WPImage)`
   position: absolute;
   inset: 0;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const HeaderNode = styled.header`
@@ -28,4 +34,11 @@ export const HeaderNode = styled.header`
     padding-inline: 25%;
     color: ${({ theme }) => theme.colors.brand};
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      aspect-ratio: 750/570;
+      align-items: center;
+      padding-block-start: unset;
+    }
+  `}
 `;

@@ -103,6 +103,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
         title: subitem.page.post_title,
       })),
     })),
+    verticalBackground: options.address.verticalBackground,
   },
   nav: options.nav.mainMenu.map(item => {
     const common = {
