@@ -1,15 +1,16 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
-export const Wrapper = styled.main`
+export const NewsDate = styled.time`
+  display: inline-flex;
+  align-items: center;
+  gap: 1ex;
   color: ${({ theme }) => theme.colors.brand};
-`;
+  font-weight: 300;
 
-export const Text = styled.p`
-  font-size: 18px;
-`;
-
-export const StyledLink = styled(Link)`
-  color: #b00b13;
-  text-decoration: underline;
+  > svg {
+    width: 1em;
+    height: auto;
+    /* stylelint-disable-next-line value-keyword-case */
+    fill: currentColor;
+  }
 `;

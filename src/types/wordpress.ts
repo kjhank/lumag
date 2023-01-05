@@ -40,7 +40,10 @@ export type PostType = 'page' | 'post';
 
 export type PageACF = {
   header?: {
-    background?: ACFImage;
+    background: ACFImage;
+    verticalBackground?: ACFImage;
+    title: string;
+    text?: string;
   };
   posts?: {
     postCount?: number;
@@ -117,7 +120,9 @@ export type Page = {
 };
 
 export type Post = {
-  acf: Array<any>;
+  acf: {
+    thumbnail: ACFImage;
+  };
   author: number;
   categories: Array<number>;
   comment_status: string;
@@ -180,6 +185,13 @@ export type Post = {
       templated: boolean;
     }>;
   };
+};
+
+export type PaginatedItem<T = {}> = {
+  heading: string;
+  image: ACFImage;
+  text: string;
+  other?: T;
 };
 
 export type ImageSize = 'medium' | 'large' | 'thumbnail' | 'medium_large' | '1536x1536' | 'full';
@@ -543,4 +555,12 @@ export type ParsedOptions = {
   newsletter: Newsletter;
   search: string;
   socials: Array<Social>;
+};
+
+export type ParsedPost = {
+  date: string;
+  excerpt: string;
+  image: ACFImage;
+  title: string;
+  text: string;
 };

@@ -1,5 +1,6 @@
 import { Meta } from '@/components/Layout/components/Meta';
-import { ContactForm, Header } from '@/features/contactpage';
+import { ContactForm } from '@/features/contactpage';
+import { Header } from '@/components';
 import { KeepInTouch } from '@/features/contactpage/KeepInTouch/KeepInTouch';
 import { Reps } from '@/features/contactpage/Reps/Reps';
 import { Tiles } from '@/features/contactpage/Tiles/Tiles';
@@ -7,10 +8,7 @@ import { ContactPageProps } from '@/types';
 
 const ContactPage = ({ pageContext: { content } }: ContactPageProps) => (
   <>
-    <Header
-      background={content.header.background}
-      title={content.header.title}
-    />
+    <Header {...content.header} />
     <KeepInTouch contactData={content.contactData} />
     <Reps
       background={content.repsBackground}

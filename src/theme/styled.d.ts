@@ -1,4 +1,4 @@
-import { QueryKey } from '@/utils/utils.types';
+import { QueryKey } from '../utils/utils.types';
 import 'styled-components';
 import { HomePage } from './HomePage';
 
