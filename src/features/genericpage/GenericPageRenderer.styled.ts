@@ -4,6 +4,15 @@ import { WPImage } from '@/components';
 export const Wrapper = styled.article`
   main {
     margin-block-start: ${({ theme }) => theme.helpers.getMax(-220)};
+    padding: ${({ theme }) => theme.helpers.getMin(86)};
+    color: ${({ theme }) => theme.colors.neutral[95]};
+    ${({ theme }) => theme.fonts.sizes.xs};
+    white-space: pre-line;
+
+    h2 {
+      color: ${({ theme }) => theme.colors.brand};
+      ${({ theme }) => theme.helpers.getClamped(24)};
+    }
   }
 `;
 
@@ -30,6 +39,7 @@ export const HeaderNode = styled.header`
   text-align: center;
   text-transform: uppercase;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   h2 {
     padding-inline: 25%;
     color: ${({ theme }) => theme.colors.brand};

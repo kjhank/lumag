@@ -8,18 +8,24 @@ import { NewsItemProps } from './NewsPromos.types';
 const Clock = getIcon('clockIcon');
 const ArrowRight = getIcon('arrowRight');
 
-export const NewsItem = ({ linkLabel, post }: NewsItemProps) => (
+export const NewsItem = ({ linkLabel, post }: NewsItemProps) => {
+  const trimmedText = sanitize(`${post.content.rendered.split(' ').slice(0, 40)
+    .join(' ')}`, { allowedTags: ['br'] });
+  const formattedDate = formatDate(new Date(post.date));
+  const showEllipsis = trimmedText.length >= 40;
 
-  <NewsNode key={post.slug}>
-    <Heading>{post.title.rendered}</Heading>
-    <DateElem>
-      <Clock />
-      <time dateTime={post.date}>{formatDate(new Date(post.date))}</time>
-    </DateElem>
-    <Excerpt>{sanitize(post.excerpt.rendered, { allowedTags: [] })}</Excerpt>
-    <NewsLink to={post.slug}>
-      {linkLabel}
-      <ArrowRight />
-    </NewsLink>
-  </NewsNode>
-);
+  return (
+    <NewsNode key={post.slug}>
+      <Heading>{post?.title?.rendered}</Heading>
+      <DateElem>
+        <Clock />
+        <time dateTime={formattedDate}>{formattedDate}</time>
+      </DateElem>
+      <Excerpt dangerouslySetInnerHTML={{ __html: showEllipsis ? `${trimmedText} [...]` : trimmedText }} />
+      <NewsLink to={post.slug}>
+        {linkLabel}
+        <ArrowRight />
+      </NewsLink>
+    </NewsNode>
+  );
+};

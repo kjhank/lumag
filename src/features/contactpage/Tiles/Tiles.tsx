@@ -31,8 +31,8 @@ export const Tiles = ({
           {downloads.file.map(file => (
             <li key={file.linkText}>
               <a
-                download href={file.url.url}
-                rel="noreferrer" target="_blank"
+                download
+                href={file.url.url}
               >
                 {file.linkText}
               </a>

@@ -1,5 +1,6 @@
-import { Container, WYSIWYG } from '@/components';
-import { Header } from './components/Header';
+import {
+  Container, Header, WYSIWYG,
+} from '@/components';
 import { Wrapper } from './GenericPageRenderer.styled';
 import { GenericPageRendererProps } from './GenericPageRenderer.types';
 

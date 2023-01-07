@@ -171,7 +171,7 @@ const getPageLangs = async (translations: Translations) => {
 
 const getContext = async ({
   acf, content, id, date, slug, status, title, parent: parentId, meta, lang, translations,
-} : Page, posts: Array<Post>, options: Options) => {
+}: Page, posts: Array<Post>, options: Options) => {
   const i18Slugs = await getPageLangs(translations);
 
   const { template: { value: template } }: PageACF = acf;
@@ -213,7 +213,15 @@ const getContext = async ({
   if (template === 'news') {
     return {
       ...globalContext,
-      posts,
+      content: acf,
+      header: acf.header,
+      posts: posts.map(post => ({
+        date: post.date,
+        excerpt: post.excerpt.rendered,
+        image: post.acf.thumbnail,
+        text: post.content.rendered,
+        title: post.title.rendered,
+      })),
     };
   }
 

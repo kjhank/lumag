@@ -14729,6 +14729,7 @@ __metadata:
     postcss-styled: ^0.34.0
     postcss-syntax: ^0.36.2
     react: ^18.2.0
+    react-clamp-lines: ^3.0.3
     react-dom: ^18.2.0
     sanitize-html: ^2.8.0
     styled-components: ^5.3.6
@@ -17700,6 +17701,17 @@ __metadata:
   bin:
     rc: ./cli.js
   checksum: 2e26e052f8be2abd64e6d1dabfbd7be03f80ec18ccbc49562d31f617d0015fbdbcf0f9eed30346ea6ab789e0fdfe4337f033f8016efdbee0df5354751842080e
+  languageName: node
+  linkType: hard
+
+"react-clamp-lines@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "react-clamp-lines@npm:3.0.3"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^15 || ^16 || ^17 || ^18
+  checksum: ff84d666c8b7b02ecfdaaee9f3c08feba4e691762dd7691013b8aba37d7bbfb6847493d05ee55cee8487461fba81e6566a8c68323a4fa599f8ce5c531646e091
   languageName: node
   linkType: hard
 

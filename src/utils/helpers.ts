@@ -8,7 +8,7 @@ export const formatDate = (date: Date): string => {
   const month = date.getMonth();
   const day = date.getDate();
 
-  return `${day}/${month}/${year}`;
+  return `${day}/${month + 1}/${year}`;
 };
 
 export const getIcon = (slug: IconSlug) => {

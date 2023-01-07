@@ -1,8 +1,8 @@
 import { PageProps } from 'gatsby';
 import { IconSlug } from './global';
 import {
-  ACFFile,
-  ACFImage, Languages, ParsedOptions, Post, Template, Translations,
+  ACFFile, ACFImage, Languages, ParsedOptions,
+  ParsedPost, Post, Template, Translations,
 } from './wordpress';
 
 export type PageMeta = {
@@ -36,7 +36,19 @@ export type CustomPageProps = PageProps & {
 
 export type NewsPageProps = PageProps & {
   pageContext: PageContext & {
-    posts: Array<Post>;
+    content: {
+      buttons: {
+        active: string;
+        inactive: string;
+      };
+      perpage: number;
+    };
+    header: {
+      background: ACFImage;
+      verticalBackground: ACFImage;
+      title: string;
+    };
+    posts: Array<ParsedPost>;
   };
 };
 

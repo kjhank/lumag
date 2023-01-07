@@ -12,6 +12,7 @@ export const sanitizeConfig: IOptions = {
   allowedTags: [
     'a',
     'b',
+    'br',
     'em',
     'figure',
     'h1',

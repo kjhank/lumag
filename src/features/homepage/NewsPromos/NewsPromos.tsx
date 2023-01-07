@@ -15,9 +15,9 @@ export const NewsPromos = ({
       <NewsHeading>{news?.heading}</NewsHeading>
       <News>
         <NewsList>
-          {posts.length > 0 && posts.map(post => (
+          {posts.length > 0 && posts.slice(0, 3).map(post => (
             <NewsItem
-              key={post.title.rendered} linkLabel={news?.linkLabel}
+              key={post?.title?.rendered} linkLabel={news?.linkLabel}
               post={post}
             />
           ))}
