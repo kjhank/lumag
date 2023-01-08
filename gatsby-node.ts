@@ -225,6 +225,14 @@ const getContext = async ({
     };
   }
 
+  if (template === 'quality' || template === 'offer' || template === 'offerBrakes') {
+    return {
+      ...globalContext,
+      content: acf,
+      header: acf.header,
+    };
+  }
+
   return {
     ...globalContext,
     content,

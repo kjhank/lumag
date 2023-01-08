@@ -1,7 +1,8 @@
 import { PageProps } from 'gatsby';
+import { TextWithImageProps } from '@/components/TextWithImage/TextWithImage.types';
 import { IconSlug } from './global';
 import {
-  ACFFile, ACFImage, Languages, ParsedOptions,
+  ACFFile, ACFImage, ACFLink, Languages, ParsedOptions,
   ParsedPost, Post, Template, Translations,
 } from './wordpress';
 
@@ -109,12 +110,8 @@ export type PromoItem = {
   text: string;
   image: ACFImage;
   link: {
-    url: {
-      title: string;
-      url: string;
-      target: string;
-    };
-    Label: string;
+    url: ACFLink;
+    label: string;
   };
 };
 
@@ -213,6 +210,13 @@ export type ContactForm = {
   footer: string;
 };
 
+export type Header = {
+  background: ACFImage;
+  text?: string;
+  title: string;
+  verticalBackground?: ACFImage;
+};
+
 export type ContactPageContext = {
   template: Template;
   header: {
@@ -231,6 +235,36 @@ export type ContactPageContext = {
   contactForm: ContactForm;
 };
 
+export type Catalog = {
+  image: ACFImage;
+  linkText: string;
+  text: string;
+  url: ACFLink;
+};
+
+export type Catalogs = {
+  background: ACFImage;
+  heading: string;
+  list: Array<Catalog>;
+};
+
+export type Certificates = {
+  caption: string;
+  heading: string;
+  image: ACFImage;
+  text: string;
+};
+
+export type OfferBrakesPageContext = {
+  brakeDiscs: TextWithImageProps;
+  brakeLinings: TextWithImageProps;
+  brakePads: TextWithImageProps;
+  catalogs: Catalogs;
+  certs: Certificates;
+  header: Header;
+  seeMore: {};
+};
+
 export type HomePageProps = PageProps & {
   pageContext: PageContext & {
     content: HomePageContent;
@@ -241,5 +275,17 @@ export type HomePageProps = PageProps & {
 export type ContactPageProps = PageProps & {
   pageContext: PageContext & {
     content: ContactPageContext;
+  };
+};
+
+export type OfferBrakesPageProps = PageProps & {
+  pageContext: PageContext & {
+    content: OfferBrakesPageContext;
+  };
+};
+
+export type CustomPagePropsx<T> = PageProps & {
+  pageContext: PageContext & {
+    content: T;
   };
 };

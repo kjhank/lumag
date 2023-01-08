@@ -564,3 +564,9 @@ export type ParsedPost = {
   title: string;
   text: string;
 };
+
+export type ACFLink = {
+  title: string;
+  url: string;
+  target: string;
+};
