@@ -5,8 +5,8 @@ import { HeaderProps } from './Header.types';
 
 export const Header = ({
   className,
-  background, title, text, // TODO: add support for vertical backgrounds
-} : HeaderProps) => (
+  background, footerText, title, text, // TODO: add support for vertical backgrounds
+}: HeaderProps) => (
   <HeaderNode className={className}>
     <Background imageData={background} />
     <Container>
@@ -14,11 +14,12 @@ export const Header = ({
         {useOrphans(title)}
       </h2>
       {text && (
-      <>
-        <hr />
-        <p>{text}</p>
-      </>
+        <>
+          <hr />
+          <p>{text}</p>
+        </>
       )}
+      {footerText && <footer>{footerText}</footer>}
     </Container>
   </HeaderNode>
 );

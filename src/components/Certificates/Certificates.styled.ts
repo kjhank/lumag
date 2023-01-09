@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 
 export const Section = styled.section`
+  position: relative;
   padding-block: ${({ theme }) => theme.helpers.getMin(75)};
   ${({ theme }) => theme.helpers.getClamped(18)};
   text-align: center;
@@ -12,6 +13,11 @@ export const Section = styled.section`
     align-items: center;
     gap: ${({ theme }) => theme.helpers.getMin(25)};
   }
+`;
+
+export const Background = styled(WPImage)`
+  position: absolute;
+  inset: 0;
 `;
 
 export const Heading = styled.h2`

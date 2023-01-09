@@ -9,10 +9,13 @@ export const TextWithImage = ({
   image, layout, text, heading,
 }: TextWithImageProps) => (
   <Wrapper layout={layout}>
-    <Image imageData={image} />
+    <Image decorationOn={layout === 'imageLeft' ? 'right' : 'left'} imageData={image} />
     <TextWrapper>
       <h2>{heading}</h2>
-      <p dangerouslySetInnerHTML={{ __html: sanitize(text, sanitizeConfig) }} />
+      <p dangerouslySetInnerHTML={{
+        __html: sanitize(text, sanitizeConfig),
+      }}
+      />
     </TextWrapper>
   </Wrapper>
 );

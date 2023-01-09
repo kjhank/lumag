@@ -8,7 +8,7 @@ export const Wrapper = styled.article<{ layout: Layout }>`
   justify-content: space-between;
 `;
 
-export const Image = styled(WPImage)`
+export const Image = styled(WPImage)<{ decorationOn: 'left' | 'right' }>`
   position: relative;
   aspect-ratio: 583/434;
   width: 50%;
@@ -22,12 +22,13 @@ export const Image = styled(WPImage)`
     content: '';
     position: absolute;
     top: 50%;
-    right: 0;
+    right: ${({ decorationOn }) => (decorationOn === 'right' ? 0 : 'auto')};
+    left: ${({ decorationOn }) => (decorationOn === 'left' ? 0 : 'auto')};
     width: ${({ theme }) => theme.helpers.getMin(25)};
     height: ${({ theme }) => theme.helpers.getMin(25)};
     background-color: ${({ theme }) => theme.colors.neutral[5]};
     rotate: 45deg;
-    translate: 50% -50% 0;
+    translate: ${({ decorationOn }) => `${decorationOn === 'left' ? '-50%' : '50%'} -50% 0`};
     transform-origin: center;
   }
 `;

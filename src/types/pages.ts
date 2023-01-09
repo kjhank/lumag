@@ -1,5 +1,5 @@
 import { PageProps } from 'gatsby';
-import { TextWithImageProps } from '@/components/TextWithImage/TextWithImage.types';
+import { Layout, TextWithImageProps } from '@/components/TextWithImage/TextWithImage.types';
 import { IconSlug } from './global';
 import {
   ACFFile, ACFImage, ACFLink, Languages, ParsedOptions,
@@ -29,10 +29,6 @@ export type PageContext = {
   options: ParsedOptions;
   parentId?: number;
   slug: string;
-};
-
-export type CustomPageProps = PageProps & {
-  pageContext: PageContext;
 };
 
 export type NewsPageProps = PageProps & {
@@ -120,11 +116,13 @@ export type Subsidies = {
   text: string;
 };
 
+export type CustomPageProps<T = null> = PageProps & {
+  pageContext: PageContext & {
+    content: T;
+  };
+};
+
 export type HomePageContent = {
-  // template: {
-  //   value: Template;
-  //   label: string;
-  // };
   carousel: Array<CarouselItem>;
   tiles: Array<Tile>;
   whyUs: WhyUs;
@@ -212,6 +210,7 @@ export type ContactForm = {
 
 export type Header = {
   background: ACFImage;
+  footerText?: string;
   text?: string;
   title: string;
   verticalBackground?: ACFImage;
@@ -249,13 +248,14 @@ export type Catalogs = {
 };
 
 export type Certificates = {
+  background?: ACFImage;
   caption: string;
   heading: string;
   image: ACFImage;
   text: string;
 };
 
-export type OfferBrakesPageContext = {
+export type OfferBrakesPageContent = {
   brakeDiscs: TextWithImageProps;
   brakeLinings: TextWithImageProps;
   brakePads: TextWithImageProps;
@@ -272,20 +272,45 @@ export type HomePageProps = PageProps & {
   };
 };
 
-export type ContactPageProps = PageProps & {
-  pageContext: PageContext & {
-    content: ContactPageContext;
-  };
+export type ContactPageProps = CustomPageProps<ContactPageContext>;
+
+export type OfferBrakesPageProps = CustomPageProps<OfferBrakesPageContent>;
+
+export type MiniCarouselLayout = 'imageRight' | 'imageLeft';
+
+export type MiniCarousel = {
+  content: Array<{
+    heading: string;
+    text: string;
+  }>;
+  image: ACFImage;
+  layout: MiniCarouselLayout;
 };
 
-export type OfferBrakesPageProps = PageProps & {
-  pageContext: PageContext & {
-    content: OfferBrakesPageContext;
-  };
+export type Partners = {
+  grayBoxes: Array<{
+    heading: string;
+    text: string;
+  }>;
+  heading: string;
+  text: string;
 };
 
-export type CustomPagePropsx<T> = PageProps & {
-  pageContext: PageContext & {
-    content: T;
-  };
+export type RnD = {
+  heading: string;
+  image: ACFImage;
+  layout: Layout;
+  text: string;
 };
+
+export type QualityPageContent = {
+  certs: Certificates;
+  header: Header;
+  characteristicsHeading: string;
+  miniCarousel: MiniCarousel;
+  partners: Partners;
+  rnd: RnD;
+  textWithImage: TextWithImageProps;
+};
+
+export type QualityPageProps = CustomPageProps<QualityPageContent>;
