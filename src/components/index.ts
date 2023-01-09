@@ -6,6 +6,6 @@ export { ExternalLink } from './ExternalLink/ExternalLink';
 export { WYSIWYG } from './WYSIWYG/WYSIWYG';
 export { Header } from './Header/Header';
 export { PaginatedList } from './PaginatedList/PaginatedList';
-export { TextWithImage } from './TextWithImage/TextWithImage';
+export { TextWithMedia } from './TextWithMedia/TextWithMedia';
 export { Certificates } from './Certificates/Certificates';
 export { MiniCarousel } from './MiniCarousel/MiniCarousel';

@@ -1,4 +1,5 @@
 import { ButtonLink, Container } from '@/components';
+import { SectionHeading } from '@/components/styled';
 import { ArrowDown } from '@/static';
 import { Section, Tile } from './Tiles.styled';
 import { TilesProps } from './Tiles.types';
@@ -9,14 +10,14 @@ export const Tiles = ({
   <Section>
     <Container>
       <Tile>
-        <h3>{suppliers.heading}</h3>
+        <SectionHeading as="h3">{suppliers.heading}</SectionHeading>
         <p>{suppliers.text}</p>
         <ButtonLink to={`./${suppliers.linkFragment}`}>
           {suppliers.linkText}
         </ButtonLink>
       </Tile>
       <Tile>
-        <h3>{media.heading}</h3>
+        <SectionHeading as="h3">{media.heading}</SectionHeading>
         <p>{media.text}</p>
         <ButtonLink
           className="link-email" hasArrow={false}
@@ -26,7 +27,7 @@ export const Tiles = ({
         </ButtonLink>
       </Tile>
       <Tile>
-        <h3>{downloads.heading}</h3>
+        <SectionHeading as="h3">{downloads.heading}</SectionHeading>
         <ul>
           {downloads.file.map(file => (
             <li key={file.linkText}>

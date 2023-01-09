@@ -8,10 +8,9 @@ export enum Languages {
   english = 'en',
   german = 'de',
   polish = 'pl',
-  russian = 'ru',
+  // russian = 'ru',
   spanish = 'es',
 }
-
 export type Template = 'about' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values';
 
 export type Translations = {
@@ -569,4 +568,11 @@ export type ACFLink = {
   title: string;
   url: string;
   target: string;
+};
+
+export type Video = {
+  buttonText: string;
+  mp4: ACFFile;
+  poster: ACFImage;
+  webm: ACFFile;
 };

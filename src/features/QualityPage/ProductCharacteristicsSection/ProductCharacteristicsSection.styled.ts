@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SectionHeading } from '@/components/styled';
 
 export const Section = styled.section`
   .carousel-characteristics {
@@ -6,10 +7,6 @@ export const Section = styled.section`
   }
 `;
 
-export const Heading = styled.h2`
+export const Heading = styled(SectionHeading)`
   margin-block-end: ${({ theme }) => theme.helpers.getMin(150)};
-  color: ${({ theme }) => theme.colors.brand};
-  font-weight: bold;
-  ${({ theme }) => theme.fonts.sizes.xl};
-  text-align: center;
 `;

@@ -1,37 +1,20 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components/WPImage/WPImage';
-import { SectionHeading } from '@/components/styled';
+import { WPImage } from '@/components';
 
 export const Section = styled.section`
   position: relative;
-  margin-block-start: ${({ theme }) => theme.helpers.getMax(-80)};
-  padding-block-start: ${({ theme }) => theme.helpers.getMin(80)};
-  padding-block-end: ${({ theme }) => theme.helpers.getMin(133)};
-  text-align: center;
-  ${({ theme }) => css`
-    ${theme.mediaQueries.s} {
-      padding-block-end: ${theme.helpers.getMin(200)};
-    }
-  `}
+  padding-block-start: ${({ theme }) => theme.helpers.getMin(222)};
+`;
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: ${({ theme }) => theme.helpers.getMin(40)};
-    padding-inline: ${({ theme }) => theme.helpers.getMin(112)};
+export const Background = styled(WPImage)`
+  position: absolute;
+  inset: 0;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-`;
-
-export const Heading = styled(SectionHeading)`
-  padding-block-start: ${({ theme }) => theme.helpers.getMin(40)};
-`;
-
-export const Text = styled.p`
-  color: ${({ theme }) => theme.colors.neutral[30]};
-  ${({ theme }) => theme.helpers.getClamped(18)};
-  font-family: ${({ theme }) => theme.fonts.types.alt};
-  line-height: 1.5;
 `;
 
 export const List = styled.ul`
@@ -61,7 +44,7 @@ export const Figure = styled.figure`
   .circle-cutout {
     position: absolute;
     width: auto;
-    height: ${({ theme }) => theme.helpers.getMin(111)};
+    height: ${({ theme }) => theme.helpers.getMin(175)};
     stroke: ${({ theme }) => theme.colors.neutral[20]};
     ${({ theme }) => css`
       ${theme.mediaQueries.s} {
@@ -74,7 +57,7 @@ export const Figure = styled.figure`
 
   > svg:not(.circle-cutout) {
     width: auto;
-    height: ${({ theme }) => theme.helpers.getMin(64)};
+    height: ${({ theme }) => theme.helpers.getMin(110)};
     margin-block: ${({ theme }) => theme.helpers.getMin(23.5)};
     fill: ${({ theme }) => theme.colors.brand};
     ${({ theme }) => css`
@@ -101,13 +84,3 @@ export const Label = styled.figcaption`
   `}
 `;
 
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;

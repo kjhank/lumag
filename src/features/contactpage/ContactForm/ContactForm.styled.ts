@@ -16,12 +16,6 @@ export const Section = styled.section`
   }
 `;
 
-export const Heading = styled.h2`
-  color: ${({ theme }) => theme.colors.brand};
-  font-weight: bold;
-  ${({ theme }) => theme.fonts.sizes.xl};
-`;
-
 export const Subheading = styled.h3`
   font-weight: bold;
   ${({ theme }) => theme.helpers.getClamped(30)};

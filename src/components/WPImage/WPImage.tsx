@@ -12,7 +12,7 @@ export const WPImage = ({
   return (
     <PictureNode className={className}>
       <source src={webpPath} type="webp" />
-      <source src={oldFormatPath} type={imageData.subtype} />
+      <source src={oldFormatPath} type={imageData?.subtype} />
       <img
         alt={imageData?.alt ?? alt}
         height={imageData?.height}

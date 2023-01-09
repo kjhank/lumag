@@ -23,9 +23,6 @@ export const Tile = styled.article`
 
   h3 {
     padding-block-end: ${({ theme }) => theme.helpers.getMin(25)};
-    color: ${({ theme }) => theme.colors.brand};
-    font-weight: bold;
-    ${({ theme }) => theme.fonts.sizes.xl};
   }
 
   :last-child:nth-child(odd) {

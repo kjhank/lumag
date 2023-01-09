@@ -1,5 +1,5 @@
 import {
-  Container, MiniCarousel, TextWithImage,
+  Container, MiniCarousel, TextWithMedia,
 } from '@/components';
 import { Heading, Section } from './ProductCharacteristicsSection.styled';
 import { ProductCharacteristicsSectionProps } from './ProductCharacteristicsSection.types';
@@ -11,7 +11,7 @@ export const ProductCharacteristicsSection = ({
     <Container>
       <Heading>{heading}</Heading>
       <MiniCarousel className="carousel-characteristics" {...miniCarousel} />
-      <TextWithImage {...rnd} />
+      <TextWithMedia {...rnd} />
     </Container>
   </Section>
 );

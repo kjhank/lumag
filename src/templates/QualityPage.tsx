@@ -1,13 +1,14 @@
-import { Certificates, TextWithImage } from '@/components';
-import { Container, Header } from '@/features/QualityPage';
-import { ProductCharacteristicsSection } from '@/features/QualityPage/ProductCharacteristicsSection/ProductCharacteristicsSection';
+import { Certificates, TextWithMedia } from '@/components';
+import {
+  Container, Header, PartnersSection, ProductCharacteristicsSection,
+} from '@/features/QualityPage';
 import { QualityPageProps } from '@/types';
 
 const QualityPage = ({ pageContext }: QualityPageProps) => (
   <>
     <Header {...pageContext.content.header} />
     <Container>
-      <TextWithImage {...pageContext.content.textWithImage} />
+      <TextWithMedia {...pageContext.content.textWithImage} />
     </Container>
     <Certificates {...pageContext.content.certs} />
     <ProductCharacteristicsSection
@@ -15,6 +16,7 @@ const QualityPage = ({ pageContext }: QualityPageProps) => (
       miniCarousel={pageContext.content.miniCarousel}
       rnd={pageContext.content.rnd}
     />
+    <PartnersSection {...pageContext.content.partners} />
   </>
 );
 

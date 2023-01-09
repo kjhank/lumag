@@ -1,8 +1,8 @@
 import { PageProps } from 'gatsby';
-import { Layout, TextWithImageProps } from '@/components/TextWithImage/TextWithImage.types';
+import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithMedia.types';
 import { IconSlug } from './global';
 import {
-  ACFFile, ACFImage, ACFLink, Languages, ParsedOptions,
+  ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
   ParsedPost, Post, Template, Translations,
 } from './wordpress';
 
@@ -12,6 +12,19 @@ export type PageMeta = {
     rendered: string;
   };
 };
+
+export type Icon = {
+  [key in 'label' | 'text']: string;
+} & ({
+  iconSlug?: never;
+  svgSlug: {
+    value: IconSlug;
+    label: string;
+  };
+} | {
+  svgSlug?: never;
+  iconSlug: IconSlug;
+});
 
 export type I18n = {
   slugs: { [key in keyof Translations]: string };
@@ -86,13 +99,7 @@ export type WhyUs = {
   background: ACFImage;
   heading: string;
   text: string;
-  icons: Array<{
-    label: string;
-    svgSlug: {
-      value: IconSlug;
-      label: string;
-    };
-  }>;
+  icons: Array<Icon>;
 };
 
 export type News = {
@@ -256,9 +263,9 @@ export type Certificates = {
 };
 
 export type OfferBrakesPageContent = {
-  brakeDiscs: TextWithImageProps;
-  brakeLinings: TextWithImageProps;
-  brakePads: TextWithImageProps;
+  brakeDiscs: TextWithMediaProps;
+  brakeLinings: TextWithMediaProps;
+  brakePads: TextWithMediaProps;
   catalogs: Catalogs;
   certs: Certificates;
   header: Header;
@@ -310,7 +317,29 @@ export type QualityPageContent = {
   miniCarousel: MiniCarousel;
   partners: Partners;
   rnd: RnD;
-  textWithImage: TextWithImageProps;
+  textWithImage: TextWithMediaProps;
 };
+
+export type IPSPageContent = {
+  carryPlate: TextWithMediaProps;
+  certs: Certificates;
+  coop: {
+    background: ACFImage;
+    heading: string;
+    linkText: string;
+    post: ACFPage;
+    text: string;
+  };
+  europeanLeader: MiniCarousel;
+  header: Header;
+  iconsEtc: {
+    background: ACFImage;
+    iconsList: Array<Icon>;
+  };
+  innovativeTech: MiniCarousel;
+  textWithVideo: TextWithMediaProps;
+};
+
+export type IPSPageProps = CustomPageProps<IPSPageContent>;
 
 export type QualityPageProps = CustomPageProps<QualityPageContent>;

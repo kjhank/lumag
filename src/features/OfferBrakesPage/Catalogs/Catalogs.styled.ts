@@ -12,13 +12,6 @@ export const Section = styled.section`
   }
 `;
 
-export const Heading = styled.h2`
-  color: ${({ theme }) => theme.colors.brand};
-  font-weight: bold;
-  ${({ theme }) => theme.fonts.sizes.xl};
-  text-align: center;
-`;
-
 export const Background = styled(WPImage)`
   position: absolute;
   inset: 0;

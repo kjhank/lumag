@@ -20,12 +20,6 @@ export const Background = styled(WPImage)`
   inset: 0;
 `;
 
-export const Heading = styled.h2`
-  color: ${({ theme }) => theme.colors.brand};
-  font-weight: bold;
-  ${({ theme }) => theme.fonts.sizes.xl};
-`;
-
 export const Text = styled.p`
   margin-block-end: ${({ theme }) => theme.helpers.getMin(25)};
   padding-inline: 7.5%;

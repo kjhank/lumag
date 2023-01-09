@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
-import { Layout } from './TextWithImage.types';
+import { Layout } from './TextWithMedia.types';
 
 export const Wrapper = styled.article<{ layout: Layout }>`
   display: flex;
@@ -8,7 +8,7 @@ export const Wrapper = styled.article<{ layout: Layout }>`
   justify-content: space-between;
 `;
 
-export const Image = styled(WPImage)<{ decorationOn: 'left' | 'right' }>`
+export const mediaStyles = css<{ decorationOn: 'left' | 'right' }>`
   position: relative;
   aspect-ratio: 583/434;
   width: 50%;
@@ -30,6 +30,21 @@ export const Image = styled(WPImage)<{ decorationOn: 'left' | 'right' }>`
     rotate: 45deg;
     translate: ${({ decorationOn }) => `${decorationOn === 'left' ? '-50%' : '50%'} -50% 0`};
     transform-origin: center;
+  }
+`;
+
+export const Image = styled(WPImage) <{ decorationOn: 'left' | 'right' }>`
+  ${mediaStyles}
+`;
+
+export const VideoWrapper = styled.div<{ decorationOn: 'left' | 'right' }>`
+  ${mediaStyles}
+
+  > video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 

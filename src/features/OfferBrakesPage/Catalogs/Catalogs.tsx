@@ -1,8 +1,10 @@
 import { CatalogsProps } from './Catalogs.types';
 import { ButtonLink, Container } from '@/components';
 import {
-  Background, Catalog, CatalogText, Heading, Image, List, Section,
+  Background, Catalog, CatalogText,
+  Image, List, Section,
 } from './Catalogs.styled';
+import { SectionHeading } from '@/components/styled';
 
 export const Catalogs = ({
   background, heading, list,
@@ -10,7 +12,7 @@ export const Catalogs = ({
   <Section>
     <Background imageData={background} />
     <Container>
-      <Heading>{heading}</Heading>
+      <SectionHeading>{heading}</SectionHeading>
       <List>
         {list.map(catalog => (
           <Catalog key={catalog.text}>
@@ -20,7 +22,6 @@ export const Catalogs = ({
           </Catalog>
         ))}
       </List>
-
     </Container>
   </Section>
 );

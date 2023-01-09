@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { WPImage } from '@/components';
+import { SectionHeading } from '@/components/styled';
 
 export const Section = styled.section`
   position: relative;
@@ -17,12 +18,9 @@ export const Section = styled.section`
   }
 `;
 
-export const Heading = styled.h2`
+export const Heading = styled(SectionHeading)`
   align-self: center;
   margin-block: ${({ theme }) => theme.helpers.getMin(132)};
-  color: ${({ theme }) => theme.colors.brand};
-  font-weight: bold;
-  ${({ theme }) => theme.fonts.sizes.xl};
   text-align: center;
 `;
 
