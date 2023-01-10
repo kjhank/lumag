@@ -13,7 +13,6 @@ export type LayoutProps = {
 export type HeaderProps = {
   menuItems: Array<ParsedMainNav>;
   i18n: I18n;
-  pageLang: Languages;
   pathname: string;
   search: string;
 };
@@ -40,4 +39,9 @@ export type FooterProps = {
 
 export type SearchProps = {
   placeholder: string;
+};
+
+export type AppContextState = {
+  lang: Languages;
+  urlPrefix: string;
 };

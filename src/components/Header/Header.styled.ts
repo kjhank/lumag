@@ -19,8 +19,7 @@ export const HeaderNode = styled.header`
   justify-content: center;
   align-items: flex-start;
   padding-block-start: ${({ theme }) => theme.helpers.getMin(251)};
-  font-weight: 900;
-  ${({ theme }) => theme.fonts.sizes.xxl};
+  ${({ theme }) => theme.fonts.sizes.s};
   text-align: center;
 
   /* stylelint-disable-next-line selector-class-pattern */
@@ -31,6 +30,8 @@ export const HeaderNode = styled.header`
   h2 {
     padding-inline: 25%;
     color: ${({ theme }) => theme.colors.brand};
+    font-weight: 900;
+    ${({ theme }) => theme.fonts.sizes.xxl};
     text-transform: uppercase;
     ${({ theme }) => css`
       ${theme.mediaQueries.s} {
@@ -49,7 +50,6 @@ export const HeaderNode = styled.header`
     padding-inline: ${({ theme }) => theme.helpers.getMin(160)};
     color: ${({ theme }) => theme.colors.neutral[5]};
     font-family: 'Avenir Book', sans-serif;
-    ${({ theme }) => theme.fonts.sizes.s};
   }
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {

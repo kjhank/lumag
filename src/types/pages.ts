@@ -1,7 +1,8 @@
 import { PageProps } from 'gatsby';
+import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithMedia.types';
 import { IconSlug } from './global';
 import {
-  ACFFile, ACFImage, Languages, ParsedOptions,
+  ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
   ParsedPost, Post, Template, Translations,
 } from './wordpress';
 
@@ -11,6 +12,19 @@ export type PageMeta = {
     rendered: string;
   };
 };
+
+export type Icon = {
+  [key in 'label' | 'text']: string;
+} & ({
+  iconSlug?: never;
+  svgSlug: {
+    value: IconSlug;
+    label: string;
+  };
+} | {
+  svgSlug?: never;
+  iconSlug: IconSlug;
+});
 
 export type I18n = {
   slugs: { [key in keyof Translations]: string };
@@ -28,10 +42,6 @@ export type PageContext = {
   options: ParsedOptions;
   parentId?: number;
   slug: string;
-};
-
-export type CustomPageProps = PageProps & {
-  pageContext: PageContext;
 };
 
 export type NewsPageProps = PageProps & {
@@ -89,13 +99,7 @@ export type WhyUs = {
   background: ACFImage;
   heading: string;
   text: string;
-  icons: Array<{
-    label: string;
-    svgSlug: {
-      value: IconSlug;
-      label: string;
-    };
-  }>;
+  icons: Array<Icon>;
 };
 
 export type News = {
@@ -109,12 +113,8 @@ export type PromoItem = {
   text: string;
   image: ACFImage;
   link: {
-    url: {
-      title: string;
-      url: string;
-      target: string;
-    };
-    Label: string;
+    url: ACFLink;
+    label: string;
   };
 };
 
@@ -123,11 +123,13 @@ export type Subsidies = {
   text: string;
 };
 
+export type CustomPageProps<T = null> = PageProps & {
+  pageContext: PageContext & {
+    content: T;
+  };
+};
+
 export type HomePageContent = {
-  // template: {
-  //   value: Template;
-  //   label: string;
-  // };
   carousel: Array<CarouselItem>;
   tiles: Array<Tile>;
   whyUs: WhyUs;
@@ -213,6 +215,14 @@ export type ContactForm = {
   footer: string;
 };
 
+export type Header = {
+  background: ACFImage;
+  footerText?: string;
+  text?: string;
+  title: string;
+  verticalBackground?: ACFImage;
+};
+
 export type ContactPageContext = {
   template: Template;
   header: {
@@ -231,6 +241,37 @@ export type ContactPageContext = {
   contactForm: ContactForm;
 };
 
+export type Catalog = {
+  image: ACFImage;
+  linkText: string;
+  text: string;
+  url: ACFLink;
+};
+
+export type Catalogs = {
+  background: ACFImage;
+  heading: string;
+  list: Array<Catalog>;
+};
+
+export type Certificates = {
+  background?: ACFImage;
+  caption: string;
+  heading: string;
+  image: ACFImage;
+  text: string;
+};
+
+export type OfferBrakesPageContent = {
+  brakeDiscs: TextWithMediaProps;
+  brakeLinings: TextWithMediaProps;
+  brakePads: TextWithMediaProps;
+  catalogs: Catalogs;
+  certs: Certificates;
+  header: Header;
+  seeMore: {};
+};
+
 export type HomePageProps = PageProps & {
   pageContext: PageContext & {
     content: HomePageContent;
@@ -238,8 +279,68 @@ export type HomePageProps = PageProps & {
   };
 };
 
-export type ContactPageProps = PageProps & {
-  pageContext: PageContext & {
-    content: ContactPageContext;
-  };
+export type ContactPageProps = CustomPageProps<ContactPageContext>;
+
+export type OfferBrakesPageProps = CustomPageProps<OfferBrakesPageContent>;
+
+export type MiniCarouselLayout = 'imageRight' | 'imageLeft';
+
+export type MiniCarousel = {
+  content: Array<{
+    heading: string;
+    text: string;
+  }>;
+  image: ACFImage;
+  layout: MiniCarouselLayout;
+  noShift?: boolean;
 };
+
+export type Partners = {
+  grayBoxes: Array<{
+    heading: string;
+    text: string;
+  }>;
+  heading: string;
+  text: string;
+};
+
+export type RnD = {
+  heading: string;
+  image: ACFImage;
+  layout: Layout;
+  text: string;
+};
+
+export type QualityPageContent = {
+  certs: Certificates;
+  header: Header;
+  characteristicsHeading: string;
+  miniCarousel: MiniCarousel;
+  partners: Partners;
+  rnd: RnD;
+  textWithImage: TextWithMediaProps;
+};
+
+export type IPSPageContent = {
+  carryPlate: TextWithMediaProps;
+  certs: Certificates;
+  coop: {
+    background: ACFImage;
+    heading: string;
+    linkText: string;
+    post: ACFPage;
+    text: string;
+  };
+  europeanLeader: MiniCarousel;
+  header: Header;
+  iconsEtc: {
+    background: ACFImage;
+    iconsList: Array<Icon>;
+  };
+  innovativeTech: MiniCarousel;
+  textWithVideo: TextWithMediaProps;
+};
+
+export type IPSPageProps = CustomPageProps<IPSPageContent>;
+
+export type QualityPageProps = CustomPageProps<QualityPageContent>;

@@ -5,11 +5,13 @@ import {
 import sanitize, { IOptions } from 'sanitize-html';
 import { ButtonLink, Container } from '@/components';
 import {
-  Description, FieldWrapper, Footer, Form, Heading, Input, Label, Section, Subheading,
+  Description, FieldWrapper, Footer,
+  Form, Input, Label, Section, Subheading,
 } from './ContactForm.styled';
 import { ContactFormProps, FormElements } from './ContactForm.types';
 import { FormFieldName } from '@/types';
 import { useAnchors } from '@/hooks';
+import { SectionHeading } from '@/components/styled';
 
 export const initialFormState: {
   [key in FormFieldName]: string;
@@ -83,9 +85,9 @@ export const ContactForm = ({
     <Section id="contactForm">
       <Container>
         <div>
-          <Heading>
+          <SectionHeading>
             {heading}
-          </Heading>
+          </SectionHeading>
           <Subheading>
             {subheading}
           </Subheading>

@@ -48,7 +48,7 @@ export const Footer = ({
     <>
       <ActionSection>
         <ActionBackground imageData={background} />
-        <VerticalBackground imageData={verticalBackground} />
+        {verticalBackground && <VerticalBackground imageData={verticalBackground} />}
         <Container>
           <div>
             <Logo />

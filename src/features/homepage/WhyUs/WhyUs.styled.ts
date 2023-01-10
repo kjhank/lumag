@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { WPImage } from '@/components/WPImage/WPImage';
+import { SectionHeading } from '@/components/styled';
 
 export const Section = styled.section`
   position: relative;
@@ -22,11 +23,8 @@ export const Section = styled.section`
   }
 `;
 
-export const Heading = styled.h2`
+export const Heading = styled(SectionHeading)`
   padding-block-start: ${({ theme }) => theme.helpers.getMin(40)};
-  color: ${({ theme }) => theme.colors.brand};
-  font-weight: bold;
-  ${({ theme }) => theme.fonts.sizes.xl};
 `;
 
 export const Text = styled.p`

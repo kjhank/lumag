@@ -31,7 +31,7 @@ export const NewsPromos = ({
             <PromoText>
               {promo?.text}
             </PromoText>
-            <ButtonLink to={promo?.link?.url?.url}>{promo?.link?.Label}</ButtonLink>
+            <ButtonLink to={promo?.link?.url?.url}>{promo?.link?.label}</ButtonLink>
           </SinglePromo>
         ))}
       </Promos>

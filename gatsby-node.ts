@@ -31,8 +31,6 @@ const templates: { [key in Template]: string } = {
   values: path.resolve('./src/templates/ValuesPage.tsx'),
 };
 
-const newsSlugs = ['/en/news/', '/aktualnosci/']; // TODO: add other languages when slugs are 100% known
-
 const getUrl = (endpoint: string = '', params?: RequestParams) => {
   const { GATSBY_BACKEND_URL: backendUrl } = process.env;
   const baseUrl = `${backendUrl}/${endpoint}`;
@@ -49,7 +47,7 @@ const getUrl = (endpoint: string = '', params?: RequestParams) => {
 const fetchEntities = async (
   entity: Endpoints,
   id?: number,
-  params: RequestParams = {},
+  params: { [key: string]: string } = {},
   infinite: boolean = false
 ) => {
   const url = id ? `${getUrl(Endpoints.PAGES)}/${id}` : getUrl(entity, params);
@@ -63,6 +61,7 @@ const fetchEntities = async (
       const loopUrl = getUrl(entity, {
         page: String(index + 1),
         per_page: '30',
+        ...params,
       });
       const loopResponse = await fetch(loopUrl);
       const loopResult = await loopResponse.json();
@@ -78,14 +77,14 @@ const fetchEntities = async (
   return result;
 };
 
-const parsePost = (postData: Post) => ({
-  content: postData.content,
-  extendedInfo: postData.acf,
-  id: postData.id,
-  language: postData.lang,
-  title: postData.title.rendered,
-  translations: postData.translations,
-});
+// const parsePost = (postData: Post) => ({
+//   content: postData.content,
+//   extendedInfo: postData.acf,
+//   id: postData.id,
+//   language: postData.lang,
+//   title: postData.title.rendered,
+//   translations: postData.translations,
+// });
 
 const parseOptions = (options: Options): ParsedOptions => ({
   address: options.address.address,
@@ -146,9 +145,9 @@ const getPath = ({
     return prefix;
   }
 
-  if (lang === Languages.russian) {
-    return `/${lang}/${decodeURIComponent(slug)}`;
-  }
+  // if (lang === Languages.russian) {
+  //   return `/${lang}/${decodeURIComponent(slug)}`;
+  // }
 
   return `${prefix}${slug}`;
 };
@@ -169,9 +168,15 @@ const getPageLangs = async (translations: Translations) => {
   return langs;
 };
 
+const fetchPosts = async (lang: Languages): Promise<Array<Post>> => {
+  const posts = await fetchEntities(Endpoints.POSTS, undefined, { lang }, true);
+
+  return posts;
+};
+
 const getContext = async ({
   acf, content, id, date, slug, status, title, parent: parentId, meta, lang, translations,
-}: Page, posts: Array<Post>, options: Options) => {
+}: Page, options: Options) => {
   const i18Slugs = await getPageLangs(translations);
 
   const { template: { value: template } }: PageACF = acf;
@@ -196,6 +201,8 @@ const getContext = async ({
   // TODO: improve acf parsing per page
 
   if (template === 'home') {
+    const posts = await fetchPosts(lang);
+
     return {
       ...globalContext,
       content: acf,
@@ -211,6 +218,8 @@ const getContext = async ({
   }
 
   if (template === 'news') {
+    const posts = await fetchPosts(lang);
+
     return {
       ...globalContext,
       content: acf,
@@ -222,6 +231,14 @@ const getContext = async ({
         text: post.content.rendered,
         title: post.title.rendered,
       })),
+    };
+  }
+
+  if (template === 'ips' || template === 'quality' || template === 'offerBrakes' || template === 'csr' || template === 'history' || template === 'managing' || template === 'about') {
+    return {
+      ...globalContext,
+      content: acf,
+      header: acf.header,
     };
   }
 
@@ -246,7 +263,6 @@ const getTemplate = ({
 export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
   const { createPage } = actions;
   const pages: Array<Page> = await fetchEntities(Endpoints.PAGES, undefined, { per_page: '30' }, true);
-  const posts: Array<Post> = await fetchEntities(Endpoints.POSTS);
 
   await Promise.all(pages.map(async page => {
     if (page === undefined) return;
@@ -257,17 +273,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
       { lang: page.lang }
     );
     const pagePath = getPath(page);
-    const context = await getContext(page, posts, options.acf);
+    const context = await getContext(page, options.acf);
     const template = getTemplate(page);
 
     createPage({
       component: template,
-      context: newsSlugs.includes(pagePath)
-        ? {
-          ...context,
-          posts: posts.map(post => parsePost(post)),
-        }
-        : context,
+      context,
       path: pagePath,
     });
   }));

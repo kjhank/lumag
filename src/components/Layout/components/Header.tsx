@@ -1,4 +1,5 @@
 import {
+  useContext,
   useEffect, useRef, useState,
 } from 'react';
 import { Link } from 'gatsby';
@@ -15,11 +16,13 @@ import { Navigation } from './Navigation';
 import { Container } from '@/components';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Search } from './Search';
+import { AppContext } from '../Layout.context';
 
 // TODO: slices
 export const Header = ({
-  menuItems, i18n, pageLang, pathname, search,
+  menuItems, i18n, pathname, search,
 }: HeaderProps) => {
+  const { lang: pageLang, urlPrefix } = useContext(AppContext);
   const langsRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
@@ -52,7 +55,7 @@ export const Header = ({
   return (
     <HeaderNode>
       <Container ref={navRef}>
-        <Link to={pageLang === 'pl' ? '/' : `/${pageLang}`}>
+        <Link to={`/${urlPrefix}`}>
           <LogoWrapper>
             <Logo />
           </LogoWrapper>

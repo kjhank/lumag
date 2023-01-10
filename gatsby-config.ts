@@ -228,7 +228,7 @@ export default {
       options: {
         background_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'src/assets/favicon.svg',
         name: 'Untitled Gatsby project',
         short_name: 'foo',
         start_url: '/',

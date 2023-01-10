@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useRef, useState,
+  useEffect, useMemo, useRef, useState,
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
 import { GlobalStyle, Theme } from '@/theme';
@@ -10,6 +10,7 @@ import { CookiesDialog } from './Layout.styled';
 import { Container } from '../Container/Container';
 import { ButtonLink } from '../ButtonLink/ButtonLink';
 import { useAnchors } from '@/hooks';
+import { AppContext } from './Layout.context';
 
 // TODO: global header & footer as slices
 
@@ -39,43 +40,49 @@ const Layout = ({
     if (!hasUserAgreed) {
       setCookiesVisible(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const contextData = useMemo(() => ({
+    lang: pageContext.lang,
+    urlPrefix: pageContext.lang === 'pl' ? '' : pageContext.lang,
+  }), [pageContext.lang]);
+
   return (
-    <Theme>
-      <GlobalStyle scrollDisabled={cookiesVisible} />
-      <Header
-        i18n={pageContext?.i18n}
-        menuItems={pageContext?.options?.nav}
-        pageLang={pageContext?.lang}
-        pathname={pathname}
-        search={pageContext?.options?.search}
-      />
-      {children}
-      <Footer
-        address={pageContext?.options?.address}
-        background={pageContext?.options?.footer?.background}
-        copyright={pageContext?.options?.footer?.copyright}
-        nav={pageContext?.options?.footer?.nav}
-        newsletter={pageContext?.options?.newsletter}
-        socials={pageContext?.options?.socials}
-        verticalBackground={pageContext?.options?.footer?.verticalBackground}
-      />
-      <CookiesDialog isVisible={cookiesVisible} ref={cookiesRef}>
-        <Container>
-          <p
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: sanitize(pageContext?.options?.cookiesText, sanitizeConfig),
-            }}
-          />
-          <ButtonLink hasArrow={false} onClick={handleCookies}>
-            {pageContext?.options?.cookiesButtonText}
-          </ButtonLink>
-        </Container>
-      </CookiesDialog>
-    </Theme>
+    <AppContext.Provider value={contextData}>
+      <Theme>
+        <GlobalStyle scrollDisabled={cookiesVisible} />
+        <Header
+          i18n={pageContext?.i18n}
+          menuItems={pageContext?.options?.nav}
+          pathname={pathname}
+          search={pageContext?.options?.search}
+        />
+        {children}
+        <Footer
+          address={pageContext?.options?.address}
+          background={pageContext?.options?.footer?.background}
+          copyright={pageContext?.options?.footer?.copyright}
+          nav={pageContext?.options?.footer?.nav}
+          newsletter={pageContext?.options?.newsletter}
+          socials={pageContext?.options?.socials}
+          verticalBackground={pageContext?.options?.footer?.verticalBackground}
+        />
+        <CookiesDialog isVisible={cookiesVisible} ref={cookiesRef}>
+          <Container>
+            <p
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: sanitize(pageContext?.options?.cookiesText, sanitizeConfig),
+              }}
+            />
+            <ButtonLink hasArrow={false} onClick={handleCookies}>
+              {pageContext?.options?.cookiesButtonText}
+            </ButtonLink>
+          </Container>
+        </CookiesDialog>
+      </Theme>
+    </AppContext.Provider>
   );
 };
 

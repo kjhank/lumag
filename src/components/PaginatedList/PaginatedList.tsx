@@ -36,35 +36,37 @@ export const PaginatedList = ({
           )
             .map(component => component)}
         </List>
-        <Pagination>
-          <Pages>
-            <li>
-              <PageButton hasFlippedIcon onClick={() => handlePageChange('previous')}>
-                <ArrowRight />
-              </PageButton>
-            </li>
-            {[...new Array(pagesCount)].map((_, index) => {
-              const key = index;
+        {pagesCount > 1 && (
+          <Pagination>
+            <Pages>
+              <li>
+                <PageButton hasFlippedIcon onClick={() => handlePageChange('previous')}>
+                  <ArrowRight />
+                </PageButton>
+              </li>
+              {[...new Array(pagesCount)].map((_, index) => {
+                const key = index;
 
-              return (
-                <li key={key}>
-                  <PageButton
-                    isCurrent={index === currentPage}
-                    onClick={() => handlePageChange(index)}
-                  >
-                    {index + 1}
+                return (
+                  <li key={key}>
+                    <PageButton
+                      isCurrent={index === currentPage}
+                      onClick={() => handlePageChange(index)}
+                    >
+                      {index + 1}
 
-                  </PageButton>
-                </li>
-              );
-            })}
-            <li>
-              <PageButton onClick={() => handlePageChange('next')}>
-                <ArrowRight />
-              </PageButton>
-            </li>
-          </Pages>
-        </Pagination>
+                    </PageButton>
+                  </li>
+                );
+              })}
+              <li>
+                <PageButton onClick={() => handlePageChange('next')}>
+                  <ArrowRight />
+                </PageButton>
+              </li>
+            </Pages>
+          </Pagination>
+        )}
       </Container>
     </Wrapper>
   );

@@ -14,3 +14,10 @@ export const NewsDate = styled.time`
     fill: currentColor;
   }
 `;
+
+export const SectionHeading = styled.h2`
+  color: ${({ theme: { colors } }) => colors.brand};
+  font-weight: bold;
+  ${({ theme }) => theme.fonts.sizes.xl};
+  text-align: center;
+`;
