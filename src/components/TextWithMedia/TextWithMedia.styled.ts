@@ -6,6 +6,7 @@ export const Wrapper = styled.article<{ layout: Layout }>`
   display: flex;
   flex-direction: ${({ layout }) => (layout === 'imageLeft' ? 'row' : 'row-reverse')};
   justify-content: space-between;
+  background-color: ${({ theme }) => theme.colors.neutral[17]};
 `;
 
 export const mediaStyles = css<{ decorationOn: 'left' | 'right' }>`

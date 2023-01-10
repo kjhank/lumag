@@ -341,6 +341,23 @@ export type IPSPageContent = {
   textWithVideo: TextWithMediaProps;
 };
 
+export type CSRItem = {
+  content: string;
+  image: ACFImage;
+  title: string;
+};
+
+export type CSRPageContent = {
+  buttons: {
+    active: string;
+    inactive: string;
+  };
+  header: Header;
+  list: Array<CSRItem>;
+};
+
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
+
+export type CSRPageProps = CustomPageProps<CSRPageContent>;

@@ -6,9 +6,9 @@ import {
 import { TextWithMediaProps } from './TextWithMedia.types';
 
 export const TextWithMedia = ({
-  image, layout, text, heading, video,
+  as, image, layout = 'alternating', text, heading, video,
 }: TextWithMediaProps) => (
-  <Wrapper layout={layout}>
+  <Wrapper as={as} layout={layout}>
     {image && <Image decorationOn={layout === 'imageLeft' ? 'right' : 'left'} imageData={image} />}
     {video && (
       <VideoWrapper decorationOn={layout === 'imageLeft' ? 'right' : 'left'}>

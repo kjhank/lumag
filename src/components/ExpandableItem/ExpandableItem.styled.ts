@@ -4,7 +4,6 @@ import { WYSIWYG } from '../WYSIWYG/WYSIWYG';
 
 export const ItemNode = styled.li`
   display: flex;
-  align-items: flex-start;
 
   :not(:last-child) {
     margin-block: ${({ theme }) => theme.helpers.getMin(50)};

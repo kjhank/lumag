@@ -9,3 +9,4 @@ export { PaginatedList } from './PaginatedList/PaginatedList';
 export { TextWithMedia } from './TextWithMedia/TextWithMedia';
 export { Certificates } from './Certificates/Certificates';
 export { MiniCarousel } from './MiniCarousel/MiniCarousel';
+export { ExpandableItem } from './ExpandableItem/ExpandableItem';

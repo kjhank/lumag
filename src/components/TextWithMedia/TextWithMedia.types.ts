@@ -1,10 +1,11 @@
 import { ACFImage, Video } from '@/types';
 
-export type Layout = 'imageRight' | 'imageLeft';
+export type Layout = 'imageRight' | 'imageLeft' | 'alternating';
 
 export type TextWithMediaProps = {
+  as?: keyof JSX.IntrinsicElements;
   heading: string;
-  layout: Layout;
+  layout?: Layout;
   text: string;
 } & ({
   image?: ACFImage;
