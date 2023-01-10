@@ -3,7 +3,7 @@ import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithM
 import { IconSlug } from './global';
 import {
   ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
-  ParsedPost, Post, Template, Translations,
+  ParsedPost, Post, Template, Translations, Video,
 } from './wordpress';
 
 export type PageMeta = {
@@ -356,8 +356,38 @@ export type CSRPageContent = {
   list: Array<CSRItem>;
 };
 
+export type Quote = {
+  heading: string;
+  image: ACFImage;
+  quote: string;
+  subheading: string;
+};
+
+export type AboutItem = {
+  image: ACFImage;
+  text: string;
+  title: string;
+};
+
+export type AboutUsPageContent = {
+  getToKnowUs: {
+    heading: string;
+    list: Array<AboutItem>;
+    video: Video;
+  };
+  header: Header;
+  person: Quote;
+  whyDifferent: {
+    background: ACFImage;
+    heading: string;
+    iconsList: Array<{
+      iconslug: IconSlug;
+      text: string;
+    }>;
+  };
+};
+
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
-
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
-
 export type CSRPageProps = CustomPageProps<CSRPageContent>;
+export type AboutPageProps = CustomPageProps<AboutUsPageContent>;

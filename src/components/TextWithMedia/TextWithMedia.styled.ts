@@ -1,12 +1,21 @@
+/* stylelint-disable declaration-colon-newline-after */
 import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 import { Layout } from './TextWithMedia.types';
 
 export const Wrapper = styled.article<{ layout: Layout }>`
   display: flex;
-  flex-direction: ${({ layout }) => (layout === 'imageLeft' ? 'row' : 'row-reverse')};
+  flex-direction: ${({ layout }) => (layout !== 'alternating' && layout === 'imageLeft' ? 'row' : 'row-reverse')};
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.neutral[17]};
+  ${({ layout }) => layout === 'alternating' && css`
+    :nth-child(odd) {
+      flex-direction: row;
+    }
+    :nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  `};
 `;
 
 export const mediaStyles = css<{ decorationOn: 'left' | 'right' }>`
