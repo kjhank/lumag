@@ -4,6 +4,11 @@ import { WPImage } from '@/components';
 export const Section = styled.section`
   position: relative;
   padding-block-start: ${({ theme }) => theme.helpers.getMin(222)};
+
+  .innovation-carousel {
+    position: relative;
+    top: ${({ theme }) => theme.helpers.getMin(100)};
+  }
 `;
 
 export const Background = styled(WPImage)`
@@ -22,6 +27,7 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: ${({ theme }) => theme.helpers.getMin(42)};
+  margin-block-end: ${({ theme }) => theme.helpers.getMin(75)};
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {
       grid-template-columns: repeat(2, 1fr);

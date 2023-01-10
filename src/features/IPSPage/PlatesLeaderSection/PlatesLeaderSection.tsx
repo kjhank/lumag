@@ -8,7 +8,7 @@ export const PlatesLeaderSection = ({ carryPlate, europeanLeader }: PlatesLeader
   <Section>
     <Container>
       <TextWithMedia {...carryPlate} />
-      <MiniCarousel {...europeanLeader} />
+      <MiniCarousel {...europeanLeader} noShift />
     </Container>
   </Section>
 );

@@ -30,7 +30,7 @@ export const InnovationSection = ({
           );
         })}
       </List>
-      <MiniCarousel {...miniCarousel} />
+      <MiniCarousel {...miniCarousel} className="innovation-carousel" />
     </Container>
   </Section>
 );

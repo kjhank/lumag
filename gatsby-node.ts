@@ -234,7 +234,7 @@ const getContext = async ({
     };
   }
 
-  if (template === 'ips' || template === 'quality' || template === 'offerBrakes') {
+  if (template === 'ips' || template === 'quality' || template === 'offerBrakes' || template === 'csr' || template === 'history' || template === 'managing' || template === 'about') {
     return {
       ...globalContext,
       content: acf,

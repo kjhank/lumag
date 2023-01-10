@@ -292,6 +292,7 @@ export type MiniCarousel = {
   }>;
   image: ACFImage;
   layout: MiniCarouselLayout;
+  noShift?: boolean;
 };
 
 export type Partners = {

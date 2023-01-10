@@ -7,7 +7,7 @@ import {
 import { MiniCarouselProps } from './MiniCarousel.types';
 
 export const MiniCarousel = ({
-  className, content, image, layout,
+  className, content, image, layout, noShift = false,
 }: MiniCarouselProps) => {
   const itemCount = content.length;
   const [currentItem, setCurrentItem] = useState(0);
@@ -18,7 +18,7 @@ export const MiniCarousel = ({
 
   return (
     <Wrapper className={className} layout={layout}>
-      <ImageWrapper>
+      <ImageWrapper noShift={noShift}>
         <Image imageData={image} />
         <ButtonsWrapper>
           <ItemButton
