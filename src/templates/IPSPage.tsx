@@ -1,6 +1,7 @@
 import {
   Certificates, Header, TextWithMedia,
 } from '@/components';
+import { Meta } from '@/components/Layout/components/Meta';
 import {
   Container, CoopSection, InnovationSection, PlatesLeaderSection,
 } from '@/features/IPSPage';
@@ -23,6 +24,10 @@ const IPSPage = ({ pageContext }: IPSPageProps) => (
     <CoopSection {...pageContext.content.coop} />
     <Certificates {...pageContext.content.certs} />
   </>
+);
+
+export const Head = ({ pageContext }: IPSPageProps) => (
+  <Meta metadata={pageContext.metadata} />
 );
 
 export default IPSPage;

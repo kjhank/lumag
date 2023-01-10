@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components';
 
 export const Wrapper = styled.article`
   main {
@@ -13,17 +12,6 @@ export const Wrapper = styled.article`
       color: ${({ theme }) => theme.colors.brand};
       ${({ theme }) => theme.helpers.getClamped(24)};
     }
-  }
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;
 

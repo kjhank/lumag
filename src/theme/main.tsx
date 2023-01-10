@@ -39,6 +39,7 @@ const theme: DefaultTheme = {
     },
     types: {
       alt: 'Lato, sans-serif',
+      fatHeading: 'Avenir Black, serif',
       heading: 'Avenir, serif',
       text: 'Helvetica, sans-serif',
     },

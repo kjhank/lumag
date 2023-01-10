@@ -10,3 +10,4 @@ export { TextWithMedia } from './TextWithMedia/TextWithMedia';
 export { Certificates } from './Certificates/Certificates';
 export { MiniCarousel } from './MiniCarousel/MiniCarousel';
 export { ExpandableItem } from './ExpandableItem/ExpandableItem';
+export { InfoGrid } from './InfoGrid/InfoGrid';

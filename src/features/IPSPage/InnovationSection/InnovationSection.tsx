@@ -1,9 +1,10 @@
 import { Container, MiniCarousel } from '@/components';
+import { CoverImage } from '@/components/styled';
 import { CircleCutout } from '@/static';
 import { IconSlug } from '@/types';
 import { getIcon } from '@/utils';
 import {
-  Background, Figure, Item, Label, List, Section,
+  Figure, Item, Label, List, Section,
 } from './InnovationSection.styled';
 import { InnovationSectionProps } from './InnovationSection.types';
 
@@ -11,7 +12,7 @@ export const InnovationSection = ({
   background, iconsList, miniCarousel,
 }: InnovationSectionProps) => (
   <Section>
-    <Background imageData={background} />
+    <CoverImage imageData={background} />
     <Container>
       <List>
         {iconsList.map(icon => {

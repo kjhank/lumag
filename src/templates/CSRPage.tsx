@@ -2,6 +2,7 @@ import {
   ExpandableItem,
   Header, PaginatedList,
 } from '@/components';
+import { Meta } from '@/components/Layout/components/Meta';
 import { CSRPageProps } from '@/types';
 
 const CSRPage = ({ pageContext: { content } }: CSRPageProps) => (
@@ -20,6 +21,10 @@ const CSRPage = ({ pageContext: { content } }: CSRPageProps) => (
       perPage={4}
     />
   </>
+);
+
+export const Head = ({ pageContext }: CSRPageProps) => (
+  <Meta metadata={pageContext.metadata} />
 );
 
 export default CSRPage;

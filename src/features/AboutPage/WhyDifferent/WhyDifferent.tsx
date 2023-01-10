@@ -1,10 +1,10 @@
 import { Container } from '@/components';
-import { SectionHeading } from '@/components/styled';
+import { CoverImage, SectionHeading } from '@/components/styled';
 import { useOrphans } from '@/hooks';
 import { CircleCutout } from '@/static';
 import { getIcon } from '@/utils';
 import {
-  Background, Figure, Label, List, Section,
+  Figure, Label, List, Section,
 } from './WhyDifferent.styled';
 import {
   IconProps, WhyDifferentProps,
@@ -29,7 +29,7 @@ export const WhyDifferent = ({
   background, heading, iconsList,
 }: WhyDifferentProps) => (
   <Section>
-    <Background imageData={background} />
+    <CoverImage imageData={background} />
     <Container>
       <SectionHeading>{heading}</SectionHeading>
       <List>

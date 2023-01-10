@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components/WPImage/WPImage';
 import { SectionHeading } from '@/components/styled';
 
 export const Section = styled.section`
@@ -99,15 +98,4 @@ export const Label = styled.figcaption`
       padding-block-start: 20%;
     }
   `}
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `;

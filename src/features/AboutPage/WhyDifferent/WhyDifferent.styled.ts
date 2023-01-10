@@ -1,20 +1,8 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components';
 
 export const Section = styled.section`
   position: relative;
   padding-block: ${({ theme }) => `${theme.helpers.getMin(72)} ${theme.helpers.getMin(340)}`};
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `;
 
 export const List = styled.ul`

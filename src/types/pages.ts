@@ -387,7 +387,44 @@ export type AboutUsPageContent = {
   };
 };
 
+export type Code = {
+  buttonText: string;
+  file: ACFFile;
+  heading: string;
+};
+
+export type Goals = {
+  background: ACFImage;
+  finePrint: string;
+  heading: string;
+  list: Array<{ text: string }>;
+};
+
+export type ValuesPageContent = {
+  code: Code;
+  goals: Goals;
+  header: Header;
+  list: Array<{
+    heading: string;
+    image: ACFImage;
+    text: string;
+  }>;
+};
+
+export type ManagingPageContent = {
+  header: Header;
+  list: Array<TextWithMediaProps>;
+  tools: {
+    background: ACFImage;
+    finePrint: string;
+    heading: string;
+    list: Array<{ text: string }>;
+  };
+};
+
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
 export type CSRPageProps = CustomPageProps<CSRPageContent>;
 export type AboutPageProps = CustomPageProps<AboutUsPageContent>;
+export type ValuesPageProps = CustomPageProps<ValuesPageContent>;
+export type ManagingPageProps = CustomPageProps<ManagingPageContent>;

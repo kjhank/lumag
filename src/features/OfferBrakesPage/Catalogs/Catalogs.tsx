@@ -1,16 +1,16 @@
 import { CatalogsProps } from './Catalogs.types';
 import { ButtonLink, Container } from '@/components';
 import {
-  Background, Catalog, CatalogText,
+  Catalog, CatalogText,
   Image, List, Section,
 } from './Catalogs.styled';
-import { SectionHeading } from '@/components/styled';
+import { CoverImage, SectionHeading } from '@/components/styled';
 
 export const Catalogs = ({
   background, heading, list,
 }: CatalogsProps) => (
   <Section>
-    <Background imageData={background} />
+    <CoverImage imageData={background} />
     <Container>
       <SectionHeading>{heading}</SectionHeading>
       <List>

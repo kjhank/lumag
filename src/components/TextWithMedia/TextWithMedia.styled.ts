@@ -5,15 +5,15 @@ import { Layout } from './TextWithMedia.types';
 
 export const Wrapper = styled.article<{ layout: Layout }>`
   display: flex;
-  flex-direction: ${({ layout }) => (layout !== 'alternating' && layout === 'imageLeft' ? 'row' : 'row-reverse')};
+  flex-direction: ${({ layout }) => (layout !== 'alternating' && layout !== 'alternating-reverse' && layout === 'imageLeft' ? 'row' : 'row-reverse')};
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.neutral[17]};
-  ${({ layout }) => layout === 'alternating' && css`
+  ${({ layout }) => (layout === 'alternating' || layout === 'alternating-reverse') && css`
     :nth-child(odd) {
-      flex-direction: row;
+      flex-direction: ${layout === 'alternating' ? 'row' : 'row-reverse'};
     }
     :nth-child(even) {
-      flex-direction: row-reverse;
+      flex-direction: ${layout === 'alternating' ? 'row-reverse' : 'row'};
     }
   `};
 `;

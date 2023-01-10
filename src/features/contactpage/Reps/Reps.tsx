@@ -1,6 +1,7 @@
 import { Container } from '@/components';
+import { CoverImage } from '@/components/styled';
 import {
-  Background, ContactSplitter, Emails, Heading, Phones, Region, RegionName, Regions, Section,
+  ContactSplitter, Emails, Heading, Phones, Region, RegionName, Regions, Section,
 } from './Reps.styled';
 import { RepsProps } from './Reps.types';
 
@@ -8,7 +9,7 @@ export const Reps = ({
   background, heading, reps,
 }: RepsProps) => (
   <Section>
-    <Background imageData={background} />
+    <CoverImage imageData={background} />
     <Container>
       <Heading>{heading}</Heading>
       <Regions>
