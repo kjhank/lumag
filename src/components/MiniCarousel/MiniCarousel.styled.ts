@@ -25,12 +25,16 @@ export const Image = styled(WPImage)`
 `;
 
 export const ContentList = styled.ul`
+  position: relative;
   width: 50%;
   background-color: ${({ theme }) => theme.colors.neutral[15]};
 `;
 
-export const Item = styled.li`
-  position: relative;
+export const Item = styled.li<{ isActive: boolean }>`
+  position: absolute;
+  inset: 0;
+  z-index: ${({ isActive }) => (isActive ? 1 : 0)};
+  filter: ${({ isActive }) => `opacity(${isActive ? 1 : 0})`};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,6 +61,7 @@ export const ItemButton = styled.button`
   width: ${({ theme }) => theme.helpers.getMin(100)};
   background-color: ${({ theme }) => theme.colors.brand};
   color: ${({ theme }) => theme.colors.neutral[5]};
+  cursor: pointer;
 
   :disabled {
     filter: opacity(0.7);

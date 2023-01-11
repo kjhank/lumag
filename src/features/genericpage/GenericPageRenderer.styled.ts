@@ -4,6 +4,7 @@ export const Wrapper = styled.article`
   main {
     margin-block-start: ${({ theme }) => theme.helpers.getMax(-220)};
     padding: ${({ theme }) => theme.helpers.getMin(86)};
+    background-color: ${({ theme }) => theme.colors.neutral[5]};
     color: ${({ theme }) => theme.colors.neutral[95]};
     ${({ theme }) => theme.fonts.sizes.xs};
     white-space: pre-line;

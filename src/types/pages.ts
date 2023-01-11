@@ -422,9 +422,26 @@ export type ManagingPageContent = {
   };
 };
 
+export type HistoryEvent = {
+  description: string;
+  image: ACFImage;
+  title: string;
+  year: string;
+};
+
+export type HistoryPageContent = {
+  header: Header;
+  history: {
+    heading: string;
+    list: Array<HistoryEvent>;
+    text: string;
+  };
+};
+
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
 export type CSRPageProps = CustomPageProps<CSRPageContent>;
 export type AboutPageProps = CustomPageProps<AboutUsPageContent>;
 export type ValuesPageProps = CustomPageProps<ValuesPageContent>;
 export type ManagingPageProps = CustomPageProps<ManagingPageContent>;
+export type HistoryPageProps = CustomPageProps<HistoryPageContent>;

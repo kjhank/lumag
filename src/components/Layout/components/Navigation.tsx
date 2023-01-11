@@ -1,21 +1,20 @@
 import { Link } from 'gatsby';
-import { useContext } from 'react';
 import { ArrowDown } from '@/static';
 import {
   NavItem, NavLabel, Subitem, Submenu,
 } from '../Layout.styled';
 import { NavigationProps } from '../Layout.types';
-import { AppContext } from '../Layout.context';
+import { useAppContext } from '@/hooks';
 
 export const Navigation = ({ menuItems }: NavigationProps) => {
-  const { urlPrefix } = useContext(AppContext);
+  const { urlPrefix } = useAppContext();
 
   return (
     <menu>
       {menuItems?.length > 0 && menuItems.map(item => (
         <NavItem key={item.label || item.page?.title}>
           {item.page
-            ? <Link to={`${urlPrefix}/${item.page.slug}`}>{item.label || item.page.title}</Link>
+            ? <Link to={`${urlPrefix}${item.page.slug}`}>{item.label || item.page.title}</Link>
             : (
               <>
                 <NavLabel>
@@ -26,7 +25,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                 <Submenu>
                   {item?.submenu?.map(subitem => (
                     <Subitem key={subitem.label || subitem.page.title}>
-                      <Link to={`${urlPrefix}/${subitem.page.slug}`}>{subitem.label || subitem.page.title}</Link>
+                      <Link to={`${urlPrefix}${subitem.page.slug}`}>{subitem.label || subitem.page.title}</Link>
                     </Subitem>
                   ))}
                 </Submenu>

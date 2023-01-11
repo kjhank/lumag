@@ -70,3 +70,23 @@ export const Text = styled.p`
   font-weight: bold;
   ${({ theme }) => theme.pages.homePage.carousel.textSize};
 `;
+
+export const Dots = styled.nav`
+  position: absolute;
+  inset: auto auto ${({ theme }) => theme.helpers.getMin(150)} 50%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: ${({ theme }) => theme.helpers.getMin(12)};
+  translate: -50% 0 0;
+`;
+
+export const ActionButton = styled.button<{ isActive: boolean }>`
+  width: ${({ isActive, theme }) => theme.helpers.getMin(isActive ? 47 : 17)};
+  height: ${({ theme }) => theme.helpers.getMin(17)};
+  border-radius: 100px;
+  background-color: ${({ isActive, theme: { colors } }) => (isActive ? colors.brand : colors.neutral[5])};
+  transition: ${({ theme }) => `width ${theme.transitions.default}, background-color ${theme.transitions.default}`};
+  cursor: pointer;
+`;

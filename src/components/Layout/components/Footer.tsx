@@ -14,6 +14,7 @@ import { FooterProps } from '../Layout.types';
 import {
   Agency, Facebook, Linkedin, Logo, Twitter, Youtube,
 } from '@/static';
+import { useAppContext } from '@/hooks';
 
 const icons = {
   facebook: Facebook,
@@ -43,6 +44,8 @@ export const Footer = ({
     // eslint-disable-next-line no-alert
     alert(`email will be sent to ${event.currentTarget.elements.namedItem('email')}`);
   };
+
+  const { urlPrefix } = useAppContext();
 
   return (
     <>
@@ -98,7 +101,7 @@ export const Footer = ({
               <LinksList>
                 {item.subitems.map(subitem => (
                   <li key={`${subitem.slug}-${subitem.label}`}>
-                    <Link to={`/${subitem.slug}/`}>
+                    <Link to={`${urlPrefix}${subitem.slug}/`}>
                       {subitem.label || subitem.title}
                     </Link>
                   </li>
@@ -111,7 +114,9 @@ export const Footer = ({
       <Copyright>
         <Container>
           <p>{copyright}</p>
-          <Agency />
+          <a href="//gto.agency">
+            <Agency />
+          </a>
         </Container>
       </Copyright>
     </>
