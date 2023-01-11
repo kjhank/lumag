@@ -26,6 +26,13 @@ const regularPages = [
   'values',
 ];
 
+const homePages = [
+  'home',
+  'home-page',
+  'startseite',
+  'pagina-principal',
+];
+
 const templates: { [key in Template]: string } = {
   about: path.resolve('./src/templates/AboutPage.tsx'),
   contact: path.resolve('./src/templates/ContactPage.tsx'),
@@ -61,7 +68,7 @@ const fetchEntities = async (
   params: { [key: string]: string } = {},
   infinite: boolean = false
 ) => {
-  const url = id ? `${getUrl(Endpoints.PAGES)}/${id}` : getUrl(entity, params);
+  const url = id ? `${getUrl(entity)}/${id}` : getUrl(entity, params);
 
   const response = await fetch(url);
 
@@ -88,15 +95,6 @@ const fetchEntities = async (
   return result;
 };
 
-// const parsePost = (postData: Post) => ({
-//   content: postData.content,
-//   extendedInfo: postData.acf,
-//   id: postData.id,
-//   language: postData.lang,
-//   title: postData.title.rendered,
-//   translations: postData.translations,
-// });
-
 const parseOptions = (options: Options): ParsedOptions => ({
   address: options.address.address,
   cookiesButtonText: options.cookiesButtonText,
@@ -109,7 +107,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
       subitems: item.list.map(subitem => ({
         isBold: subitem.isBold,
         label: subitem.label,
-        slug: subitem.page.post_name,
+        slug: homePages.includes(subitem.page.post_name) ? '' : subitem.page.post_name,
         title: subitem.page.post_title,
       })),
     })),
@@ -155,10 +153,6 @@ const getPath = ({
   if (template === 'home') {
     return prefix;
   }
-
-  // if (lang === Languages.russian) {
-  //   return `/${lang}/${decodeURIComponent(slug)}`;
-  // }
 
   return `${prefix}${slug}`;
 };
@@ -237,10 +231,10 @@ const getContext = async ({
       header: acf.header,
       posts: posts.map(post => ({
         date: post.date,
-        excerpt: post.excerpt.rendered,
-        image: post.acf.thumbnail,
-        text: post.content.rendered,
-        title: post.title.rendered,
+        excerpt: post.excerpt?.rendered,
+        image: post.acf?.thumbnail,
+        text: post.content?.rendered,
+        title: post.title?.rendered,
       })),
     };
   }

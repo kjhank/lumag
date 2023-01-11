@@ -1,8 +1,12 @@
 /* stylelint-disable no-descending-specificity */
 import styled from 'styled-components';
+import { WPImage } from '../WPImage/WPImage';
 
 export const List = styled.ul`
   position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: ${({ theme }) => theme.helpers.getMin(46)};
   padding-inline: 15%;
 
   ::before {
@@ -90,6 +94,14 @@ export const EventNode = styled.li`
     border: ${({ theme }) => `${theme.helpers.getMin(8)} solid ${theme.colors.brand}`};
     border-radius: 50%;
     background-color: ${({ theme }) => theme.colors.neutral[100]};
+    transition: ${({ theme }) => `filter ${theme.transitions.default}, scale ${theme.transitions.default}`};
+  }
+
+  :has(button:hover) {
+    ::before {
+      filter: contrast(120%);
+      scale: 1.2;
+    }
   }
 `;
 
@@ -127,10 +139,6 @@ export const Header = styled.header`
     border-bottom-color: transparent;
     rotate: 250deg;
   }
-
-  /* :has(button:hover) {
-    scale: 1.1;
-  } */
 `;
 
 export const Year = styled.time`
@@ -153,11 +161,27 @@ export const ActionButton = styled.button`
   width: ${({ theme }) => theme.helpers.getMin(78)};
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.neutral[5]};
+  transition: ${({ theme }) => `filter ${theme.transitions.default}`};
   translate: 0 40% 0;
   cursor: pointer;
 
   > svg {
     width: 64%;
     height: auto;
+    transition: ${({ theme }) => `scale ${theme.transitions.default}`};
   }
+
+  :hover {
+    filter: contrast(120%);
+
+    > svg {
+      scale: 1.1;
+    }
+  }
+`;
+
+export const EventImage = styled(WPImage)`
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 `;

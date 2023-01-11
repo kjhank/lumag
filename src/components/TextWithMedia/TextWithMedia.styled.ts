@@ -1,24 +1,66 @@
+/* stylelint-disable no-descending-specificity */
 /* stylelint-disable declaration-colon-newline-after */
 import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 import { Layout } from './TextWithMedia.types';
 
-export const Wrapper = styled.article<{ layout: Layout }>`
+export const Wrapper = styled.article<{ backgroundIndex: number; layout: Layout }>`
   display: flex;
   flex-direction: ${({ layout }) => (layout !== 'alternating' && layout !== 'alternating-reverse' && layout === 'imageLeft' ? 'row' : 'row-reverse')};
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.neutral[17]};
+  background-color: ${({ backgroundIndex, theme }) => theme.colors.neutral[backgroundIndex]};
   ${({ layout }) => (layout === 'alternating' || layout === 'alternating-reverse') && css`
     :nth-child(odd) {
       flex-direction: ${layout === 'alternating' ? 'row' : 'row-reverse'};
+
+      div,
+      picture {
+        ::after {
+          ${layout === 'alternating' && css`
+            right: 0;
+            left: auto;
+            translate: 50% -50% 0;
+          `};
+
+          ${layout === 'alternating-reverse' && css`
+            right: auto;
+            left: 0;
+            translate: -50% -50% 0;
+          `};
+        }
+      }
     }
     :nth-child(even) {
       flex-direction: ${layout === 'alternating' ? 'row-reverse' : 'row'};
+
+      div,
+      picture {
+        ::after {
+          ${layout === 'alternating' && css`
+            right: auto;
+            left: 0;
+            translate: -50% -50% 0;
+          `};
+          ${layout === 'alternating-reverse' && css`
+            right: 0;
+            left: auto;
+            translate: 50% -50% 0;
+          `};
+        }
+      }
     }
   `};
+
+  div,
+  picture {
+    ::before,
+    ::after {
+      background-color: ${({ backgroundIndex, theme }) => theme.colors.neutral[backgroundIndex]};
+    }
+  }
 `;
 
-export const mediaStyles = css<{ decorationOn: 'left' | 'right' }>`
+export const mediaStyles = css<{ decorationOn: Layout }>`
   position: relative;
   aspect-ratio: 583/434;
   width: 50%;
@@ -32,22 +74,21 @@ export const mediaStyles = css<{ decorationOn: 'left' | 'right' }>`
     content: '';
     position: absolute;
     top: 50%;
-    right: ${({ decorationOn }) => (decorationOn === 'right' ? 0 : 'auto')};
-    left: ${({ decorationOn }) => (decorationOn === 'left' ? 0 : 'auto')};
+    right: ${({ decorationOn }) => (decorationOn === 'imageRight' ? 'auto' : 0)};
+    left: ${({ decorationOn }) => (decorationOn === 'imageLeft' ? 'auto' : 0)};
     width: ${({ theme }) => theme.helpers.getMin(25)};
     height: ${({ theme }) => theme.helpers.getMin(25)};
-    background-color: ${({ theme }) => theme.colors.neutral[5]};
     rotate: 45deg;
-    translate: ${({ decorationOn }) => `${decorationOn === 'left' ? '-50%' : '50%'} -50% 0`};
+    translate: ${({ decorationOn }) => `${decorationOn === 'imageLeft' ? '50%' : '-50%'} -50% 0`};
     transform-origin: center;
   }
 `;
 
-export const Image = styled(WPImage) <{ decorationOn: 'left' | 'right' }>`
+export const Image = styled(WPImage)`
   ${mediaStyles}
 `;
 
-export const VideoWrapper = styled.div<{ decorationOn: 'left' | 'right' }>`
+export const VideoWrapper = styled.div`
   ${mediaStyles}
 
   > video {
@@ -58,18 +99,19 @@ export const VideoWrapper = styled.div<{ decorationOn: 'left' | 'right' }>`
   }
 `;
 
-export const TextWrapper = styled.section`
+export const TextWrapper = styled.section<{ fontSize: number }>`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 50%;
   padding-inline: ${({ theme }) => theme.helpers.getMin(60)};
   font-weight: 300;
-  ${({ theme }) => theme.fonts.sizes.xxs};
+  ${({ fontSize, theme }) => theme.helpers.getClamped(fontSize)};
   line-height: 1.667;
 
   h2 {
     font-weight: bold;
     ${({ theme }) => theme.helpers.getClamped(30)};
+    text-align: center;
   }
 `;

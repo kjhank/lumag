@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   position: relative;
-  padding-block: ${({ theme }) => `${theme.helpers.getMin(64)} ${theme.helpers.getMin(115)}`};
+  padding-block: ${({ theme }) => `${theme.helpers.getMin(164)} ${theme.helpers.getMin(115)}`};
 
   > div {
     display: flex;

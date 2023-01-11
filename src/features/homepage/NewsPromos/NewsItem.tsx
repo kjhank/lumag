@@ -8,7 +8,9 @@ import { NewsItemProps } from './NewsPromos.types';
 const Clock = getIcon('clockIcon');
 const ArrowRight = getIcon('arrowRight');
 
-export const NewsItem = ({ linkLabel, post }: NewsItemProps) => {
+export const NewsItem = ({
+  linkLabel, post, targetPost,
+}: NewsItemProps) => {
   const trimmedText = sanitize(`${post.content.rendered.split(' ').slice(0, 40)
     .join(' ')}`, { allowedTags: ['br'] });
   const formattedDate = formatDate(new Date(post.date));
@@ -22,7 +24,7 @@ export const NewsItem = ({ linkLabel, post }: NewsItemProps) => {
         <time dateTime={formattedDate}>{formattedDate}</time>
       </DateElem>
       <Excerpt dangerouslySetInnerHTML={{ __html: showEllipsis ? `${trimmedText} [...]` : trimmedText }} />
-      <NewsLink to={post.slug}>
+      <NewsLink to={targetPost.post_name}>
         {linkLabel}
         <ArrowRight />
       </NewsLink>

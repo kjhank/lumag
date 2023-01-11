@@ -11,6 +11,7 @@ import { Container } from '../Container/Container';
 import { ButtonLink } from '../ButtonLink/ButtonLink';
 import { useAnchors } from '@/hooks';
 import { AppContext } from './Layout.context';
+import { cookiesKey } from '@/static';
 
 // TODO: global header & footer as slices
 
@@ -21,7 +22,6 @@ const sanitizeConfig: IOptions = {
 const Layout = ({
   children, location: { pathname }, pageContext,
 }: LayoutProps) => {
-  const cookiesKey = process.env.GATSBY_COOKIES_LS_KEY;
   const cookiesRef = useRef(null);
   const [cookiesVisible, setCookiesVisible] = useState(false);
 

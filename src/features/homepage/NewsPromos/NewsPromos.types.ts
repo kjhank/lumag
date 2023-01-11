@@ -1,4 +1,5 @@
 import {
+  ACFPage,
   News, Post, PromoItem,
 } from '@/types';
 
@@ -11,4 +12,5 @@ export type NewsPromosProps = {
 export type NewsItemProps = {
   linkLabel: string;
   post: Post;
+  targetPost: ACFPage;
 };

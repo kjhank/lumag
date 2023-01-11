@@ -12,3 +12,5 @@ export { MiniCarousel } from './MiniCarousel/MiniCarousel';
 export { ExpandableItem } from './ExpandableItem/ExpandableItem';
 export { InfoGrid } from './InfoGrid/InfoGrid';
 export { Timeline } from './Timeline/Timeline';
+export { QuoteHero } from './QuoteHero/QuoteHero';
+export { Modal } from './Modal/Modal';

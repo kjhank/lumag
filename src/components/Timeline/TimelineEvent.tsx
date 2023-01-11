@@ -3,20 +3,22 @@ import { Zoom } from '@/static';
 import {
   ActionButton,
   Description,
+  EventImage,
   EventNode, Header, Name, Title, Year,
 } from './Timeline.styled';
 import { EventProps } from './Timeline.types';
 import { useOutsideClick } from '@/hooks';
+import { Modal } from '../Modal/Modal';
 
 export const TimelineEvent = ({ event }: EventProps) => {
-  const [isImageOpen, setImageOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
   const handleButtonClick = () => {
-    console.log('click');
-    setImageOpen(current => !current);
+    setOpen(true);
   };
 
-  useOutsideClick(buttonRef, () => setImageOpen(false));
+  useOutsideClick(buttonRef, () => setOpen(false));
 
   return (
     <EventNode>
@@ -32,7 +34,9 @@ export const TimelineEvent = ({ event }: EventProps) => {
         </ActionButton>
       </Header>
       <Description>{event.description}</Description>
-      {isImageOpen && 'boo'}
+      <Modal close={() => setOpen(false)} isOpen={isOpen}>
+        <EventImage imageData={event.image} />
+      </Modal>
     </EventNode>
   );
 };

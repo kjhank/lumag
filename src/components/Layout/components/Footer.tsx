@@ -101,7 +101,7 @@ export const Footer = ({
               <LinksList>
                 {item.subitems.map(subitem => (
                   <li key={`${subitem.slug}-${subitem.label}`}>
-                    <Link to={`${urlPrefix}${subitem.slug}/`}>
+                    <Link to={`${urlPrefix}${subitem.slug}`}>
                       {subitem.label || subitem.title}
                     </Link>
                   </li>
@@ -114,7 +114,10 @@ export const Footer = ({
       <Copyright>
         <Container>
           <p>{copyright}</p>
-          <a href="//gto.agency">
+          <a
+            href="//gto.agency" rel="noreferrer"
+            target="_blank"
+          >
             <Agency />
           </a>
         </Container>

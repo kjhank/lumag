@@ -8,7 +8,7 @@ import {
 import { Spyglass } from '@/static';
 import { SearchProps } from '../Layout.types';
 
-export const Search = ({ placeholder }: SearchProps) => {
+export const Search = ({ placeholder, toggle }: SearchProps) => {
   const [query, setQuery] = useState('');
   const debouncedValue = useDebounce(query);
 
@@ -34,7 +34,7 @@ export const Search = ({ placeholder }: SearchProps) => {
     if (debouncedValue) {
       handleApiCall();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
   return (
@@ -50,7 +50,7 @@ export const Search = ({ placeholder }: SearchProps) => {
         />
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label className="visually-hidden" htmlFor="search">search</label>
-        <SearchButton type="reset">⨉</SearchButton>
+        <SearchButton onClick={toggle} type="button">⨉</SearchButton>
       </SearchForm>
     </SearchNode>
   );

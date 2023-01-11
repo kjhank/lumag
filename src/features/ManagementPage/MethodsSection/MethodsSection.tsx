@@ -6,7 +6,12 @@ export const MethodsSection = ({ items }: MethodsSectionProps) => (
   <Section>
     <Container>
       <List>
-        {items.map(item => <TextWithMedia key={item.heading} {...item} />)}
+        {items.map(item => (
+          <TextWithMedia
+            backgroundIndex={5} key={item.heading}
+            {...item}
+          />
+        ))}
       </List>
     </Container>
   </Section>

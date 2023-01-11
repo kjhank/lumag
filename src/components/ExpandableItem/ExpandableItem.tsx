@@ -13,8 +13,10 @@ export const ExpandableItem = ({
   const [isExpanded, setExpanded] = useState(false);
 
   const sanitizedText = sanitize(text, sanitizeConfig);
-  const trimmedText = sanitize(`${text.split(' ').slice(0, trimmedTextLength)
-    .join(' ')}`, sanitizeConfig);
+  const trimmedText = text
+    ? sanitize(`${text.split(' ').slice(0, trimmedTextLength)
+      .join(' ')}`, sanitizeConfig)
+    : '';
 
   const showButton = sanitizedText.length > trimmedText.length;
   const content = isExpanded ? sanitizedText : trimmedText;
