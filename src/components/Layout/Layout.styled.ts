@@ -561,7 +561,7 @@ export const SearchInput = styled.input`
 
 export const SearchButton = styled.button`
   position: absolute;
-  inset: ${({ type }) => (type === 'reset' ? '50% 0.25em auto auto' : '50% auto auto 0.25em')};
+  inset: ${({ type }) => (type === 'button' ? '50% 0.25em auto auto' : '50% auto auto 0.25em')};
   width: 1em;
   height: 1em;
   background-color: transparent;
@@ -574,7 +574,7 @@ export const SearchButton = styled.button`
   }
   ${({ theme, type }) => css`
     ${theme.mediaQueries.s} {
-    inset: ${type === 'reset' ? '50% 1em auto auto' : '50% auto auto 1em'};
+    inset: ${type === 'button' ? '50% 1em auto auto' : '50% auto auto 1em'};
     }
   `}
 `;

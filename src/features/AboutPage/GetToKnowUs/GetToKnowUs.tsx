@@ -7,6 +7,7 @@ import { GetToKnowUsProps } from './GetToKnowUs.types';
 
 export const GetToKnowUs = ({
   heading,
+  layout,
   video,
   list,
 }: GetToKnowUsProps) => (
@@ -25,8 +26,10 @@ export const GetToKnowUs = ({
         {list.map(item => (
           <TextWithMedia
             as="li"
+            backgroundIndex={5}
             heading={item.title} image={item.image}
-            key={item.title} text={item.text}
+            key={item.title}
+            layout={layout} text={item.text}
           />
         ))}
       </ul>

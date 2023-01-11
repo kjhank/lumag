@@ -33,6 +33,7 @@ export const TimelineEvent = ({ event }: EventProps) => {
       </Header>
       <Description>{event.description}</Description>
       {isImageOpen && 'boo'}
+      {/* // TODO: up */}
     </EventNode>
   );
 };

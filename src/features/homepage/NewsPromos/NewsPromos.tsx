@@ -18,11 +18,15 @@ export const NewsPromos = ({
           {posts.length > 0 && posts.slice(0, 3).map(post => (
             <NewsItem
               key={post?.title?.rendered} linkLabel={news?.linkLabel}
-              post={post}
+              post={post} targetPost={news.targetPost}
             />
           ))}
         </NewsList>
-        {news?.newsLinkLabel && <ButtonLink to="/aktualnosci">{news.newsLinkLabel}</ButtonLink>}
+        {news?.newsLinkLabel && (
+          <ButtonLink to={news.targetPost.post_name}>
+            {news.newsLinkLabel}
+          </ButtonLink>
+        )}
       </News>
       <Promos>
         {promoAside?.length > 0 && promoAside.map(promo => (
@@ -31,7 +35,7 @@ export const NewsPromos = ({
             <PromoText>
               {promo?.text}
             </PromoText>
-            <ButtonLink to={promo?.link?.url?.url}>{promo?.link?.label}</ButtonLink>
+            <ButtonLink to={promo?.link?.url?.url}>{promo?.link?.text}</ButtonLink>
           </SinglePromo>
         ))}
       </Promos>

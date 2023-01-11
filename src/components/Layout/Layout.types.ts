@@ -38,6 +38,7 @@ export type FooterProps = {
 
 export type SearchProps = {
   placeholder: string;
+  toggle: () => void;
 };
 
 export type AppContextState = {

@@ -107,6 +107,7 @@ export type News = {
   postCount: string;
   linkLabel: string;
   newsLinkLabel: string;
+  targetPost: ACFPage;
 };
 
 export type PromoItem = {
@@ -114,7 +115,7 @@ export type PromoItem = {
   image: ACFImage;
   link: {
     url: ACFLink;
-    label: string;
+    text: string;
   };
 };
 

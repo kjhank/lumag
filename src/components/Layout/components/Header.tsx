@@ -71,7 +71,7 @@ export const Header = ({
                 </span>
                 <Spyglass />
               </NavButton>
-              {isSearchOpen && <Search placeholder={search} />}
+              {isSearchOpen && <Search placeholder={search} toggle={handleSearchMenu} />}
             </div>
             <LanguagesWrapper ref={langsRef}>
               <NavButton onClick={handleLangMenu}>

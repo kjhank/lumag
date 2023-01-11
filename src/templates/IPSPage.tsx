@@ -11,7 +11,7 @@ const IPSPage = ({ pageContext }: IPSPageProps) => (
   <>
     <Header {...pageContext.content.header} />
     <Container>
-      <TextWithMedia {...pageContext.content.textWithVideo} />
+      <TextWithMedia {...pageContext.content.textWithVideo} layout="imageRight" />
     </Container>
     <InnovationSection
       {...pageContext.content.iconsEtc}

@@ -572,7 +572,7 @@ export type ACFLink = {
 
 export type Video = {
   buttonText: string;
-  mp4: ACFFile;
+  mp4?: ACFFile;
   poster: ACFImage;
   webm: ACFFile;
 };
