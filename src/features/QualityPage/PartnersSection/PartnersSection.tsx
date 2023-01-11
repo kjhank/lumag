@@ -15,7 +15,7 @@ export const PartnersSection = ({
       <SectionHeading>{heading}</SectionHeading>
       <Text>{text}</Text>
       <Partners>
-        {grayBoxes.map(box => (
+        {grayBoxes?.length > 0 && grayBoxes.map(box => (
           <Partner key={box.heading}>
             <h3>{box.heading}</h3>
             <p dangerouslySetInnerHTML={{

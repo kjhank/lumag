@@ -9,12 +9,14 @@ import { MiniCarouselProps } from './MiniCarousel.types';
 export const MiniCarousel = ({
   className, content, image, layout, noShift = false,
 }: MiniCarouselProps) => {
-  const itemCount = content.length;
+  const itemCount = content?.length;
   const [currentItem, setCurrentItem] = useState(0);
 
   const handleButton = (dir: 'next' | 'previous') => {
     setCurrentItem(current => (dir === 'next' ? current + 1 : current - 1));
   };
+
+  if (!itemCount) return null;
 
   return (
     <Wrapper className={className} layout={layout}>

@@ -15,7 +15,7 @@ export const InnovationSection = ({
     <CoverImage imageData={background} />
     <Container>
       <List>
-        {iconsList.map(icon => {
+        {iconsList?.length > 0 && iconsList.map(icon => {
           const Icon = getIcon(icon.iconSlug as IconSlug);
 
           return (

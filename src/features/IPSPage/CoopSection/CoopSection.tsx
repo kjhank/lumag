@@ -20,7 +20,7 @@ export const CoopSection = (
         <Container>
           <SectionHeading>{heading}</SectionHeading>
           <Text>{text}</Text>
-          <ButtonLink to={`${urlPrefix}${post.post_name}`}>{linkText}</ButtonLink>
+          {post?.post_name && <ButtonLink to={`${urlPrefix}${post.post_name}`}>{linkText}</ButtonLink>}
         </Container>
       </Section>
     )

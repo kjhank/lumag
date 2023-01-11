@@ -20,7 +20,7 @@ export const Certificates = ({
         <Text>{parsedText}</Text>
         <Figure>
           <Image imageData={image} />
-          <figcaption>{caption.replaceAll('<br />', '')}</figcaption>
+          {caption && <figcaption>{caption.replaceAll('<br />', '')}</figcaption>}
         </Figure>
       </Container>
     </Section>
