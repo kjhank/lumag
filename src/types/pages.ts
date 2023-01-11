@@ -3,7 +3,7 @@ import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithM
 import { IconSlug } from './global';
 import {
   ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
-  ParsedPost, Post, Template, Translations,
+  ParsedPost, Post, Template, Translations, Video,
 } from './wordpress';
 
 export type PageMeta = {
@@ -341,6 +341,107 @@ export type IPSPageContent = {
   textWithVideo: TextWithMediaProps;
 };
 
-export type IPSPageProps = CustomPageProps<IPSPageContent>;
+export type CSRItem = {
+  content: string;
+  image: ACFImage;
+  title: string;
+};
 
+export type CSRPageContent = {
+  buttons: {
+    active: string;
+    inactive: string;
+  };
+  header: Header;
+  list: Array<CSRItem>;
+};
+
+export type Quote = {
+  heading: string;
+  image: ACFImage;
+  quote: string;
+  subheading: string;
+};
+
+export type AboutItem = {
+  image: ACFImage;
+  text: string;
+  title: string;
+};
+
+export type AboutUsPageContent = {
+  getToKnowUs: {
+    heading: string;
+    list: Array<AboutItem>;
+    video: Video;
+  };
+  header: Header;
+  person: Quote;
+  whyDifferent: {
+    background: ACFImage;
+    heading: string;
+    iconsList: Array<{
+      iconslug: IconSlug;
+      text: string;
+    }>;
+  };
+};
+
+export type Code = {
+  buttonText: string;
+  file: ACFFile;
+  heading: string;
+};
+
+export type Goals = {
+  background: ACFImage;
+  finePrint: string;
+  heading: string;
+  list: Array<{ text: string }>;
+};
+
+export type ValuesPageContent = {
+  code: Code;
+  goals: Goals;
+  header: Header;
+  list: Array<{
+    heading: string;
+    image: ACFImage;
+    text: string;
+  }>;
+};
+
+export type ManagingPageContent = {
+  header: Header;
+  list: Array<TextWithMediaProps>;
+  tools: {
+    background: ACFImage;
+    finePrint: string;
+    heading: string;
+    list: Array<{ text: string }>;
+  };
+};
+
+export type HistoryEvent = {
+  description: string;
+  image: ACFImage;
+  title: string;
+  year: string;
+};
+
+export type HistoryPageContent = {
+  header: Header;
+  history: {
+    heading: string;
+    list: Array<HistoryEvent>;
+    text: string;
+  };
+};
+
+export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
+export type CSRPageProps = CustomPageProps<CSRPageContent>;
+export type AboutPageProps = CustomPageProps<AboutUsPageContent>;
+export type ValuesPageProps = CustomPageProps<ValuesPageContent>;
+export type ManagingPageProps = CustomPageProps<ManagingPageContent>;
+export type HistoryPageProps = CustomPageProps<HistoryPageContent>;

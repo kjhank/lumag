@@ -19,7 +19,6 @@ export type HeaderProps = {
 
 export type NavigationProps = {
   menuItems: Array<ParsedMainNav>;
-  langPrefix: string;
 };
 
 export type LanguageSwitcherProps = {

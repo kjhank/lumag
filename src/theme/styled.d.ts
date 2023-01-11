@@ -13,6 +13,7 @@ declare module 'styled-components' {
     fonts: {
       types: {
         alt: string;
+        fatHeading: string;
         heading: string;
         text: string;
       };

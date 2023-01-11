@@ -11853,14 +11853,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-tsconfig-paths@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "gatsby-plugin-tsconfig-paths@npm:1.0.5"
+"gatsby-plugin-tsconfig-paths@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "gatsby-plugin-tsconfig-paths@npm:1.0.6"
   dependencies:
+    lodash: 4.17.21
     tsconfig-paths-webpack-plugin: ^3.2.0
   peerDependencies:
-    gatsby: ~2.x.x || ~3.x.x || ~4.x.x
-  checksum: 42a41c5064ee0b591fa69dd4e9894f780f53eb1e42d1e4c20bc9fe04edb0b134cea014feeb339ad64cf50f7c737dba332bbdbbe88ab7ba952bfe1fa079ac1e74
+    gatsby: ~2.x.x || ~3.x.x || ~4.x.x || ~5.x.x
+  checksum: 987553344dc38716657e1dd16264a6d36bb9347fc7e172e196e657251fb0936b02af3b52951ce19c3d449b2ae9c096ab457066e43b2d5769688934b7c7bd755a
   languageName: node
   linkType: hard
 
@@ -14573,7 +14574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.0.0, lodash@npm:^4.17.21, lodash@npm:~4.17.0":
+"lodash@npm:4.17.21, lodash@npm:^4.0.0, lodash@npm:^4.17.21, lodash@npm:~4.17.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -14717,7 +14718,7 @@ __metadata:
     gatsby-plugin-react-svg: ^3.3.0
     gatsby-plugin-sharp: ^5.3.2
     gatsby-plugin-styled-components: ^6.3.0
-    gatsby-plugin-tsconfig-paths: ^1.0.5
+    gatsby-plugin-tsconfig-paths: ^1.0.6
     gatsby-plugin-typescript: ^5.3.1
     gatsby-plugin-webfonts: ^2.3.1
     gatsby-source-filesystem: ^5.3.1

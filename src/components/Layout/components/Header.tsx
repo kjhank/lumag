@@ -1,5 +1,4 @@
 import {
-  useContext,
   useEffect, useRef, useState,
 } from 'react';
 import { Link } from 'gatsby';
@@ -10,19 +9,18 @@ import {
   ButtonsWrapper,
   HeaderNode, LanguagesWrapper, LogoWrapper, NavButton, NavigationNode, NavToggle,
 } from '../Layout.styled';
-import { useOutsideClick } from '@/hooks';
+import { useAppContext, useOutsideClick } from '@/hooks';
 import { HeaderProps } from '../Layout.types';
 import { Navigation } from './Navigation';
 import { Container } from '@/components';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Search } from './Search';
-import { AppContext } from '../Layout.context';
 
 // TODO: slices
 export const Header = ({
   menuItems, i18n, pathname, search,
 }: HeaderProps) => {
-  const { lang: pageLang, urlPrefix } = useContext(AppContext);
+  const { lang: pageLang, urlPrefix } = useAppContext();
   const langsRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
@@ -55,7 +53,7 @@ export const Header = ({
   return (
     <HeaderNode>
       <Container ref={navRef}>
-        <Link to={`/${urlPrefix}`}>
+        <Link to={urlPrefix}>
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
@@ -64,7 +62,7 @@ export const Header = ({
           <Menu />
         </NavToggle>
         <NavigationNode isOpen={isNavOpen}>
-          <Navigation langPrefix={pageLang === 'pl' ? '' : `/${pageLang}`} menuItems={menuItems} />
+          <Navigation menuItems={menuItems} />
           <ButtonsWrapper ref={searchRef}>
             <div>
               <NavButton onClick={handleSearchMenu}>

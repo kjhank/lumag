@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components';
 
 export const Wrapper = styled.article`
   main {
     margin-block-start: ${({ theme }) => theme.helpers.getMax(-220)};
     padding: ${({ theme }) => theme.helpers.getMin(86)};
+    background-color: ${({ theme }) => theme.colors.neutral[5]};
     color: ${({ theme }) => theme.colors.neutral[95]};
     ${({ theme }) => theme.fonts.sizes.xs};
     white-space: pre-line;
@@ -13,17 +13,6 @@ export const Wrapper = styled.article`
       color: ${({ theme }) => theme.colors.brand};
       ${({ theme }) => theme.helpers.getClamped(24)};
     }
-  }
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;
 

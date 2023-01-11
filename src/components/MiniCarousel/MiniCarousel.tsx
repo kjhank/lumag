@@ -36,8 +36,8 @@ export const MiniCarousel = ({
         </ButtonsWrapper>
       </ImageWrapper>
       <ContentList>
-        {content.map(item => (
-          <Item key={item.heading}>
+        {content.map((item, index) => (
+          <Item isActive={index === currentItem} key={item.heading}>
             <ItemHeading>{item.heading}</ItemHeading>
             <ItemText>{item.text}</ItemText>
           </Item>

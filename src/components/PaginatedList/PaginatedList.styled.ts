@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const List = styled.ul``;
+
 export const Wrapper = styled.article`
   > div {
     display: flex;
@@ -7,9 +9,19 @@ export const Wrapper = styled.article`
     gap: ${({ theme }) => theme.helpers.getMin(80)};
     margin-block: ${({ theme }) => `${theme.helpers.getMax(-160)} ${theme.helpers.getMin(90)}`};
   }
-`;
 
-export const List = styled.ul``;
+  &.alternating {
+    ${List} {
+      li:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+
+      li:nth-child(even) {
+        flex-direction: row;
+      }
+    }
+  }
+`;
 
 export const Pagination = styled.nav`
   display: grid;
@@ -27,10 +39,12 @@ export const Pages = styled.menu`
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   list-style-type: none;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   > li:first-child {
     margin-inline-end: 1ch;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   > li:last-child {
     margin-inline-start: 1ch;
   }

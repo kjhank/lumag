@@ -45,7 +45,7 @@ const Layout = ({
 
   const contextData = useMemo(() => ({
     lang: pageContext.lang,
-    urlPrefix: pageContext.lang === 'pl' ? '' : pageContext.lang,
+    urlPrefix: pageContext.lang === 'pl' ? '/' : `/${pageContext.lang}/`,
   }), [pageContext.lang]);
 
   return (

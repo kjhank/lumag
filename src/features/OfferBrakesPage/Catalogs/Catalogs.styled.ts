@@ -12,17 +12,6 @@ export const Section = styled.section`
   }
 `;
 
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
 export const List = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.helpers.getMin(85)};

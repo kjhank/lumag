@@ -1,16 +1,4 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components';
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
 
 export const HeaderNode = styled.header`
   position: relative;
@@ -28,7 +16,7 @@ export const HeaderNode = styled.header`
   }
 
   h2 {
-    padding-inline: 25%;
+    /* padding-inline: 25%; */
     color: ${({ theme }) => theme.colors.brand};
     font-weight: 900;
     ${({ theme }) => theme.fonts.sizes.xxl};
@@ -47,7 +35,7 @@ export const HeaderNode = styled.header`
   }
 
   p {
-    padding-inline: ${({ theme }) => theme.helpers.getMin(160)};
+    /* padding-inline: ${({ theme }) => theme.helpers.getMin(160)}; */
     color: ${({ theme }) => theme.colors.neutral[5]};
     font-family: 'Avenir Book', sans-serif;
   }

@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components';
 
 export const Section = styled.section`
   position: relative;
@@ -8,17 +7,6 @@ export const Section = styled.section`
   .innovation-carousel {
     position: relative;
     top: ${({ theme }) => theme.helpers.getMin(100)};
-  }
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;
 

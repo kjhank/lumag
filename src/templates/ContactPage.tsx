@@ -36,4 +36,5 @@ const ContactPage = ({ pageContext: { content } }: ContactPageProps) => (
 export const Head = ({ pageContext }: ContactPageProps) => (
   <Meta metadata={pageContext.metadata} />
 );
+
 export default ContactPage;

@@ -7,7 +7,7 @@ import { formatDate } from '@/utils';
 import { ClockIcon } from '@/static';
 
 const NewsPage = ({ pageContext }: NewsPageProps) => (
-  <h1>
+  <>
     <Header className="header--news-page" {...pageContext.header} />
     <PaginatedList
       items={pageContext.posts.map(post => {
@@ -28,7 +28,7 @@ const NewsPage = ({ pageContext }: NewsPageProps) => (
       })}
       perPage={Number(pageContext.content.perpage)}
     />
-  </h1>
+  </>
 );
 
 export const Head = ({ pageContext }: NewsPageProps) => (

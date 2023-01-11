@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { WPImage } from '@/components';
 
 export const Section = styled.section`
   position: relative;
@@ -10,17 +9,6 @@ export const Section = styled.section`
     flex-direction: column;
     align-items: center;
     gap: ${({ theme }) => theme.helpers.getMin(83)};
-  }
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;
 

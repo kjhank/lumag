@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { WPImage } from '@/components';
 import { SectionHeading } from '@/components/styled';
 
 export const Section = styled.section`
@@ -62,15 +61,4 @@ export const Phones = styled.ul``;
 
 export const Emails = styled.ul`
   color: ${({ theme }) => theme.colors.brand};
-`;
-
-export const Background = styled(WPImage)`
-  position: absolute;
-  inset: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `;

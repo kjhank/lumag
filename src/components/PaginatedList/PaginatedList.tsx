@@ -7,7 +7,7 @@ import {
 import { PageChange, PaginatedListProps } from './PaginatedList.types';
 
 export const PaginatedList = ({
-  items, perPage = 4,
+  className, items, perPage = 4,
 }: PaginatedListProps) => {
   const [currentPage, setCurrentPage] = useState(0);
   const pagesCount = Math.ceil(items.length / perPage);
@@ -27,7 +27,7 @@ export const PaginatedList = ({
   };
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Container>
         <List>
           {items.slice(

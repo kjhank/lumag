@@ -15,6 +15,17 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const regularPages = [
+  'ips',
+  'quality',
+  'offerBrakes',
+  'csr',
+  'history',
+  'managing',
+  'about',
+  'values',
+];
+
 const templates: { [key in Template]: string } = {
   about: path.resolve('./src/templates/AboutPage.tsx'),
   contact: path.resolve('./src/templates/ContactPage.tsx'),
@@ -234,7 +245,7 @@ const getContext = async ({
     };
   }
 
-  if (template === 'ips' || template === 'quality' || template === 'offerBrakes' || template === 'csr' || template === 'history' || template === 'managing' || template === 'about') {
+  if (regularPages.includes(template)) {
     return {
       ...globalContext,
       content: acf,

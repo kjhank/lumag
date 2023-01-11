@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { WPImage } from './WPImage/WPImage';
 
 export const NewsDate = styled.time`
   display: inline-flex;
@@ -20,4 +21,15 @@ export const SectionHeading = styled.h2`
   font-weight: bold;
   ${({ theme }) => theme.fonts.sizes.xl};
   text-align: center;
+`;
+
+export const CoverImage = styled(WPImage)`
+  position: absolute;
+  inset: 0;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;

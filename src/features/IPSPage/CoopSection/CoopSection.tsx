@@ -1,27 +1,26 @@
-import { useContext } from 'react';
 import { ButtonLink, Container } from '@/components';
-import { SectionHeading } from '@/components/styled';
+import { CoverImage, SectionHeading } from '@/components/styled';
 import {
-  Background, Section, Text,
+  Section, Text,
 } from './CoopSection.styled';
 import { CoopSectionProps } from './CoopSection.types';
-import { AppContext } from '@/components/Layout/Layout.context';
+import { useAppContext } from '@/hooks';
 
 export const CoopSection = (
   {
     background, heading, linkText, post, text,
   }: CoopSectionProps
 ) => {
-  const { urlPrefix } = useContext(AppContext);
+  const { urlPrefix } = useAppContext();
 
   return (
     (
       <Section>
-        <Background imageData={background} />
+        <CoverImage imageData={background} />
         <Container>
           <SectionHeading>{heading}</SectionHeading>
           <Text>{text}</Text>
-          <ButtonLink to={`${urlPrefix}/${post.post_name}`}>{linkText}</ButtonLink>
+          <ButtonLink to={`${urlPrefix}${post.post_name}`}>{linkText}</ButtonLink>
         </Container>
       </Section>
     )

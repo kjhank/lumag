@@ -9,16 +9,20 @@ import { CertificatesProps } from './Certificates.types';
 
 export const Certificates = ({
   background, caption, heading, image, text,
-}: CertificatesProps) => (
-  <Section>
-    {background && <Background imageData={background} />}
-    <Container>
-      <SectionHeading>{heading}</SectionHeading>
-      <Text>{useOrphans(text)}</Text>
-      <Figure>
-        <Image imageData={image} />
-        <figcaption>{caption.replaceAll('<br />', '')}</figcaption>
-      </Figure>
-    </Container>
-  </Section>
-);
+}: CertificatesProps) => {
+  const parsedText = useOrphans(text);
+
+  return (
+    <Section>
+      {background && <Background imageData={background} />}
+      <Container>
+        <SectionHeading>{heading}</SectionHeading>
+        <Text>{parsedText}</Text>
+        <Figure>
+          <Image imageData={image} />
+          <figcaption>{caption.replaceAll('<br />', '')}</figcaption>
+        </Figure>
+      </Container>
+    </Section>
+  );
+};

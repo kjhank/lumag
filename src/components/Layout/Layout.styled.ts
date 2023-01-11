@@ -442,7 +442,7 @@ export const Copyright = styled.footer`
     padding: ${({ theme }) => theme.global.footer.bannerPaddingBlock};
     ${({ theme }) => theme.global.footer.bannerFontSize};
 
-    > svg {
+    svg {
       width: auto;
       height: ${({ theme }) => theme.global.footer.bannerLogoHeight};
     }
