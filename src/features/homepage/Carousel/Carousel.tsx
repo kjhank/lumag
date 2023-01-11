@@ -5,8 +5,24 @@ import {
   ActionButton,
   Background, Dots, Heading, Item, List, Section, Text,
 } from './Carousel.styled';
-import { CarouselProps } from './Carousel.types';
+import { CarouselItemProps, CarouselProps } from './Carousel.types';
 import { ButtonLink } from '@/components/ButtonLink/ButtonLink';
+import { useApiLinks } from '@/hooks';
+
+const CarouselItem = ({ isActive, item }: CarouselItemProps) => {
+  const parsedUrl = useApiLinks(item.link.url.url);
+
+  return (
+    <Item isActive={isActive} key={item.heading}>
+      <Container>
+        <Heading dangerouslySetInnerHTML={{ __html: sanitize(item.heading, { allowedTags: ['br'] }) }} />
+        <Text>{item.subheading}</Text>
+        <ButtonLink to={parsedUrl}>{item.link.label}</ButtonLink>
+      </Container>
+      <Background imageData={item.image} />
+    </Item>
+  );
+};
 
 export const Carousel = ({ items }: CarouselProps) => {
   const [activeId, setActiveId] = useState(0);
@@ -17,14 +33,10 @@ export const Carousel = ({ items }: CarouselProps) => {
     <Section>
       <List>
         {items.map((item, index) => (
-          <Item isActive={index === activeId} key={item.heading}>
-            <Container>
-              <Heading dangerouslySetInnerHTML={{ __html: sanitize(item.heading, { allowedTags: ['br'] }) }} />
-              <Text>{item.subheading}</Text>
-              <ButtonLink to="/aktualnosci">Czytaj więcej</ButtonLink>
-            </Container>
-            <Background imageData={item.image} />
-          </Item>
+          <CarouselItem
+            isActive={index === activeId} item={item}
+            key={item.heading}
+          />
         ))}
       </List>
       <Dots>

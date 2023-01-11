@@ -77,7 +77,7 @@ export type CarouselItem = {
   image: ACFImage;
   link: {
     label: string;
-    url: string;
+    url: ACFLink;
   };
 };
 
