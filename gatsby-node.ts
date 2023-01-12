@@ -212,7 +212,7 @@ const getContext = async ({
     return {
       ...globalContext,
       content: acf,
-      posts: posts.slice(0, acf?.posts?.postCount ?? posts.length),
+      posts: posts.slice(0, acf?.posts?.postCount ?? posts.length - 1),
     };
   }
 

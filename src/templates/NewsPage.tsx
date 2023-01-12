@@ -15,6 +15,7 @@ const NewsPage = ({ pageContext }: NewsPageProps) => {
       <Header className="header--news-page" {...pageContext.header} />
       <PaginatedList
         items={pageContext.posts.map(post => {
+          if (Object.keys(post).length < 1) return null;
           const formattedDate = formatDate(new Date(post.date));
 
           return (
