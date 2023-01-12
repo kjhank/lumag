@@ -46,7 +46,7 @@ const Layout = ({
   }, []);
 
   const contextData: AppContextState = useMemo(() => ({
-    defaultNewsThumbnail: pageContext.options.defaultNewsThumbnail,
+    defaultNewsThumbnail: pageContext?.options?.defaultNewsThumbnail,
     lang: pageContext.lang,
     urlPrefix: pageContext.lang === 'pl' ? '/' : `/${pageContext.lang}/`,
   }), [pageContext.lang]);
