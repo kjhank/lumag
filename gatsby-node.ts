@@ -5,7 +5,7 @@ import path from 'path';
 import {
   Options, PageACF, ParsedOptions, Translations,
 } from './src/types/wordpress';
-import { Endpoints } from './src/constants/endpoints';
+import { Endpoints } from './src/static/constants/endpoints';
 import {
   Languages, Page, Post, Template,
 } from './src/types';

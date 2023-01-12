@@ -13,6 +13,7 @@ import { useAnchors } from '@/hooks';
 import { AppContext } from './Layout.context';
 import { cookiesKey } from '@/static';
 import { SeeMore } from '@/components';
+// import '@/assets/fonts/stylesheet.css';
 
 // TODO: global header & footer as slices
 
