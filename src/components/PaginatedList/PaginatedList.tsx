@@ -5,6 +5,7 @@ import {
   List, PageButton, Pages, Pagination, Wrapper,
 } from './PaginatedList.styled';
 import { PageChange, PaginatedListProps } from './PaginatedList.types';
+import { isBrowser } from '@/utils';
 
 export const PaginatedList = ({
   className, items, perPage = 4,
@@ -13,6 +14,8 @@ export const PaginatedList = ({
   const pagesCount = Math.ceil(items.length / perPage);
 
   const handlePageChange = (targetPage: PageChange) => {
+    if (isBrowser) window.scrollTo(0, 0);
+
     if (typeof targetPage === 'string') {
       setCurrentPage(current => {
         if (targetPage === 'next') {

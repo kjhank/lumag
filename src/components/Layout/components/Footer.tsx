@@ -6,7 +6,7 @@ import { Container, ExternalLink } from '@/components';
 import {
   ActionBackground,
   ActionSection, Address,
-  BottomNav, Copyright, LinksHeading,
+  BottomNav, Copyright, LinkItem, LinksHeading,
   LinksList, LinksWrapper, NewsletterAgreement, NewsletterHeading,
   NewsletterInput, NewsletterSubmit, VerticalBackground,
 } from '../Layout.styled';
@@ -100,11 +100,11 @@ export const Footer = ({
               {item.heading && <LinksHeading>{item.heading}</LinksHeading>}
               <LinksList>
                 {item.subitems.map(subitem => (
-                  <li key={`${subitem.slug}-${subitem.label}`}>
+                  <LinkItem isBold={subitem.isBold} key={`${subitem.slug}-${subitem.label}`}>
                     <Link to={`${urlPrefix}${subitem.slug}`}>
                       {subitem.label || subitem.title}
                     </Link>
-                  </li>
+                  </LinkItem>
                 ))}
               </LinksList>
             </div>

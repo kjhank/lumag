@@ -1,31 +1,26 @@
 import { createPortal } from 'react-dom';
+import { isBrowser } from '@/utils';
 import {
   CloseButton, ModalContainer, ModalWrapper,
 } from './Modal.styled';
 import { ModalProps } from './Modal.types';
-import { usePortal } from '@/hooks';
 
 export const Modal = ({
-  children, isOpen, onCloseCallback = () => {},
+  children, isOpen, onCloseCallback = () => { },
 }: ModalProps) => {
-  const { closePortal, targetNode } = usePortal() ?? {};
-
-  if (!targetNode) return null;
-
   const handleClose = () => {
-    closePortal();
     onCloseCallback();
   };
 
-  return isOpen
+  return isBrowser && isOpen
     ? createPortal(
-      <ModalWrapper>
+      <ModalWrapper open={isOpen}>
         <ModalContainer>
           <CloseButton onClick={handleClose}>⨉</CloseButton>
           {children}
         </ModalContainer>
       </ModalWrapper>,
-      targetNode
+      document.body
     )
     : null;
 };

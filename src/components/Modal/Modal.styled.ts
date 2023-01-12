@@ -1,13 +1,17 @@
 import styled, { css } from 'styled-components';
 
-export const ModalWrapper = styled.main`
+export const ModalWrapper = styled.dialog`
   position: fixed;
   inset: 0;
   z-index: 200;
   overflow: auto;
   display: grid;
   place-items: center;
+  width: 100vw;
+  height: 100vh;
+  border: none;
   padding-block-start: ${({ theme }) => theme.helpers.getMin(100)};
+  background-color: transparent;
   backdrop-filter: blur(5px);
 `;
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   position: relative;
@@ -10,6 +10,22 @@ export const Section = styled.section`
     align-items: center;
     gap: ${({ theme }) => theme.helpers.getMin(83)};
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.m} {
+      a {
+        position: relative;
+        width: 100%;
+        padding: 1em 3em;
+        ${theme.helpers.getClamped(32)};
+        text-align: center;
+
+        > svg {
+          position: absolute;
+          right: 5%;
+        }
+      }
+    }
+  `}
 `;
 
 export const Text = styled.p`

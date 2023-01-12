@@ -15,6 +15,11 @@ export const Wrapper = styled.article<{ layout: MiniCarouselLayout }>`
 
   nav {
     justify-content: ${({ layout }) => (layout === 'imageLeft' ? 'flex-end' : 'flex-start')};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        justify-content: flex-end;
+      }
+    `}
   }
 `;
 
@@ -46,27 +51,27 @@ export const Image = styled(WPImage)`
 
 export const ContentList = styled.ul`
   position: relative;
+  display: grid;
+  grid-template-areas: mini-carousel;
   width: 50%;
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   ${({ theme }) => css`
     ${theme.mediaQueries.l} {
-      bottom: ${theme.helpers.getMin(100)};
+      bottom: min(100px, 13.3vw);
       width: 100%;
     }
   `}
 `;
 
 export const Item = styled.li<{ isActive: boolean }>`
-  position: absolute;
-  inset: 0;
-  z-index: ${({ isActive }) => (isActive ? 1 : 0)};
-  filter: ${({ isActive }) => `opacity(${isActive ? 1 : 0})`};
+  visibility: ${({ isActive }) => (isActive ? 'visible' : 'hidden')};
   display: flex;
   flex-direction: column;
   justify-content: center;
+  grid-area: mini-carousel;
   gap: ${({ theme }) => theme.helpers.getMin(43)};
   height: 100%;
-  padding: ${({ theme }) => `${theme.helpers.getMin(48)} ${theme.helpers.getMin(75)} 0`};
+  padding: ${({ theme }) => `${theme.helpers.getMin(48)} ${theme.helpers.getMin(75)}`};
   background-color: ${({ theme }) => theme.colors.neutral[15]};
 `;
 
@@ -95,7 +100,7 @@ export const ItemButton = styled.button`
   }
 
   > svg {
-    width: ${({ theme }) => theme.helpers.getMin(24)};
+    width: 24%;
     height: auto;
     /* stylelint-disable-next-line value-keyword-case */
     stroke: currentColor;
@@ -106,4 +111,9 @@ export const ItemButton = styled.button`
       rotate: 180deg;
     }
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      width: min(100px, 13.3vw);
+    }
+  `}
 `;

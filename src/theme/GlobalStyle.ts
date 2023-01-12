@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
+export const GlobalStyle = createGlobalStyle`
   html {
-    overflow: ${({ scrollDisabled }) => (scrollDisabled ? 'hidden' : 'auto')};
+    overflow: auto;
     box-sizing: border-box;
   }
 

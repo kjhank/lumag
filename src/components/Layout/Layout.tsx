@@ -53,7 +53,7 @@ const Layout = ({
   return (
     <AppContext.Provider value={contextData}>
       <Theme>
-        <GlobalStyle scrollDisabled={cookiesVisible} />
+        <GlobalStyle />
         <Header
           i18n={pageContext?.i18n}
           menuItems={pageContext?.options?.nav}
