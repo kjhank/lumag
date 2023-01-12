@@ -196,6 +196,11 @@ export const ActionButton = styled.button`
   transition: ${({ theme }) => `filter ${theme.transitions.default}`};
   translate: 0 40% 0;
   cursor: pointer;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: min(10vw, 750px);
+    }
+  `}
 
   > svg {
     width: 64%;

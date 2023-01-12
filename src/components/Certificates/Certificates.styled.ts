@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 
 export const Section = styled.section`
@@ -28,14 +28,19 @@ export const Text = styled.p`
 
 export const Image = styled(WPImage)`
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(13)} ${helpers.getMin(20)} ${helpers.getMin(30)} ${colors.neutral[30]}74)`};
-  width: ${({ theme }) => theme.helpers.getMin(231)};
 `;
 
 export const Figure = styled.figure`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.helpers.getMin(35)};
+  width: ${({ theme }) => theme.helpers.getMin(231)};
   font-weight: bold;
   text-align: center;
   white-space: pre-line;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.m} {
+      width: 40%;
+    }
+  `}
 `;

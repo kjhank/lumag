@@ -36,7 +36,7 @@ export const Figure = styled.figure`
     stroke: ${({ theme }) => theme.colors.neutral[20]};
     ${({ theme }) => css`
       ${theme.mediaQueries.s} {
-        top: -5%;
+        top: -10%;
         width: 100%;
         height: auto;
       }

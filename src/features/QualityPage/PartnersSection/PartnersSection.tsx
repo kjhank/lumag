@@ -1,5 +1,5 @@
 import sanitize from 'sanitize-html';
-import { Container } from '@/components';
+import { Container, WPImage } from '@/components';
 import { SectionHeading } from '@/components/styled';
 import {
   Partner, Partners, Section, Text,
@@ -17,7 +17,10 @@ export const PartnersSection = ({
       <Partners>
         {grayBoxes?.length > 0 && grayBoxes.map(box => (
           <Partner key={box.heading}>
-            <h3>{box.heading}</h3>
+            <h3>
+              {box.heading}
+              {box.headingHasImage && <WPImage imageData={box.headingImage} />}
+            </h3>
             <p dangerouslySetInnerHTML={{
               __html: sanitize(box.text, {
                 ...sanitizeConfig,

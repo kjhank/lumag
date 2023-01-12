@@ -33,8 +33,20 @@ export const Partner = styled.li`
   text-align: left;
 
   h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
     font-weight: bold;
     ${({ theme }) => theme.helpers.getClamped(32)};
+
+    picture {
+      height: 1em;
+
+      > img {
+        width: auto;
+        height: 100%;
+      }
+    }
   }
 
   b,

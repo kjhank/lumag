@@ -303,6 +303,8 @@ export type MiniCarousel = {
 export type Partners = {
   grayBoxes: Array<{
     heading: string;
+    headingHasImage: boolean;
+    headingImage: ACFImage;
     text: string;
   }>;
   heading: string;

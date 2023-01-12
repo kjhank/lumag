@@ -429,6 +429,10 @@ export const LinksList = styled.menu`
   }
 `;
 
+export const LinkItem = styled.li<{ isBold: boolean }>`
+  font-weight: ${({ isBold }) => isBold && 'bold'};
+`;
+
 export const LinksHeading = styled.h3`
   color: ${({ theme }) => theme.global.footer.heading};
 `;
@@ -490,6 +494,8 @@ export const CookiesDialog = styled.aside<{ isVisible?: boolean }>`
   z-index: 1000;
   background-color: ${({ theme }) => theme.colors.neutral[5]};
   padding-block: ${({ theme }) => theme.helpers.getMin(8)};
+  ${({ theme }) => theme.fonts.sizes.xs};
+  text-align: center;
   transition: ${({ theme }) => `translate ${theme.transitions.default}`};
   translate: ${({ isVisible }) => (isVisible ? 0 : '0 100% 0')};
 

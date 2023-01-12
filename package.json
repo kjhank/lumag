@@ -2,7 +2,7 @@
   "name": "lumag-2022",
   "private": true,
   "description": "New lumag.pl website with data from headless wordpress",
-  "version": "0.7",
+  "version": "0.9.1",
   "author": "Krzysztof Hankiewicz @kjhank <kjhank@gmail.com>",
   "dependencies": {
     "dotenv": "^16.0.3",
