@@ -5,7 +5,7 @@ import path from 'path';
 import {
   Options, PageACF, ParsedOptions, Translations,
 } from './src/types/wordpress';
-import { Endpoints } from './src/constants/endpoints';
+import { Endpoints } from './src/static/constants/endpoints';
 import {
   Languages, Page, Post, Template,
 } from './src/types';
@@ -99,6 +99,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
   address: options.address.address,
   cookiesButtonText: options.cookiesButtonText,
   cookiesText: options.cookiesText,
+  defaultNewsThumbnail: options.defaultNewsThumbnail,
   footer: {
     background: options.address.background,
     copyright: options.footerText,
@@ -211,7 +212,7 @@ const getContext = async ({
     return {
       ...globalContext,
       content: acf,
-      posts: posts.slice(0, acf?.posts?.postCount ?? posts.length),
+      posts: posts.slice(0, acf?.posts?.postCount ?? posts.length - 1),
     };
   }
 

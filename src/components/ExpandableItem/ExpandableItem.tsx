@@ -8,7 +8,7 @@ import { ButtonLink } from '../ButtonLink/ButtonLink';
 import { ExpandableItemProps } from './ExpendableItem.types';
 
 export const ExpandableItem = ({
-  className, buttons, children, image, text, title, trimmedTextLength = 40,
+  className, buttons, children, image, text, title, trimmedTextLength = 30,
 }: ExpandableItemProps) => {
   const [isExpanded, setExpanded] = useState(false);
 
@@ -24,16 +24,18 @@ export const ExpandableItem = ({
   return (
     <ItemNode className={className}>
       <ItemImage imageData={image} />
-      <ItemContent isExpanded={isExpanded}>
-        <ItemHeading>{title}</ItemHeading>
-        {children}
-        <ItemText html={content.endsWith('</p>') && showButton ? `${content.slice(0, -4)} [...]</p>` : content} />
-        {showButton && (
+      <div>
+        <ItemContent isExpanded={isExpanded}>
+          <ItemHeading>{title}</ItemHeading>
+          {children}
+          <ItemText html={content.endsWith('</p>') && showButton ? `${content.slice(0, -4)} [...]</p>` : content} />
+          {showButton && (
           <ButtonLink onClick={() => setExpanded(current => !current)}>
             {isExpanded ? buttons.active : buttons.inactive}
           </ButtonLink>
-        )}
-      </ItemContent>
+          )}
+        </ItemContent>
+      </div>
     </ItemNode>
   );
 };

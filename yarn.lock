@@ -7072,13 +7072,13 @@ __metadata:
   linkType: hard
 
 "axios@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "axios@npm:1.2.1"
+  version: 1.2.2
+  resolution: "axios@npm:1.2.2"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: c4dc4e119064c9aed09a3de309bedb797a139a6fb372223aafe3e0c10a7d4a14e4d3e9c9d309467fadb9d2b490b891ee3df96ef5b55716bb971910466ff9f0c5
+  checksum: 6e357491b38426c5720f7328ecbafca3c643b03952c052d787570672ce7a9365717c2d64db4ce97cfbee3f830fa405101e360e14d0857ef7f96a9f4d814c4e03
   languageName: node
   linkType: hard
 
@@ -11902,9 +11902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webfonts@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "gatsby-plugin-webfonts@npm:2.3.1"
+"gatsby-plugin-webfonts@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "gatsby-plugin-webfonts@npm:2.3.2"
   dependencies:
     axios: ^1.2.1
     cssnano: ^5.1.14
@@ -11914,7 +11914,7 @@ __metadata:
     postcss-js: ^4.0.0
   peerDependencies:
     gatsby: ^3.0.0 || ^4.0.0  || ^5.0.0
-  checksum: 1d88b9cde53f5c59443ec67dfff0e88e7a2432ca680ab975f8b1fc09b37b9f42d259030b4aa8d85a90ed9c33f2990e5dcc579ae3186bd3cdd01ec267a7d41cce
+  checksum: e399029cdef5e31be404d662c26b964cc7b34c167dd90e41a848fc1397e3df812725ab656830ba31db201d194bce7e504dc6f43db194500c46338c7f9eaadc95
   languageName: node
   linkType: hard
 
@@ -14720,7 +14720,7 @@ __metadata:
     gatsby-plugin-styled-components: ^6.3.0
     gatsby-plugin-tsconfig-paths: ^1.0.6
     gatsby-plugin-typescript: ^5.3.1
-    gatsby-plugin-webfonts: ^2.3.1
+    gatsby-plugin-webfonts: ^2.3.2
     gatsby-source-filesystem: ^5.3.1
     gatsby-transformer-sharp: ^5.3.1
     husky: ^8.0.2

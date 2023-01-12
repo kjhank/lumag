@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
 import { GlobalStyle, Theme } from '@/theme';
-import { LayoutProps } from './Layout.types';
+import { AppContextState, LayoutProps } from './Layout.types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { CookiesDialog } from './Layout.styled';
@@ -13,6 +13,7 @@ import { useAnchors } from '@/hooks';
 import { AppContext } from './Layout.context';
 import { cookiesKey } from '@/static';
 import { SeeMore } from '@/components';
+// import '@/assets/fonts/stylesheet.css';
 
 // TODO: global header & footer as slices
 
@@ -44,7 +45,8 @@ const Layout = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const contextData = useMemo(() => ({
+  const contextData: AppContextState = useMemo(() => ({
+    defaultNewsThumbnail: pageContext?.options?.defaultNewsThumbnail,
     lang: pageContext.lang,
     urlPrefix: pageContext.lang === 'pl' ? '/' : `/${pageContext.lang}/`,
   }), [pageContext.lang]);
