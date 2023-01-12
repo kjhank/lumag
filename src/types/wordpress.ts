@@ -37,6 +37,18 @@ type Excerpt = {
 
 export type PostType = 'page' | 'post';
 
+export type SeeMore = {
+  hasSeeMore: boolean;
+  heading: string;
+  recommendations: Array<{
+    background: ACFImage;
+    heading: string;
+    linkText: string;
+    text: string;
+    url: ACFPage;
+  }>;
+};
+
 export type PageACF = {
   header?: {
     background: ACFImage;
@@ -47,6 +59,7 @@ export type PageACF = {
   posts?: {
     postCount?: number;
   };
+  seeMore: SeeMore | false;
   template: {
     label: string;
     value: Template;

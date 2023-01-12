@@ -4,7 +4,7 @@ import { GenericPageProps } from '@/types';
 
 const GenericPage = ({ pageContext }: GenericPageProps) => (
   <GenericPageRenderer
-    content={pageContext.content.rendered} header={{
+    content={pageContext.content.body} header={{
       background: pageContext.header.background,
       title: pageContext.metadata.title.rendered,
     }}

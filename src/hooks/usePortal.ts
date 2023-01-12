@@ -1,18 +1,35 @@
 import { useRef } from 'react';
+import { isBrowser } from '../utils/helpers';
 
 export const usePortal = (
   attachToSelector?: keyof HTMLElementTagNameMap
 ) => {
-  let targetNode: HTMLElement | null = attachToSelector ? document.querySelector(attachToSelector) : document.querySelector('#___gatsby');
-  const nodeRef = useRef<HTMLDialogElement>(document.createElement('dialog'));
+  let parentNode: HTMLElement | null = null;
 
-  if (targetNode) {
-    targetNode.appendChild(nodeRef.current);
-  } else {
-    targetNode = document.body;
+  if (isBrowser) {
+    parentNode = attachToSelector ? document?.querySelector(attachToSelector) : document?.querySelector('#___gatsby');
   }
 
+  const nodeRef = useRef<HTMLDialogElement>(isBrowser ? document?.createElement('dialog') : null);
+
+  if (isBrowser) {
+    if (parentNode && nodeRef?.current) {
+      parentNode.appendChild(nodeRef.current);
+      nodeRef.current.open = true;
+    } else {
+      parentNode = document?.body;
+    }
+  }
+
+  const closePortal = () => {
+    if (parentNode && nodeRef?.current) {
+      nodeRef.current.open = false;
+      parentNode.removeChild(nodeRef.current);
+    }
+  };
+
   return {
-    targetNode,
+    closePortal,
+    targetNode: nodeRef.current,
   };
 };

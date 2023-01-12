@@ -12,6 +12,7 @@ import { ButtonLink } from '../ButtonLink/ButtonLink';
 import { useAnchors } from '@/hooks';
 import { AppContext } from './Layout.context';
 import { cookiesKey } from '@/static';
+import { SeeMore } from '@/components';
 
 // TODO: global header & footer as slices
 
@@ -59,6 +60,7 @@ const Layout = ({
           search={pageContext?.options?.search}
         />
         {children}
+        {pageContext.content?.seeMore?.hasSeeMore && <SeeMore {...pageContext.content.seeMore} />}
         <Footer
           address={pageContext?.options?.address}
           background={pageContext?.options?.footer?.background}

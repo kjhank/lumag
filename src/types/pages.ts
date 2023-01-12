@@ -3,7 +3,7 @@ import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithM
 import { IconSlug } from './global';
 import {
   ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
-  ParsedPost, Post, Template, Translations, Video,
+  ParsedPost, Post, SeeMore, Template, Translations, Video,
 } from './wordpress';
 
 export type PageMeta = {
@@ -33,6 +33,7 @@ export type I18n = {
 export type PageContext = {
   content: {
     [key: string]: string | number | {} | [];
+    seeMore: SeeMore;
   };
   date: string;
   id: number;
@@ -42,6 +43,19 @@ export type PageContext = {
   options: ParsedOptions;
   parentId?: number;
   slug: string;
+};
+
+export type GenericPageProps = PageProps & {
+  pageContext: Omit<PageContext, 'content'> & {
+    content:
+    {
+      body: string;
+      seeMore: SeeMore;
+    };
+    header: {
+      background: ACFImage;
+    };
+  };
 };
 
 export type NewsPageProps = PageProps & {
@@ -59,15 +73,6 @@ export type NewsPageProps = PageProps & {
       title: string;
     };
     posts: Array<ParsedPost>;
-  };
-};
-
-export type GenericPageProps = PageProps & {
-  pageContext: Omit<PageContext, 'content'> & {
-    content:
-    { rendered: string }; header: {
-      background: ACFImage;
-    };
   };
 };
 
@@ -126,7 +131,7 @@ export type Subsidies = {
 
 export type CustomPageProps<T = null> = PageProps & {
   pageContext: PageContext & {
-    content: T;
+    content: T & SeeMore;
   };
 };
 
@@ -270,7 +275,6 @@ export type OfferBrakesPageContent = {
   catalogs: Catalogs;
   certs: Certificates;
   header: Header;
-  seeMore: {};
 };
 
 export type HomePageProps = PageProps & {

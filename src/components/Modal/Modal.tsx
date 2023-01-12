@@ -6,15 +6,22 @@ import { ModalProps } from './Modal.types';
 import { usePortal } from '@/hooks';
 
 export const Modal = ({
-  close, children, isOpen,
+  children, isOpen, onCloseCallback = () => {},
 }: ModalProps) => {
-  const { targetNode } = usePortal();
+  const { closePortal, targetNode } = usePortal() ?? {};
+
+  if (!targetNode) return null;
+
+  const handleClose = () => {
+    closePortal();
+    onCloseCallback();
+  };
 
   return isOpen
     ? createPortal(
       <ModalWrapper>
         <ModalContainer>
-          <CloseButton onClick={close}>⨉</CloseButton>
+          <CloseButton onClick={handleClose}>⨉</CloseButton>
           {children}
         </ModalContainer>
       </ModalWrapper>,

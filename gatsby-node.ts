@@ -249,7 +249,10 @@ const getContext = async ({
 
   return {
     ...globalContext,
-    content,
+    content: {
+      body: content.rendered,
+      seeMore: acf.seeMore,
+    },
     header: {
       background: acf?.header?.background,
       title,

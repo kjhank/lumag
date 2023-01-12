@@ -10,8 +10,8 @@ export const useOutsideClick: UseOutsideClick
         callback(event);
       };
 
-      document.addEventListener('click', eventListener);
+      document?.addEventListener('click', eventListener);
 
-      return () => document.removeEventListener('click', eventListener);
+      return () => document?.removeEventListener('click', eventListener);
     }, [ref, callback]);
   };
