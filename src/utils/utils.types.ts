@@ -11,6 +11,6 @@ export type WrapPageProps = {
   };
 };
 
-export type Breakpoint = 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
+export type Breakpoint = 'xxl' | 'xl' | 'l' | 'ml' | 'm' | 's' | 'xs' | 'xxs';
 
 export type QueryKey = 'landscape' | 'touch' | 'nonTouch' | 'portrait' | Breakpoint;

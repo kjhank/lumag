@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   margin-block-start: ${({ theme }) => theme.helpers.getMax(-200)};
@@ -6,6 +6,16 @@ export const Section = styled.section`
 
   > div {
     padding-inline: ${({ theme }) => theme.helpers.getMin(75)};
+  }
+
+  .text-media {
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: min(48px, 6.3vw);
+      }
+    `}
   }
 `;
 

@@ -36,8 +36,8 @@ export const Figure = styled.figure`
     stroke: ${({ theme }) => theme.colors.neutral[20]};
     ${({ theme }) => css`
       ${theme.mediaQueries.s} {
-        top: -10%;
-        width: 80%;
+        top: -5%;
+        width: 100%;
         height: auto;
       }
     `}
@@ -51,7 +51,7 @@ export const Figure = styled.figure`
     color: ${({ theme }) => theme.colors.brand};
     ${({ theme }) => css`
       ${theme.mediaQueries.s} {
-        width: 45%;
+        width: 60%;
         aspect-ratio: 1;
         height: auto;
       }

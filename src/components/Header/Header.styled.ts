@@ -1,22 +1,26 @@
 import styled, { css } from 'styled-components';
 
-export const HeaderNode = styled.header`
+export const HeaderNode = styled.header<{ paddingBlockStart: number }>`
   position: relative;
   aspect-ratio: 1920/716;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-block-start: ${({ theme }) => theme.helpers.getMin(251)};
+  padding-block-start: ${({ theme, paddingBlockStart }) => theme.helpers.getMin(paddingBlockStart)};
   ${({ theme }) => theme.fonts.sizes.s};
   text-align: center;
-
-  /* stylelint-disable-next-line selector-class-pattern */
-  &.header--news-page {
-    padding-block-start: ${({ theme }) => theme.helpers.getMin(180)};
-  }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.xl} {
+      aspect-ratio: 1920/766;
+    }
+  `}
+  ${({ theme }) => css`
+    ${theme.mediaQueries.ml} {
+      aspect-ratio: 1920/820;
+    }
+  `}
 
   h2 {
-    /* padding-inline: 25%; */
     color: ${({ theme }) => theme.colors.brand};
     font-weight: 900;
     ${({ theme }) => theme.fonts.sizes.xxl};
@@ -35,7 +39,6 @@ export const HeaderNode = styled.header`
   }
 
   p {
-    /* padding-inline: ${({ theme }) => theme.helpers.getMin(160)}; */
     color: ${({ theme }) => theme.colors.neutral[5]};
     font-family: 'Avenir Book', sans-serif;
   }

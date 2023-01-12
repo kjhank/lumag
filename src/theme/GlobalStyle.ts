@@ -197,8 +197,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Helvetica Bold'),
       local('Helvetica-Bold'),
-      url('/assets/fonts/subset-Helvetica-Bold.woff2') format('woff2'),
-      url('/assets/fonts/subset-Helvetica-Bold.woff') format('woff');
+      url('/fonts/subset-Helvetica-Bold.woff2') format('woff2'),
+      url('/fonts/subset-Helvetica-Bold.woff') format('woff');
   }
 
   @font-face {
@@ -208,8 +208,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir LT Std 95 Black'),
       local('AvenirLTStd-Black'),
-      url('/assets/fonts/subset-AvenirLTStd-Black.woff2') format('woff2'),
-      url('/assets/fonts/subset-AvenirLTStd-Black.woff') format('woff');
+      url('/fonts/subset-AvenirLTStd-Black.woff2') format('woff2'),
+      url('/fonts/subset-AvenirLTStd-Black.woff') format('woff');
     font-display: swap;
   }
 
@@ -219,8 +219,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     font-family: 'Helvetica';
     src:
       local('Helvetica'),
-      url('/assets/fonts/subset-Helvetica.woff2') format('woff2'),
-      url('/assets/fonts/subset-Helvetica.woff') format('woff');
+      url('/fonts/subset-Helvetica.woff2') format('woff2'),
+      url('/fonts/subset-Helvetica.woff') format('woff');
     font-display: swap;
   }
 
@@ -231,8 +231,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Helvetica Oblique'),
       local('Helvetica-Oblique'),
-      url('/assets/fonts/subset-Helvetica-Oblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Helvetica-Oblique.woff') format('woff');
+      url('/fonts/subset-Helvetica-Oblique.woff2') format('woff2'),
+      url('/fonts/subset-Helvetica-Oblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -243,8 +243,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Lato Regular'),
       local('Lato-Regular'),
-      url('/assets/fonts/subset-Lato-Regular.woff2') format('woff2'),
-      url('/assets/fonts/subset-Lato-Regular.woff') format('woff');
+      url('/fonts/subset-Lato-Regular.woff2') format('woff2'),
+      url('/fonts/subset-Lato-Regular.woff') format('woff');
     font-display: swap;
   }
 
@@ -255,8 +255,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Helvetica Bold Oblique'),
       local('Helvetica-BoldOblique'),
-      url('/assets/fonts/subset-Helvetica-BoldOblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Helvetica-BoldOblique.woff') format('woff');
+      url('/fonts/subset-Helvetica-BoldOblique.woff2') format('woff2'),
+      url('/fonts/subset-Helvetica-BoldOblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -267,8 +267,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Lato Black'),
       local('Lato-Black'),
-      url('/assets/fonts/subset-Lato-Black.woff2') format('woff2'),
-      url('/assets/fonts/subset-Lato-Black.woff') format('woff');
+      url('/fonts/subset-Lato-Black.woff2') format('woff2'),
+      url('/fonts/subset-Lato-Black.woff') format('woff');
     font-display: swap;
   }
 
@@ -279,8 +279,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Medium'),
       local('Avenir-Medium'),
-      url('/assets/fonts/subset-Avenir-Medium.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Medium.woff') format('woff');
+      url('/fonts/subset-Avenir-Medium.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Medium.woff') format('woff');
     font-display: swap;
   }
 
@@ -291,8 +291,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Oblique'),
       local('Avenir-Oblique'),
-      url('/assets/fonts/subset-Avenir-Oblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Oblique.woff') format('woff');
+      url('/fonts/subset-Avenir-Oblique.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Oblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -303,8 +303,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Book Oblique'),
       local('Avenir-BookOblique'),
-      url('/assets/fonts/subset-Avenir-BookOblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-BookOblique.woff') format('woff');
+      url('/fonts/subset-Avenir-BookOblique.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-BookOblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -315,8 +315,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Roman'),
       local('Avenir-Roman'),
-      url('/assets/fonts/subset-Avenir-Roman.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Roman.woff') format('woff');
+      url('/fonts/subset-Avenir-Roman.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Roman.woff') format('woff');
     font-display: swap;
   }
 
@@ -327,8 +327,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Heavy'),
       local('Avenir-Heavy'),
-      url('/assets/fonts/subset-Avenir-Heavy.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Heavy.woff') format('woff');
+      url('/fonts/subset-Avenir-Heavy.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Heavy.woff') format('woff');
     font-display: swap;
   }
 
@@ -339,8 +339,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Book'),
       local('Avenir-Book'),
-      url('/assets/fonts/subset-Avenir-Book.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Book.woff') format('woff');
+      url('/fonts/subset-Avenir-Book.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Book.woff') format('woff');
     font-display: swap;
   }
 
@@ -351,8 +351,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Light'),
       local('Avenir-Light'),
-      url('/assets/fonts/subset-Avenir-Light.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Light.woff') format('woff');
+      url('/fonts/subset-Avenir-Light.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Light.woff') format('woff');
     font-display: swap;
   }
 
@@ -363,8 +363,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Heavy Oblique'),
       local('Avenir-HeavyOblique'),
-      url('/assets/fonts/subset-Avenir-HeavyOblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-HeavyOblique.woff') format('woff');
+      url('/fonts/subset-Avenir-HeavyOblique.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-HeavyOblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -375,8 +375,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Medium Oblique'),
       local('Avenir-MediumOblique'),
-      url('/assets/fonts/subset-Avenir-MediumOblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-MediumOblique.woff') format('woff');
+      url('/fonts/subset-Avenir-MediumOblique.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-MediumOblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -387,8 +387,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Black'),
       local('Avenir-Black'),
-      url('/assets/fonts/subset-Avenir-Black.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-Black.woff') format('woff');
+      url('/fonts/subset-Avenir-Black.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-Black.woff') format('woff');
     font-display: swap;
   }
 
@@ -399,8 +399,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Black Oblique'),
       local('Avenir-BlackOblique'),
-      url('/assets/fonts/subset-Avenir-BlackOblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-BlackOblique.woff') format('woff');
+      url('/fonts/subset-Avenir-BlackOblique.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-BlackOblique.woff') format('woff');
     font-display: swap;
   }
 
@@ -411,8 +411,8 @@ export const GlobalStyle = createGlobalStyle<{ scrollDisabled?: boolean }>`
     src:
       local('Avenir Light Oblique'),
       local('Avenir-LightOblique'),
-      url('/assets/fonts/subset-Avenir-LightOblique.woff2') format('woff2'),
-      url('/assets/fonts/subset-Avenir-LightOblique.woff') format('woff');
+      url('/fonts/subset-Avenir-LightOblique.woff2') format('woff2'),
+      url('/fonts/subset-Avenir-LightOblique.woff') format('woff');
     font-display: swap;
   }
 

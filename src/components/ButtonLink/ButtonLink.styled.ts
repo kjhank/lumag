@@ -21,6 +21,11 @@ export const buttonLinkStyle = css`
 
     > svg {
       translate: 100% 0 0;
+      ${({ theme }) => css`
+        ${theme.mediaQueries.m} {
+          translate: none;
+        }
+      `}
     }
   }
 

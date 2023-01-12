@@ -5,7 +5,7 @@ import { ManagingPageProps } from '@/types';
 
 const ManagingPage = ({ pageContext: { content } }: ManagingPageProps) => (
   <>
-    <Header {...content.header} />
+    <Header {...content.header} paddingBlockStart={150} />
     <MethodsSection items={content.list} />
     <Tools {...content.tools} />
   </>

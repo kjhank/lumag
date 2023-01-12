@@ -22,7 +22,7 @@ export const GetToKnowUs = ({
           {video.mp4 && <source src={video.mp4.url} type="video/mp4" />}
         </Player>
       </VideoWrapper>
-      <ul>
+      <ul className="text-media">
         {list.map(item => (
           <TextWithMedia
             as="li"

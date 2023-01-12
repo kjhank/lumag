@@ -7,11 +7,12 @@ import { TextWithMediaProps } from './TextWithMedia.types';
 
 export const TextWithMedia = (
   {
-    as, backgroundIndex = 17, fontSize = 12, image, layout = 'alternating', text, heading, video,
+    as, backgroundIndex = 17, fontSize = 18, hasDecoration = false, image, layout = 'alternating', text, heading, video,
   }: TextWithMediaProps
 ) => (
   <Wrapper
     as={as} backgroundIndex={backgroundIndex}
+    hasDecoration={hasDecoration}
     layout={layout}
   >
     {image && <Image decorationOn={layout} imageData={image} />}
@@ -27,7 +28,7 @@ export const TextWithMedia = (
       </video>
     </VideoWrapper>
     )}
-    <TextWrapper fontSize={fontSize}>
+    <TextWrapper $fontSize={fontSize}>
       <h2>{heading}</h2>
       {/* eslint-disable-next-line react/no-danger */}
       <p dangerouslySetInnerHTML={{

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Grid = styled.ul`
   display: grid;
@@ -6,6 +6,11 @@ export const Grid = styled.ul`
   grid-auto-rows: 1fr;
   padding: ${({ theme }) => theme.helpers.getMin(31)};
   background-color: ${({ theme }) => theme.colors.brand};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      grid-template-columns: 1fr;
+    }
+  `}
 `;
 
 export const Item = styled.li`
@@ -42,4 +47,24 @@ export const Item = styled.li`
       height: 1px;
     }
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding: ${theme.helpers.getMin(92)} ${theme.helpers.getMin(128)};
+
+      :nth-child(even),
+      :nth-child(odd) {
+        ::before {
+          content: none;
+        }
+        :not(:first-child) {
+          ::after {
+            top: 0;
+            right: ${theme.helpers.getMin(31)};
+            left: ${theme.helpers.getMin(31)};
+            height: 1px;
+          }
+        }
+      }
+    }
+  `}
 `;

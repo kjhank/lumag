@@ -7,7 +7,7 @@ import { CSRPageProps } from '@/types';
 
 const CSRPage = ({ pageContext: { content } }: CSRPageProps) => (
   <>
-    <Header {...content.header} />
+    <Header {...content.header} paddingBlockStart={150} />
     <PaginatedList
       items={content.list.map(item => (
         <ExpandableItem

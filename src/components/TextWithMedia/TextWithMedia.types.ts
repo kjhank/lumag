@@ -6,6 +6,7 @@ export type TextWithMediaProps = {
   as?: keyof JSX.IntrinsicElements;
   backgroundIndex?: number;
   fontSize?: number;
+  hasDecoration?: boolean;
   heading: string;
   layout?: Layout;
   text: string;
