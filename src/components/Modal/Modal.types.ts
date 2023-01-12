@@ -1,5 +1,5 @@
 export type ModalProps = {
   children: React.ReactNode;
-  close: () => void;
   isOpen: boolean;
+  onCloseCallback?: () => void;
 };

@@ -4,6 +4,7 @@ export const ModalWrapper = styled.main`
   position: fixed;
   inset: 0;
   z-index: 200;
+  overflow: auto;
   display: grid;
   place-items: center;
   padding-block-start: ${({ theme }) => theme.helpers.getMin(100)};

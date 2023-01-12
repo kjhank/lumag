@@ -1,4 +1,7 @@
 export default {
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     'gatsby-plugin-tsconfig-paths',
     {

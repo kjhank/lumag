@@ -7,7 +7,6 @@ import {
   EventNode, Header, Name, Title, Year,
 } from './Timeline.styled';
 import { EventProps } from './Timeline.types';
-import { useOutsideClick } from '@/hooks';
 import { Modal } from '../Modal/Modal';
 
 export const TimelineEvent = ({ event }: EventProps) => {
@@ -17,8 +16,6 @@ export const TimelineEvent = ({ event }: EventProps) => {
   const handleButtonClick = () => {
     setOpen(true);
   };
-
-  useOutsideClick(buttonRef, () => setOpen(false));
 
   return (
     <EventNode>
@@ -34,7 +31,7 @@ export const TimelineEvent = ({ event }: EventProps) => {
         </ActionButton>
       </Header>
       <Description>{event.description}</Description>
-      <Modal close={() => setOpen(false)} isOpen={isOpen}>
+      <Modal isOpen={isOpen}>
         <EventImage imageData={event.image} />
       </Modal>
     </EventNode>
