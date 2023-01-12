@@ -500,24 +500,25 @@ export type Social = {
 };
 
 export type Options = {
-  cookiesText: string;
-  cookiesButtonText: string;
   address: {
     address: string;
     background: ACFImage;
     socials: Array<Social>;
     verticalBackground: ACFImage;
   };
-  nav: {
-    mainMenu: Array<ACFMenu>;
-  };
-  newsletter: Newsletter;
-  search: string;
+  cookiesText: string;
+  cookiesButtonText: string;
+  defaultNewsThumbnail: ACFImage;
   footerNav: Array<{
     heading: string;
     list: Array<ACFFooterMenu>;
   }>;
   footerText: string;
+  nav: {
+    mainMenu: Array<ACFMenu>;
+  };
+  newsletter: Newsletter;
+  search: string;
 };
 
 export type FooterSubmenu = {
@@ -557,6 +558,7 @@ export type ParsedOptions = {
   address: string;
   cookiesText: string;
   cookiesButtonText: string;
+  defaultNewsThumbnail: ACFImage;
   footer: {
     background: ACFImage;
     copyright: string;

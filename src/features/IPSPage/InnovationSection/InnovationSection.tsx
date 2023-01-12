@@ -20,7 +20,7 @@ export const InnovationSection = ({
 
           return (
             (
-              <Item key={icon.label}>
+              <Item key={icon.iconSlug}>
                 <Figure>
                   <Icon />
                   <CircleCutout className="circle-cutout" />

@@ -62,7 +62,6 @@ export const Wrapper = styled.article<{ backgroundIndex: number; layout: Layout 
 
 export const mediaStyles = css<{ decorationOn: Layout }>`
   position: relative;
-  aspect-ratio: 583/434;
   width: 50%;
 
   > img {

@@ -10,6 +10,11 @@ export const ItemNode = styled.li`
     border-block-end: ${({ theme }) => `${theme.helpers.getMin(1)} solid ${theme.colors.neutral[20]}`};
     padding-block-end: ${({ theme }) => theme.helpers.getMin(50)};
   }
+
+  > div {
+    width: 50%;
+    background-color: ${({ theme }) => theme.colors.neutral[15]};
+  }
 `;
 
 export const ItemContent = styled.div<{ isExpanded?: boolean }>`
@@ -18,7 +23,6 @@ export const ItemContent = styled.div<{ isExpanded?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: ${({ theme }) => theme.helpers.getMin(25)};
-  width: 50%;
   padding: ${({ theme }) => `${theme.helpers.getMin(49)} ${theme.helpers.getMin(74)}`};
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   color: ${({ theme }) => theme.colors.neutral[100]};
@@ -57,6 +61,7 @@ export const ItemImage = styled(WPImage)`
   position: relative;
   aspect-ratio: 583/434;
   width: 50%;
+  height: 100%;
 
   ::after {
     content: '';

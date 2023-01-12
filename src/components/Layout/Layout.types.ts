@@ -42,6 +42,7 @@ export type SearchProps = {
 };
 
 export type AppContextState = {
+  defaultNewsThumbnail: ACFImage;
   lang: Languages;
   urlPrefix: string;
 };

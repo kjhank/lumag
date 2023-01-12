@@ -99,6 +99,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
   address: options.address.address,
   cookiesButtonText: options.cookiesButtonText,
   cookiesText: options.cookiesText,
+  defaultNewsThumbnail: options.defaultNewsThumbnail,
   footer: {
     background: options.address.background,
     copyright: options.footerText,
