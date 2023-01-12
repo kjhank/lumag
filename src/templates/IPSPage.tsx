@@ -9,9 +9,13 @@ import { IPSPageProps } from '@/types';
 
 const IPSPage = ({ pageContext }: IPSPageProps) => (
   <>
-    <Header {...pageContext.content.header} />
+    <Header {...pageContext.content.header} paddingBlockStart={210} />
     <Container>
-      <TextWithMedia {...pageContext.content.textWithVideo} layout="imageRight" />
+      <TextWithMedia
+        {...pageContext.content.textWithVideo} backgroundIndex={5}
+        hasDecoration
+        layout="imageRight"
+      />
     </Container>
     <InnovationSection
       {...pageContext.content.iconsEtc}

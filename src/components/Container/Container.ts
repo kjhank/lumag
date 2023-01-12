@@ -1,5 +1,5 @@
-/* stylelint-disable declaration-colon-newline-after */
 import styled, { css } from 'styled-components';
+/* stylelint-disable declaration-colon-newline-after */
 
 export const Container = styled.div<{ marginBlockEnd?: number; marginBlockStart?: number }>`
   position: relative;
@@ -17,11 +17,11 @@ export const Container = styled.div<{ marginBlockEnd?: number; marginBlockStart?
     }
   `}
   ${({ marginBlockStart, theme }) => marginBlockStart && css`
-    margin-block-start: ${theme.helpers.getMin(marginBlockStart)}
+    margin-block-start: ${marginBlockStart > 0 ? theme.helpers.getMin(marginBlockStart) : theme.helpers.getMax(marginBlockStart)};
   `};
   ${({ marginBlockEnd, theme }) => marginBlockEnd && css`
     z-index: 2;
-    margin-block-end: ${theme.helpers.getMin(marginBlockEnd)};
+    margin-block-end: ${marginBlockEnd > 0 ? theme.helpers.getMin(marginBlockEnd) : theme.helpers.getMax(marginBlockEnd)};
 
     + section {
       z-index: 1;

@@ -10,7 +10,10 @@ const OfferBreaksPage = ({ pageContext }: OfferBrakesPageProps) => (
     <Container>
       <TextWithMedia {...pageContext.content.brakePads} backgroundIndex={5} />
       <TextWithMedia {...pageContext.content.brakeDiscs} backgroundIndex={5} />
-      <TextWithMedia {...pageContext.content.brakeLinings} backgroundIndex={5} />
+      <TextWithMedia
+        {...pageContext.content.brakeLinings} backgroundIndex={5}
+        hasDecoration
+      />
     </Container>
     <Catalogs {...pageContext.content.catalogs} />
     <Certificates {...pageContext.content.certs} />

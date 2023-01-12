@@ -1,7 +1,4 @@
 export default {
-  flags: {
-    DEV_SSR: false,
-  },
   plugins: [
     'gatsby-plugin-tsconfig-paths',
     {
@@ -21,22 +18,17 @@ export default {
     'gatsby-plugin-netlify',
     'gatsby-plugin-sharp',
     {
-      // options: {
-      //   rule: {
-      //     include: /\/src\/static/,
-      //   },
-      // },
       resolve: 'gatsby-plugin-react-svg',
     },
     {
       options: {
-        background_color: '#663399',
+        background_color: '#fabf3a',
         display: 'minimal-ui',
         icon: 'src/assets/favicon.svg',
-        name: 'Untitled Gatsby project',
-        short_name: 'foo',
+        name: 'Lumag 2022',
+        short_name: 'lumag',
         start_url: '/',
-        theme_color: '#663399', // TODO: set these up 👆
+        theme_color: '#fabf3a',
       },
       resolve: 'gatsby-plugin-manifest',
     },
@@ -45,8 +37,8 @@ export default {
   ],
   siteMetadata: {
     author: '@kjhank',
-    description: 'Gatsby TS starter with Styled Components + ESLint',
-    title: 'Gatsby boilerplate',
+    description: 'Lumag 2022',
+    title: 'Lumag 2022',
   },
 };
 

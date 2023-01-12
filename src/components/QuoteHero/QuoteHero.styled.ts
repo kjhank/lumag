@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 
 export const Wrapper = styled.article`
@@ -6,6 +6,13 @@ export const Wrapper = styled.article`
   grid-template-columns: repeat(2, 1fr);
   margin-block-start: ${({ theme }) => theme.helpers.getMax(-110)};
   padding-block-end: ${({ theme }) => theme.helpers.getMin(40)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      display: flex;
+      flex-direction: column-reverse;
+      padding-block-end: ${theme.helpers.getMin(110)};
+    }
+  `}
 `;
 
 export const QuoteWrapper = styled.figure`
@@ -17,17 +24,22 @@ export const QuoteWrapper = styled.figure`
 `;
 
 export const Author = styled.figcaption`
+  position: relative;
+  z-index: 2;
   font-weight: bold;
   ${({ theme }) => theme.fonts.sizes.xl};
 `;
 
 export const Subheading = styled.p`
+  position: relative;
+  z-index: 2;
   color: ${({ theme }) => theme.colors.brand};
   ${({ theme }) => theme.fonts.sizes.s};
 `;
 
 export const Quote = styled.blockquote`
   position: relative;
+  z-index: 1;
   margin-block-start: auto;
   font-weight: 300;
   ${({ theme }) => theme.helpers.getClamped(31)};
@@ -56,7 +68,12 @@ export const Quote = styled.blockquote`
   }
 `;
 
-export const Image = styled(WPImage)<{ aspectRatio: number }>`
+export const Image = styled(WPImage) <{ aspectRatio: number }>`
   position: relative;
   top: ${({ theme }) => theme.helpers.getMax(-100)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      top: auto;
+    }
+  `}
 `;

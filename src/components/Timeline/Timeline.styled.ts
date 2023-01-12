@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 
 export const List = styled.ul`
@@ -8,6 +8,13 @@ export const List = styled.ul`
   grid-template-rows: 1fr;
   gap: ${({ theme }) => theme.helpers.getMin(46)};
   padding-inline: 15%;
+  /* stylelint-disable */
+  ${({ theme }) => css`
+    ${theme.mediaQueries.xxl} {
+      padding-inline: 5%;
+    }
+  `}
+  /* stylelint-enable */
 
   ::before {
     content: '';
@@ -37,6 +44,14 @@ export const Name = styled.h3`
   width: 100%;
   padding: 0 25%;
 
+  /* stylelint-disable */
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      padding: 0 10%;
+    }
+  `}
+  /* stylelint-enable */
+
   ::before {
     content: '';
     position: absolute;
@@ -60,6 +75,13 @@ export const EventNode = styled.li`
   align-items: center;
   gap: ${({ theme }) => theme.helpers.getMin(35)};
   padding: 0 10%;
+  /* stylelint-disable */
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding: 0 5%;
+    }
+  `}
+  /* stylelint-enable */
 
   :nth-child(odd) {
     flex-direction: row-reverse;
@@ -146,11 +168,21 @@ export const Year = styled.time`
   text-decoration: underline ${({ theme }) => theme.colors.neutral[5]};
   text-decoration-thickness: ${({ theme }) => theme.helpers.getMin(2)};
   text-underline-offset: ${({ theme }) => theme.helpers.getMin(10)};
+  ${({ theme }) => css`
+  ${theme.mediaQueries.s} {
+    ${theme.helpers.getClamped(32)};
+    }
+  `}
 `;
 
 export const Title = styled.span`
   ${({ theme }) => theme.helpers.getClamped(22)};
   text-align: center;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      ${theme.helpers.getClamped(18)};
+    }
+  `}
 `;
 
 export const ActionButton = styled.button`

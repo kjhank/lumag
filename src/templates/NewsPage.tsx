@@ -12,7 +12,10 @@ const NewsPage = ({ pageContext }: NewsPageProps) => {
 
   return (
     <>
-      <Header className="header--news-page" {...pageContext.header} />
+      <Header
+        className="header--news-page" {...pageContext.header}
+        paddingBlockStart={180}
+      />
       <PaginatedList
         items={pageContext.posts.map(post => {
           if (Object.keys(post).length < 1) return null;

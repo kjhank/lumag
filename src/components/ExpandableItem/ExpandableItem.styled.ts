@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '../WPImage/WPImage';
 import { WYSIWYG } from '../WYSIWYG/WYSIWYG';
 
@@ -14,7 +14,17 @@ export const ItemNode = styled.li`
   > div {
     width: 50%;
     background-color: ${({ theme }) => theme.colors.neutral[15]};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.l} {
+        width: 100%;
+      }
+    `}
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      flex-direction: column;
+    }
+  `}
 `;
 
 export const ItemContent = styled.div<{ isExpanded?: boolean }>`
@@ -38,11 +48,21 @@ export const ItemContent = styled.div<{ isExpanded?: boolean }>`
 
     > svg {
       rotate: ${({ isExpanded }) => isExpanded && '-90deg'};
+      ${({ isExpanded, theme }) => css`
+      ${theme.mediaQueries.l} {
+          rotate: ${isExpanded ? '-90deg' : '90deg'};
+        }
+      `}
     }
 
     :hover {
       > svg {
         translate: ${({ isExpanded }) => (isExpanded ? '0 -50% 0' : '100% 0 0')};
+        ${({ theme }) => css`
+          ${theme.mediaQueries.l} {
+            translate: none;
+          }
+        `}
       }
     }
   }
@@ -59,9 +79,15 @@ export const ItemText = styled(WYSIWYG)`
 
 export const ItemImage = styled(WPImage)`
   position: relative;
-  aspect-ratio: 583/434;
   width: 50%;
   height: 100%;
+  /* stylelint-disable */
+  ${({ theme }) => css`
+  ${theme.mediaQueries.l} {
+    width: 100%;
+  }
+  `}
+  /* stylelint-enable */
 
   ::after {
     content: '';
@@ -74,5 +100,13 @@ export const ItemImage = styled(WPImage)`
     rotate: 45deg;
     translate: 50% -50% 0;
     transform-origin: center;
+    ${({ theme }) => css`
+      ${theme.mediaQueries.l} {
+        top: 100%;
+        left: 50%;
+        right: auto;
+        translate: -50% -50% 0;
+      }
+    `}
   }
 `;

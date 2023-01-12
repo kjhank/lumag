@@ -3,6 +3,12 @@ import styled, { css } from 'styled-components';
 export const Section = styled.section`
   position: relative;
   padding-block-start: ${({ theme }) => theme.helpers.getMin(222)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      width: 100%;
+      padding-block-start: ${theme.helpers.getMin(320)};
+    }
+  `}
 
   .innovation-carousel {
     position: relative;

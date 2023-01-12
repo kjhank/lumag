@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ModalWrapper = styled.main`
   position: fixed;
@@ -18,6 +18,12 @@ export const ModalContainer = styled.div`
   min-height: 25vh;
   padding: 5%;
   background-color: ${({ theme }) => theme.colors.neutral[15]};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: 90vw;
+      min-height: unset;
+    }
+  `}
 `;
 
 export const CloseButton = styled.button`
@@ -34,6 +40,13 @@ export const CloseButton = styled.button`
   transition: filter ${({ theme }) => theme.transitions.default};
   cursor: pointer;
   translate: 50% -50% 0;
+  /* stylelint-disable */
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: ${theme.helpers.getMin(92)};
+    }
+  `}
+  /* stylelint-enable */
 
   :hover {
     filter: contrast(120%);

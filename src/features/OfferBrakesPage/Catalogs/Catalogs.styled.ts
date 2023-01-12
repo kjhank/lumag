@@ -1,9 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { WPImage } from '@/components';
 
 export const Section = styled.section`
   padding-block: ${({ theme }) => `${theme.helpers.getMin(238)} ${theme.helpers.getMin(142)}`};
   position: relative;
+  ${({ theme }) => css`
+  ${theme.mediaQueries.l} {
+      padding-block-start: ${theme.helpers.getMin(320)};
+    }
+  `}
 
   > div {
     display: flex;
@@ -15,6 +20,12 @@ export const Section = styled.section`
 export const List = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.helpers.getMin(85)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      flex-direction: column;
+      width: 100%;
+    }
+  `}
 `;
 
 export const Image = styled(WPImage)`

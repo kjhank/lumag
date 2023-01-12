@@ -1,8 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   position: relative;
   padding-block: ${({ theme }) => `${theme.helpers.getMin(164)} ${theme.helpers.getMin(115)}`};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: 100%;
+      padding-block-start: ${theme.helpers.getMin(264)};
+    }
+  `}
 
   > div {
     display: flex;

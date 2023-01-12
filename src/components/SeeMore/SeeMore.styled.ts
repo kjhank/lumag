@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Section = styled.aside`
   padding-block: ${({ theme }) => `${theme.helpers.getMin(46)} ${theme.helpers.getMin(92)}`};
@@ -21,6 +21,11 @@ export const Wrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
   gap: ${({ theme }) => theme.helpers.getMin(100)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      grid-template-columns: 1fr;
+    }
+  `}
 `;
 
 export const Item = styled.article`

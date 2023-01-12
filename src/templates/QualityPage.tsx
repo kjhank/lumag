@@ -7,7 +7,7 @@ import { QualityPageProps } from '@/types';
 
 const QualityPage = ({ pageContext }: QualityPageProps) => (
   <>
-    <Header {...pageContext.content.header} />
+    <Header {...pageContext.content.header} paddingBlockStart={180} />
     <Container>
       <TextWithMedia {...pageContext.content.textWithImage} />
     </Container>

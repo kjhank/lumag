@@ -7,12 +7,13 @@ import { ValuesPageProps } from '@/types';
 
 const ValuesPage = ({ pageContext: { content } }: ValuesPageProps) => (
   <>
-    <Header {...content.header} />
+    <Header {...content.header} paddingBlockStart={150} />
     <Container marginBlockEnd={-100} marginBlockStart={-200}>
-      {content.list.map(item => (
+      {content.list.map((item, index) => (
         <TextWithMedia
           backgroundIndex={5}
-          fontSize={20} key={item.heading}
+          fontSize={20} hasDecoration={index === content.list.length - 1}
+          key={item.heading}
           layout="alternating-reverse"
           {...item}
         />
