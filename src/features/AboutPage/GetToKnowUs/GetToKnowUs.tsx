@@ -5,12 +5,14 @@ import {
 } from './GetToKnowUs.styled';
 import { GetToKnowUsProps } from './GetToKnowUs.types';
 
-export const GetToKnowUs = ({
-  heading,
-  layout,
-  video,
-  list,
-}: GetToKnowUsProps) => (
+export const GetToKnowUs = (
+  {
+    heading,
+    layout,
+    video,
+    list,
+  }: GetToKnowUsProps
+) => (
   <Section>
     <Container>
       <SectionHeading>
