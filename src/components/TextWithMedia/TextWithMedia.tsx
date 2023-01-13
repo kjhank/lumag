@@ -20,6 +20,7 @@ export const TextWithMedia = (
     <VideoWrapper decorationOn={layout}>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
+        autoPlay={false}
         controls
         poster={video.poster.url}
       >
