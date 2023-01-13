@@ -159,6 +159,7 @@ export const SinglePromo = styled.article`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  transform: translateZ(0);
 
   /* stylelint-disable-next-line no-descending-specificity */
   > a {

@@ -50,12 +50,14 @@ export const Catalog = styled.article`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  transform: translateZ(0);
 
   /* stylelint-disable-next-line no-descending-specificity */
   > a {
     position: relative;
     z-index: 1;
     translate: 0 50% 0;
+    white-space: nowrap;
   }
 
   :hover {
@@ -70,7 +72,7 @@ export const Catalog = styled.article`
 export const CatalogText = styled.p`
   position: relative;
   z-index: 1;
-  padding-inline: 23%;
+  padding-inline: 15%;
   color: ${({ theme }) => theme.colors.neutral[5]};
   font-weight: 900;
   ${({ theme }) => theme.helpers.getClamped(16)};

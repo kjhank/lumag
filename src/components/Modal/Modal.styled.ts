@@ -28,6 +28,7 @@ export const ModalContainer = styled.div`
       min-height: unset;
     }
   `}
+  transform: translateZ(0);
 `;
 
 export const CloseButton = styled.button`
