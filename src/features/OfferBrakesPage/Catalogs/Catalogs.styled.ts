@@ -18,12 +18,12 @@ export const Section = styled.section`
 `;
 
 export const List = styled.ul`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: ${({ theme }) => theme.helpers.getMin(85)};
   ${({ theme }) => css`
     ${theme.mediaQueries.l} {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       width: 100%;
     }
   `}
