@@ -12,15 +12,36 @@ import {
 } from '../Layout.styled';
 import { FooterProps } from '../Layout.types';
 import {
-  Agency, Facebook, Linkedin, Logo, Twitter, Youtube,
+  Agency, Facebook, freshmailApiToken, freshmailApiUrl, Linkedin, Logo, Twitter, Youtube,
 } from '@/static';
-import { useAppContext } from '@/hooks';
+import { useApiLinks } from '@/hooks';
+import { FooterSubmenu } from '@/types';
 
 const icons = {
   facebook: Facebook,
   linkedin: Linkedin,
   twitter: Twitter,
   youtube: Youtube,
+};
+
+const RenderLink = ({ item }: { item: FooterSubmenu }) => {
+  const parsedUrl = useApiLinks(item.page.url);
+
+  return (
+    <LinkItem isBold={item.isBold}>
+      {parsedUrl.includes('http')
+        ? (
+          <a href={parsedUrl}>
+            {item.label || item.title}
+          </a>
+        )
+        : (
+          <Link to={parsedUrl}>
+            {item.label || item.title}
+          </Link>
+        )}
+    </LinkItem>
+  );
 };
 
 // TODO: slices
@@ -38,14 +59,38 @@ export const Footer = ({
     setAgreed(current => !current);
   };
 
-  const handleNewsletter = (event: FormEvent<HTMLFormElement>) => {
+  const handleNewsletter = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: integration
-    // eslint-disable-next-line no-alert
-    alert(`email will be sent to ${event.currentTarget.elements.namedItem('email')}`);
-  };
 
-  const { urlPrefix } = useAppContext();
+    const request: Request = new Request(`${freshmailApiUrl}/subscriber/add`, {
+      body: JSON.stringify({
+        email,
+        list: 'q73xtkabfc',
+      }),
+      headers: {
+        Authorization: `Bearer [${freshmailApiToken}]`,
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      // mode: 'no-cors',
+    });
+
+    try {
+      const response = await fetch(request);
+
+      if (response.status === 200) {
+        const result = await response.json();
+
+        console.log({ result });
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+
+    // TODO: integration
+    // console.log({ emailAddress });
+    // eslint-disable-next-line no-alert
+  };
 
   return (
     <>
@@ -77,7 +122,8 @@ export const Footer = ({
               {newsletter?.heading}
             </NewsletterHeading>
             <NewsletterInput
-              onChange={handleEmailChange} placeholder={newsletter?.placeholder}
+              name="email" onChange={handleEmailChange}
+              placeholder={newsletter?.placeholder}
               type="email" value={email}
             />
             <NewsletterAgreement>
@@ -100,11 +146,7 @@ export const Footer = ({
               {item.heading && <LinksHeading>{item.heading}</LinksHeading>}
               <LinksList>
                 {item.subitems.map(subitem => (
-                  <LinkItem isBold={subitem.isBold} key={`${subitem.slug}-${subitem.label}`}>
-                    <Link to={`${urlPrefix}${subitem.slug}`}>
-                      {subitem.label || subitem.title}
-                    </Link>
-                  </LinkItem>
+                  <RenderLink item={subitem} key={subitem.title} />
                 ))}
               </LinksList>
             </div>
