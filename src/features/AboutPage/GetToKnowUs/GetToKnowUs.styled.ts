@@ -23,7 +23,7 @@ export const VideoWrapper = styled.div`
   margin-block-start: ${({ theme }) => theme.helpers.getMin(55)};
 `;
 
-export const Player = styled.video`
+export const Player = styled.video<{ autoplay?: boolean }>`
   width: 100%;
   max-width: 100%;
   margin-block-end: ${({ theme }) => theme.helpers.getMin(72)};

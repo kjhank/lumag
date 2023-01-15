@@ -38,6 +38,7 @@ export const Item = styled.article`
   align-items: center;
   gap: ${({ theme }) => theme.helpers.getMin(16)};
   padding: 5%;
+  transform: translateZ(0);
 
   /* stylelint-disable-next-line no-descending-specificity */
   > a {
@@ -45,6 +46,7 @@ export const Item = styled.article`
     inset: auto auto 0;
     z-index: 1;
     translate: 0 50% 0;
+    white-space: nowrap;
   }
 
   picture {

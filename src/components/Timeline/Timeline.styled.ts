@@ -31,7 +31,7 @@ export const List = styled.ul`
 export const Description = styled.p`
   flex: 50%;
   order: 3;
-  font-family: 'Avenir Book', sans-serif;
+  font-family: 'Avenir Book', 'Avenir', sans-serif;
   ${({ theme }) => theme.helpers.getClamped(17)};
 `;
 

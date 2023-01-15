@@ -28,6 +28,7 @@ export const Text = styled.p`
 
 export const Image = styled(WPImage)`
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(13)} ${helpers.getMin(20)} ${helpers.getMin(30)} ${colors.neutral[30]}74)`};
+  transform: translateZ(0);
 `;
 
 export const Figure = styled.figure`

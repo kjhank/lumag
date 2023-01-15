@@ -9,6 +9,10 @@ export const Section = styled.section`
     align-items: center;
     gap: ${({ theme }) => theme.helpers.getMin(32)};
   }
+
+  a {
+    text-align: center;
+  }
   ${({ theme }) => css`
     ${theme.mediaQueries.m} {
       a {

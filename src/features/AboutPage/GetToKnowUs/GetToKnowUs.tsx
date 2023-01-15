@@ -5,19 +5,24 @@ import {
 } from './GetToKnowUs.styled';
 import { GetToKnowUsProps } from './GetToKnowUs.types';
 
-export const GetToKnowUs = ({
-  heading,
-  layout,
-  video,
-  list,
-}: GetToKnowUsProps) => (
+export const GetToKnowUs = (
+  {
+    heading,
+    layout,
+    video,
+    list,
+  }: GetToKnowUsProps
+) => (
   <Section>
     <Container>
       <SectionHeading>
         {heading}
       </SectionHeading>
       <VideoWrapper>
-        <Player controls poster={video.poster.url}>
+        <Player
+          autoplay={false} controls
+          poster={video.poster.url}
+        >
           <source src={video.webm.url} type="video/webm" />
           {video.mp4 && <source src={video.mp4.url} type="video/mp4" />}
         </Player>
