@@ -57,45 +57,35 @@ export const Figure = styled.figure`
     }
   `}
 
-  .circle-cutout {
-    position: absolute;
-    width: auto;
-    height: ${({ theme }) => theme.helpers.getMin(111)};
-    stroke: ${({ theme }) => theme.colors.neutral[20]};
-    ${({ theme }) => css`
-      ${theme.mediaQueries.s} {
-        top: -10%;
-        width: 80%;
-        height: auto;
-      }
-    `}
-  }
+  > div {
+    position: relative;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    width: 100%;
 
-  > svg:not(.circle-cutout) {
-    width: auto;
-    height: ${({ theme }) => theme.helpers.getMin(64)};
-    margin-block: ${({ theme }) => theme.helpers.getMin(23.5)};
-    fill: ${({ theme }) => theme.colors.brand};
-    ${({ theme }) => css`
-      ${theme.mediaQueries.s} {
-        width: 45%;
-        aspect-ratio: 1;
-        height: auto;
-      }
-    `}
+    > .circle-cutout {
+      width: 80%;
+      height: 80%;
+      stroke: ${({ theme }) => theme.colors.neutral[20]};
+    }
+
+    > svg:not(.circle-cutout) {
+      position: absolute;
+      inset: 50% 50%;
+      width: auto;
+      height: 45%;
+      fill: ${({ theme }) => theme.colors.brand};
+      color: ${({ theme }) => theme.colors.brand};
+      translate: -50% -50% 0;
+    }
   }
 `;
 
 export const Label = styled.figcaption`
-  padding-block-start: ${({ theme }) => theme.helpers.getMin(18)};
-  color: ${({ theme }) => theme.colors.brand};
+  color: ${({ theme }) => theme.colors.neutral[5]};
   font-weight: 300;
-  font-size: ${({ theme }) => theme.fonts.sizes.xs};
+  ${({ theme }) => theme.helpers.getClamped(16)};
   font-family: ${({ theme }) => theme.fonts.types.heading};
-  text-transform: uppercase;
-  ${({ theme }) => css`
-    ${theme.mediaQueries.s} {
-      padding-block-start: 20%;
-    }
-  `}
+  text-align: center;
 `;

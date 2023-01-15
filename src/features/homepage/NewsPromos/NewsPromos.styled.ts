@@ -153,7 +153,7 @@ export const Image = styled(WPImage)`
 
 export const SinglePromo = styled.article`
   position: relative;
-  filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMax(-41)} ${helpers.getMin(41)} ${helpers.getMin(35)} ${colors.neutral[100]}79)`};
+  filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMax(-20)} ${helpers.getMin(20)} ${helpers.getMin(20)} ${colors.neutral[100]}69)`};
   aspect-ratio: 579/338;
   display: flex;
   flex-direction: column;

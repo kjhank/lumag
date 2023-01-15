@@ -560,7 +560,7 @@ export const SearchInput = styled.input`
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {
       line-height: 3;
-      padding-inline: min(32px, 4.267vw);
+      padding-inline: min(40px, 5.33vw);
     }
   `}
 `;
@@ -585,3 +585,25 @@ export const SearchButton = styled.button`
   `}
 `;
 
+export const ResultsWrapper = styled.section`
+  position: absolute;
+  inset: 100% 0 auto;
+  padding: 2.5%;
+  background-color: ${({ theme }) => theme.colors.neutral[5]};
+  color: ${({ theme }) => theme.colors.neutral[100]};
+`;
+
+export const SearchResults = styled.ul`
+  > li {
+    list-style-type: none;
+
+    + li {
+      border-block-start: ${({ theme }) => `1px solid ${theme.colors.neutral[25]}`};
+    }
+
+    > a {
+      display: block;
+      padding: 0.5em;
+    }
+  }
+`;

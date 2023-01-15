@@ -1,22 +1,58 @@
 import {
   ChangeEvent, FormEvent, useEffect, useState,
 } from 'react';
-import { useDebounce } from '@/hooks';
+import { Link } from 'gatsby';
 import {
-  SearchButton, SearchForm, SearchInput, SearchNode,
+  useApiLinks, useAppContext, useDebounce,
+} from '@/hooks';
+import {
+  ResultsWrapper,
+  SearchButton, SearchForm, SearchInput, SearchNode, SearchResults,
 } from '../Layout.styled';
-import { Spyglass } from '@/static';
+import {
+  backendUrl, Endpoints, Spyglass,
+} from '@/static';
 import { SearchProps } from '../Layout.types';
+import { SearchResult } from '@/types';
 
-export const Search = ({ placeholder, toggle }: SearchProps) => {
+const Result = ({ item }: { item: SearchResult }) => {
+  const url = useApiLinks(item.url);
+
+  if (item.subtype === 'post') return null;
+
+  return <li><Link to={url}>{item.title}</Link></li>;
+};
+
+export const Search = ({
+  placeholder, searchMessages, toggle,
+}: SearchProps) => {
+  const { lang } = useAppContext();
+  const [isSearching, setSearching] = useState(false);
+  const [message, setMessage] = useState(searchMessages.searching);
   const [query, setQuery] = useState('');
+  const [results, setResults] = useState<Array<SearchResult>>([]);
   const debouncedValue = useDebounce(query);
 
-  const handleApiCall = () => {
-    console.log(debouncedValue);
+  const handleApiCall = async () => {
+    const response = await fetch(`${backendUrl}/${Endpoints.SEARCH}?search=${debouncedValue}&lang=${lang}`);
+    const result = await response.json();
+
+    if (result.length > 0) {
+      setResults(result);
+      setMessage(searchMessages.results);
+    }
+
+    if (result.length === 0) {
+      setMessage(searchMessages.noResults);
+      setResults([]);
+    }
+
+    setSearching(false);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setMessage(searchMessages.searching);
+    setSearching(true);
     setQuery(event.currentTarget.value);
   };
 
@@ -52,6 +88,14 @@ export const Search = ({ placeholder, toggle }: SearchProps) => {
         <label className="visually-hidden" htmlFor="search">search</label>
         <SearchButton onClick={toggle} type="button">⨉</SearchButton>
       </SearchForm>
+      {(results.length > 0 || isSearching || query) && (
+        <ResultsWrapper>
+          {(isSearching || query) && <p>{message}</p>}
+          <SearchResults>
+            {results.length > 0 && results.map(item => <Result item={item} key={item.url} />)}
+          </SearchResults>
+        </ResultsWrapper>
+      )}
     </SearchNode>
   );
 };

@@ -17,8 +17,10 @@ const Item = ({ icon }: IconProps) => {
   return (
     <li key={icon.iconslug}>
       <Figure>
-        <IconComponent />
-        <CircleCutout />
+        <div>
+          <IconComponent />
+          <CircleCutout />
+        </div>
         <Label>{parsedText}</Label>
       </Figure>
     </li>

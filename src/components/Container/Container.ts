@@ -7,12 +7,12 @@ export const Container = styled.div<{ marginBlockEnd?: number; marginBlockStart?
   margin: 0 auto;
   font-family: ${({ theme }) => theme.fonts.types.text};
   ${({ theme }) => css`
-    ${theme.mediaQueries.s} {
-      width: min(45.6vw, 342px);
+    ${theme.mediaQueries.m} {
+      width: min(70vw, 480px);
     }
   `}
   ${({ theme }) => css`
-    ${theme.mediaQueries.xs} {
+    ${theme.mediaQueries.s} {
       width: 80vw;
     }
   `}

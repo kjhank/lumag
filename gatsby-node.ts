@@ -136,6 +136,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
   }),
   newsletter: options.newsletter,
   search: options.search,
+  searchMessages: options.searchMessages,
   socials: options.address.socials,
 });
 
@@ -227,6 +228,7 @@ const getContext = async ({
         date: post.date,
         excerpt: post.excerpt?.rendered,
         image: post.acf?.thumbnail,
+        slug: post.slug,
         text: post.content?.rendered,
         title: post.title?.rendered,
       })),

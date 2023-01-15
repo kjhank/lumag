@@ -9,6 +9,7 @@ export type ExpandableItemProps = {
   className?: string;
   children?: React.ReactNode;
   buttons: Buttons;
+  id?: string;
   image: ACFImage;
   text: string;
   title: string;

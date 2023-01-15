@@ -1,12 +1,14 @@
-import { Certificates, TextWithMedia } from '@/components';
+import {
+  Certificates, Header, TextWithMedia,
+} from '@/components';
 import { Meta } from '@/components/Layout/components/Meta';
-import { Container, Header } from '@/features/OfferBrakesPage';
+import { Container } from '@/features/OfferBrakesPage';
 import { Catalogs } from '@/features/OfferBrakesPage/Catalogs/Catalogs';
 import { OfferBrakesPageProps } from '@/types';
 
 const OfferBreaksPage = ({ pageContext }: OfferBrakesPageProps) => (
   <>
-    <Header {...pageContext.content.header} />
+    <Header {...pageContext.content.header} paddingInline="2%" />
     <Container>
       <TextWithMedia {...pageContext.content.brakePads} backgroundIndex={5} />
       <TextWithMedia {...pageContext.content.brakeDiscs} backgroundIndex={5} />

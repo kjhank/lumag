@@ -7,7 +7,11 @@ import { AboutPageProps } from '@/types';
 
 const AboutPage = ({ pageContext: { content } }: AboutPageProps) => (
   <>
-    <Header {...content.header} paddingBlockStart={150} />
+    <Header
+      {...content.header}
+      paddingBlockStart={70}
+      paddingInline={0}
+    />
     <Container>
       <QuoteHero {...content.person} />
     </Container>

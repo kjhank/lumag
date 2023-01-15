@@ -5,6 +5,8 @@ export type HeaderProps = {
   background: ACFImage;
   footerText?: string;
   paddingBlockStart?: number;
+  paddingBlockEnd?: number;
+  paddingInline?: number | string;
   text?: string;
   title: string;
   verticalBackground?: ACFImage;

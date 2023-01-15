@@ -8,7 +8,7 @@ import { ContactPageProps } from '@/types';
 
 const ContactPage = ({ pageContext: { content } }: ContactPageProps) => (
   <>
-    <Header {...content.header} />
+    <Header {...content.header} paddingBlockStart={120} />
     <KeepInTouch contactData={content.contactData} />
     <Reps
       background={content.repsBackground}
