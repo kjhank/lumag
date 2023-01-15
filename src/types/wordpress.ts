@@ -406,6 +406,12 @@ export type MenuItem = {
   page: ACFPage;
 };
 
+export type SearchMessages = {
+  noResults: string;
+  results: string;
+  searching: string;
+};
+
 export type ACFPage = {
   ID: number;
   post_author: string;
@@ -451,32 +457,7 @@ export type ACFMenu = {
 });
 
 export type ACFFooterMenu = {
-  page: {
-    ID: number;
-    post_author: string;
-    post_date: string;
-    post_date_gmt: string;
-    post_content: string;
-    post_title: string;
-    post_excerpt: string;
-    post_status: string;
-    comment_status: string;
-    ping_status: string;
-    post_password: string;
-    post_name: string;
-    to_ping: string;
-    pinged: string;
-    post_modified: string;
-    post_modified_gmt: string;
-    post_content_filtered: string;
-    post_parent: number;
-    guid: string;
-    menu_order: number;
-    post_type: string;
-    post_mime_type: string;
-    comment_count: string;
-    filter: string;
-  };
+  page: ACFLink;
   label: string;
   isBold: boolean;
 };
@@ -519,12 +500,13 @@ export type Options = {
   };
   newsletter: Newsletter;
   search: string;
+  searchMessages: SearchMessages;
 };
 
 export type FooterSubmenu = {
   isBold: boolean;
   label: string;
-  slug: string;
+  page: ACFLink;
   title: string;
 };
 
@@ -568,6 +550,7 @@ export type ParsedOptions = {
   nav: Array<ParsedMainNav>;
   newsletter: Newsletter;
   search: string;
+  searchMessages: SearchMessages;
   socials: Array<Social>;
 };
 
@@ -575,6 +558,7 @@ export type ParsedPost = {
   date: string;
   excerpt: string;
   image: ACFImage;
+  slug: string;
   title: string;
   text: string;
 };
@@ -590,4 +574,11 @@ export type Video = {
   mp4?: ACFFile;
   poster: ACFImage;
   webm: ACFFile;
+};
+
+export type SearchResult = {
+  id: number;
+  subtype: 'page' | 'post';
+  title: string;
+  url: string;
 };

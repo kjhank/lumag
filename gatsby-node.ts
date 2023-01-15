@@ -26,13 +26,6 @@ const regularPages = [
   'values',
 ];
 
-const homePages = [
-  'home',
-  'home-page',
-  'startseite',
-  'pagina-principal',
-];
-
 const templates: { [key in Template]: string } = {
   about: path.resolve('./src/templates/AboutPage.tsx'),
   contact: path.resolve('./src/templates/ContactPage.tsx'),
@@ -108,8 +101,8 @@ const parseOptions = (options: Options): ParsedOptions => ({
       subitems: item.list.map(subitem => ({
         isBold: subitem.isBold,
         label: subitem.label,
-        slug: homePages.includes(subitem.page.post_name) ? '' : subitem.page.post_name,
-        title: subitem.page.post_title,
+        page: subitem.page,
+        title: subitem.label || subitem.page.title,
       })),
     })),
     verticalBackground: options.address.verticalBackground,
@@ -143,6 +136,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
   }),
   newsletter: options.newsletter,
   search: options.search,
+  searchMessages: options.searchMessages,
   socials: options.address.socials,
 });
 
@@ -234,6 +228,7 @@ const getContext = async ({
         date: post.date,
         excerpt: post.excerpt?.rendered,
         image: post.acf?.thumbnail,
+        slug: post.slug,
         text: post.content?.rendered,
         title: post.title?.rendered,
       })),

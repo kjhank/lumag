@@ -24,7 +24,7 @@ export const NewsItem = ({
         <time dateTime={formattedDate}>{formattedDate}</time>
       </DateElem>
       <Excerpt dangerouslySetInnerHTML={{ __html: showEllipsis ? `${trimmedText} [...]` : trimmedText }} />
-      <NewsLink to={targetPost.post_name}>
+      <NewsLink to={`${targetPost.post_name}#${post.slug}`}>
         {linkLabel}
         <ArrowRight />
       </NewsLink>

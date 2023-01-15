@@ -8,7 +8,7 @@ import { ButtonLink } from '../ButtonLink/ButtonLink';
 import { ExpandableItemProps } from './ExpendableItem.types';
 
 export const ExpandableItem = ({
-  className, buttons, children, image, text, title, trimmedTextLength = 30,
+  className, buttons, children, id, image, text, title, trimmedTextLength = 30,
 }: ExpandableItemProps) => {
   const [isExpanded, setExpanded] = useState(false);
 
@@ -22,7 +22,7 @@ export const ExpandableItem = ({
   const content = isExpanded ? sanitizedText : trimmedText;
 
   return (
-    <ItemNode className={className}>
+    <ItemNode className={className} id={id}>
       <ItemImage imageData={image} />
       <div>
         <ItemContent isExpanded={isExpanded}>

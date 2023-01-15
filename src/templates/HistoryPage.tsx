@@ -5,7 +5,10 @@ import { HistoryPageProps } from '@/types';
 
 const HistoryPage = ({ pageContext: { content } }: HistoryPageProps) => (
   <>
-    <Header {...content.header} paddingBlockStart={150} />
+    <Header
+      {...content.header} paddingBlockStart={90}
+      paddingInline={0}
+    />
     <TimelineSection {...content.history} />
   </>
 );

@@ -7,7 +7,10 @@ import { ValuesPageProps } from '@/types';
 
 const ValuesPage = ({ pageContext: { content } }: ValuesPageProps) => (
   <>
-    <Header {...content.header} paddingBlockStart={150} />
+    <Header
+      {...content.header} paddingBlockStart={60}
+      paddingInline="4%"
+    />
     <Container marginBlockEnd={-100} marginBlockStart={-200}>
       {content.list.map((item, index) => (
         <TextWithMedia

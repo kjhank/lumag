@@ -1,7 +1,8 @@
 import sanitize from 'sanitize-html';
+import React from 'react';
 import { Container } from '@/components';
 import {
-  Content, Item, List, Map, Section,
+  Content, List, Map, Section,
 } from './KeepInTouch.styled';
 import { KeepInTouchProps } from './KeepInTouch.types';
 import { sanitizeConfig } from '@/utils/globalConfigs';
@@ -11,12 +12,12 @@ export const KeepInTouch = ({ contactData }: KeepInTouchProps) => (
     <Container>
       <List id="padTarget">
         {contactData.map(location => (
-          <Item key={location.mapsSrc}>
+          <React.Fragment key={location.mapsSrc}>
             <Content
               html={sanitize(location.content, sanitizeConfig)}
             />
             <Map src={location.mapsSrc} />
-          </Item>
+          </React.Fragment>
         ))}
       </List>
     </Container>

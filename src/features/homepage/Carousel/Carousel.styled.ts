@@ -63,6 +63,18 @@ export const Heading = styled.h2`
       ${theme.fonts.sizes.xl}
     }
   `}
+  ${({ theme }) => css`
+    ${theme.mediaQueries.l} {
+      br {
+        content: '';
+        /* display: none; */
+
+        ::after {
+          content: ' ';
+        }
+      }
+    }
+  `}
 `;
 
 export const Text = styled.p`

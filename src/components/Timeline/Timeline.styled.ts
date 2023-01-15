@@ -43,6 +43,7 @@ export const Name = styled.h3`
   gap: ${({ theme }) => theme.helpers.getMin(22)};
   width: 100%;
   padding: 0 25%;
+  word-break: break-word;
 
   /* stylelint-disable */
   ${({ theme }) => css`
@@ -179,7 +180,7 @@ export const Title = styled.span`
   ${({ theme }) => theme.helpers.getClamped(22)};
   text-align: center;
   ${({ theme }) => css`
-    ${theme.mediaQueries.s} {
+    ${theme.mediaQueries.m} {
       ${theme.helpers.getClamped(18)};
     }
   `}

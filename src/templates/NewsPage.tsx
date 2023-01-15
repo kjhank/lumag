@@ -14,7 +14,7 @@ const NewsPage = ({ pageContext }: NewsPageProps) => {
     <>
       <Header
         className="header--news-page" {...pageContext.header}
-        paddingBlockStart={180}
+        paddingBlockStart={105} paddingInline={0}
       />
       <PaginatedList
         items={pageContext.posts.map(post => {
@@ -24,6 +24,7 @@ const NewsPage = ({ pageContext }: NewsPageProps) => {
           return (
             <ExpandableItem
               buttons={pageContext.content.buttons} className="newsPage"
+              id={post.slug}
               image={post.image || defaultNewsThumbnail} key={post.title}
               text={post.text} title={post.title}
             >

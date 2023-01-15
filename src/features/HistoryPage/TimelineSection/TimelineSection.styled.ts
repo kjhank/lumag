@@ -14,6 +14,8 @@ export const Section = styled.section`
 
   h2 {
     color: ${({ theme }) => theme.colors.neutral[100]};
+    word-break: break-word;
+    padding-inline: 5%;
   }
 `;
 

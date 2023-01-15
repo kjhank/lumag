@@ -23,8 +23,10 @@ export const WhyUs = ({ data }: WhyUsProps) => (
             return (
               <Item key={icon.label}>
                 <Figure>
-                  <Icon />
-                  <CircleCutout />
+                  <div>
+                    <Icon />
+                    <CircleCutout />
+                  </div>
                   <Label>
                     {icon.label}
                   </Label>

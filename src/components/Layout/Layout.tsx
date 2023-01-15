@@ -59,6 +59,7 @@ const Layout = ({
           menuItems={pageContext?.options?.nav}
           pathname={pathname}
           search={pageContext?.options?.search}
+          searchMessages={pageContext.options.searchMessages}
         />
         {children}
         {pageContext.content?.seeMore?.hasSeeMore && <SeeMore {...pageContext.content.seeMore} />}
