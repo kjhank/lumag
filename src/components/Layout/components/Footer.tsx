@@ -68,11 +68,10 @@ export const Footer = ({
         list: 'q73xtkabfc',
       }),
       headers: {
-        Authorization: `Bearer [${freshmailApiToken}]`,
+        Authorization: `Bearer ${freshmailApiToken}`,
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      // mode: 'no-cors',
     });
 
     try {
