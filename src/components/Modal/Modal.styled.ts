@@ -10,7 +10,7 @@ export const ModalWrapper = styled.dialog`
   width: 100vw;
   height: 100vh;
   border: none;
-  padding-block-start: ${({ theme }) => theme.helpers.getMin(100)};
+  padding-block-start: ${({ theme }) => theme.helpers.getMin(64)};
   background-color: transparent;
   backdrop-filter: blur(5px);
 `;
@@ -18,9 +18,10 @@ export const ModalWrapper = styled.dialog`
 export const ModalContainer = styled.div`
   position: relative;
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(13)} ${helpers.getMin(20)} ${helpers.getMin(30)} ${colors.neutral[100]}90)`};
-  width: min(95%, 80vw);
-  min-height: 25vh;
-  padding: 5%;
+  max-width: 80vw;
+  height: 100%;
+  max-height: 85vh;
+  padding: 2%;
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {

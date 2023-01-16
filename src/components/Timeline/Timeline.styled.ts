@@ -42,7 +42,7 @@ export const Name = styled.h3`
   align-items: center;
   gap: ${({ theme }) => theme.helpers.getMin(22)};
   width: 100%;
-  padding: 0 25%;
+  padding: 0 12%;
   word-break: break-word;
 
   /* stylelint-disable */
@@ -138,6 +138,7 @@ export const Header = styled.header`
   order: 1;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.brand};
+  font-weight: 900;
   font-family: ${({ theme }) => theme.fonts.types.fatHeading};
   text-transform: uppercase;
 
@@ -220,6 +221,12 @@ export const ActionButton = styled.button`
 
 export const EventImage = styled(WPImage)`
   width: 100%;
-  max-width: 100%;
-  height: auto;
+  height: 100%;
+
+  > img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
 `;
