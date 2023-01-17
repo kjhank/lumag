@@ -18,11 +18,11 @@ export const initialFormState: {
   [key in FormFieldName]: string;
 } = {
   company: '',
+  username: '',
   email: '',
   phone: '',
   subject: '',
   message: '',
-  username: '',
 };
 
 const sanitizeConfig: IOptions = {
