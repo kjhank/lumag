@@ -77,7 +77,7 @@ export const Footer = ({
     });
 
     try {
-      const response = await fetch(`${freshmailApiUrl}/ping`, request);
+      const response = await fetch(request);
       const result = await response.json();
 
       console.log(result);
