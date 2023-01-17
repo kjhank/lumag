@@ -4,7 +4,6 @@ import { WYSIWYG } from '../WYSIWYG/WYSIWYG';
 
 export const ItemNode = styled.li`
   display: flex;
-  align-items: flex-start;
   scroll-margin-top: 100px;
 
   :not(:last-child) {
@@ -35,7 +34,7 @@ export const ItemContent = styled.div<{ isExpanded?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: ${({ theme }) => theme.helpers.getMin(25)};
-  padding: ${({ theme }) => `${theme.helpers.getMin(49)} ${theme.helpers.getMin(74)}`};
+  padding: ${({ theme }) => `${theme.helpers.getMin(42)} ${theme.helpers.getMin(64)}`};
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   color: ${({ theme }) => theme.colors.neutral[100]};
   ${({ theme }) => theme.helpers.getClamped(18)};
@@ -81,9 +80,13 @@ export const ItemText = styled(WYSIWYG)`
 
 export const ItemImage = styled(WPImage)`
   position: relative;
+  align-self: flex-start;
   width: 50%;
-  aspect-ratio: ${({ imageData }) => imageData.width / imageData.height};
+  aspect-ratio: 1.3333;
   ${({ theme }) => css`
+    ${theme.mediaQueries.xxl} {
+      aspect-ratio: 1.1;
+    }
     ${theme.mediaQueries.l} {
       width: 100%;
     }
