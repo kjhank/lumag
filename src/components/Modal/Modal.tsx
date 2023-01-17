@@ -6,7 +6,7 @@ import {
 import { ModalProps } from './Modal.types';
 
 export const Modal = ({
-  children, isOpen, onCloseCallback = () => { },
+  aspectRatio, children, isOpen, onCloseCallback = () => { },
 }: ModalProps) => {
   const handleClose = () => {
     onCloseCallback();
@@ -15,7 +15,7 @@ export const Modal = ({
   return isBrowser && isOpen
     ? createPortal(
       <ModalWrapper open={isOpen}>
-        <ModalContainer>
+        <ModalContainer $aspectRatio={aspectRatio}>
           <CloseButton onClick={handleClose}>⨉</CloseButton>
           {children}
         </ModalContainer>

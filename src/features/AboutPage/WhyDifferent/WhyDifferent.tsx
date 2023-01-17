@@ -1,6 +1,5 @@
 import { Container } from '@/components';
 import { CoverImage, SectionHeading } from '@/components/styled';
-import { useOrphans } from '@/hooks';
 import { CircleCutout } from '@/static';
 import { getIcon } from '@/utils';
 import {
@@ -12,7 +11,6 @@ import {
 
 const Item = ({ icon }: IconProps) => {
   const IconComponent = getIcon(icon.iconslug);
-  const parsedText = useOrphans(icon.text, / wg /);
 
   return (
     <li key={icon.iconslug}>
@@ -21,7 +19,7 @@ const Item = ({ icon }: IconProps) => {
           <IconComponent />
           <CircleCutout />
         </div>
-        <Label>{parsedText}</Label>
+        <Label>{icon.text}</Label>
       </Figure>
     </li>
   );

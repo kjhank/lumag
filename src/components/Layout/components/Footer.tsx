@@ -62,33 +62,37 @@ export const Footer = ({
   const handleNewsletter = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const headers = new Headers({
+      Authorization: `Bearer ${freshmailApiToken}`,
+      'Content-Type': 'application/json',
+    });
+    const body = JSON.stringify({
+      email,
+      list: 'q73xtkabfc',
+    });
     const request: Request = new Request(`${freshmailApiUrl}/subscriber/add`, {
-      body: JSON.stringify({
-        email,
-        list: 'q73xtkabfc',
-      }),
-      headers: {
-        Authorization: `Bearer ${freshmailApiToken}`,
-        'Content-Type': 'application/json',
-      },
+      body,
+      headers,
       method: 'POST',
     });
 
     try {
       const response = await fetch(request);
+      const result = await response.json();
 
-      if (response.status === 200) {
-        const result = await response.json();
+      console.log(result);
+      // const response = await fetch(request);
 
-        console.log({ result });
-      }
+      // console.log({ response });
+
+      // if (response.status === 200) {
+      //   const result = await response.json();
+
+      //   console.log({ result });
+      // }
     } catch (error) {
       console.log({ error });
     }
-
-    // TODO: integration
-    // console.log({ emailAddress });
-    // eslint-disable-next-line no-alert
   };
 
   return (

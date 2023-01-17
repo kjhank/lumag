@@ -34,7 +34,7 @@ export const ItemContent = styled.div<{ isExpanded?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   gap: ${({ theme }) => theme.helpers.getMin(25)};
-  padding: ${({ theme }) => `${theme.helpers.getMin(49)} ${theme.helpers.getMin(74)}`};
+  padding: ${({ theme }) => `${theme.helpers.getMin(42)} ${theme.helpers.getMin(64)}`};
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   color: ${({ theme }) => theme.colors.neutral[100]};
   ${({ theme }) => theme.helpers.getClamped(18)};
@@ -80,15 +80,22 @@ export const ItemText = styled(WYSIWYG)`
 
 export const ItemImage = styled(WPImage)`
   position: relative;
+  align-self: flex-start;
   width: 50%;
-  height: 100%;
-  /* stylelint-disable */
+  aspect-ratio: 1.3333;
   ${({ theme }) => css`
-  ${theme.mediaQueries.l} {
-    width: 100%;
-  }
+    ${theme.mediaQueries.xxl} {
+      aspect-ratio: 1.1;
+    }
+    ${theme.mediaQueries.l} {
+      width: 100%;
+    }
   `}
-  /* stylelint-enable */
+
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
 
   ::after {
     content: '';

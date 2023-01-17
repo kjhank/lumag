@@ -1,5 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components';
+import { ACFImage } from '@/types';
 import { WPImage } from '../WPImage/WPImage';
 
 export const List = styled.ul`
@@ -42,13 +43,13 @@ export const Name = styled.h3`
   align-items: center;
   gap: ${({ theme }) => theme.helpers.getMin(22)};
   width: 100%;
-  padding: 0 25%;
-  word-break: break-word;
+  padding: 0 12%;
 
   /* stylelint-disable */
   ${({ theme }) => css`
     ${theme.mediaQueries.l} {
       padding: 0 10%;
+      word-break: break-word;
     }
   `}
   /* stylelint-enable */
@@ -138,6 +139,7 @@ export const Header = styled.header`
   order: 1;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.brand};
+  font-weight: 900;
   font-family: ${({ theme }) => theme.fonts.types.fatHeading};
   text-transform: uppercase;
 
@@ -218,8 +220,4 @@ export const ActionButton = styled.button`
   }
 `;
 
-export const EventImage = styled(WPImage)`
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-`;
+export const EventImage = styled(WPImage)<{ imageData: ACFImage }>``;
