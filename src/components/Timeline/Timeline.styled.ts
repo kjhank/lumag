@@ -44,12 +44,12 @@ export const Name = styled.h3`
   gap: ${({ theme }) => theme.helpers.getMin(22)};
   width: 100%;
   padding: 0 12%;
-  word-break: break-word;
 
   /* stylelint-disable */
   ${({ theme }) => css`
     ${theme.mediaQueries.l} {
       padding: 0 10%;
+      word-break: break-word;
     }
   `}
   /* stylelint-enable */
