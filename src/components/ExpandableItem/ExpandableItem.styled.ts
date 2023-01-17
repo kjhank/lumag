@@ -4,6 +4,7 @@ import { WYSIWYG } from '../WYSIWYG/WYSIWYG';
 
 export const ItemNode = styled.li`
   display: flex;
+  align-items: flex-start;
   scroll-margin-top: 100px;
 
   :not(:last-child) {
@@ -81,14 +82,17 @@ export const ItemText = styled(WYSIWYG)`
 export const ItemImage = styled(WPImage)`
   position: relative;
   width: 50%;
-  height: 100%;
-  /* stylelint-disable */
+  aspect-ratio: ${({ imageData }) => imageData.width / imageData.height};
   ${({ theme }) => css`
-  ${theme.mediaQueries.l} {
-    width: 100%;
-  }
+    ${theme.mediaQueries.l} {
+      width: 100%;
+    }
   `}
-  /* stylelint-enable */
+
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
 
   ::after {
     content: '';
