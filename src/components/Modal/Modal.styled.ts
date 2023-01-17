@@ -10,23 +10,22 @@ export const ModalWrapper = styled.dialog`
   width: 100vw;
   height: 100vh;
   border: none;
-  padding-block-start: ${({ theme }) => theme.helpers.getMin(64)};
+  padding-block-start: ${({ theme }) => theme.helpers.getMin(32)};
   background-color: transparent;
   backdrop-filter: blur(5px);
 `;
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled.div<{ $aspectRatio?: number }>`
   position: relative;
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(13)} ${helpers.getMin(20)} ${helpers.getMin(30)} ${colors.neutral[100]}90)`};
+  aspect-ratio: ${({ $aspectRatio }) => $aspectRatio};
   max-width: 80vw;
-  height: 100%;
   max-height: 85vh;
   padding: 2%;
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {
-      width: 90vw;
-      min-height: unset;
+      max-width: 95vw;
     }
   `}
   transform: translateZ(0);

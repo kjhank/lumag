@@ -1,5 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components';
+import { ACFImage } from '@/types';
 import { WPImage } from '../WPImage/WPImage';
 
 export const List = styled.ul`
@@ -219,14 +220,4 @@ export const ActionButton = styled.button`
   }
 `;
 
-export const EventImage = styled(WPImage)`
-  width: 100%;
-  height: 100%;
-
-  > img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 100%;
-  }
-`;
+export const EventImage = styled(WPImage)<{ imageData: ACFImage }>``;

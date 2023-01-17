@@ -31,7 +31,10 @@ export const TimelineEvent = ({ event }: EventProps) => {
         </ActionButton>
       </Header>
       <Description>{event.description}</Description>
-      <Modal isOpen={isOpen} onCloseCallback={() => setOpen(false)}>
+      <Modal
+        aspectRatio={event.image.width / event.image.height} isOpen={isOpen}
+        onCloseCallback={() => setOpen(false)}
+      >
         <EventImage imageData={event.image} />
       </Modal>
     </EventNode>
