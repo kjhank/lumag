@@ -189,7 +189,7 @@ export type FormField = {
   isRequired: boolean;
 };
 
-export type FormFieldName = 'company' | 'name' | 'email' | 'phone' | 'subject' | 'message';
+export type FormFieldName = 'company' | 'username' | 'email' | 'phone' | 'subject' | 'message';
 
 export type SubjectOption = {
   slug: string;

@@ -74,6 +74,7 @@ export const Footer = ({
       body,
       headers,
       method: 'POST',
+      mode: 'cors',
     });
 
     try {

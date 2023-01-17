@@ -12,16 +12,17 @@ import { ContactFormProps, FormElements } from './ContactForm.types';
 import { FormFieldName } from '@/types';
 import { useAnchors } from '@/hooks';
 import { SectionHeading } from '@/components/styled';
+import { Endpoints } from '@/static';
 
 export const initialFormState: {
   [key in FormFieldName]: string;
 } = {
   company: '',
-  name: '',
   email: '',
   phone: '',
   subject: '',
   message: '',
+  username: '',
 };
 
 const sanitizeConfig: IOptions = {
@@ -47,10 +48,10 @@ export const ContactForm = ({
 
   const footerRef = useRef(null);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormState(current => ({
       ...current,
-      [event.target.id]: event.target.value,
+      [event.target.name]: event.target.value,
     }));
   };
 
@@ -66,6 +67,8 @@ export const ContactForm = ({
   const handleForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { currentTarget: { elements } } = event;
+
+    console.log(Endpoints.FORMS);
 
     const data = Object.keys(initialFormState).reduce((previous, key) => {
       const { value } = elements.namedItem(key) as FormElements;
@@ -107,15 +110,13 @@ export const ContactForm = ({
                   </Label>
                   <select
                     name={key}
+                    onChange={handleChange}
                     required={isFieldRequired}
+                    value={formState[key as FormFieldName]}
                   >
                     {subjectOptions.map(item => (
                       <option key={item.slug} value={item.slug}>
                         {item.description}
-                        {' '}
-                        (
-                        {item.email}
-                        )
                       </option>
                     ))}
                   </select>
