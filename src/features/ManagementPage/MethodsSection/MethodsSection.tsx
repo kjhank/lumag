@@ -8,7 +8,8 @@ export const MethodsSection = ({ items }: MethodsSectionProps) => (
       <List>
         {items.map(item => (
           <TextWithMedia
-            backgroundIndex={5} key={item.heading}
+            backgroundIndex={5} hasDecoration
+            key={item.heading}
             {...item}
           />
         ))}

@@ -132,7 +132,7 @@ export const VideoWrapper = styled.div`
   }
 `;
 
-export const TextWrapper = styled.section<{ $fontSize: number }>`
+export const TextWrapper = styled.section<{ $fontSize: number; hasExtraPadding: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -147,16 +147,21 @@ export const TextWrapper = styled.section<{ $fontSize: number }>`
     font-weight: bold;
     ${({ theme }) => theme.helpers.getClamped(30)};
     text-align: center;
-    ${({ theme }) => css`
+    ${({ hasExtraPadding, theme }) => css`
       ${theme.mediaQueries.xl} {
         padding-block: 0.5em;
+        padding-inline: ${hasExtraPadding && theme.helpers.getMin(48)};
         text-align: left;
       }
     `}
   }
-  ${({ theme }) => css`
+  ${({ hasExtraPadding, theme }) => css`
     ${theme.mediaQueries.xxl} {
       line-height: 1.4;
+
+      > p {
+        padding-inline: ${hasExtraPadding && theme.helpers.getMin(48)};
+      }
     }
   `}
   ${({ theme }) => css`
