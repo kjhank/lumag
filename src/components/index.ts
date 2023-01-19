@@ -15,3 +15,4 @@ export { Timeline } from './Timeline/Timeline';
 export { QuoteHero } from './QuoteHero/QuoteHero';
 export { Modal } from './Modal/Modal';
 export { SeeMore } from './SeeMore/SeeMore';
+export { Toast } from './Toast/Toast';

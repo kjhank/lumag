@@ -2,6 +2,7 @@ import { PageProps } from 'gatsby';
 import React from 'react';
 import {
   ACFImage,
+  ContactForm,
   FooterMenu,
   I18n, Languages, Newsletter, PageContext, ParsedMainNav, SearchMessages, Social,
 } from '@/types';
@@ -44,6 +45,7 @@ export type SearchProps = {
 };
 
 export type AppContextState = {
+  contactForms: Array<ContactForm>;
   defaultNewsThumbnail: ACFImage;
   lang: Languages;
   urlPrefix: string;

@@ -11,6 +11,7 @@ import { ThemeProps } from './theme.types';
 const theme: DefaultTheme = {
   colors: {
     brand: '#fabf3a',
+    error: '#FA3F38',
     neutral: {
       5: '#ffffff',
       10: '#fdfdfd',
@@ -25,6 +26,7 @@ const theme: DefaultTheme = {
       95: '#474748',
       100: '#404041',
     },
+    success: '#05C74C',
   },
   fonts: {
     sizes: {

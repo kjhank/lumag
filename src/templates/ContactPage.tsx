@@ -20,16 +20,7 @@ const ContactPage = ({ pageContext: { content } }: ContactPageProps) => (
       media={content.tiles.media}
       suppliers={content.tiles.suppliers}
     />
-    <ContactForm
-      fields={content.contactForm.fields}
-      footer={content.contactForm.footer}
-      heading={content.contactForm.heading}
-      legal={content.contactForm.legal}
-      subheading={content.contactForm.subheading}
-      subjectOptions={content.contactForm.subjectOptions}
-      submitText={content.contactForm.submitText}
-      text={content.contactForm.text}
-    />
+    <ContactForm {...content.contactForm} />
   </>
 );
 

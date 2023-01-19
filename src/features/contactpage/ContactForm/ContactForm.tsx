@@ -3,16 +3,37 @@ import {
   ChangeEvent, FormEvent, useRef, useState,
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
-import { ButtonLink, Container } from '@/components';
+import {
+  ButtonLink, Container, Toast,
+} from '@/components';
 import {
   Description, FieldWrapper, Footer,
   Form, Input, Label, Section, Subheading,
 } from './ContactForm.styled';
 import { ContactFormProps, FormElements } from './ContactForm.types';
-import { FormFieldName } from '@/types';
+import { FormFieldName, ToastVariant } from '@/types';
 import { useAnchors } from '@/hooks';
 import { SectionHeading } from '@/components/styled';
-import { Endpoints } from '@/static';
+import { backendUrl, Endpoints } from '@/static';
+
+const getToken = async () => {
+  const body = JSON.stringify({
+    password: process.env.API_PASSWORD,
+    username: process.env.API_USER,
+  });
+
+  const response = await fetch(`${backendUrl}/${Endpoints.AUTH}`, {
+    body,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  });
+
+  const result = await response.json();
+
+  return result;
+};
 
 export const initialFormState: {
   [key in FormFieldName]: string;
@@ -31,10 +52,13 @@ const sanitizeConfig: IOptions = {
 
 export const ContactForm = ({
   heading, footer,
-  legal, subheading,
+  legal, messages, subheading,
   text, fields,
   subjectOptions, submitText,
 }: ContactFormProps) => {
+  const [isToastVisible, setToastVisible] = useState(false);
+  const [message, setMessage] = useState(messages.success);
+  const [toastVariant, setToastVariant] = useState<ToastVariant>('success');
   const [formState, setFormState] = useState<{ [key in FormFieldName]: string }>({
     ...initialFormState,
     subject: subjectOptions[0].slug,
@@ -64,113 +88,139 @@ export const ContactForm = ({
     }));
   };
 
-  const handleForm = (event: FormEvent<HTMLFormElement>) => {
+  const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { currentTarget: { elements } } = event;
+    const subject = (elements.namedItem('subject') as FormElements).value;
+    const formElems = Array.from(elements);
+    const { formId } = subjectOptions.find(item => item.slug === subject) ?? {};
 
-    console.log(Endpoints.FORMS);
+    const formData = new FormData();
 
-    const data = Object.keys(initialFormState).reduce((previous, key) => {
-      const { value } = elements.namedItem(key) as FormElements;
+    formElems
+      .forEach(item => formData.append(
+        (item as FormElements).name,
+        (item as FormElements).value
+      ));
 
-      return {
-        ...previous,
-        [key]: value,
-      };
-    }, {});
+    const { token } = await getToken();
 
-    console.log(data);
+    const response = await fetch(`${backendUrl}/${Endpoints.FORMS}/${formId}/feedback`, {
+      body: formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'POST',
+    });
+
+    const result = await response.json();
+
+    const isSuccess = result.status === 'mail_sent';
+
+    setToastVisible(true);
+    setMessage(isSuccess ? messages.success : messages.error);
+    setToastVariant(isSuccess ? 'success' : 'error');
+    setToastVisible(true);
   };
 
   useAnchors(footerRef);
 
   return (
-    <Section id="contactForm">
-      <Container>
-        <div>
-          <SectionHeading>
-            {heading}
-          </SectionHeading>
-          <Subheading>
-            {subheading}
-          </Subheading>
-          <Description>{text}</Description>
-        </div>
-        <Form onSubmit={handleForm}>
-          {Object.keys(initialFormState).map(key => {
-            const isSelect = key === 'subject';
-            const isFieldRequired = fields[key as FormFieldName].isRequired;
+    <>
+      <Section id="contactForm">
+        <Container>
+          <div>
+            <SectionHeading>
+              {heading}
+            </SectionHeading>
+            <Subheading>
+              {subheading}
+            </Subheading>
+            <Description>{text}</Description>
+          </div>
+          <Form onSubmit={handleForm}>
+            {Object.keys(initialFormState).map(key => {
+              const isSelect = key === 'subject';
+              const isFieldRequired = fields[key as FormFieldName].isRequired;
 
-            return isSelect
-              ? (
-                <FieldWrapper isFullWidth key={key}>
-                  <Label htmlFor={key}>
-                    {fields[key as FormFieldName].label}
-                    {isFieldRequired && '*'}
-                  </Label>
-                  <select
-                    name={key}
-                    onChange={handleChange}
-                    required={isFieldRequired}
-                    value={formState[key as FormFieldName]}
-                  >
-                    {subjectOptions.map(item => (
-                      <option key={item.slug} value={item.slug}>
-                        {item.description}
-                      </option>
-                    ))}
-                  </select>
-                </FieldWrapper>
-              )
-              : (
-                <FieldWrapper isFullWidth={key === 'message'} key={key}>
-                  <Label htmlFor={key}>
-                    {fields[key as FormFieldName].label}
-                    {isFieldRequired && '*'}
-                  </Label>
-                  <Input
-                    as={key === 'message' ? 'textarea' : 'input'}
-                    id={key} name={key}
-                    onChange={handleChange}
-                    required={isFieldRequired}
-                    type={key === 'email' || key === 'phone' ? key : 'text'}
-                    value={formState[key as FormFieldName]}
+              return isSelect
+                ? (
+                  <FieldWrapper isFullWidth key={key}>
+                    <Label htmlFor={key}>
+                      {fields[key as FormFieldName].label}
+                      {isFieldRequired && '*'}
+                    </Label>
+                    <select
+                      name={key}
+                      onChange={handleChange}
+                      required={isFieldRequired}
+                      value={formState[key as FormFieldName]}
+                    >
+                      {subjectOptions.map(item => (
+                        <option key={item.slug} value={item.slug}>
+                          {item.description}
+                        </option>
+                      ))}
+                    </select>
+                  </FieldWrapper>
+                )
+                : (
+                  <FieldWrapper isFullWidth={key === 'message'} key={key}>
+                    <Label htmlFor={key}>
+                      {fields[key as FormFieldName].label}
+                      {isFieldRequired && '*'}
+                    </Label>
+                    <Input
+                      as={key === 'message' ? 'textarea' : 'input'}
+                      id={key} name={key}
+                      onChange={handleChange}
+                      required={isFieldRequired}
+                      type={key === 'email' || key === 'phone' ? key : 'text'}
+                      value={formState[key as FormFieldName]}
+                    />
+                  </FieldWrapper>
+                );
+            })}
+            <FieldWrapper isFullWidth>
+              <ButtonLink isButton type="submit">
+                {submitText}
+              </ButtonLink>
+            </FieldWrapper>
+            <Footer ref={footerRef}>
+              {legal.map(checkbox => (
+                <FieldWrapper
+                  isFullWidth key={checkbox.slug}
+                  variant="checkbox"
+                >
+                  <input
+                    checked={legals[checkbox.slug]}
+                    id={checkbox.slug}
+                    name={checkbox.slug}
+                    onChange={handleCheckbox}
+                    required={checkbox.isRequired}
+                    type="checkbox"
+                    value={checkbox.slug}
+                  />
+                  <Label
+                    dangerouslySetInnerHTML={{ __html: sanitize(checkbox.content, sanitizeConfig) }}
+                    htmlFor={checkbox.slug}
                   />
                 </FieldWrapper>
-              );
-          })}
-          <FieldWrapper isFullWidth>
-            <ButtonLink isButton type="submit">
-              {submitText}
-            </ButtonLink>
-          </FieldWrapper>
-          <Footer ref={footerRef}>
-            {legal.map(checkbox => (
-              <FieldWrapper
-                isFullWidth key={checkbox.slug}
-                variant="checkbox"
-              >
-                <input
-                  checked={legals[checkbox.slug]}
-                  id={checkbox.slug}
-                  name={checkbox.slug}
-                  onChange={handleCheckbox}
-                  required={checkbox.isRequired}
-                  type="checkbox"
-                  value={checkbox.slug}
-                />
-                <Label
-                  dangerouslySetInnerHTML={{ __html: sanitize(checkbox.content, sanitizeConfig) }}
-                  htmlFor={checkbox.slug}
-                />
-              </FieldWrapper>
-            ))}
-            <p
-              dangerouslySetInnerHTML={{ __html: sanitize(footer, sanitizeConfig) }}
-            />
-          </Footer>
-        </Form>
-      </Container>
-    </Section>
+              ))}
+              <p
+                dangerouslySetInnerHTML={{ __html: sanitize(footer, sanitizeConfig) }}
+              />
+            </Footer>
+          </Form>
+        </Container>
+      </Section>
+      {isToastVisible && (
+        <Toast
+          close={() => setToastVisible(false)} variant={toastVariant}
+        >
+          {message}
+        </Toast>
+      )}
+    </>
   );
 };

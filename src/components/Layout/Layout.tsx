@@ -45,10 +45,15 @@ const Layout = ({
   }, []);
 
   const contextData: AppContextState = useMemo(() => ({
+    contactForms: pageContext?.contactForms,
     defaultNewsThumbnail: pageContext?.options?.defaultNewsThumbnail,
     lang: pageContext.lang,
     urlPrefix: pageContext.lang === 'pl' ? '/' : `/${pageContext.lang}/`,
-  }), [pageContext.lang]);
+  }), [
+    pageContext?.lang,
+    pageContext?.contactForms,
+    pageContext?.options?.defaultNewsThumbnail,
+  ]);
 
   return (
     <AppContext.Provider value={contextData}>

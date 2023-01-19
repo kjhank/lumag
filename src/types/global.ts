@@ -41,3 +41,5 @@ export type IconSlug = 'agency' |
 'youtube' |
 'spyglass' |
 'zoom';
+
+export type ToastVariant = 'success' | 'error' | 'neutral';
