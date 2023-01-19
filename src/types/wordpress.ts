@@ -66,6 +66,87 @@ export type PageACF = {
   };
 };
 
+export type OgImage = {
+  height: string;
+  width: string;
+  url: string;
+  type: string;
+};
+
+export type SEO = {
+  title: string;
+  description?: string;
+  robots: {
+    index: string;
+    follow: string;
+    'max-snippet': string;
+    'max-image-preview': string;
+    'max-video-preview': string;
+  };
+  og_image: Array<OgImage>;
+  og_locale: string;
+  og_type: string;
+  og_title: string;
+  og_description: string;
+  og_url: string;
+  og_site_name: string;
+  path?: string;
+  article_publisher: string;
+  article_modified_time: string;
+  twitter_card: string;
+  twitter_title: string;
+  twitter_description: string;
+  twitter_image?: string;
+  twitter_site: string;
+  schema: {
+    '@context': string;
+    '@graph': Array<{
+      '@type': string;
+      '@id': string;
+      url?: string;
+      name?: string;
+      isPartOf?: {
+        '@id': string;
+      };
+      datePublished?: string;
+      dateModified?: string;
+      description?: string;
+      breadcrumb?: {
+        '@id': string;
+      };
+      inLanguage?: string;
+      potentialAction?: Array<{
+        '@type': string;
+        target: any;
+        'query-input'?: string;
+      }>;
+      itemListElement?: Array<{
+        '@type': string;
+        position: number;
+        name: string;
+        item?: string;
+      }>;
+      publisher?: {
+        '@id': string;
+      };
+      logo?: {
+        '@type': string;
+        inLanguage: string;
+        '@id': string;
+        url: string;
+        contentUrl: string;
+        width: number;
+        height: number;
+        caption: string;
+      };
+      image?: {
+        '@id': string;
+      };
+      sameAs?: Array<string>;
+    }>;
+  };
+};
+
 export type Page = {
   acf: PageACF;
   author: number;
@@ -93,6 +174,7 @@ export type Page = {
   translations: {
     [key in Languages]: number
   };
+  yoast_head_json: SEO;
   pll_sync_post: Array<any>;
   _links: {
     self: Array<{

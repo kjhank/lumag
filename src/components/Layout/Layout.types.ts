@@ -48,5 +48,6 @@ export type AppContextState = {
   contactForms: Array<ContactForm>;
   defaultNewsThumbnail: ACFImage;
   lang: Languages;
+  siteUrl: string;
   urlPrefix: string;
 };

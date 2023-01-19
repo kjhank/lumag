@@ -11,7 +11,7 @@ const QualityPage = ({ pageContext }: QualityPageProps) => (
   <>
     <Header {...pageContext.content.header} paddingInline={0} />
     <Container>
-      <TextWithMedia {...pageContext.content.textWithImage} />
+      <TextWithMedia {...pageContext.content.textWithImage} hasExtraPadding />
     </Container>
     <Certificates {...pageContext.content.certs} />
     <ProductCharacteristicsSection

@@ -11,7 +11,7 @@ export const ProductCharacteristicsSection = ({
     <Container>
       <Heading>{heading}</Heading>
       <MiniCarousel className="carousel-characteristics" {...miniCarousel} />
-      <TextWithMedia {...rnd} />
+      <TextWithMedia {...rnd} hasExtraPadding />
     </Container>
   </Section>
 );
