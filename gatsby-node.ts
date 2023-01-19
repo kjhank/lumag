@@ -207,7 +207,8 @@ const fetchPosts = async (lang: Languages): Promise<Array<Post>> => {
 };
 
 const getContext = async ({
-  acf, content, id, date, slug, status, title, parent: parentId, meta, lang, translations,
+  acf, content, id, date, slug, status, title,
+  parent: parentId, meta, lang, translations, yoast_head_json: seo,
 }: Page, options: Options) => {
   const i18Slugs = await getPageLangs(translations);
 
@@ -222,6 +223,7 @@ const getContext = async ({
     metadata: {
       ...meta,
       lang,
+      seo,
       title,
     },
     options: Object.keys(options).length > 0 ? parseOptions(options) : undefined,
