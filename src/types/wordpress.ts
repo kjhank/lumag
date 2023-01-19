@@ -480,6 +480,13 @@ export type Social = {
   url: string;
 };
 
+export type ContactForm = {
+  id: number;
+  locale: string;
+  slug: string;
+  title: string;
+};
+
 export type Options = {
   address: {
     address: string;

@@ -33,3 +33,5 @@ export const CoverImage = styled(WPImage)`
     object-fit: cover;
   }
 `;
+
+export const ToastContainer = styled.aside``;

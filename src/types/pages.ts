@@ -35,6 +35,7 @@ export type PageContext = {
     [key: string]: string | number | {} | [];
     seeMore: SeeMore;
   };
+  contactForms: Array<ContactForm>;
   date: string;
   id: number;
   i18n: I18n;
@@ -192,6 +193,7 @@ export type FormField = {
 export type FormFieldName = 'company' | 'username' | 'email' | 'phone' | 'subject' | 'message';
 
 export type SubjectOption = {
+  formId: number;
   slug: string;
   description: string;
   email: string;
@@ -203,18 +205,24 @@ export type Legal = {
   isRequired: boolean;
 };
 
+export type FormMessages = {
+  success: string;
+  error: string;
+};
+
 export type ContactForm = {
   heading: string;
   subheading: string;
   text: string;
   fields: {
     company: FormField;
-    name: FormField;
+    username: FormField;
     email: FormField;
     phone: FormField;
     subject: FormField;
     message: FormField;
   };
+  messages: FormMessages;
   subjectOptions: Array<SubjectOption>;
   submitText: string;
   legal: Array<Legal>;

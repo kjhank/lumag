@@ -7,6 +7,7 @@ import {
 } from './src/types/wordpress';
 import { Endpoints } from './src/static/constants/endpoints';
 import {
+  ContactForm,
   Languages, Page, Post, Template,
 } from './src/types';
 import { RequestParams } from '@/types/global';
@@ -55,15 +56,46 @@ const getUrl = (endpoint: string = '', params?: RequestParams) => {
   return baseUrl;
 };
 
+const getToken = async () => {
+  const url = getUrl(Endpoints.AUTH);
+  const body = JSON.stringify({
+    password: process.env.API_PASSWORD,
+    username: process.env.API_USER,
+  });
+
+  const response = await fetch(url, {
+    body,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  });
+
+  const result = await response.json();
+
+  return result;
+};
+
 const fetchEntities = async (
   entity: Endpoints,
   id?: number,
   params: { [key: string]: string } = {},
-  infinite: boolean = false
+  infinite: boolean = false,
+  shouldAuth?: boolean
 ) => {
   const url = id ? `${getUrl(entity)}/${id}` : getUrl(entity, params);
+  const { token } = await getToken();
 
-  const response = await fetch(url);
+  const response = shouldAuth
+    ? await fetch(
+      url,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    : await fetch(url);
 
   if (infinite) {
     const pageCount = Number(response.headers.get('x-wp-totalpages'));
@@ -267,6 +299,13 @@ const getTemplate = ({
 export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
   const { createPage } = actions;
   const pages: Array<Page> = await fetchEntities(Endpoints.PAGES, undefined, { per_page: '30' }, true);
+  const contactForms: Array<ContactForm> = await fetchEntities(
+    Endpoints.FORMS,
+    undefined,
+    undefined,
+    undefined,
+    true
+  );
 
   await Promise.all(pages.map(async page => {
     if (page === undefined) return;
@@ -282,7 +321,10 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
 
     createPage({
       component: template,
-      context,
+      context: {
+        ...context,
+        contactForms,
+      },
       path: pagePath,
     });
   }));

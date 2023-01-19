@@ -1,5 +1,5 @@
 import {
-  FormField, FormFieldName, Legal, SubjectOption,
+  FormField, FormFieldName, FormMessages, Legal, SubjectOption,
 } from '@/types';
 
 export type ContactFormProps = {
@@ -10,6 +10,7 @@ export type ContactFormProps = {
     [key in FormFieldName]: FormField;
   };
   legal: Array<Legal>;
+  messages: FormMessages;
   subjectOptions: Array<SubjectOption>;
   submitText: string;
   footer: string;

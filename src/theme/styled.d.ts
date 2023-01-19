@@ -6,9 +6,11 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       brand: string;
+      error: string;
       neutral: {
         [key: number]: string;
       };
+      success: string;
     };
     fonts: {
       types: {
