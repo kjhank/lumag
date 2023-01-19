@@ -3,11 +3,12 @@ import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithM
 import { IconSlug } from './global';
 import {
   ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
-  ParsedPost, Post, SeeMore, Template, Translations, Video,
+  ParsedPost, Post, SeeMore, SEO, Template, Translations, Video,
 } from './wordpress';
 
 export type PageMeta = {
   lang: Languages;
+  seo: SEO;
   title: {
     rendered: string;
   };
