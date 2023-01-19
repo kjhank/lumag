@@ -14,12 +14,14 @@ import { ContactFormProps, FormElements } from './ContactForm.types';
 import { FormFieldName, ToastVariant } from '@/types';
 import { useAnchors } from '@/hooks';
 import { SectionHeading } from '@/components/styled';
-import { backendUrl, Endpoints } from '@/static';
+import {
+  apiPassword, apiUser, backendUrl, Endpoints,
+} from '@/static';
 
 const getToken = async () => {
   const body = JSON.stringify({
-    password: process.env.API_PASSWORD,
-    username: process.env.API_USER,
+    password: apiPassword,
+    username: apiUser,
   });
 
   const response = await fetch(`${backendUrl}/${Endpoints.AUTH}`, {
@@ -32,7 +34,7 @@ const getToken = async () => {
 
   const result = await response.json();
 
-  return result;
+  return result.token;
 };
 
 export const initialFormState: {
@@ -103,7 +105,7 @@ export const ContactForm = ({
         (item as FormElements).value
       ));
 
-    const { token } = await getToken();
+    const token = await getToken();
 
     const response = await fetch(`${backendUrl}/${Endpoints.FORMS}/${formId}/feedback`, {
       body: formData,

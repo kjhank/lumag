@@ -59,8 +59,8 @@ const getUrl = (endpoint: string = '', params?: RequestParams) => {
 const getToken = async () => {
   const url = getUrl(Endpoints.AUTH);
   const body = JSON.stringify({
-    password: process.env.API_PASSWORD,
-    username: process.env.API_USER,
+    password: process.env.GATSBY_API_PASSWORD,
+    username: process.env.GATSBY_API_USER,
   });
 
   const response = await fetch(url, {
