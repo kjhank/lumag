@@ -14,9 +14,8 @@ export const Section = styled.section`
   `}
 
   > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 1fr;
     gap: ${({ theme }) => theme.helpers.getMin(40)};
     padding-inline: ${({ theme }) => theme.helpers.getMin(112)};
   }
@@ -88,4 +87,9 @@ export const Label = styled.figcaption`
   ${({ theme }) => theme.helpers.getClamped(16)};
   font-family: ${({ theme }) => theme.fonts.types.heading};
   text-align: center;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      ${theme.helpers.getClamped(24)};
+    }
+  `}
 `;
