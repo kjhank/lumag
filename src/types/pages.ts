@@ -16,13 +16,13 @@ export type PageMeta = {
 export type Icon = {
   [key in 'label' | 'text']: string;
 } & ({
-  iconSlug?: never;
+  iconSlug: never;
   svgSlug: {
     value: IconSlug;
     label: string;
   };
 } | {
-  svgSlug?: never;
+  svgSlug: never;
   iconSlug: IconSlug;
 });
 

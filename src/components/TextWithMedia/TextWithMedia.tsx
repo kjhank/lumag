@@ -7,7 +7,7 @@ import { TextWithMediaProps } from './TextWithMedia.types';
 
 export const TextWithMedia = (
   {
-    as, backgroundIndex = 17, fontSize = 18, hasDecoration = false, image, layout = 'alternating', text, heading, video,
+    as, backgroundIndex = 17, fontSize = 18, hasDecoration = false, hasExtraPadding = false, image, layout = 'alternating', text, heading, video,
   }: TextWithMediaProps
 ) => (
   <Wrapper
@@ -17,19 +17,19 @@ export const TextWithMedia = (
   >
     {image && <Image decorationOn={layout} imageData={image} />}
     {video && (
-    <VideoWrapper decorationOn={layout}>
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <video
-        autoPlay={false}
-        controls
-        poster={video.poster.url}
-      >
-        <source src={video.webm.url} type="video/webm" />
-        {video?.mp4 && <source src={video.mp4.url} type="video/mp4" />}
-      </video>
-    </VideoWrapper>
+      <VideoWrapper decorationOn={layout}>
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <video
+          autoPlay={false}
+          controls
+          poster={video.poster.url}
+        >
+          <source src={video.webm.url} type="video/webm" />
+          {video?.mp4 && <source src={video.mp4.url} type="video/mp4" />}
+        </video>
+      </VideoWrapper>
     )}
-    <TextWrapper $fontSize={fontSize}>
+    <TextWrapper $fontSize={fontSize} hasExtraPadding={hasExtraPadding}>
       <h2>{heading}</h2>
       {/* eslint-disable-next-line react/no-danger */}
       <p dangerouslySetInnerHTML={{

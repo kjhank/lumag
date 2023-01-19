@@ -7,7 +7,7 @@ import { PlatesLeaderSectionProps } from './PlatesLeaderSection.types';
 export const PlatesLeaderSection = ({ carryPlate, europeanLeader }: PlatesLeaderSectionProps) => (
   <Section>
     <Container>
-      <TextWithMedia {...carryPlate} />
+      <TextWithMedia {...carryPlate} hasExtraPadding />
       <MiniCarousel {...europeanLeader} noShift />
     </Container>
   </Section>

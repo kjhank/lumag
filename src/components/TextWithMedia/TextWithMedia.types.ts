@@ -7,6 +7,7 @@ export type TextWithMediaProps = {
   backgroundIndex?: number;
   fontSize?: number;
   hasDecoration?: boolean;
+  hasExtraPadding?: boolean;
   heading: string;
   layout?: Layout;
   text: string;
