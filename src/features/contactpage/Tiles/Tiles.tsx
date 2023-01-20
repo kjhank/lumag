@@ -12,7 +12,7 @@ export const Tiles = ({
       <Tile>
         <SectionHeading as="h3">{suppliers.heading}</SectionHeading>
         <p>{suppliers.text}</p>
-        <ButtonLink to={`./${suppliers.linkFragment}`}>
+        <ButtonLink to={suppliers.formUrl.url}>
           {suppliers.linkText}
         </ButtonLink>
       </Tile>

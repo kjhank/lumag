@@ -165,7 +165,7 @@ export type Rep = {
 export type SuppliersTile = {
   heading: string;
   text: string;
-  linkFragment: string;
+  formUrl: ACFLink;
   linkText: string;
 };
 
