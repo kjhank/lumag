@@ -15,27 +15,10 @@ import { FormFieldName, ToastVariant } from '@/types';
 import { useAnchors } from '@/hooks';
 import { SectionHeading } from '@/components/styled';
 import {
-  apiPassword, apiUser, backendUrl, Endpoints,
+  backendUrl, Endpoints,
 } from '@/static';
+import { getToken } from '@/utils';
 
-const getToken = async () => {
-  const body = JSON.stringify({
-    password: apiPassword,
-    username: apiUser,
-  });
-
-  const response = await fetch(`${backendUrl}/${Endpoints.AUTH}`, {
-    body,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-  });
-
-  const result = await response.json();
-
-  return result.token;
-};
 
 export const initialFormState: {
   [key in FormFieldName]: string;

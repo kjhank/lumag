@@ -1,4 +1,5 @@
 import * as iconComponents from '@/static';
+import { apiPassword, apiUser, backendUrl, Endpoints } from '@/static';
 import { IconSlug } from '@/types';
 
 export const isBrowser = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
@@ -45,4 +46,23 @@ export const getIcon = (slug: IconSlug) => {
   };
 
   return icons[slug];
+};
+
+export const getToken = async () => {
+  const body = JSON.stringify({
+    password: apiPassword,
+    username: apiUser,
+  });
+
+  const response = await fetch(`${backendUrl}/${Endpoints.AUTH}`, {
+    body,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  });
+
+  const result = await response.json();
+
+  return result.token;
 };
