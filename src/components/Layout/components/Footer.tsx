@@ -12,10 +12,11 @@ import {
 } from '../Layout.styled';
 import { FooterProps } from '../Layout.types';
 import {
-  Agency, Facebook, freshmailApiToken, freshmailApiUrl, Linkedin, Logo, Twitter, Youtube,
+  Agency, backendUrl, Endpoints, Facebook, freshmailApiToken, freshmailApiUrl, Linkedin, Logo, Twitter, Youtube,
 } from '@/static';
 import { useApiLinks } from '@/hooks';
 import { FooterSubmenu } from '@/types';
+import { getToken } from '@/utils';
 
 const icons = {
   facebook: Facebook,
@@ -62,35 +63,30 @@ export const Footer = ({
   const handleNewsletter = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const headers = new Headers({
-      Authorization: `Bearer ${freshmailApiToken}`,
-      'Content-Type': 'application/json',
-    });
-    const body = JSON.stringify({
-      email,
-      list: 'q73xtkabfc',
-    });
-    const request: Request = new Request(`${freshmailApiUrl}/subscriber/add`, {
-      body,
-      headers,
-      method: 'POST',
-      mode: 'cors',
-    });
-
+    
     try {
-      const response = await fetch(request);
+      const token = await getToken();
+  
+      const body = JSON.stringify({
+        email,
+        list: 'q73xtkabfc',
+      });
+  
+      const response = await fetch(
+        `${backendUrl}/${Endpoints.FRESHMAIL}/subscriber/add`,
+        {
+          body,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+        }
+      );
+
       const result = await response.json();
 
       console.log(result);
-      // const response = await fetch(request);
-
-      // console.log({ response });
-
-      // if (response.status === 200) {
-      //   const result = await response.json();
-
-      //   console.log({ result });
-      // }
     } catch (error) {
       console.log({ error });
     }
