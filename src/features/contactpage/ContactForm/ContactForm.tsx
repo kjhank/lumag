@@ -19,7 +19,6 @@ import {
 } from '@/static';
 import { getToken } from '@/utils';
 
-
 export const initialFormState: {
   [key in FormFieldName]: string;
 } = {
@@ -88,24 +87,29 @@ export const ContactForm = ({
         (item as FormElements).value
       ));
 
-    const token = await getToken();
+    try {
+      const token = await getToken();
 
-    const response = await fetch(`${backendUrl}/${Endpoints.FORMS}/${formId}/feedback`, {
-      body: formData,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      method: 'POST',
-    });
+      const response = await fetch(`${backendUrl}/${Endpoints.FORMS}${formId}/feedback`, {
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        method: 'POST',
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    const isSuccess = result.status === 'mail_sent';
+      const isSuccess = result.status === 'mail_sent';
 
-    setToastVisible(true);
-    setMessage(isSuccess ? messages.success : messages.error);
-    setToastVariant(isSuccess ? 'success' : 'error');
-    setToastVisible(true);
+      setToastVisible(true);
+      setMessage(isSuccess ? messages.success : messages.error);
+      setToastVariant(isSuccess ? 'success' : 'error');
+      setToastVisible(true);
+    } catch (error) {
+      setToastVariant('error');
+      setMessage(messages.error);
+    }
   };
 
   useAnchors(footerRef);

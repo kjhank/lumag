@@ -2,7 +2,7 @@ import { PageProps } from 'gatsby';
 import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithMedia.types';
 import { IconSlug } from './global';
 import {
-  ACFFile, ACFImage, ACFLink, ACFPage, Languages, ParsedOptions,
+  ACFFile, ACFImage, ACFLink, ACFPage, FormMessages, Languages, ParsedOptions,
   ParsedPost, Post, SeeMore, SEO, Template, Translations, Video,
 } from './wordpress';
 
@@ -204,11 +204,6 @@ export type Legal = {
   slug: string;
   content: string;
   isRequired: boolean;
-};
-
-export type FormMessages = {
-  success: string;
-  error: string;
 };
 
 export type ContactForm = {
