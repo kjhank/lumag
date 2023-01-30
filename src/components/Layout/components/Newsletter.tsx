@@ -1,6 +1,7 @@
 import {
   ChangeEvent, FormEvent, useState,
 } from 'react';
+import { createPortal } from 'react-dom';
 import {
   backendUrl, Endpoints, freshmailListHash,
 } from '@/static';
@@ -87,12 +88,13 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
         </NewsletterSubmit>
       </form>
 
-      {isToastVisible && (
+      {isToastVisible && createPortal(
         <Toast
           close={() => setToastVisible(false)} variant={toastVariant}
         >
           {message}
-        </Toast>
+        </Toast>,
+        document.body
       )
       }
     </>
