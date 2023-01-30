@@ -16,7 +16,7 @@ import { Toast } from '@/components/Toast/Toast';
 
 export const Newsletter = ({ copy }: NewsletterProps) => {
   const [isToastVisible, setToastVisible] = useState(false);
-  const [message, setMessage] = useState(copy.messages.success);
+  const [message, setMessage] = useState(copy?.messages?.success);
   const [toastVariant, setToastVariant] = useState<ToastVariant>('success');
   const [email, setEmail] = useState('');
   const [isAgreed, setAgreed] = useState(false);
@@ -56,12 +56,12 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
       const isSuccess = result.status === 'OK';
 
       setToastVisible(true);
-      setMessage(isSuccess ? copy.messages.success : copy.messages.error);
+      setMessage(isSuccess ? copy?.messages?.success : copy?.messages?.error);
       setToastVariant(isSuccess ? 'success' : 'error');
       setToastVisible(true);
     } catch (error) {
       setToastVariant('error');
-      setMessage(copy.messages.error);
+      setMessage(copy?.messages?.error);
     }
   };
 
