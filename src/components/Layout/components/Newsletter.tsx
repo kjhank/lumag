@@ -73,7 +73,7 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
         </NewsletterHeading>
         <NewsletterInput
           name="email" onChange={handleEmailChange}
-          placeholder={copy.placeholder}
+          placeholder={copy?.placeholder}
           type="email" value={email}
         />
         <NewsletterAgreement>
@@ -81,10 +81,10 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
             checked={isAgreed} onChange={handleCheckbox}
             type="checkbox"
           />
-          {copy.agreement}
+          {copy?.agreement}
         </NewsletterAgreement>
         <NewsletterSubmit disabled={!isAgreed || !email} type="submit">
-          {copy.buttonText}
+          {copy?.buttonText}
         </NewsletterSubmit>
       </form>
 
