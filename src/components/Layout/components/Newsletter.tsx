@@ -69,7 +69,7 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
     <>
       <form onSubmit={handleNewsletter}>
         <NewsletterHeading>
-          {copy.heading}
+          {copy?.heading}
         </NewsletterHeading>
         <NewsletterInput
           name="email" onChange={handleEmailChange}
