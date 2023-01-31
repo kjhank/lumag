@@ -332,7 +332,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
     });
   }));
 
-  Object.values(Languages).forEach(async lang => {
+  await Promise.all(Object.values(Languages).map(async lang => {
     const error404 = await fetchEntities(Endpoints.NOT_FOUND, undefined, { lang });
 
     const prefix = lang === Languages.polish ? '/' : `/${lang}/`;
@@ -353,7 +353,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
         path: `${prefix}404`,
       }
     );
-  });
+  }));
 };
 
 export const onCreateBabelConfig: GatsbyNode['onCreateBabelConfig'] = ({ actions }) => {
