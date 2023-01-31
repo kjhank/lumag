@@ -605,6 +605,7 @@ export type FooterMenu = {
 };
 
 export type FormMessages = {
+  exists: string;
   success: string;
   error: string;
 };

@@ -20,6 +20,7 @@ export const Newsletter = ({ data }: NewsletterProps) => {
   const [toastVariant, setToastVariant] = useState<ToastVariant>('success');
   const [email, setEmail] = useState('');
   const [isAgreed, setAgreed] = useState(false);
+  const [isSending, setSending] = useState(false);
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -30,6 +31,7 @@ export const Newsletter = ({ data }: NewsletterProps) => {
   };
   const handleNewsletter = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSending(true);
 
     try {
       const token = await getToken();
@@ -55,13 +57,24 @@ export const Newsletter = ({ data }: NewsletterProps) => {
 
       const isSuccess = result.status === 'OK';
 
+      if (!isSuccess) {
+        const [error] = result.errors;
+
+        throw new Error(error.code, { cause: error.message });
+      }
+
       setToastVisible(true);
       setMessage(isSuccess ? data?.messages?.success : data?.messages?.error);
       setToastVariant(isSuccess ? 'success' : 'error');
       setToastVisible(true);
+      setSending(false);
     } catch (error) {
+      const exists = (error as { message: string }).message.includes('1304');
+
       setToastVariant('error');
-      setMessage(data?.messages?.error);
+      setMessage(exists ? data?.messages?.exists : data?.messages?.error);
+      setToastVisible(true);
+      setSending(false);
     }
   };
 
@@ -83,7 +96,7 @@ export const Newsletter = ({ data }: NewsletterProps) => {
           />
           {data?.agreement}
         </NewsletterAgreement>
-        <NewsletterSubmit disabled={!isAgreed || !email} type="submit">
+        <NewsletterSubmit disabled={!isAgreed || !email || isSending} type="submit">
           {data?.buttonText}
         </NewsletterSubmit>
       </form>
