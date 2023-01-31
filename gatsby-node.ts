@@ -354,11 +354,6 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
       }
     );
   });
-
-  // createPage({
-  //   component: templates.notFound,
-  //   path: '/404',
-  // });
 };
 
 export const onCreateBabelConfig: GatsbyNode['onCreateBabelConfig'] = ({ actions }) => {
