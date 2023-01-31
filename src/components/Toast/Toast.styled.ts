@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ToastVariant } from '@/types';
 
 export const ToastNode = styled.article<{ isVisible: boolean; variant: ToastVariant }>`
@@ -33,9 +33,14 @@ export const ToastNode = styled.article<{ isVisible: boolean; variant: ToastVari
   text-align: center;
   translate: ${({ isVisible }) => (isVisible ? '-50% -100% 0' : '-50% 30% 0')};
   transition: translate ${({ theme }) => theme.transitions.default} cubic-bezier(0.87, 0, 0.13, 1);
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: 90vw;
+    }
+  `}
 `;
 
-export const CloseButton = styled.button.attrs({ type: 'button' })<{ variant: ToastVariant }>`
+export const CloseButton = styled.button.attrs({ type: 'button' }) <{ variant: ToastVariant }>`
   position: absolute;
   inset: 0 0 auto auto;
   aspect-ratio: 1;
@@ -87,4 +92,10 @@ export const CloseButton = styled.button.attrs({ type: 'button' })<{ variant: To
   }};
     color: ${({ theme }) => theme.colors.neutral[5]};
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      width: 8vw;
+      height: 8vw;
+    }
+  `}
 `;

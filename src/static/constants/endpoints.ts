@@ -1,9 +1,9 @@
 export enum Endpoints {
   AUTH = 'jwt-auth/v1/token/',
-  // eslint-disable-next-line no-template-curly-in-string
   FORMS = 'contact-form-7/v1/contact-forms/',
   FRESHMAIL = 'freshmail/',
   GLOBALS = 'acf/v3/options/globals/',
+  NOT_FOUND = 'acf/v3/options/notFound/',
   LANG = 'pll/v1/',
   PAGES = 'wp/v2/pages/',
   POSTS = 'wp/v2/posts/',

@@ -393,6 +393,11 @@ export const NewsletterSubmit = styled.button`
     filter: contrast(50%);
     cursor: not-allowed;
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding-block: 0.5em;
+    }
+  `}
 `;
 
 export const BottomNav = styled.nav`
