@@ -613,6 +613,7 @@ export type Newsletter = {
   agreement: string;
   buttonText: string;
   heading: string;
+  mailListHash: string;
   messages: FormMessages;
   placeholder: string;
 };

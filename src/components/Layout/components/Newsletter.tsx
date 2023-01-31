@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  backendUrl, Endpoints, freshmailListHash,
+  backendUrl, Endpoints,
 } from '@/static';
 import { getToken } from '@/utils';
 import {
@@ -14,9 +14,9 @@ import { NewsletterProps } from '../Layout.types';
 import { ToastVariant } from '@/types';
 import { Toast } from '@/components/Toast/Toast';
 
-export const Newsletter = ({ copy }: NewsletterProps) => {
+export const Newsletter = ({ data }: NewsletterProps) => {
   const [isToastVisible, setToastVisible] = useState(false);
-  const [message, setMessage] = useState(copy?.messages?.success);
+  const [message, setMessage] = useState(data?.messages?.success);
   const [toastVariant, setToastVariant] = useState<ToastVariant>('success');
   const [email, setEmail] = useState('');
   const [isAgreed, setAgreed] = useState(false);
@@ -36,7 +36,7 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
 
       const body = JSON.stringify({
         email,
-        list: freshmailListHash,
+        list: data.mailListHash,
       });
 
       const response = await fetch(
@@ -56,12 +56,12 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
       const isSuccess = result.status === 'OK';
 
       setToastVisible(true);
-      setMessage(isSuccess ? copy?.messages?.success : copy?.messages?.error);
+      setMessage(isSuccess ? data?.messages?.success : data?.messages?.error);
       setToastVariant(isSuccess ? 'success' : 'error');
       setToastVisible(true);
     } catch (error) {
       setToastVariant('error');
-      setMessage(copy?.messages?.error);
+      setMessage(data?.messages?.error);
     }
   };
 
@@ -69,11 +69,11 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
     <>
       <form onSubmit={handleNewsletter}>
         <NewsletterHeading>
-          {copy?.heading}
+          {data?.heading}
         </NewsletterHeading>
         <NewsletterInput
           name="email" onChange={handleEmailChange}
-          placeholder={copy?.placeholder}
+          placeholder={data?.placeholder}
           type="email" value={email}
         />
         <NewsletterAgreement>
@@ -81,10 +81,10 @@ export const Newsletter = ({ copy }: NewsletterProps) => {
             checked={isAgreed} onChange={handleCheckbox}
             type="checkbox"
           />
-          {copy?.agreement}
+          {data?.agreement}
         </NewsletterAgreement>
         <NewsletterSubmit disabled={!isAgreed || !email} type="submit">
-          {copy?.buttonText}
+          {data?.buttonText}
         </NewsletterSubmit>
       </form>
 

@@ -53,5 +53,5 @@ export type AppContextState = {
 };
 
 export type NewsletterProps = {
-  copy: Newsletter;
+  data: Newsletter;
 };
