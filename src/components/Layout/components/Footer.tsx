@@ -69,7 +69,7 @@ export const Footer = ({
             })}
           </LinksWrapper>
         </div>
-        <Newsletter copy={newsletter} />
+        <Newsletter data={newsletter} />
       </Container>
     </ActionSection>
     <BottomNav>

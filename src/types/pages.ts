@@ -449,6 +449,10 @@ export type HistoryPageContent = {
   };
 };
 
+export type NotFoundPageContent = {
+  header: Header;
+};
+export type NotFoundPageProps = CustomPageProps<NotFoundPageContent>;
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
 export type CSRPageProps = CustomPageProps<CSRPageContent>;
