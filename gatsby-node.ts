@@ -36,6 +36,7 @@ const templates: { [key in Template]: string } = {
   ips: path.resolve('./src/templates/IPSPage.tsx'),
   managing: path.resolve('./src/templates/ManagingPage.tsx'),
   news: path.resolve('./src/templates/NewsPage.tsx'),
+  notFound: path.resolve('./src/templates/404Page.tsx'),
   offer: path.resolve('./src/templates/OfferPage.tsx'),
   offerBrakes: path.resolve('./src/templates/OfferBrakesPage.tsx'),
   page: path.resolve('./src/templates/GenericPage.tsx'),
@@ -330,6 +331,34 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
       path: pagePath,
     });
   }));
+
+  Object.values(Languages).forEach(async lang => {
+    const error404 = await fetchEntities(Endpoints.NOT_FOUND, undefined, { lang });
+
+    const prefix = lang === Languages.polish ? '/' : `/${lang}/`;
+
+    const options: { acf: Options } = await fetchEntities(
+      Endpoints.GLOBALS,
+      undefined,
+      { lang }
+    );
+
+    createPage(
+      {
+        component: templates.notFound,
+        context: {
+          content: error404.acf,
+          options: parseOptions(options.acf),
+        },
+        path: `${prefix}404`,
+      }
+    );
+  });
+
+  // createPage({
+  //   component: templates.notFound,
+  //   path: '/404',
+  // });
 };
 
 export const onCreateBabelConfig: GatsbyNode['onCreateBabelConfig'] = ({ actions }) => {

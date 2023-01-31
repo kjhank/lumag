@@ -11,7 +11,7 @@ export enum Languages {
   // russian = 'ru',
   spanish = 'es',
 }
-export type Template = 'about' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values';
+export type Template = 'about' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound';
 
 export type Translations = {
   [key in Languages]: number;
@@ -613,6 +613,7 @@ export type Newsletter = {
   agreement: string;
   buttonText: string;
   heading: string;
+  mailListHash: string;
   messages: FormMessages;
   placeholder: string;
 };
