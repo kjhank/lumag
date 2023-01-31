@@ -80,7 +80,7 @@ export const Newsletter = ({ data }: NewsletterProps) => {
 
   return (
     <>
-      <form onSubmit={handleNewsletter}>
+      <form id="newsletterForm" onSubmit={handleNewsletter}>
         <NewsletterHeading>
           {data?.heading}
         </NewsletterHeading>
@@ -107,7 +107,7 @@ export const Newsletter = ({ data }: NewsletterProps) => {
         >
           {message}
         </Toast>,
-        document.body
+        document.querySelector('#newsletterForm')
       )
       }
     </>

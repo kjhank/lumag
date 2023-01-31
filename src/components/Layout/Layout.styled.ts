@@ -267,6 +267,7 @@ export const NavItem = styled.li`
 
 export const ActionSection = styled.section`
   position: relative;
+  z-index: 4;
   font-family: ${({ theme }) => theme.fonts.types.alt};
 
   > div {
@@ -275,12 +276,22 @@ export const ActionSection = styled.section`
 
     > div,
     > form {
+      position: relative;
       display: flex;
       flex: 50%;
       flex-direction: column;
       align-items: center;
       gap: ${({ theme }) => theme.helpers.getMin(30)};
       padding-block-start: ${({ theme }) => theme.helpers.getMin(71)};
+
+      > article {
+        position: absolute;
+
+        > button {
+          width: ${({ theme }) => theme.helpers.getMin(24)};
+          height: ${({ theme }) => theme.helpers.getMin(24)};
+        }
+      }
 
       > svg {
         width: ${({ theme }) => theme.helpers.getMin(249)};
@@ -401,6 +412,8 @@ export const NewsletterSubmit = styled.button`
 `;
 
 export const BottomNav = styled.nav`
+  position: relative;
+  z-index: 5;
   background-color: ${({ theme }) => theme.global.footer.backgroundColor};
   padding-block: ${({ theme }) => theme.helpers.getMin(60)};
   font-size: ${({ theme }) => theme.fonts.sizes.xs};
