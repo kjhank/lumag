@@ -51,3 +51,7 @@ export type AppContextState = {
   siteUrl: string;
   urlPrefix: string;
 };
+
+export type NewsletterProps = {
+  copy: Newsletter;
+};

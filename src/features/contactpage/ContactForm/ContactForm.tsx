@@ -15,27 +15,9 @@ import { FormFieldName, ToastVariant } from '@/types';
 import { useAnchors } from '@/hooks';
 import { SectionHeading } from '@/components/styled';
 import {
-  apiPassword, apiUser, backendUrl, Endpoints,
+  backendUrl, Endpoints,
 } from '@/static';
-
-const getToken = async () => {
-  const body = JSON.stringify({
-    password: apiPassword,
-    username: apiUser,
-  });
-
-  const response = await fetch(`${backendUrl}/${Endpoints.AUTH}`, {
-    body,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-  });
-
-  const result = await response.json();
-
-  return result.token;
-};
+import { getToken } from '@/utils';
 
 export const initialFormState: {
   [key in FormFieldName]: string;
@@ -105,24 +87,29 @@ export const ContactForm = ({
         (item as FormElements).value
       ));
 
-    const token = await getToken();
+    try {
+      const token = await getToken();
 
-    const response = await fetch(`${backendUrl}/${Endpoints.FORMS}/${formId}/feedback`, {
-      body: formData,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      method: 'POST',
-    });
+      const response = await fetch(`${backendUrl}/${Endpoints.FORMS}${formId}/feedback`, {
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        method: 'POST',
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    const isSuccess = result.status === 'mail_sent';
+      const isSuccess = result.status === 'mail_sent';
 
-    setToastVisible(true);
-    setMessage(isSuccess ? messages.success : messages.error);
-    setToastVariant(isSuccess ? 'success' : 'error');
-    setToastVisible(true);
+      setToastVisible(true);
+      setMessage(isSuccess ? messages.success : messages.error);
+      setToastVariant(isSuccess ? 'success' : 'error');
+      setToastVisible(true);
+    } catch (error) {
+      setToastVariant('error');
+      setMessage(messages.error);
+    }
   };
 
   useAnchors(footerRef);

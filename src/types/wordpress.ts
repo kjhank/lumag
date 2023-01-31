@@ -604,10 +604,16 @@ export type FooterMenu = {
   subitems: Array<FooterSubmenu>;
 };
 
+export type FormMessages = {
+  success: string;
+  error: string;
+};
+
 export type Newsletter = {
   agreement: string;
   buttonText: string;
   heading: string;
+  messages: FormMessages;
   placeholder: string;
 };
 
