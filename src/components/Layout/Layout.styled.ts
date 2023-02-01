@@ -290,6 +290,13 @@ export const ActionSection = styled.section`
         > button {
           width: ${({ theme }) => theme.helpers.getMin(24)};
           height: ${({ theme }) => theme.helpers.getMin(24)};
+          ${({ theme }) => css`
+            ${theme.mediaQueries.s} {
+              width: 5vw;
+              height: 5vw;
+              font-size: 3vw;
+            }
+          `}
         }
       }
 
@@ -307,6 +314,11 @@ export const ActionSection = styled.section`
         padding-block-end: ${({ theme }) => theme.helpers.getMin(18)};
         padding-inline: ${({ theme }) => theme.helpers.getMin(61)};
         ${({ theme }) => theme.global.contact.newsletterFontSize};
+        ${({ theme }) => css`
+          ${theme.mediaQueries.s} {
+            position: static;
+          }
+        `}
       }
     }
     ${({ theme }) => css`
@@ -380,12 +392,28 @@ export const NewsletterInput = styled.input`
   ::placeholder {
     color: inherit;
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      padding: 0.5em;
+      font-size: 10px;
+    }
+  `}
 `;
 
 export const NewsletterAgreement = styled.label`
   display: flex;
   align-items: baseline;
   gap: 1em;
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      font-size: 10px;
+
+      > input[type="checkbox"] {
+        width: 1em;
+        height: 1em;
+      }
+    }
+  `}
 `;
 
 export const NewsletterSubmit = styled.button`

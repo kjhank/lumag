@@ -94,7 +94,7 @@ export const Newsletter = ({ data }: NewsletterProps) => {
             checked={isAgreed} onChange={handleCheckbox}
             type="checkbox"
           />
-          {data?.agreement}
+          <span>{data?.agreement}</span>
         </NewsletterAgreement>
         <NewsletterSubmit disabled={!isAgreed || !email || isSending} type="submit">
           {data?.buttonText}
