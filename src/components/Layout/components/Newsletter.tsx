@@ -5,13 +5,15 @@ import { createPortal } from 'react-dom';
 import {
   backendUrl, Endpoints,
 } from '@/static';
-import { getToken } from '@/utils';
+import { getToken, isBrowser } from '@/utils';
 import {
   NewsletterAgreement, NewsletterHeading,
   NewsletterInput, NewsletterSubmit,
 } from '../Layout.styled';
 import { NewsletterProps } from '../Layout.types';
-import { ToastVariant } from '@/types';
+import {
+  FreshmailConfig, Status, ToastVariant,
+} from '@/types';
 import { Toast } from '@/components/Toast/Toast';
 
 export const Newsletter = ({ data }: NewsletterProps) => {
@@ -36,15 +38,16 @@ export const Newsletter = ({ data }: NewsletterProps) => {
     try {
       const token = await getToken();
 
-      const body = JSON.stringify({
+      const body: FreshmailConfig = {
         email,
         list: data.mailListHash,
-      });
+        status: Status.active,
+      };
 
       const response = await fetch(
         `${backendUrl}/${Endpoints.FRESHMAIL}subscriber/add`,
         {
-          body,
+          body: JSON.stringify(body),
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -101,12 +104,13 @@ export const Newsletter = ({ data }: NewsletterProps) => {
         </NewsletterSubmit>
       </form>
 
-      {isToastVisible && createPortal(
+      {isBrowser && isToastVisible && createPortal(
         <Toast
           close={() => setToastVisible(false)} variant={toastVariant}
         >
           {message}
         </Toast>,
+        // @ts-ignore
         document.querySelector('#newsletterForm')
       )
       }
