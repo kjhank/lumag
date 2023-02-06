@@ -202,7 +202,12 @@ const getPageLangs = async (translations: Translations) => {
 };
 
 const fetchPosts = async (lang: Languages): Promise<Array<Post>> => {
-  const posts = await fetchEntities(Endpoints.POSTS, undefined, { lang }, true);
+  const posts = await fetchEntities(
+    Endpoints.POSTS,
+    undefined,
+    { lang },
+    true
+  );
 
   return posts;
 };
@@ -301,7 +306,12 @@ const getTemplate = ({
 
 export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
   const { createPage } = actions;
-  const pages: Array<Page> = await fetchEntities(Endpoints.PAGES, undefined, { per_page: '30' }, true);
+  const pages: Array<Page> = await fetchEntities(
+    Endpoints.PAGES,
+    undefined,
+    { per_page: '30' },
+    true
+  );
   const contactForms: Array<ContactForm> = await fetchEntities(
     Endpoints.FORMS,
     undefined,
@@ -333,7 +343,11 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
   }));
 
   await Promise.all(Object.values(Languages).map(async lang => {
-    const error404 = await fetchEntities(Endpoints.NOT_FOUND, undefined, { lang });
+    const error404 = await fetchEntities(
+      Endpoints.NOT_FOUND,
+      undefined,
+      { lang }
+    );
 
     const prefix = lang === Languages.polish ? '/' : `/${lang}/`;
 

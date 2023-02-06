@@ -206,7 +206,7 @@ export type Legal = {
   isRequired: boolean;
 };
 
-export type ContactForm = {
+type ContactForm = {
   heading: string;
   subheading: string;
   text: string;
