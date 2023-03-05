@@ -193,6 +193,8 @@ export type FormField = {
 
 export type FormFieldName = 'company' | 'username' | 'email' | 'phone' | 'subject' | 'message';
 
+export type CareerFieldName = 'jobTitle' | 'candidateName' | 'location' | 'contactMethod' | 'dateOfBirth' | 'education';
+
 export type SubjectOption = {
   formId: number;
   slug: string;
@@ -452,6 +454,67 @@ export type HistoryPageContent = {
 export type NotFoundPageContent = {
   header: Header;
 };
+
+export type CareersBox = {
+  heading: string;
+  content: string;
+};
+
+export type JobRequirements = {
+  heading: string;
+  list: Array<{ item: string }>;
+};
+
+export type JobTasks = {
+  heading: string;
+  list: Array<{ item: string }>;
+};
+
+export type FormObject = {
+  formObject: {
+    ID: number;
+  };
+};
+
+export type JobForm = {
+  checkboxes: Array<string>;
+  disclaimer: string;
+  formObject: FormObject;
+  legal: string;
+  submitText: string;
+};
+
+export type RawOffer = {
+  acf: {
+    form: JobForm;
+    name: string;
+    requirements: JobRequirements;
+    tasks: JobTasks;
+  };
+};
+
+export type JobOffer = {
+  form: JobForm;
+  name: string;
+  requirements: JobRequirements;
+  tasks: JobTasks;
+};
+
+export type CareersPageContent = {
+  career: {
+    heading: string;
+    image: ACFImage;
+    text: string;
+  };
+  header: Header;
+  jobOffers: Array<JobOffer>;
+  offersHeading: string;
+  offersSectionBackground: ACFImage;
+  formMessage: string;
+  formHeading: string;
+  boxes: Array<CareersBox>;
+};
+
 export type NotFoundPageProps = CustomPageProps<NotFoundPageContent>;
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
@@ -460,3 +523,4 @@ export type AboutPageProps = CustomPageProps<AboutUsPageContent>;
 export type ValuesPageProps = CustomPageProps<ValuesPageContent>;
 export type ManagingPageProps = CustomPageProps<ManagingPageContent>;
 export type HistoryPageProps = CustomPageProps<HistoryPageContent>;
+export type CareersPageProps = CustomPageProps<CareersPageContent>;

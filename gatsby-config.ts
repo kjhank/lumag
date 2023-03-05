@@ -1,4 +1,6 @@
-export default {
+import { GatsbyConfig } from 'gatsby';
+
+const config: GatsbyConfig = {
   plugins: [
     'gatsby-plugin-tsconfig-paths',
     {
@@ -42,4 +44,4 @@ export default {
   },
 };
 
-export { };
+export default config;

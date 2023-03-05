@@ -2,7 +2,7 @@ import {
   ExpandableItem,
   Header, PaginatedList,
 } from '@/components';
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { CSRPageProps } from '@/types';
 
 const CSRPage = ({ pageContext: { content } }: CSRPageProps) => (

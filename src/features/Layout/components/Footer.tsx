@@ -58,11 +58,13 @@ export const Footer = ({
           <LinksWrapper>
             {socials?.map(social => {
               const Icon = icons[social.iconSlug as keyof typeof icons];
+              const linkHostname = new URL(social.url).hostname;
+              const linkTitle = linkHostname.startsWith('www.') ? linkHostname.substring(4) : linkHostname;
 
               return (
                 <li key={social.url}>
                   <ExternalLink href={social.url}>
-                    <Icon />
+                    <Icon title={linkTitle} />
                   </ExternalLink>
                 </li>
               );

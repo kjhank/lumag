@@ -197,6 +197,7 @@ export const ContactForm = ({
                 </FieldWrapper>
               ))}
               <p
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: sanitize(footer, sanitizeConfig) }}
               />
             </Footer>

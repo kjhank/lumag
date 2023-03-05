@@ -1,5 +1,5 @@
 import { Header } from '@/components';
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { TimelineSection } from '@/features/HistoryPage';
 import { HistoryPageProps } from '@/types';
 

@@ -8,7 +8,8 @@ import {
 import { Endpoints } from './src/static/constants/endpoints';
 import {
   ContactForm,
-  Languages, Page, Post, Template,
+  JobOffer,
+  Languages, Page, Post, RawOffer, Template,
 } from './src/types';
 import { RequestParams } from '@/types/global';
 
@@ -29,6 +30,7 @@ const regularPages = [
 
 const templates: { [key in Template]: string } = {
   about: path.resolve('./src/templates/AboutPage.tsx'),
+  careers: path.resolve('./src/templates/CareersPage.tsx'),
   contact: path.resolve('./src/templates/ContactPage.tsx'),
   csr: path.resolve('./src/templates/CSRPage.tsx'),
   history: path.resolve('./src/templates/HistoryPage.tsx'),
@@ -254,6 +256,25 @@ const getContext = async ({
     return {
       ...globalContext,
       content: acf,
+    };
+  }
+
+  if (template === 'careers') {
+    const rawOffers: Array<RawOffer> = await fetchEntities(Endpoints.CAREERS, undefined, { lang });
+
+    const jobOffers: Array<JobOffer> = rawOffers.map(({ acf: offer }) => ({
+      form: offer.form,
+      name: offer.name,
+      requirements: offer.requirements,
+      tasks: offer.tasks,
+    }));
+
+    return {
+      ...globalContext,
+      content: {
+        ...acf,
+        jobOffers,
+      },
     };
   }
 

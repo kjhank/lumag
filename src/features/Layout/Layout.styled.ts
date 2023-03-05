@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components';
-import { WPImage } from '../WPImage/WPImage';
+import { WPImage } from '../../components/WPImage/WPImage';
 
 export const HeaderNode = styled.header`
   position: fixed;

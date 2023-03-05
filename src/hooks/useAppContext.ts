@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '@/components/Layout/Layout.context';
+import { AppContext } from '@/features/Layout/Layout.context';
 
 export const useAppContext = () => {
   const context = useContext(AppContext);

@@ -1,4 +1,4 @@
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { GenericPageRenderer } from '@/features/genericpage/GenericPageRenderer';
 import { GenericPageProps } from '@/types';
 
