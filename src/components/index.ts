@@ -17,3 +17,5 @@ export { Modal } from './Modal/Modal';
 export { SeeMore } from './SeeMore/SeeMore';
 export { Toast } from './Toast/Toast';
 export { Accordion } from './Accordion/Accordion';
+export * from './Forms/styled';
+export { Boxes } from './Boxes/Boxes';

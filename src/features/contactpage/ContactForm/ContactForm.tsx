@@ -4,11 +4,11 @@ import {
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
 import {
-  ButtonLink, Container, Toast,
+  ButtonLink, Container, FieldWrapper, Input, Label, Toast,
 } from '@/components';
 import {
-  Description, FieldWrapper, Footer,
-  Form, Input, Label, Section, Subheading,
+  Description, Footer,
+  Form, Section, Subheading,
 } from './ContactForm.styled';
 import { ContactFormProps, FormElements } from './ContactForm.types';
 import { FormFieldName, ToastVariant } from '@/types';

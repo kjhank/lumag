@@ -605,9 +605,14 @@ export type FooterMenu = {
 };
 
 export type FormMessages = {
-  exists: string;
+  exists?: string;
   success: string;
   error: string;
+};
+
+export type Files = {
+  chooseFile: string;
+  noFileChosen: string;
 };
 
 export type Newsletter = {

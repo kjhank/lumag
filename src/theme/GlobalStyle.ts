@@ -179,7 +179,8 @@ export const GlobalStyle = createGlobalStyle`
     vertical-align: sub;
   }
 
-  .visually-hidden:not(:focus, :active) {
+  .visually-hidden:not(:focus, :active),
+  input[type='file'].visually-hidden {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);

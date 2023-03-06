@@ -1,10 +1,11 @@
 import { Attributes, IOptions } from 'sanitize-html';
 import {
+  Boxes,
   Container, Header, TextWithMedia,
 } from '@/components';
 import { Meta } from '@/features/Layout/components/Meta';
 import { CareersPageProps } from '@/types';
-import { Offers } from '@/features/CareersPage';
+import { BoxesSection, Careers } from '@/features/CareersPage';
 import { sanitizeConfig } from '@/utils/globalConfigs';
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -41,21 +42,30 @@ const iconSanitizeConfig: IOptions = {
   },
 };
 
-const CareersPage = ({ pageContext }: CareersPageProps) => (
+const CareersPage = ({ pageContext: { content } }: CareersPageProps) => (
   <>
-    <Header {...pageContext.content.header} paddingInline={0} />
+    <Header {...content.header} paddingInline={0} />
     <Container marginBlockEnd={138} marginBlockStart={-210}>
       <TextWithMedia
-        {...pageContext.content.career} backgroundIndex={15}
+        {...content.career} backgroundIndex={15}
         className="careers" contentElement="article"
         hasDecoration sanitizeConfig={iconSanitizeConfig}
       />
     </Container>
-    <Offers
-      background={pageContext.content.offersSectionBackground}
-      heading={pageContext.content.offersHeading}
-      offers={pageContext.content.jobOffers}
+    <Careers
+      background={content.offersSectionBackground}
+      form={content.form}
+      formFields={content.contactForm}
+      formHeading={content.formHeading}
+      formMessage={content.formMessage}
+      heading={content.offersHeading}
+      offers={content.jobOffers}
     />
+    <BoxesSection>
+      <Container>
+        <Boxes items={content.boxes} />
+      </Container>
+    </BoxesSection>
   </>
 );
 

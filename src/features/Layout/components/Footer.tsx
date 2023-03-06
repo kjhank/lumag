@@ -95,7 +95,7 @@ export const Footer = ({
           href="//gto.agency" rel="noreferrer"
           target="_blank"
         >
-          <Agency />
+          <Agency title="GTO agency" />
         </a>
       </Container>
     </Copyright>
