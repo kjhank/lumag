@@ -1,4 +1,4 @@
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { ContactForm } from '@/features/contactpage';
 import { Header } from '@/components';
 import { KeepInTouch } from '@/features/contactpage/KeepInTouch/KeepInTouch';

@@ -1,5 +1,7 @@
 import * as iconComponents from '@/static';
-import { apiPassword, apiUser, backendUrl, Endpoints } from '@/static';
+import {
+  apiPassword, apiUser, backendUrl, Endpoints,
+} from '@/static';
 import { IconSlug } from '@/types';
 
 export const isBrowser = !!(typeof window !== 'undefined' && window.document && window.document.createElement);

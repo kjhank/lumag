@@ -1,7 +1,7 @@
 import {
   Certificates, Header, TextWithMedia,
 } from '@/components';
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { Container } from '@/features/OfferBrakesPage';
 import { Catalogs } from '@/features/OfferBrakesPage/Catalogs/Catalogs';
 import { OfferBrakesPageProps } from '@/types';

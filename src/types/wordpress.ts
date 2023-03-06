@@ -11,7 +11,7 @@ export enum Languages {
   // russian = 'ru',
   spanish = 'es',
 }
-export type Template = 'about' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound';
+export type Template = 'about' | 'careers' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound';
 
 export type Translations = {
   [key in Languages]: number;
@@ -605,9 +605,14 @@ export type FooterMenu = {
 };
 
 export type FormMessages = {
-  exists: string;
+  exists?: string;
   success: string;
   error: string;
+};
+
+export type Files = {
+  chooseFile: string;
+  noFileChosen: string;
 };
 
 export type Newsletter = {

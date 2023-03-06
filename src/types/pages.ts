@@ -2,7 +2,7 @@ import { PageProps } from 'gatsby';
 import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithMedia.types';
 import { IconSlug } from './global';
 import {
-  ACFFile, ACFImage, ACFLink, ACFPage, FormMessages, Languages, ParsedOptions,
+  ACFFile, ACFImage, ACFLink, ACFPage, Files, FormMessages, Languages, ParsedOptions,
   ParsedPost, Post, SeeMore, SEO, Template, Translations, Video,
 } from './wordpress';
 
@@ -193,6 +193,18 @@ export type FormField = {
 
 export type FormFieldName = 'company' | 'username' | 'email' | 'phone' | 'subject' | 'message';
 
+export type CareerFieldName = 'positionName' | 'candidateName' | 'location' | 'contactMethod' | 'dateOfBirth' | 'education';
+
+export type ContactMethodOption = {
+  description: string;
+  slug: string;
+};
+
+export type EducationOption = {
+  description: string;
+  slug: string;
+};
+
 export type SubjectOption = {
   formId: number;
   slug: string;
@@ -211,12 +223,12 @@ type ContactForm = {
   subheading: string;
   text: string;
   fields: {
-    company: FormField;
-    username: FormField;
-    email: FormField;
-    phone: FormField;
-    subject: FormField;
-    message: FormField;
+    [key in FormFieldName]: FormField;
+    // username: FormField;
+    // email: FormField;
+    // phone: FormField;
+    // subject: FormField;
+    // message: FormField;
   };
   messages: FormMessages;
   subjectOptions: Array<SubjectOption>;
@@ -452,6 +464,79 @@ export type HistoryPageContent = {
 export type NotFoundPageContent = {
   header: Header;
 };
+
+export type GenericBox = {
+  heading: string;
+  content: string;
+};
+
+export type JobRequirements = {
+  heading: string;
+  list: Array<{ item: string }>;
+};
+
+export type JobTasks = {
+  heading: string;
+  list: Array<{ item: string }>;
+};
+
+export type FormObject = {
+  ID: number;
+};
+
+export type JobForm = {
+  checkboxes: Array<{
+    checkbox: string;
+    isRequired: boolean;
+    slug: string;
+  }>;
+  disclaimer: string;
+  formObject: FormObject;
+  legal: string;
+  submitText: string;
+};
+
+export type JobFormFields = {
+  contactMethodOptions: Array<ContactMethodOption>;
+  educationOptions: Array<EducationOption>;
+  fields: {
+    [key in CareerFieldName]: FormField;
+  };
+  files: Files;
+  messages: FormMessages;
+};
+
+export type RawOffer = {
+  acf: {
+    name: string;
+    requirements: JobRequirements;
+    tasks: JobTasks;
+  };
+};
+
+export type JobOffer = {
+  name: string;
+  requirements: JobRequirements;
+  tasks: JobTasks;
+};
+
+export type CareersPageContent = {
+  career: {
+    heading: string;
+    image: ACFImage;
+    text: string;
+  };
+  form: JobForm;
+  contactForm: JobFormFields;
+  header: Header;
+  jobOffers: Array<JobOffer>;
+  offersHeading: string;
+  offersSectionBackground: ACFImage;
+  formMessage: string;
+  formHeading: string;
+  boxes: Array<GenericBox>;
+};
+
 export type NotFoundPageProps = CustomPageProps<NotFoundPageContent>;
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
@@ -460,3 +545,4 @@ export type AboutPageProps = CustomPageProps<AboutUsPageContent>;
 export type ValuesPageProps = CustomPageProps<ValuesPageContent>;
 export type ManagingPageProps = CustomPageProps<ManagingPageContent>;
 export type HistoryPageProps = CustomPageProps<HistoryPageContent>;
+export type CareersPageProps = CustomPageProps<CareersPageContent>;

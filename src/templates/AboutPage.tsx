@@ -1,7 +1,7 @@
 import {
   Container, Header, QuoteHero,
 } from '@/components';
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { GetToKnowUs, WhyDifferent } from '@/features/AboutPage';
 import { AboutPageProps } from '@/types';
 

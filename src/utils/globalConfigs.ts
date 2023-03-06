@@ -26,5 +26,8 @@ export const sanitizeConfig: IOptions = {
     'p',
     'strong',
     'source',
+    'ul',
+    'li',
+    'video',
   ],
 };

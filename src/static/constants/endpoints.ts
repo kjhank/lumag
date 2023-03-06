@@ -1,5 +1,6 @@
 export enum Endpoints {
   AUTH = 'jwt-auth/v1/token/',
+  CAREERS = 'wp/v2/careers',
   FORMS = 'contact-form-7/v1/contact-forms/',
   FRESHMAIL = 'freshmail/',
   GLOBALS = 'acf/v3/options/globals/',
