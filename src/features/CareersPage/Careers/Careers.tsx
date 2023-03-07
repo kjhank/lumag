@@ -10,32 +10,19 @@ import { OfferProps, OffersProps } from './Careers.types';
 
 export const Offer = ({ offer }: OfferProps) => (
   <OfferContent>
-    <OfferSection>
-      <h4>{offer.requirements.heading}</h4>
-      {offer.requirements.list?.length > 0 && (
+    {offer?.lists?.map(({ list }) => (
+      <OfferSection key={list.heading}>
+        <h4>{list.heading}</h4>
         <OfferList>
-          {offer.requirements.list.map(({ item }) => (
+          {list.list.map(({ item }) => (
             <li key={item}>
               <CircleCheck />
               {item}
             </li>
           ))}
         </OfferList>
-      )}
-    </OfferSection>
-    <OfferSection>
-      <h4>{offer.tasks.heading}</h4>
-      {offer.tasks.list?.length > 0 && (
-        <OfferList>
-          {offer.tasks.list.map(({ item }) => (
-            <li key={item}>
-              <CircleCheck />
-              {item}
-            </li>
-          ))}
-        </OfferList>
-      )}
-    </OfferSection>
+      </OfferSection>
+    ))}
   </OfferContent>
 );
 

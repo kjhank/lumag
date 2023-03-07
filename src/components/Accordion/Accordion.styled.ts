@@ -20,7 +20,7 @@ export const Item = styled.li<{ isExpanded: boolean }>`
     height: 0.36em;
     /* stylelint-disable-next-line value-keyword-case */
     stroke: currentColor;
-    transform: ${({ isExpanded }) => (isExpanded ? 'rotateX(0deg) rotateZ(90deg)' : 'rotateX(180deg) rotateZ(90deg)')};
+    transform: ${({ isExpanded }) => (isExpanded ? 'rotateX(180deg) rotateZ(90deg)' : 'rotateX(0deg) rotateZ(90deg)')};
   }
 `;
 
@@ -32,8 +32,6 @@ export const Toggle = styled.button.attrs({ type: 'button' })`
   padding: ${({ theme: { helpers } }) => `${helpers.getMin(30)} ${helpers.getMin(71)}`};
   background-color: transparent;
   color: inherit;
-  font-weight: 700;
-  ${({ theme }) => theme.helpers.getClamped(36)};
   text-align: start;
   cursor: pointer;
 

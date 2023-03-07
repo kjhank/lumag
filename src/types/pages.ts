@@ -508,16 +508,21 @@ export type JobFormFields = {
 
 export type RawOffer = {
   acf: {
+    lists?: Array<OfferList>;
     name: string;
-    requirements: JobRequirements;
-    tasks: JobTasks;
+  };
+};
+
+export type OfferList = {
+  list: {
+    heading: string;
+    list: Array<{ item: string }>;
   };
 };
 
 export type JobOffer = {
+  lists?: Array<OfferList>;
   name: string;
-  requirements: JobRequirements;
-  tasks: JobTasks;
 };
 
 export type CareersPageContent = {

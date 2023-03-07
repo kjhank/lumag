@@ -24,7 +24,8 @@ export const OffersSection = styled.section`
 `;
 
 export const OfferName = styled.h3`
-  text-transform: uppercase;
+  font-weight: 700;
+  ${({ theme }) => theme.helpers.getClamped(36)};
 `;
 
 export const OfferContent = styled.div`
@@ -50,7 +51,6 @@ export const OfferSection = styled.section`
 export const OfferList = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: ${({ theme }) => theme.helpers.getMin(13)};
   font-weight: 100;
   ${({ theme }) => theme.fonts.sizes.s};
@@ -61,8 +61,7 @@ export const OfferList = styled.ul`
 
     > svg {
       position: relative;
-      top: -0.25em;
-      width: auto;
+      flex: 1.5em 0 0;
       height: 1.5em;
       color: ${({ theme }) => theme.colors.brand};
 

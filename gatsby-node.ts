@@ -263,9 +263,8 @@ const getContext = async ({
     const rawOffers: Array<RawOffer> = await fetchEntities(Endpoints.CAREERS, undefined, { lang });
 
     const jobOffers: Array<JobOffer> = rawOffers.map(({ acf: offer }) => ({
+      lists: offer.lists,
       name: offer.name,
-      requirements: offer.requirements,
-      tasks: offer.tasks,
     }));
 
     return {
