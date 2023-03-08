@@ -271,6 +271,10 @@ const getContext = async ({
       ...globalContext,
       content: {
         ...acf,
+        career: {
+          ...acf.career,
+          defaultImageIndex: Number(acf.career.defaultImageIndex),
+        },
         jobOffers,
       },
     };

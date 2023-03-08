@@ -1,18 +1,19 @@
 /* eslint-disable sort-keys */
 import {
-  ChangeEvent, FormEvent, useRef, useState,
+  ChangeEvent, FormEvent, HTMLInputTypeAttribute, MouseEvent, useRef, useState,
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
 import { CareerFieldName, ToastVariant } from '@/types';
 import { CareerFormProps, FormElements } from './Careers.types';
 import { getToken } from '@/utils';
-import { backendUrl, Endpoints } from '@/static';
+import {
+  ArrowDown, backendUrl, Calendar, Endpoints,
+} from '@/static';
 import {
   FileInput, FileInputsWrapper, FormHeading, FormNode, Legal,
 } from './Careers.styled';
 import {
-  ButtonLink,
-  FieldWrapper, Input, Label, Toast,
+  ButtonLink, FieldWrapper, Input, Label, Toast,
 } from '@/components';
 import { useAnchors } from '@/hooks';
 
@@ -148,6 +149,14 @@ export const CareerForm = ({
     }
   };
 
+  const handleInputClick = (event: MouseEvent<HTMLInputElement>) => {
+    const inputNode = event.target as HTMLInputElement;
+
+    if (inputNode.getAttribute('type') === 'date') {
+      inputNode.showPicker();
+    }
+  };
+
   return (
     <>
       <FormNode onSubmit={handleForm}>
@@ -157,37 +166,44 @@ export const CareerForm = ({
         {Object.keys(initialFormState).map(field => {
           const isSelect = field === 'contactMethod' || field === 'education';
           const { isRequired } = formFields.fields[field as CareerFieldName];
-          const key = field === 'dateOfBirth' ? 'date' : field;
+          const key: HTMLInputTypeAttribute = field === 'dateOfBirth' ? 'date' : field;
 
           return isSelect
             ? (
-              <FieldWrapper key={field}>
+              <FieldWrapper hasDecoration key={field}>
                 <Label htmlFor={field}>
                   {formFields.fields[field as CareerFieldName].label}
                   {isRequired && '*'}
                 </Label>
-                <select
-                  name={field} onChange={handleChange}
-                  required={isRequired} value={formState[field as CareerFieldName]}
-                >
-                  {formFields[`${field}Options`].map(option => <option key={option.slug} value={option.slug}>{option.description}</option>)}
-                </select>
+                <div>
+                  <select
+                    name={field} onChange={handleChange}
+                    required={isRequired} value={formState[field as CareerFieldName]}
+                  >
+                    {formFields[`${field}Options`].map(option => <option key={option.slug} value={option.slug}>{option.description}</option>)}
+                  </select>
+                  <ArrowDown />
+                </div>
               </FieldWrapper>
             )
             : (
-              <FieldWrapper key={field}>
+              <FieldWrapper hasDecoration={key === 'date'} key={field}>
                 <Label htmlFor={field}>
                   {formFields.fields[field as CareerFieldName].label}
                   {isRequired && '*'}
                 </Label>
-                <Input
-                  as={field === 'message' ? 'textarea' : 'input'}
-                  id={field} name={field}
-                  onChange={handleChange}
-                  required={isRequired}
-                  type={key === 'email' || key === 'phone' || key === 'date' ? key : 'text'}
-                  value={formState[field as CareerFieldName]}
-                />
+                <div>
+                  <Input
+                    as={field === 'message' ? 'textarea' : 'input'}
+                    id={field} name={field}
+                    onChange={handleChange}
+                    onClick={handleInputClick}
+                    required={isRequired}
+                    type={key === 'email' || key === 'phone' || key === 'date' ? key : 'text'}
+                    value={formState[field as CareerFieldName]}
+                  />
+                  {key === 'date' && <Calendar />}
+                </div>
               </FieldWrapper>
             );
         })}

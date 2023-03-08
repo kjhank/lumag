@@ -48,8 +48,8 @@ const CareersPage = ({ pageContext: { content } }: CareersPageProps) => (
     <Container marginBlockEnd={138} marginBlockStart={-210}>
       <TextWithMedia
         {...content.career} backgroundIndex={15}
-        className="careers" contentElement="article"
-        hasDecoration sanitizeConfig={iconSanitizeConfig}
+        className="careers" hasDecoration
+        sanitizeConfig={iconSanitizeConfig} textElement="article"
       />
     </Container>
     <Careers

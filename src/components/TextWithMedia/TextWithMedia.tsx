@@ -1,19 +1,24 @@
 import sanitize from 'sanitize-html';
 import { sanitizeConfig as defaultSanitizeConfig } from '@/utils/globalConfigs';
 import {
+  GalleryWrapper,
   Image, TextWrapper, VideoWrapper, Wrapper,
 } from './TextWithMedia.styled';
 import { TextWithMediaProps } from './TextWithMedia.types';
+import { Gallery } from './Gallery';
 
 export const TextWithMedia = (
   {
-    as, className, contentElement = 'p',
-    backgroundIndex = 17, fontSize = 18, hasDecoration = false,
-    hasExtraPadding = false, image, layout = 'alternating',
-    text, heading, sanitizeConfig = defaultSanitizeConfig, video,
+    as, backgroundIndex = 17, className,
+    textElement = 'p', defaultImageIndex = 0,
+    fontSize = 18, hasDecoration = false,
+    hasExtraPadding = false, heading, image,
+    images, layout = 'alternating',
+    sanitizeConfig = defaultSanitizeConfig,
+    text, video,
   }: TextWithMediaProps
 ) => {
-  const ContentNode: keyof JSX.IntrinsicElements = contentElement;
+  const ContentNode: keyof JSX.IntrinsicElements = textElement;
 
   return (
     (
@@ -36,9 +41,13 @@ export const TextWithMedia = (
             </video>
           </VideoWrapper>
         )}
+        {images && (
+          <GalleryWrapper decorationOn={layout}>
+            <Gallery images={images} initialIndex={defaultImageIndex} />
+          </GalleryWrapper>
+        )}
         <TextWrapper $fontSize={fontSize} hasExtraPadding={hasExtraPadding}>
           <h2>{heading}</h2>
-          {/* eslint-disable-next-line react/no-danger */}
           <ContentNode dangerouslySetInnerHTML={{
             __html: sanitize(text, sanitizeConfig),
           }}

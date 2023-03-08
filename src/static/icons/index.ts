@@ -2,6 +2,7 @@
 export { default as Agency } from './agency.svg';
 export { default as ArrowDown } from './arrow_down.svg';
 export { default as ArrowRight } from './arrow_right.svg';
+export { default as Calendar } from './calendar.svg';
 export { default as CheckFalse } from './checked_off.svg';
 export { default as CheckTrue } from './checked_on.svg';
 export { default as Chip } from './chip.svg';
