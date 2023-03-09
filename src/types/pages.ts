@@ -2,7 +2,7 @@ import { PageProps } from 'gatsby';
 import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithMedia.types';
 import { IconSlug } from './global';
 import {
-  ACFFile, ACFImage, ACFLink, ACFPage, Files, FormMessages, Languages, ParsedOptions,
+  ACFFile, ACFImage, ACFLink, ACFPage, Files, FormMessages, Gallery, Languages, ParsedOptions,
   ParsedPost, Post, SeeMore, SEO, Template, Translations, Video,
 } from './wordpress';
 
@@ -508,22 +508,28 @@ export type JobFormFields = {
 
 export type RawOffer = {
   acf: {
+    lists?: Array<OfferList>;
     name: string;
-    requirements: JobRequirements;
-    tasks: JobTasks;
+  };
+};
+
+export type OfferList = {
+  list: {
+    heading: string;
+    list: Array<{ item: string }>;
   };
 };
 
 export type JobOffer = {
+  lists?: Array<OfferList>;
   name: string;
-  requirements: JobRequirements;
-  tasks: JobTasks;
 };
 
 export type CareersPageContent = {
   career: {
+    defaultImageIndex: number;
     heading: string;
-    image: ACFImage;
+    images: Gallery;
     text: string;
   };
   form: JobForm;

@@ -157,6 +157,13 @@ export const Image = styled(WPImage)`
   ${mediaStyles}
 `;
 
+export const GalleryWrapper = styled.div`
+  ${mediaStyles};
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.helpers.getMin(8)};
+`;
+
 export const VideoWrapper = styled.div`
   ${mediaStyles}
 

@@ -50,6 +50,7 @@ export type SeeMore = {
 };
 
 export type PageACF = {
+  career?: any;
   header?: {
     background: ACFImage;
     verticalBackground?: ACFImage;
@@ -677,6 +678,10 @@ export type Video = {
   poster: ACFImage;
   webm: ACFFile;
 };
+
+export type Gallery = Array<{
+  image: ACFImage;
+}>;
 
 export type SearchResult = {
   id: number;
