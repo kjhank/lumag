@@ -7,10 +7,13 @@ const siteUrl = new URL(backendUrl as string);
 
 export const useAnchors: UseAnchors = nodeRef => {
   const handleClick = (event: MouseEvent) => {
-    event.preventDefault();
-
     const { href } = event.currentTarget as HTMLAnchorElement;
-    const { pathname } = new URL(href);
+    const { origin: linkOrigin, pathname } = new URL(href);
+    const isExternal = linkOrigin !== siteUrl.origin;
+
+    if (isExternal) return;
+
+    event.preventDefault();
 
     navigate(pathname);
   };

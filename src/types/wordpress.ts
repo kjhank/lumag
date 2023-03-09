@@ -570,6 +570,12 @@ export type ContactForm = {
   title: string;
 };
 
+export type Popup = {
+  content: string;
+  hasImage: boolean;
+  image: ACFImage;
+};
+
 export type Options = {
   address: {
     address: string;
@@ -585,10 +591,12 @@ export type Options = {
     list: Array<ACFFooterMenu>;
   }>;
   footerText: string;
+  isPopupActive: boolean;
   nav: {
     mainMenu: Array<ACFMenu>;
   };
   newsletter: Newsletter;
+  globalPopup: Popup;
   search: string;
   searchMessages: SearchMessages;
 };
@@ -650,7 +658,9 @@ export type ParsedOptions = {
     nav: Array<FooterMenu>;
     verticalBackground: ACFImage;
   };
+  isPopupActive: boolean;
   nav: Array<ParsedMainNav>;
+  popup: Popup;
   newsletter: Newsletter;
   search: string;
   searchMessages: SearchMessages;

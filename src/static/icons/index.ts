@@ -13,6 +13,7 @@ export { default as CircleCutout } from './circle-cutout.svg';
 export { default as ClockIcon } from './clock_icon.svg';
 export { default as CogTank } from './cog-tank.svg';
 export { default as GlobePeople } from './globe-people.svg';
+export { default as LetterI } from './letterI.svg';
 export { default as Lightbulb } from './lightbulb.svg';
 export { default as Logo } from './logo.svg';
 export { default as MapPin } from './map_pin.svg';

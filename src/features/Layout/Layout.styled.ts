@@ -98,6 +98,11 @@ export const ButtonsWrapper = styled.div`
       ${theme.fonts.sizes.m};
     }
   `}
+
+  > div {
+    display: inherit;
+    gap: inherit;
+  }
 `;
 
 export const NavButton = styled.button.attrs({ type: 'button' })`
@@ -650,6 +655,45 @@ export const SearchResults = styled.ul`
     > a {
       display: block;
       padding: 0.5em;
+    }
+  }
+`;
+
+export const PopupBody = styled.div`
+  display: flex;
+
+  > picture {
+    width: 30%;
+
+    img {
+      max-width: unset;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  > *:not(picture, figure) {
+    width: 70%;
+    padding: 5%;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      :first-child {
+        font-weight: normal;
+        ${({ theme }) => theme.fonts.sizes.l};
+        text-align: left;
+
+        > span {
+          box-decoration-break: clone;
+          border-radius: 1em;
+          padding: 0.5em;
+          background-color: ${({ theme }) => theme.colors.neutral[5]};
+          line-height: 2.5;
+        }
+      }
     }
   }
 `;

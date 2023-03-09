@@ -28,12 +28,6 @@ export const initialFormState: {
   education: 'vocational',
 };
 
-export const initialFiles = [
-  null,
-  null,
-  null,
-];
-
 const sanitizeConfig: IOptions = {
   allowedTags: ['a'],
 };
@@ -42,7 +36,7 @@ export const CareerForm = ({
   form, formHeading, formFields,
 }: CareerFormProps) => {
   const [isToastVisible, setToastVisible] = useState(false);
-  const [formFiles, setFormFiles] = useState<Array<File | null>>(initialFiles);
+  const [formFile, setFormFile] = useState<File | null>(null);
   const [message, setMessage] = useState(formFields.messages.success);
   const [toastVariant, setToastVariant] = useState<ToastVariant>('success');
   const [formState, setFormState] = useState<{ [key in CareerFieldName]: string }>({
@@ -70,18 +64,12 @@ export const CareerForm = ({
     }));
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>, fileIndex: number) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target as HTMLInputElement;
 
     const [file] = files && files?.length > 0 ? Array.from(files) : [];
 
-    setFormFiles(current => {
-      const copy = [...current];
-
-      copy[fileIndex] = file;
-
-      return copy;
-    });
+    setFormFile(file);
   };
 
   const handleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
@@ -117,12 +105,11 @@ export const CareerForm = ({
         );
       });
 
-    formFiles.forEach((file, index) => {
-      if (file === null) return;
-      const blob = new Blob([file]);
+    if (formFile === null) return;
 
-      formData.append(`file${index + 1}`, blob, file.name);
-    });
+    const blob = new Blob([formFile]);
+
+    formData.append('file1', blob, formFile.name);
 
     try {
       const token = await getToken();
@@ -209,18 +196,15 @@ export const CareerForm = ({
         })}
 
         <FileInputsWrapper>
-          {formFiles.map((file, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Label htmlFor={`file-${index + 1}`} key={index}>
-              <span className="file-name">{file?.name ?? formFields.files.chooseFile}</span>
-              <FileInput
-                className="visually-hidden" id={`file-${index + 1}`}
-                name={`file-${index + 1}`} onChange={event => handleFileChange(event, index)}
-                title={file?.name ?? formFields.files.chooseFile} type="file"
-              />
-              {!file?.name && <span className="no-file-chosen">{formFields.files.noFileChosen}</span>}
-            </Label>
-          ))}
+          <Label htmlFor="file1">
+            <span className="file-name">{formFile?.name ?? formFields.files.chooseFile}</span>
+            <FileInput
+              className="visually-hidden" id="file1"
+              name="file1" onChange={handleFileChange}
+              title={formFile?.name ?? formFields.files.chooseFile} type="file"
+            />
+            {!formFile?.name && <span className="no-file-chosen">{formFields.files.noFileChosen}</span>}
+          </Label>
         </FileInputsWrapper>
         <Legal ref={checkboxesRef}>
           {form.checkboxes.map(checkbox => (
@@ -241,7 +225,6 @@ export const CareerForm = ({
             </FieldWrapper>
           ))}
           <p dangerouslySetInnerHTML={{ __html: sanitize(form.disclaimer, sanitizeConfig) }} />
-
         </Legal>
         <FieldWrapper isFullWidth>
           <ButtonLink isButton type="submit">

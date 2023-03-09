@@ -29,4 +29,9 @@ export const Main = styled.article`
     width: 100%;
     height: auto;
   }
+
+  picture,
+  video {
+    max-width: 100%;
+  }
 `;
