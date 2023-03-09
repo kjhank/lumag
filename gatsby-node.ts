@@ -142,6 +142,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
     })),
     verticalBackground: options.address.verticalBackground,
   },
+  isPopupActive: options.isPopupActive,
   nav: options.nav.mainMenu.map(item => {
     const common = {
       itemType: item.itemType,
@@ -170,6 +171,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
     };
   }),
   newsletter: options.newsletter,
+  popup: options.globalPopup,
   search: options.search,
   searchMessages: options.searchMessages,
   socials: options.address.socials,

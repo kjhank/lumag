@@ -3,6 +3,7 @@ import {
 } from 'react';
 import { Link } from 'gatsby';
 import {
+  LetterI,
   Logo, Menu, Spyglass,
 } from '@/static';
 import {
@@ -18,7 +19,9 @@ import { Search } from './Search';
 
 // TODO: slices
 export const Header = ({
-  menuItems, i18n, pathname, search, searchMessages,
+  menuItems, i18n, isPopupActive = false,
+  pathname, search, searchMessages,
+  toggleInfoPopup,
 }: HeaderProps) => {
   const { lang: pageLang, urlPrefix } = useAppContext();
   const langsRef = useRef<HTMLDivElement>(null);
@@ -65,6 +68,12 @@ export const Header = ({
           <Navigation menuItems={menuItems} />
           <ButtonsWrapper ref={searchRef}>
             <div>
+              {isPopupActive && (
+                <NavButton onClick={toggleInfoPopup}>
+                  <span className="visually-hidden">info</span>
+                  <LetterI />
+                </NavButton>
+              )}
               <NavButton onClick={handleSearchMenu}>
                 <span className="visually-hidden">
                   search
@@ -72,10 +81,10 @@ export const Header = ({
                 <Spyglass />
               </NavButton>
               {isSearchOpen && (
-              <Search
-                placeholder={search} searchMessages={searchMessages}
-                toggle={handleSearchMenu}
-              />
+                <Search
+                  placeholder={search} searchMessages={searchMessages}
+                  toggle={handleSearchMenu}
+                />
               )}
             </div>
             <LanguagesWrapper ref={langsRef}>

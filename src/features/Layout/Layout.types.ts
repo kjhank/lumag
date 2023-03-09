@@ -1,10 +1,9 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
 import {
-  ACFImage,
-  ContactForm,
-  FooterMenu,
-  I18n, Languages, Newsletter, PageContext, ParsedMainNav, SearchMessages, Social,
+  ACFImage, ContactForms, FooterMenu,
+  I18n, Languages, Newsletter, PageContext,
+  ParsedMainNav, SearchMessages, Social,
 } from '@/types';
 
 export type LayoutProps = {
@@ -14,9 +13,11 @@ export type LayoutProps = {
 export type HeaderProps = {
   menuItems: Array<ParsedMainNav>;
   i18n: I18n;
+  isPopupActive?: boolean;
   pathname: string;
   search: string;
   searchMessages: SearchMessages;
+  toggleInfoPopup: () => void;
 };
 
 export type NavigationProps = {
@@ -45,7 +46,7 @@ export type SearchProps = {
 };
 
 export type AppContextState = {
-  contactForms: Array<ContactForm>;
+  contactForms: ContactForms;
   defaultNewsThumbnail: ACFImage;
   lang: Languages;
   siteUrl?: string;

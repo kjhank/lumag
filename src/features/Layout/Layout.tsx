@@ -6,13 +6,16 @@ import { GlobalStyle, Theme } from '@/theme';
 import { AppContextState, LayoutProps } from './Layout.types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { CookiesDialog } from './Layout.styled';
+import { CookiesDialog, PopupBody } from './Layout.styled';
 import { Container } from '../../components/Container/Container';
 import { ButtonLink } from '../../components/ButtonLink/ButtonLink';
 import { useAnchors } from '@/hooks';
 import { AppContext } from './Layout.context';
 import { cookiesKey } from '@/static';
-import { SeeMore } from '@/components';
+import {
+  Modal, SeeMore, WPImage, WYSIWYG,
+} from '@/components';
+import { sanitizeConfig as globalSanitizeConfig } from '@/utils/globalConfigs';
 
 // TODO: global header & footer as slices
 
@@ -25,6 +28,9 @@ const Layout = ({
 }: LayoutProps) => {
   const cookiesRef = useRef(null);
   const [cookiesVisible, setCookiesVisible] = useState(false);
+  const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
+
+  const toggleInfoPopup = () => setInfoPopupOpen(current => !current);
 
   const handleCookies = () => {
     if (cookiesVisible) {
@@ -61,10 +67,12 @@ const Layout = ({
         <GlobalStyle />
         <Header
           i18n={pageContext?.i18n}
+          isPopupActive={pageContext.options.isPopupActive}
           menuItems={pageContext?.options?.nav}
           pathname={pathname}
           search={pageContext?.options?.search}
           searchMessages={pageContext?.options?.searchMessages}
+          toggleInfoPopup={toggleInfoPopup}
         />
         {children}
         {pageContext.content?.seeMore?.hasSeeMore && <SeeMore {...pageContext.content.seeMore} />}
@@ -90,6 +98,25 @@ const Layout = ({
             </ButtonLink>
           </Container>
         </CookiesDialog>
+        {pageContext.options.isPopupActive && (
+          <Modal
+            isOpen={isInfoPopupOpen} onCloseCallback={toggleInfoPopup}
+            variant="yellow"
+          >
+            <PopupBody>
+              {pageContext.options.popup.hasImage
+                && <WPImage imageData={pageContext.options.popup.image} />}
+              <WYSIWYG html={sanitize(pageContext.options.popup.content.split('<h2>').join('<h2><span>')
+                .split('</h2>')
+                .join('</span></h2>')
+                .split('<video ')
+                .join('<video controls '), {
+                ...globalSanitizeConfig,
+              })}
+              />
+            </PopupBody>
+          </Modal>
+        )}
       </Theme>
     </AppContext.Provider>
   );

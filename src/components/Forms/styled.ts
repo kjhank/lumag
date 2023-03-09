@@ -7,9 +7,14 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
   grid-column: ${({ isFullWidth }) => isFullWidth && '-1 / 1'};
   gap: ${({ theme }) => theme.helpers.getMin(8)};
 
+  input {
+    accent-color: ${({ theme }) => theme.colors.brand};
+  }
+
   input:not([type='checkbox']),
   select,
   textarea {
+    appearance: none;
     display: block;
     width: 100%;
     border: ${({ theme }) => `${theme.helpers.getMin(2)} solid ${theme.colors.neutral[100]}`};
@@ -27,7 +32,14 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
 
   input[type='date'] {
     height: 100%;
-    padding-block: 0.7em;
+
+    /* stylelint-disable */
+    ${({ theme }) => css`
+    /* stylelint-enable */
+      ${theme.mediaQueries.s} {
+        padding-block: 0.7em;
+      }
+    `}
 
     ::-webkit-calendar-picker-indicator {
       opacity: 0;
@@ -56,6 +68,7 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
       width: 1em;
       height: auto;
       translate: 50% -50% 0;
+      pointer-events: none;
     }
     ${({ hasDecoration, isFullWidth }) => hasDecoration && css`
       ::after {
@@ -64,6 +77,7 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
         inset: ${isFullWidth ? '10% 5% 10% auto' : '10% 10% 10% auto'};
         width: 1px;
         background-color: ${({ theme }) => theme.colors.neutral[95]};
+        pointer-events: none;
       }
 
       ::before {
@@ -75,6 +89,7 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
         height: 80%;
         background-color: ${({ theme }) => theme.colors.neutral[5]};
         translate: 0 -50% 0;
+        pointer-events: none;
       }
     `}
   }

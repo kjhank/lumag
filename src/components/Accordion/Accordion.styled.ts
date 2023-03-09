@@ -17,7 +17,9 @@ export const Item = styled.li<{ isExpanded: boolean }>`
   }
 
   > button > svg {
-    flex: ${({ theme }) => theme.helpers.getMin(16)} 0 0;
+    flex-shrink: 0;
+    width: auto;
+    height: ${({ theme }) => theme.helpers.getMin(16)};
     /* stylelint-disable-next-line value-keyword-case */
     stroke: currentColor;
     transform: ${({ isExpanded }) => (isExpanded ? 'rotateX(180deg) rotateZ(90deg)' : 'rotateX(0deg) rotateZ(90deg)')};

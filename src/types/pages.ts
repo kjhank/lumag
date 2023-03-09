@@ -224,11 +224,6 @@ type ContactForm = {
   text: string;
   fields: {
     [key in FormFieldName]: FormField;
-    // username: FormField;
-    // email: FormField;
-    // phone: FormField;
-    // subject: FormField;
-    // message: FormField;
   };
   messages: FormMessages;
   subjectOptions: Array<SubjectOption>;
@@ -236,6 +231,8 @@ type ContactForm = {
   legal: Array<Legal>;
   footer: string;
 };
+
+export type ContactForms = Array<ContactForm>;
 
 export type Header = {
   background: ACFImage;

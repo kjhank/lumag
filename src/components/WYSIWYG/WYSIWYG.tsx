@@ -2,7 +2,7 @@ import { Main } from './WYSIWYG.styled';
 import { WYSIWYGProps } from './WYSIWYG.types';
 
 export const WYSIWYG = ({
-  className, as, html,
+  className, as = 'article', html,
 }: WYSIWYGProps) => (
   <Main
     as={as}
