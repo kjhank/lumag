@@ -28,7 +28,9 @@ const Layout = ({
 }: LayoutProps) => {
   const cookiesRef = useRef(null);
   const [cookiesVisible, setCookiesVisible] = useState(false);
-  const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
+  const [isInfoPopupOpen, setInfoPopupOpen] = useState<boolean>(
+    pageContext.options.popup.isInitiallyOpen as boolean
+  );
 
   const toggleInfoPopup = () => setInfoPopupOpen(current => !current);
 
