@@ -173,7 +173,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
   newsletter: options.newsletter,
   popup: {
     ...options.globalPopup,
-    isInitiallyOpen: options.globalPopup.isInitiallyOpen === 'true',
+    isInitiallyOpen: options.globalPopup?.isInitiallyOpen === 'true' ?? false,
   },
   search: options.search,
   searchMessages: options.searchMessages,
