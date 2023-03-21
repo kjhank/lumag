@@ -3,7 +3,9 @@ import {
   ChangeEvent, FormEvent, HTMLInputTypeAttribute, MouseEvent, useRef, useState,
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
-import { CareerFieldName, ToastVariant } from '@/types';
+import {
+  CareerFieldName, ContactMethod, Education, ToastVariant,
+} from '@/types';
 import { CareerFormProps, FormElements } from './Careers.types';
 import { getToken } from '@/utils';
 import {
@@ -46,10 +48,12 @@ export const CareerForm = ({
   });
   const [legals, setLegals] = useState<{
     [key: string]: boolean;
-  }>(form.checkboxes.reduce((previous, current) => ({
-    ...previous,
-    [current.slug]: false,
-  }), {}));
+  }>(form?.checkboxes
+    ? form.checkboxes.reduce((previous, current) => ({
+      ...previous,
+      [current.slug]: false,
+    }), {})
+    : {});
 
   const checkboxesRef = useRef(null);
   const gdprRef = useRef(null);
@@ -94,7 +98,7 @@ export const CareerForm = ({
         const fieldName = (item as FormElements).name;
 
         if (fieldName === 'contactMethod' || fieldName === 'education') {
-          const value = formFields[`${fieldName}Options`].find(({ slug }) => slug === (item as FormElements).value);
+          const value = formFields[`${fieldName}Options`].find(({ slug }) => slug as ContactMethod | Education === (item as FormElements).value);
 
           return formData.append(fieldName, value?.description as string);
         }
@@ -207,23 +211,25 @@ export const CareerForm = ({
           </Label>
         </FileInputsWrapper>
         <Legal ref={checkboxesRef}>
-          {form.checkboxes.map(checkbox => (
-            <FieldWrapper
-              isFullWidth key={checkbox.slug}
-              variant="checkbox"
-            >
-              <input
-                checked={legals[checkbox.slug]} id={checkbox.slug}
-                name={checkbox.slug} onChange={handleCheckbox}
-                required={checkbox.isRequired} type="checkbox"
-                value={checkbox.slug}
-              />
-              <Label
-                dangerouslySetInnerHTML={{ __html: sanitize(checkbox.checkbox, sanitizeConfig) }}
-                htmlFor={checkbox.slug}
-              />
-            </FieldWrapper>
-          ))}
+          {form?.checkboxes
+            ? form?.checkboxes?.map(checkbox => (
+              <FieldWrapper
+                isFullWidth key={checkbox.slug}
+                variant="checkbox"
+              >
+                <input
+                  checked={legals[checkbox.slug]} id={checkbox.slug}
+                  name={checkbox.slug} onChange={handleCheckbox}
+                  required={checkbox.isRequired} type="checkbox"
+                  value={checkbox.slug}
+                />
+                <Label
+                  dangerouslySetInnerHTML={{ __html: sanitize(checkbox.checkbox, sanitizeConfig) }}
+                  htmlFor={checkbox.slug}
+                />
+              </FieldWrapper>
+            ))
+            : null}
           <p dangerouslySetInnerHTML={{ __html: sanitize(form.disclaimer, sanitizeConfig) }} />
         </Legal>
         <FieldWrapper isFullWidth>

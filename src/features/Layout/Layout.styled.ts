@@ -663,7 +663,7 @@ export const PopupBody = styled.div`
   display: flex;
 
   > picture {
-    width: 30%;
+    width: 36%;
 
     img {
       max-width: unset;
@@ -673,8 +673,9 @@ export const PopupBody = styled.div`
   }
 
   > *:not(picture, figure) {
-    width: 70%;
+    width: 64%;
     padding: 5%;
+    ${({ theme }) => theme.fonts.sizes.xs};
 
     h2,
     h3,
@@ -683,7 +684,7 @@ export const PopupBody = styled.div`
     h6 {
       :first-child {
         font-weight: normal;
-        ${({ theme }) => theme.fonts.sizes.l};
+        ${({ theme }) => theme.fonts.sizes.m};
         text-align: left;
 
         > span {
