@@ -574,6 +574,7 @@ export type Popup = {
   content: string;
   hasImage: boolean;
   image: ACFImage;
+  isInitiallyOpen: 'true' | 'false' | boolean;
 };
 
 export type Options = {
