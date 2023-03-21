@@ -14,7 +14,7 @@ export const Modal = ({
 
   return isBrowser && isOpen
     ? createPortal(
-      <ModalWrapper open={isOpen}>
+      <ModalWrapper open={isOpen} variant={variant}>
         <ModalContainer $aspectRatio={aspectRatio} variant={variant}>
           <CloseButton onClick={handleClose}>⨉</CloseButton>
           {children}
