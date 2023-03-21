@@ -63,10 +63,12 @@ const Layout = ({
     pageContext?.options?.defaultNewsThumbnail,
   ]);
 
+  console.log(pageContext.options.isPopupActive);
+
   return (
     <AppContext.Provider value={contextData}>
       <Theme>
-        <GlobalStyle />
+        <GlobalStyle noScroll={isInfoPopupOpen} />
         <Header
           i18n={pageContext?.i18n}
           isPopupActive={pageContext.options.isPopupActive}

@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{ noScroll?: boolean }>`
   html {
-    overflow: auto;
+    overflow: ${({ noScroll }) => (noScroll ? 'hidden' : 'auto')};
     box-sizing: border-box;
   }
 

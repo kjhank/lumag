@@ -195,14 +195,18 @@ export type FormFieldName = 'company' | 'username' | 'email' | 'phone' | 'subjec
 
 export type CareerFieldName = 'positionName' | 'candidateName' | 'location' | 'contactMethod' | 'dateOfBirth' | 'education';
 
+export type ContactMethod = 'phone' | 'email';
+
 export type ContactMethodOption = {
   description: string;
-  slug: string;
+  slug: ContactMethod;
 };
+
+export type Education = 'vocational' | 'secondary' | 'higher';
 
 export type EducationOption = {
   description: string;
-  slug: string;
+  slug: Education;
 };
 
 export type SubjectOption = {
