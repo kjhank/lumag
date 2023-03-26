@@ -659,9 +659,9 @@ export type ParsedOptions = {
     nav: Array<FooterMenu>;
     verticalBackground: ACFImage;
   };
-  isPopupActive: boolean;
+  isPopupActive?: boolean;
   nav: Array<ParsedMainNav>;
-  popup: Popup;
+  popup?: Popup;
   newsletter: Newsletter;
   search: string;
   searchMessages: SearchMessages;
