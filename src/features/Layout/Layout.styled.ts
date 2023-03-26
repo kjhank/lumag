@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 import styled, { css } from 'styled-components';
-import { WPImage } from '../WPImage/WPImage';
+import { WPImage } from '../../components/WPImage/WPImage';
 
 export const HeaderNode = styled.header`
   position: fixed;
@@ -98,6 +98,11 @@ export const ButtonsWrapper = styled.div`
       ${theme.fonts.sizes.m};
     }
   `}
+
+  > div {
+    display: inherit;
+    gap: inherit;
+  }
 `;
 
 export const NavButton = styled.button.attrs({ type: 'button' })`
@@ -650,6 +655,48 @@ export const SearchResults = styled.ul`
     > a {
       display: block;
       padding: 0.5em;
+    }
+  }
+`;
+
+export const PopupBody = styled.div`
+  display: flex;
+
+  > picture {
+    width: 36%;
+
+    img {
+      max-width: unset;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  > *:not(picture, figure) {
+    width: 64%;
+    padding: 5%;
+    padding-inline-end: 10%;
+    ${({ theme }) => theme.fonts.sizes.xs};
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      :first-child {
+        padding-block-start: 0;
+        font-weight: normal;
+        ${({ theme }) => theme.fonts.sizes.m};
+        text-align: left;
+
+        > span {
+          box-decoration-break: clone;
+          border-radius: 1em;
+          padding: 0.125em 0.25em;
+          background-color: ${({ theme }) => theme.colors.neutral[5]};
+          line-height: 1.5;
+        }
+      }
     }
   }
 `;

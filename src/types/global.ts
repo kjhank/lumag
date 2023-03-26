@@ -43,3 +43,9 @@ export type IconSlug = 'agency' |
 'zoom';
 
 export type ToastVariant = 'success' | 'error' | 'neutral';
+
+export type AccordionItem = {
+  content: React.ReactNode;
+  heading: React.ReactNode;
+  key: string;
+};

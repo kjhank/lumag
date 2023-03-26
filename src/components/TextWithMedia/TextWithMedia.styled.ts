@@ -87,6 +87,42 @@ export const Wrapper = styled.article<{ backgroundIndex: number; hasDecoration: 
       `};
     }
   `}
+
+  &.careers {
+    h2 {
+      text-align: start;
+    }
+
+    article {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1em;
+      line-height: 1.2;
+
+      p:has(+ ul) {
+        margin-block-start: 1em;
+        font-weight: bold;
+      }
+
+      ul {
+        list-style: none;
+        ${({ theme }) => theme.helpers.getClamped(16)};
+
+        > li {
+          display: flex;
+          align-items: flex-start;
+          gap: 1em;
+
+          .raw-circle-check {
+            filter: invert(55%) sepia(100%) saturate(3.5) contrast(1.2) brightness(1.15);
+            width: auto;
+            height: 1.5em;
+          }
+        }
+      }
+    }
+  }
 `;
 
 export const mediaStyles = css<{ decorationOn: Layout }>`
@@ -119,6 +155,13 @@ export const mediaStyles = css<{ decorationOn: Layout }>`
 
 export const Image = styled(WPImage)`
   ${mediaStyles}
+`;
+
+export const GalleryWrapper = styled.div`
+  ${mediaStyles};
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.helpers.getMin(8)};
 `;
 
 export const VideoWrapper = styled.div`

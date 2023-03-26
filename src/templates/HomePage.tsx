@@ -1,6 +1,6 @@
 import React from 'react';
 import { HomePageProps } from '@/types';
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import {
   Carousel, NewsPromos, Subsidies, Tiles, WhyUs,
 } from '@/features/homepage';

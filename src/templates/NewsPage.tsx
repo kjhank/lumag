@@ -1,4 +1,4 @@
-import { Meta } from '../components/Layout/components/Meta';
+import { Meta } from '../features/Layout/components/Meta';
 import { NewsPageProps } from '@/types';
 import { Header, PaginatedList } from '../components';
 import { ExpandableItem } from '@/components/ExpandableItem/ExpandableItem';

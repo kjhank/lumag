@@ -1,7 +1,7 @@
 import {
   Container, Header, TextWithMedia,
 } from '@/components';
-import { Meta } from '@/components/Layout/components/Meta';
+import { Meta } from '@/features/Layout/components/Meta';
 import { Code, Goals } from '@/features/ValuesPage';
 import { ValuesPageProps } from '@/types';
 

@@ -1,5 +1,5 @@
 export { Container } from './Container/Container';
-export { default as Layout } from './Layout/Layout';
+export { default as Layout } from '../features/Layout/Layout';
 export { ButtonLink } from './ButtonLink/ButtonLink';
 export { WPImage } from './WPImage/WPImage';
 export { ExternalLink } from './ExternalLink/ExternalLink';
@@ -16,3 +16,6 @@ export { QuoteHero } from './QuoteHero/QuoteHero';
 export { Modal } from './Modal/Modal';
 export { SeeMore } from './SeeMore/SeeMore';
 export { Toast } from './Toast/Toast';
+export { Accordion } from './Accordion/Accordion';
+export * from './Forms/styled';
+export { Boxes } from './Boxes/Boxes';

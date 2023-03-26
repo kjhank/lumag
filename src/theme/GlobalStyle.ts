@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{ noScroll?: boolean }>`
   html {
-    overflow: auto;
+    overflow: ${({ noScroll }) => (noScroll ? 'hidden' : 'auto')};
     box-sizing: border-box;
   }
 
@@ -179,7 +179,8 @@ export const GlobalStyle = createGlobalStyle`
     vertical-align: sub;
   }
 
-  .visually-hidden:not(:focus, :active) {
+  .visually-hidden:not(:focus, :active),
+  input[type='file'].visually-hidden {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);

@@ -11,7 +11,7 @@ export enum Languages {
   // russian = 'ru',
   spanish = 'es',
 }
-export type Template = 'about' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound';
+export type Template = 'about' | 'careers' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound';
 
 export type Translations = {
   [key in Languages]: number;
@@ -50,6 +50,7 @@ export type SeeMore = {
 };
 
 export type PageACF = {
+  career?: any;
   header?: {
     background: ACFImage;
     verticalBackground?: ACFImage;
@@ -569,6 +570,13 @@ export type ContactForm = {
   title: string;
 };
 
+export type Popup = {
+  content: string;
+  hasImage: boolean;
+  image: ACFImage;
+  isInitiallyOpen: 'true' | 'false' | boolean;
+};
+
 export type Options = {
   address: {
     address: string;
@@ -584,10 +592,12 @@ export type Options = {
     list: Array<ACFFooterMenu>;
   }>;
   footerText: string;
+  isPopupActive: boolean;
   nav: {
     mainMenu: Array<ACFMenu>;
   };
   newsletter: Newsletter;
+  globalPopup: Popup;
   search: string;
   searchMessages: SearchMessages;
 };
@@ -605,9 +615,14 @@ export type FooterMenu = {
 };
 
 export type FormMessages = {
-  exists: string;
+  exists?: string;
   success: string;
   error: string;
+};
+
+export type Files = {
+  chooseFile: string;
+  noFileChosen: string;
 };
 
 export type Newsletter = {
@@ -644,7 +659,9 @@ export type ParsedOptions = {
     nav: Array<FooterMenu>;
     verticalBackground: ACFImage;
   };
+  isPopupActive: boolean;
   nav: Array<ParsedMainNav>;
+  popup: Popup;
   newsletter: Newsletter;
   search: string;
   searchMessages: SearchMessages;
@@ -672,6 +689,10 @@ export type Video = {
   poster: ACFImage;
   webm: ACFFile;
 };
+
+export type Gallery = Array<{
+  image: ACFImage;
+}>;
 
 export type SearchResult = {
   id: number;

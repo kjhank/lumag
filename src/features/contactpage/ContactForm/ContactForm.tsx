@@ -4,17 +4,18 @@ import {
 } from 'react';
 import sanitize, { IOptions } from 'sanitize-html';
 import {
-  ButtonLink, Container, Toast,
+  ButtonLink, Container, FieldWrapper, Input, Label, Toast,
 } from '@/components';
 import {
-  Description, FieldWrapper, Footer,
-  Form, Input, Label, Section, Subheading,
+  Description, Footer,
+  Form, Section, Subheading,
 } from './ContactForm.styled';
 import { ContactFormProps, FormElements } from './ContactForm.types';
 import { FormFieldName, ToastVariant } from '@/types';
 import { useAnchors } from '@/hooks';
 import { SectionHeading } from '@/components/styled';
 import {
+  ArrowDown,
   backendUrl, Endpoints,
 } from '@/static';
 import { getToken } from '@/utils';
@@ -134,23 +135,29 @@ export const ContactForm = ({
 
               return isSelect
                 ? (
-                  <FieldWrapper isFullWidth key={key}>
+                  <FieldWrapper
+                    hasDecoration isFullWidth
+                    key={key}
+                  >
                     <Label htmlFor={key}>
                       {fields[key as FormFieldName].label}
                       {isFieldRequired && '*'}
                     </Label>
-                    <select
-                      name={key}
-                      onChange={handleChange}
-                      required={isFieldRequired}
-                      value={formState[key as FormFieldName]}
-                    >
-                      {subjectOptions.map(item => (
-                        <option key={item.slug} value={item.slug}>
-                          {item.description}
-                        </option>
-                      ))}
-                    </select>
+                    <div>
+                      <select
+                        name={key}
+                        onChange={handleChange}
+                        required={isFieldRequired}
+                        value={formState[key as FormFieldName]}
+                      >
+                        {subjectOptions.map(item => (
+                          <option key={item.slug} value={item.slug}>
+                            {item.description}
+                          </option>
+                        ))}
+                      </select>
+                      <ArrowDown />
+                    </div>
                   </FieldWrapper>
                 )
                 : (
@@ -197,19 +204,22 @@ export const ContactForm = ({
                 </FieldWrapper>
               ))}
               <p
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: sanitize(footer, sanitizeConfig) }}
               />
             </Footer>
           </Form>
         </Container>
       </Section>
-      {isToastVisible && (
-        <Toast
-          close={() => setToastVisible(false)} variant={toastVariant}
-        >
-          {message}
-        </Toast>
-      )}
+      {
+        isToastVisible && (
+          <Toast
+            close={() => setToastVisible(false)} variant={toastVariant}
+          >
+            {message}
+          </Toast>
+        )
+      }
     </>
   );
 };

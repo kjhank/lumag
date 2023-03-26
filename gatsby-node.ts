@@ -8,7 +8,8 @@ import {
 import { Endpoints } from './src/static/constants/endpoints';
 import {
   ContactForm,
-  Languages, Page, Post, Template,
+  JobOffer,
+  Languages, Page, Post, RawOffer, Template,
 } from './src/types';
 import { RequestParams } from '@/types/global';
 
@@ -29,6 +30,7 @@ const regularPages = [
 
 const templates: { [key in Template]: string } = {
   about: path.resolve('./src/templates/AboutPage.tsx'),
+  careers: path.resolve('./src/templates/CareersPage.tsx'),
   contact: path.resolve('./src/templates/ContactPage.tsx'),
   csr: path.resolve('./src/templates/CSRPage.tsx'),
   history: path.resolve('./src/templates/HistoryPage.tsx'),
@@ -140,6 +142,7 @@ const parseOptions = (options: Options): ParsedOptions => ({
     })),
     verticalBackground: options.address.verticalBackground,
   },
+  isPopupActive: options.isPopupActive,
   nav: options.nav.mainMenu.map(item => {
     const common = {
       itemType: item.itemType,
@@ -168,6 +171,10 @@ const parseOptions = (options: Options): ParsedOptions => ({
     };
   }),
   newsletter: options.newsletter,
+  popup: {
+    ...options.globalPopup,
+    isInitiallyOpen: options.globalPopup?.isInitiallyOpen === 'true' ?? false,
+  },
   search: options.search,
   searchMessages: options.searchMessages,
   socials: options.address.socials,
@@ -254,6 +261,27 @@ const getContext = async ({
     return {
       ...globalContext,
       content: acf,
+    };
+  }
+
+  if (template === 'careers') {
+    const rawOffers: Array<RawOffer> = await fetchEntities(Endpoints.CAREERS, undefined, { lang });
+
+    const jobOffers: Array<JobOffer> = rawOffers.map(({ acf: offer }) => ({
+      lists: offer.lists,
+      name: offer.name,
+    }));
+
+    return {
+      ...globalContext,
+      content: {
+        ...acf,
+        career: {
+          ...acf.career,
+          defaultImageIndex: Number(acf.career.defaultImageIndex),
+        },
+        jobOffers,
+      },
     };
   }
 
