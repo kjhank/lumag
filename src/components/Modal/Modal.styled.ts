@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import { rgba } from 'polished';
 import { ModalVariant } from './Modal.types';
 
-export const ModalWrapper = styled.dialog`
+export const ModalWrapper = styled.dialog<{ variant?: ModalVariant }>`
   position: fixed;
   inset: 0;
   z-index: 200;
@@ -13,7 +14,17 @@ export const ModalWrapper = styled.dialog`
   border: none;
   padding-block-start: ${({ theme }) => theme.helpers.getMin(32)};
   background-color: transparent;
+  /* stylelint-disable */
   backdrop-filter: blur(5px);
+  ${({ theme, variant }) => variant === 'yellow' && css`
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-block-start: 20vh;
+    backdrop-filter: none;
+    background-color: ${rgba(theme.colors.neutral[100], 0.95)};
+  `};
+  /* stylelint-enable */
 `;
 
 export const CloseButton = styled.button`
@@ -48,12 +59,20 @@ export const ModalContainer = styled.div<{ $aspectRatio?: number | 'auto'; varia
   overflow: auto;
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(13)} ${helpers.getMin(20)} ${helpers.getMin(30)} ${colors.neutral[100]}90)`};
   aspect-ratio: ${({ $aspectRatio }) => $aspectRatio};
-  max-width: ${({ variant }) => (variant === 'yellow' ? '58vw' : '80vw')};
+  max-width: 80vw;
   max-height: 85vh;
-  border-radius: ${({ theme, variant }) => variant === 'yellow' && theme.helpers.getMin(32)};
-  padding: ${({ variant }) => (variant === 'yellow' ? 0 : '2%')};
-  background-color: ${({ theme, variant }) => (variant === 'white' ? theme.colors.neutral[15] : theme.colors.brand)};
+  padding: 2%;
+  background-color: ${({ theme }) => theme.colors.neutral[15]};
+  /* stylelint-disable */
   transform: translateZ(0);
+  ${({ theme, variant }) => variant === 'yellow' && css`
+    max-width: 39vw;
+    max-height: 36.1vh;
+    border-radius: ${theme.helpers.getMin(32)};
+    padding: 0;
+    background-color: ${theme.colors.brand};
+  `};
+  /* stylelint-enable */
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {
       max-width: 95vw;

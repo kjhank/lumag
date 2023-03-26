@@ -675,6 +675,7 @@ export const PopupBody = styled.div`
   > *:not(picture, figure) {
     width: 64%;
     padding: 5%;
+    padding-inline-end: 10%;
     ${({ theme }) => theme.fonts.sizes.xs};
 
     h2,
@@ -683,6 +684,7 @@ export const PopupBody = styled.div`
     h5,
     h6 {
       :first-child {
+        padding-block-start: 0;
         font-weight: normal;
         ${({ theme }) => theme.fonts.sizes.m};
         text-align: left;
@@ -690,9 +692,9 @@ export const PopupBody = styled.div`
         > span {
           box-decoration-break: clone;
           border-radius: 1em;
-          padding: 0.5em;
+          padding: 0.125em 0.25em;
           background-color: ${({ theme }) => theme.colors.neutral[5]};
-          line-height: 2.5;
+          line-height: 1.5;
         }
       }
     }
