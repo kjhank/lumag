@@ -48,5 +48,10 @@ export const Anchor = styled.a`
 `;
 
 export const Button = styled.button`
-  ${buttonLinkStyle}
+  ${buttonLinkStyle};
+
+  :disabled {
+    filter: grayscale(1);
+    cursor: not-allowed;
+  }
 `;

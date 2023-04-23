@@ -29,7 +29,7 @@ const Layout = ({
   const cookiesRef = useRef(null);
   const [cookiesVisible, setCookiesVisible] = useState(false);
   const [isInfoPopupOpen, setInfoPopupOpen] = useState<boolean>(
-    pageContext.options.popup?.isInitiallyOpen as boolean ?? false
+    pageContext.options?.popup?.isInitiallyOpen as boolean ?? false
   );
 
   const toggleInfoPopup = () => setInfoPopupOpen(current => !current);
@@ -69,7 +69,7 @@ const Layout = ({
         <GlobalStyle noScroll={isInfoPopupOpen} />
         <Header
           i18n={pageContext?.i18n}
-          isPopupActive={pageContext.options.isPopupActive}
+          isPopupActive={pageContext.options?.isPopupActive}
           menuItems={pageContext?.options?.nav}
           pathname={pathname}
           search={pageContext?.options?.search}
@@ -100,13 +100,13 @@ const Layout = ({
             </ButtonLink>
           </Container>
         </CookiesDialog>
-        {pageContext.options.isPopupActive && (
+        {pageContext.options?.popup && pageContext.options.isPopupActive && (
           <Modal
             isOpen={isInfoPopupOpen} onCloseCallback={toggleInfoPopup}
             variant="yellow"
           >
             <PopupBody>
-              {pageContext.options.popup.hasImage
+              {pageContext.options?.popup?.hasImage
                 && <WPImage imageData={pageContext.options.popup.image} />}
               <WYSIWYG html={sanitize(pageContext.options.popup.content.split('<h2>').join('<h2><span>')
                 .split('</h2>')

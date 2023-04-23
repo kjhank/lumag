@@ -87,7 +87,7 @@ const fetchEntities = async (
   shouldAuth?: boolean
 ) => {
   const url = id ? `${getUrl(entity)}/${id}` : getUrl(entity, params);
-  const { token } = await getToken();
+  const { token } = shouldAuth ? await getToken() : { token: null };
 
   const response = shouldAuth
     ? await fetch(
@@ -200,6 +200,9 @@ const getPageLangs = async (translations: Translations) => {
     const url = getUrl(`${Endpoints.PAGES}${translations[key as keyof Translations]}`);
 
     const response = await fetch(url);
+
+    if (!response.ok) return;
+
     const result = await response.json();
 
     langs[key as keyof Translations] = getPath(result);
