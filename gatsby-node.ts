@@ -185,8 +185,6 @@ const getPath = ({
 }: Page) => {
   const prefix = lang === Languages.polish ? '/' : `/${lang}/`;
 
-  console.log(template);
-
   if (template === 'home') {
     return prefix;
   }

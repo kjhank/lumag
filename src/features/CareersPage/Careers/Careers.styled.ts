@@ -31,7 +31,6 @@ export const OfferName = styled.h3`
 export const OfferContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: ${({ theme }) => theme.helpers.getMin(52)};
 `;
 

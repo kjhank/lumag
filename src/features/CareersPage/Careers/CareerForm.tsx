@@ -37,6 +37,7 @@ const sanitizeConfig: IOptions = {
 export const CareerForm = ({
   form, formHeading, formFields,
 }: CareerFormProps) => {
+  const [isFetching, setFetching] = useState(false);
   const [isToastVisible, setToastVisible] = useState(false);
   const [formFile, setFormFile] = useState<File | null>(null);
   const [message, setMessage] = useState(formFields.messages.success);
@@ -111,6 +112,8 @@ export const CareerForm = ({
 
     if (formFile === null) return;
 
+    setFetching(true);
+
     const blob = new Blob([formFile]);
 
     formData.append('file1', blob, formFile.name);
@@ -134,9 +137,11 @@ export const CareerForm = ({
       setMessage(isSuccess ? formFields.messages.success : formFields.messages.error);
       setToastVariant(isSuccess ? 'success' : 'error');
       setToastVisible(true);
+      setFetching(false);
     } catch (error) {
       setToastVariant('error');
       setMessage(formFields.messages.error);
+      setFetching(false);
     }
   };
 
@@ -201,11 +206,12 @@ export const CareerForm = ({
 
         <FileInputsWrapper>
           <Label htmlFor="file1">
-            <span className="file-name">{formFile?.name ?? formFields.files.chooseFile}</span>
+            <span className="file-name">{formFile?.name ?? `${formFields.files.chooseFile}*`}</span>
             <FileInput
               className="visually-hidden" id="file1"
               name="file1" onChange={handleFileChange}
-              title={formFile?.name ?? formFields.files.chooseFile} type="file"
+              required title={formFile?.name ?? formFields.files.chooseFile}
+              type="file"
             />
             {!formFile?.name && <span className="no-file-chosen">{formFields.files.noFileChosen}</span>}
           </Label>
@@ -233,7 +239,10 @@ export const CareerForm = ({
           <p dangerouslySetInnerHTML={{ __html: sanitize(form.disclaimer, sanitizeConfig) }} />
         </Legal>
         <FieldWrapper isFullWidth>
-          <ButtonLink isButton type="submit">
+          <ButtonLink
+            disabled={isFetching} isButton
+            type="submit"
+          >
             {form.submitText}
           </ButtonLink>
         </FieldWrapper>
