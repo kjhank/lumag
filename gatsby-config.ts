@@ -1,5 +1,9 @@
 import { GatsbyConfig } from 'gatsby';
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
   plugins: [
     'gatsby-plugin-tsconfig-paths',
@@ -8,6 +12,18 @@ const config: GatsbyConfig = {
         jsxPragma: 'React',
       },
       resolve: 'gatsby-plugin-typescript',
+    },
+    {
+      options: {
+        trackingIds: [process.env.GATSBY_GTAG_ID],
+      },
+      resolve: 'gatsby-plugin-google-gtag',
+    },
+    {
+      options: {
+        partnerId: process.env.GATSBY_LINKEDIN_PARTNER_ID,
+      },
+      resolve: '@tmttn/gatsby-plugin-linkedin-insight',
     },
     {
       options: {

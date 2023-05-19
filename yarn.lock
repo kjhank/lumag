@@ -3615,6 +3615,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.6":
+  version: 7.21.5
+  resolution: "@babel/runtime@npm:7.21.5"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: 358f2779d3187f5c67ad302e8f8d435412925d0b991d133c7d4a7b1ddd5a3fda1b6f34537cb64628dfd96a27ae46df105bed3895b8d754b88cacdded8d1129dd
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.10.4":
   version: 7.12.7
   resolution: "@babel/template@npm:7.12.7"
@@ -5278,6 +5287,17 @@ __metadata:
   dependencies:
     defer-to-connect: ^2.0.1
   checksum: fc9cb993e808806692e4a3337c90ece0ec00c89f4b67e3652a356b89730da98bc824273a6d67ca84d5f33cd85f317dcd5ce39d8cc0a2f060145a608a7cb8ce92
+  languageName: node
+  linkType: hard
+
+"@tmttn/gatsby-plugin-linkedin-insight@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "@tmttn/gatsby-plugin-linkedin-insight@npm:5.2.0"
+  dependencies:
+    "@babel/runtime": ^7.20.6
+  peerDependencies:
+    gatsby: ">= 2.0.0 < 6"
+  checksum: 78e9572cc512fddfe1face5151f59bf2a161af2d5c2c916d08d4c6d449819c64e3a40ea8f3c8a851a766bdf55821af61778b165ff1e05eb9add5a8a34fab429d
   languageName: node
   linkType: hard
 
@@ -11699,6 +11719,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-google-gtag@npm:^5.10.0":
+  version: 5.10.0
+  resolution: "gatsby-plugin-google-gtag@npm:5.10.0"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    minimatch: ^3.1.2
+  peerDependencies:
+    gatsby: ^5.0.0-next
+    react: ^18.0.0 || ^0.0.0
+    react-dom: ^18.0.0 || ^0.0.0
+  checksum: 09ea392fca49569aad024c83f7d9a7b478e3c79555223a57c18be7541924b1ca151311c2ce0504f9adbce5f10b22dc1c4d1b70a2d365fe8bcb5c3900d98c7b24
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-image@npm:^3.3.2":
   version: 3.3.2
   resolution: "gatsby-plugin-image@npm:3.3.2"
@@ -14688,6 +14722,7 @@ __metadata:
     "@styled/typescript-styled-plugin": ^0.20.0
     "@stylelint/postcss-css-in-js": ^0.38.0
     "@svgr/cli": ^6.5.1
+    "@tmttn/gatsby-plugin-linkedin-insight": ^5.2.0
     "@types/node": ^18.11.15
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.9
@@ -14711,6 +14746,7 @@ __metadata:
     eslint-webpack-plugin: ^3.2.0
     gatsby: ^5.3.2
     gatsby-plugin-eslint: ^4.0.3
+    gatsby-plugin-google-gtag: ^5.10.0
     gatsby-plugin-image: ^3.3.2
     gatsby-plugin-manifest: ^5.3.1
     gatsby-plugin-netlify: ^5.1.0
