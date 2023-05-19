@@ -6,3 +6,5 @@ export const freshmailApiToken = process.env.GATSBY_FRESHMAIL_API_TOKEN;
 export const freshmailApiUrl = process.env.GATSBY_FRESHMAIL_API_URL as unknown as URL;
 export const apiUser = process.env.GATSBY_API_USER;
 export const apiPassword = process.env.GATSBY_API_PASSWORD;
+export const gtagId = process.env.GATSBY_GTAG_ID;
+export const linkedinPartnerId = process.env.GATSBY_LINKEDIN_PARTNER_ID;
