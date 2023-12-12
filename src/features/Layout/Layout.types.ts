@@ -3,7 +3,7 @@ import React from 'react';
 import {
   ACFImage, ContactForms, FooterMenu,
   I18n, Languages, Newsletter, PageContext,
-  ParsedMainNav, SearchMessages, Social,
+  ParsedMainNav, Popup, SearchMessages, Social,
 } from '@/types';
 
 export type LayoutProps = {
@@ -55,4 +55,8 @@ export type AppContextState = {
 
 export type NewsletterProps = {
   data: Newsletter;
+};
+
+export type PopupProps = {
+  data: Popup;
 };

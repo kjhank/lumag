@@ -6,16 +6,16 @@ import { GlobalStyle, Theme } from '@/theme';
 import { AppContextState, LayoutProps } from './Layout.types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { CookiesDialog, PopupBody } from './Layout.styled';
+import { CookiesDialog } from './Layout.styled';
 import { Container } from '../../components/Container/Container';
 import { ButtonLink } from '../../components/ButtonLink/ButtonLink';
 import { useAnchors } from '@/hooks';
 import { AppContext } from './Layout.context';
 import { cookiesKey } from '@/static';
 import {
-  Modal, SeeMore, WPImage, WYSIWYG,
+  Modal, SeeMore,
 } from '@/components';
-import { sanitizeConfig as globalSanitizeConfig } from '@/utils/globalConfigs';
+import { Popup } from './components/Popup';
 
 // TODO: global header & footer as slices
 
@@ -102,21 +102,11 @@ const Layout = ({
         </CookiesDialog>
         {pageContext.options?.popup && pageContext.options.isPopupActive && (
           <Modal
+            isLarger={!pageContext.options?.popup.hasImage}
             isOpen={isInfoPopupOpen} onCloseCallback={toggleInfoPopup}
             variant="yellow"
           >
-            <PopupBody>
-              {pageContext.options?.popup?.hasImage
-                && <WPImage imageData={pageContext.options.popup.image} />}
-              <WYSIWYG html={sanitize(pageContext.options.popup.content.split('<h2>').join('<h2><span>')
-                .split('</h2>')
-                .join('</span></h2>')
-                .split('<video ')
-                .join('<video controls '), {
-                ...globalSanitizeConfig,
-              })}
-              />
-            </PopupBody>
+            <Popup data={pageContext.options?.popup} />
           </Modal>
         )}
       </Theme>

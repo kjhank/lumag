@@ -659,7 +659,7 @@ export const SearchResults = styled.ul`
   }
 `;
 
-export const PopupBody = styled.div`
+export const PopupBody = styled.div<{ isWider: boolean }>`
   display: flex;
 
   > picture {
@@ -673,9 +673,9 @@ export const PopupBody = styled.div`
   }
 
   > *:not(picture, figure) {
-    width: 64%;
+    width: ${({ isWider }) => (isWider ? '100%' : '64%')};
     padding: 5%;
-    padding-inline-end: 10%;
+    padding-inline-end: ${({ isWider }) => !isWider && '10%'};
     ${({ theme }) => theme.fonts.sizes.xs};
 
     h2,
