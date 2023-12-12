@@ -54,7 +54,7 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const ModalContainer = styled.div<{ $aspectRatio?: number | 'auto'; variant: ModalVariant }>`
+export const ModalContainer = styled.div<{ $aspectRatio?: number | 'auto'; variant: ModalVariant; $isLarger: boolean }>`
   position: relative;
   overflow: auto;
   filter: ${({ theme: { colors, helpers } }) => `drop-shadow(${helpers.getMin(13)} ${helpers.getMin(20)} ${helpers.getMin(30)} ${colors.neutral[100]}90)`};
@@ -65,9 +65,12 @@ export const ModalContainer = styled.div<{ $aspectRatio?: number | 'auto'; varia
   background-color: ${({ theme }) => theme.colors.neutral[15]};
   /* stylelint-disable */
   transform: translateZ(0);
-  ${({ theme, variant }) => variant === 'yellow' && css`
-    max-width: 39vw;
-    max-height: 36.1vh;
+  ${({
+    $isLarger, theme, variant,
+  }) => variant === 'yellow' && css`
+    width: 100%;
+    max-width: ${$isLarger ? '50vw' : '39vw'};
+    max-height: ${$isLarger ? 'unset' : '36.1vh'};
     border-radius: ${theme.helpers.getMin(32)};
     padding: 0;
     background-color: ${theme.colors.brand};
