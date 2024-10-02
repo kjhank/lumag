@@ -96,6 +96,13 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
 
   &:has(input[type='checkbox']) {
     flex-direction: row;
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        a {
+          margin-inline-start: auto;
+        }
+      }
+    `}
   }
 
   &.areas {
@@ -136,6 +143,17 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
 
     .description {
       inline-size: fit-content;
+      ${({ theme }) => theme.fonts.sizes.s};
+
+      ${({ theme }) => css`
+        ${theme.mediaQueries.s} {
+          inline-size: 80%;
+
+          + .file-input-wrapper {
+            margin-inline-start: auto;
+          }
+        }
+      `}
     }
   }
 `;
@@ -167,6 +185,11 @@ export const Label = styled.label`
   & + .dumb-description {
     inline-size: 51%;
     ${({ theme }) => theme.fonts.sizes.s};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        inline-size: 65%;
+      }
+    `}
   }
 `;
 
@@ -215,6 +238,11 @@ export const FramedLink = styled.a`
     font-weight: bold;
     text-align: center;
   }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      inline-size: 10%;
+    }
+  `}
 `;
 
 export const FilesWrapper = styled.div`
@@ -222,6 +250,12 @@ export const FilesWrapper = styled.div`
   grid-template: 'input';
   inline-size: ${({ theme }) => theme.helpers.getMin(42)};
   block-size: ${({ theme }) => theme.helpers.getMin(33)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      inline-size: 10%;
+      block-size: auto;
+    }
+  `}
 
   && {
     > input {
