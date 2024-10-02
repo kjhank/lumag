@@ -265,7 +265,7 @@ export const FilesWrapper = styled.div`
 
     > svg.cloud-arrow-up-icon {
       border: ${({ theme }) => `${theme.helpers.getMin(2)} solid ${theme.colors.brand}`};
-      border-radius: ${({ theme }) => theme.radii.input};
+      border-radius: ${({ theme }) => theme.radii.frameLink};
     }
 
     > input,
