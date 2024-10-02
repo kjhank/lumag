@@ -36,6 +36,10 @@ export const Header = ({
   };
 
   const handleLangMenu = () => {
+    const hasLanguages = Object.keys(i18n.slugs).length > 1;
+
+    if (!hasLanguages) return;
+
     setLangOpen(current => !current);
   };
 
