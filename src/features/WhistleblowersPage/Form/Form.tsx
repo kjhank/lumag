@@ -26,11 +26,9 @@ export const Form = ({
   const fields = getFields(mappings);
 
   const {
-    formState, handleChange, handleNotification, handleSubmit,
+    files, formState, handleChange, handleNotification, handleSubmit,
     isFetching, isToastVisible, message, toastVariant,
   } = useForm(fields, form.ID, maxFileSizeConfig);
-
-  console.log(isFetching, isToastVisible, toastVariant);
 
   return (
     <>
@@ -90,8 +88,8 @@ export const Form = ({
                 </styled.Label>
                 {description
                   ? (
-                    // eslint-disable-next-line react/no-danger
                     <p
+                      // eslint-disable-next-line react/no-danger
                       className="description" dangerouslySetInnerHTML={{
                         __html: sanitize(description, sanitizeConfig),
                       }}
@@ -107,6 +105,17 @@ export const Form = ({
                     type="file"
                   />
                 </styled.FilesWrapper>
+                {files && files.length > 0
+                  ? (
+                    <styled.FilesList>
+                      {Array.from(files).map(singleFile => (
+                        <li key={singleFile.name}>
+                          {singleFile.name}
+                        </li>
+                      ))}
+                    </styled.FilesList>
+                  )
+                  : null}
               </styled.FieldWrapper>
             );
           }
@@ -125,8 +134,9 @@ export const Form = ({
                   ? (
                     <styled.FramedLink
                       aria-label="download file" className="text-variant"
-                      download
                       href={file}
+                      rel="noreferrer noopener"
+                      target="_blank"
                     >
                       Zapoznaj się z klauzulą informacyjną
                       {/* TODO: hardcoded for now */}
@@ -143,10 +153,6 @@ export const Form = ({
                 <styled.Input
                   {...commonProps}
                   checked={!!formState[name]}
-                // id={name}
-                // name={name}
-                // onChange={handleChange}
-                // type="checkbox"
                 />
                 {description
                   ? (
@@ -166,8 +172,10 @@ export const Form = ({
                 {file
                   ? (
                     <styled.FramedLink
-                      aria-label="download file" download
+                      aria-label="open file"
                       href={file}
+                      rel="noreferrer noopener"
+                      target="_blank"
                     >
                       <CloudArrowDown />
                     </styled.FramedLink>

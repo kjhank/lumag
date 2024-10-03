@@ -289,3 +289,13 @@ export const FilesWrapper = styled.div`
     }
   }
 `;
+
+export const FilesList = styled.ol`
+  inline-size: 90%;
+  margin-inline: auto;
+  ${({ theme }) => theme.fonts.sizes.xs};
+
+  > li {
+    list-style-type: decimal;
+  }
+`;
