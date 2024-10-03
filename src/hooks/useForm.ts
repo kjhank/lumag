@@ -23,7 +23,7 @@ export const useForm: UseForm = (fields, formId, maxFileSizeConfig = {
   const [isToastVisible, setToastVisible] = useState(false);
   const [message, setMessage] = useState('');
   const [files, setFiles] = useState<FileList | null>(null);
-  const [toastVariant, setToastVariant] = useState<ToastVariant>('success');
+  const [toastVariant, setToastVariant] = useState<ToastVariant | undefined>(undefined);
   const [formState, setFormState] = useState<FormState>(getInitialFormState());
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,6 +50,8 @@ export const useForm: UseForm = (fields, formId, maxFileSizeConfig = {
 
   const handleNotification = () => {
     setToastVisible(current => !current);
+    setToastVariant(undefined);
+    setMessage('');
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {

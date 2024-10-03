@@ -15,6 +15,8 @@ export type FormProps = {
   };
   submitText: string;
   submitTextFetching: string;
+  submitTextSentError: string;
+  submitTextSentSuccess: string;
 };
 
 export type TextField = 'your-name' | 'your-surname' | 'your-email' | 'your-address' | 'your-message';

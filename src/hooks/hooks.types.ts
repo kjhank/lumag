@@ -25,7 +25,7 @@ export type UseForm = (fields: FieldsMap, formId: number, maxFilesSizeConfig?: {
   handleChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleNotification: () => void;
   message: string;
-  toastVariant: ToastVariant;
+  toastVariant?: ToastVariant;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   isFetching: boolean;
   isToastVisible: boolean;

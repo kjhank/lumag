@@ -24,6 +24,8 @@ const WhistleblowersPage = ({ pageContext: { content } }: WhistleblowerPageProps
         }}
         submitText={content.form.submit_text}
         submitTextFetching={content.form.submit_text_fetching}
+        submitTextSentError={content.form.submit_text_sent_error}
+        submitTextSentSuccess={content.form.submit_text_sent_success}
       />
     </Container>
   </>

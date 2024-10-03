@@ -20,7 +20,8 @@ const sanitizeConfig: IOptions = {
 };
 
 export const Form = ({
-  declarations, footnotes, form, mappings, maxFileSizeConfig, submitText, submitTextFetching,
+  declarations, footnotes, form, mappings, maxFileSizeConfig,
+  submitText, submitTextFetching, submitTextSentError, submitTextSentSuccess,
 }: FormProps) => {
   const fields = getFields(mappings);
 
@@ -28,6 +29,8 @@ export const Form = ({
     formState, handleChange, handleNotification, handleSubmit,
     isFetching, isToastVisible, message, toastVariant,
   } = useForm(fields, form.ID, maxFileSizeConfig);
+
+  console.log(isFetching, isToastVisible, toastVariant);
 
   return (
     <>
@@ -138,11 +141,12 @@ export const Form = ({
             return (
               <styled.FieldWrapper isFullWidth key={name}>
                 <styled.Input
+                  {...commonProps}
                   checked={!!formState[name]}
-                  id={name}
-                  name={name}
-                  onChange={handleChange}
-                  type="checkbox"
+                // id={name}
+                // name={name}
+                // onChange={handleChange}
+                // type="checkbox"
                 />
                 {description
                   ? (
@@ -197,10 +201,14 @@ export const Form = ({
         </styled.FieldWrapper>
         <styled.FieldWrapper isFullWidth>
           <ButtonLink
+            className={isToastVisible ? toastVariant : undefined}
             disabled={isFetching} isButton
             type="submit"
           >
-            {isFetching ? submitTextFetching : submitText}
+            {isFetching && !isToastVisible && !toastVariant ? submitTextFetching : null}
+            {!isFetching && !isToastVisible && !toastVariant ? submitText : null}
+            {!isFetching && toastVariant === 'success' ? submitTextSentSuccess : null}
+            {!isFetching && toastVariant === 'error' ? submitTextSentError : null}
           </ButtonLink>
         </styled.FieldWrapper>
       </styled.Form>

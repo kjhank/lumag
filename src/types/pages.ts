@@ -569,6 +569,8 @@ export type WhistleblowerPageForm = {
   max_file_size_exceeded: string;
   submit_text: string;
   submit_text_fetching: string;
+  submit_text_sent_success: string;
+  submit_text_sent_error: string;
 };
 
 export type WhistleblowerPageContent = {

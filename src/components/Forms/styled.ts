@@ -221,6 +221,21 @@ export const Form = styled.form`
       grid-template-columns: 1fr;
     }
   `}
+
+  button {
+    &.success,
+    &.error {
+      color: ${({ theme }) => theme.colors.neutral[10]};
+    }
+
+    &.success {
+      background-color: ${({ theme }) => theme.colors.success};
+    }
+
+    &.error {
+      background-color: ${({ theme }) => theme.colors.error};
+    }
+  }
 `;
 
 export const FramedLink = styled.a`
