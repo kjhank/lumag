@@ -31,6 +31,7 @@ export const ToastNode = styled.article<{ isVisible: boolean; variant: ToastVari
     return theme.colors.neutral[60];
   }};
   text-align: center;
+  text-wrap: balance;
   translate: ${({ isVisible }) => (isVisible ? '-50% -100% 0' : '-50% 50% 0')};
   transition: translate ${({ theme }) => theme.transitions.default} cubic-bezier(0.87, 0, 0.13, 1);
   ${({ theme }) => css`

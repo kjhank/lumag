@@ -12,10 +12,10 @@ import {
   ArrowDown, backendUrl, Calendar, Endpoints,
 } from '@/static';
 import {
-  FileInput, FileInputsWrapper, FormHeading, FormNode, Legal,
+  FileInput, FileInputsWrapper, FormHeading, Legal,
 } from './Careers.styled';
 import {
-  ButtonLink, FieldWrapper, Input, Label, Toast,
+  ButtonLink, FieldWrapper, Form, Input, Label, Toast,
 } from '@/components';
 import { useAnchors } from '@/hooks';
 
@@ -155,7 +155,7 @@ export const CareerForm = ({
 
   return (
     <>
-      <FormNode onSubmit={handleForm}>
+      <Form onSubmit={handleForm}>
         <FormHeading>
           {formHeading}
         </FormHeading>
@@ -246,7 +246,7 @@ export const CareerForm = ({
             {form.submitText}
           </ButtonLink>
         </FieldWrapper>
-      </FormNode>
+      </Form>
       <Legal ref={gdprRef}>
         <p dangerouslySetInnerHTML={{ __html: sanitize(form.legal, sanitizeConfig) }} />
       </Legal>

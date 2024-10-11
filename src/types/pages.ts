@@ -1,6 +1,6 @@
 import { PageProps } from 'gatsby';
 import { Layout, TextWithMediaProps } from '@/components/TextWithMedia/TextWithMedia.types';
-import { IconSlug } from './global';
+import { IconSlug, Prettify } from './global';
 import {
   ACFFile, ACFImage, ACFLink, ACFPage, Files, FormMessages, Gallery, Languages, ParsedOptions,
   ParsedPost, Post, SeeMore, SEO, Template, Translations, Video,
@@ -544,6 +544,41 @@ export type CareersPageContent = {
   boxes: Array<GenericBox>;
 };
 
+export type WhistleblowerPageIntro = {
+  description?: string;
+  heading?: string;
+  subheading?: string;
+};
+
+export type WhistleblowerFieldMappings = Record<string, {
+  description?: string;
+  file?: string;
+  isRequired: boolean;
+  label: string;
+}>;
+
+export type WhistleblowerPageForm = {
+  declarations_heading?: string;
+  declarations?: Array<{
+    element?: string;
+  }>;
+  field_mapping: WhistleblowerFieldMappings;
+  footnotes?: string;
+  form_object: FormObject;
+  max_files_size: number;
+  max_file_size_exceeded: string;
+  submit_text: string;
+  submit_text_fetching: string;
+  submit_text_sent_success: string;
+  submit_text_sent_error: string;
+};
+
+export type WhistleblowerPageContent = {
+  header: Header;
+  form: WhistleblowerPageForm;
+  intro?: WhistleblowerPageIntro;
+};
+
 export type NotFoundPageProps = CustomPageProps<NotFoundPageContent>;
 export type IPSPageProps = CustomPageProps<IPSPageContent>;
 export type QualityPageProps = CustomPageProps<QualityPageContent>;
@@ -553,3 +588,5 @@ export type ValuesPageProps = CustomPageProps<ValuesPageContent>;
 export type ManagingPageProps = CustomPageProps<ManagingPageContent>;
 export type HistoryPageProps = CustomPageProps<HistoryPageContent>;
 export type CareersPageProps = CustomPageProps<CareersPageContent>;
+
+export type WhistleblowerPageProps = Prettify<CustomPageProps<WhistleblowerPageContent>>;

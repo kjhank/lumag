@@ -1,5 +1,5 @@
 /* stylelint-disable value-keyword-case */
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const OffersSection = styled.section`
   position: relative;
@@ -84,19 +84,6 @@ export const Message = styled.h3`
   font-weight: 700;
   ${({ theme }) => theme.helpers.getClamped(36)};
   text-align: center;
-`;
-
-export const FormNode = styled.form`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${({ theme }) => `${theme.helpers.getMin(32)} ${theme.helpers.getMin(80)}`};
-  margin-block-start: ${({ theme }) => theme.helpers.getMin(128)};
-  margin-block-end: ${({ theme }) => theme.helpers.getMin(45)};
-  ${({ theme }) => css`
-    ${theme.mediaQueries.s} {
-      grid-template-columns: 1fr;
-    }
-  `}
 `;
 
 export const FormHeading = styled.h3`

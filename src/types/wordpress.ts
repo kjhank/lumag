@@ -11,7 +11,7 @@ export enum Languages {
   // russian = 'ru',
   spanish = 'es',
 }
-export type Template = 'about' | 'careers' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound';
+export type Template = 'about' | 'careers' | 'contact' | 'csr' | 'history' | 'home' | 'ips' | 'managing' | 'news' | 'offer' | 'offerBrakes' | 'page' | 'quality' | 'values' | 'notFound' | 'whistleblowers';
 
 export type Translations = {
   [key in Languages]: number;

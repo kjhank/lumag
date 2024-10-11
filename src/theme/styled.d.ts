@@ -84,6 +84,7 @@ declare module 'styled-components' {
     };
     radii: {
       buttonLink: string;
+      frameLink: string;
       input: string;
     };
     mediaQueries: {
