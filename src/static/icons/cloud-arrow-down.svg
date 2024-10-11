@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 299.37 246.03">
+  <defs>
+    <style>
+      .cloud-arrow-down {
+        stroke: #404041;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 15.63px;
+      }
+
+      .cloud-arrow-down {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="cloud-arrow-down" d="M119.71,154.61h-25.58c-18.57,0-33.62-15.05-33.62-33.62,0-14.85,9.62-27.45,22.97-31.9,3.73-11.4,14.45-19.63,27.09-19.63,7.04,0,13.48,2.54,18.45,6.78,3.93-18.49,20.36-32.36,40.02-32.36,22.61,0,40.93,18.32,40.93,40.93,0,.96-.04,1.93-.1,2.88,16.37,2.26,28.97,16.31,28.97,33.3,0,18.57-15.05,33.62-33.62,33.62h-25.22"/>
+    <g>
+      <line class="cloud-arrow-down" x1="149.68" y1="102.03" x2="149.68" y2="202.16"/>
+      <polyline class="cloud-arrow-down" points="171.39 180.45 149.68 202.16 127.98 180.45"/>
+    </g>
+  </g>
+</svg>

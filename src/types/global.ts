@@ -49,3 +49,7 @@ export type AccordionItem = {
   heading: React.ReactNode;
   key: string;
 };
+
+export type Prettify<T> = {
+  [P in keyof T]: T[P];
+};

@@ -155,7 +155,7 @@ export const LanguageMenu = styled.menu`
   `}
 `;
 
-export const LanguagesWrapper = styled.nav`
+export const LanguagesWrapper = styled.div`
   position: relative;
   z-index: 1;
 

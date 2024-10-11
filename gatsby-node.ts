@@ -44,6 +44,7 @@ const templates: { [key in Template]: string } = {
   page: path.resolve('./src/templates/GenericPage.tsx'),
   quality: path.resolve('./src/templates/QualityPage.tsx'),
   values: path.resolve('./src/templates/ValuesPage.tsx'),
+  whistleblowers: path.resolve('./src/templates/WhistleblowersPage.tsx'),
 };
 
 const getUrl = (endpoint: string = '', params?: RequestParams) => {
@@ -288,6 +289,15 @@ const getContext = async ({
     };
   }
 
+  if (template === 'whistleblowers') {
+    return {
+      ...globalContext,
+      content: {
+        ...acf,
+      },
+    };
+  }
+
   if (template === 'news') {
     const posts = await fetchPosts(lang);
 
@@ -359,6 +369,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
       undefined,
       { lang: page.lang }
     );
+
     const pagePath = getPath(page);
     const context = await getContext(page, options.acf);
     const template = getTemplate(page);

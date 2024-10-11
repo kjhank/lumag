@@ -27,7 +27,7 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
   }
 
   input[type='checkbox'] + label {
-    font-size: ${({ theme }) => theme.fonts.sizes.xs};
+    ${({ theme }) => theme.fonts.sizes.xs};
   }
 
   input[type='date'] {
@@ -57,7 +57,7 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
     align-self: center;
   }
 
-  > div {
+  > div:not(.file-input-wrapper, .dumb) {
     position: relative;
     width: 100%;
     height: 100%;
@@ -93,11 +93,104 @@ export const FieldWrapper = styled.div<{ hasDecoration?: boolean; isFullWidth?: 
       }
     `}
   }
+
+  &:has(input[type='checkbox']) {
+    flex-direction: row;
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        a {
+          margin-inline-start: auto;
+        }
+      }
+    `}
+  }
+
+  &.areas {
+    display: grid;
+    grid-template: 'label' 'content' / 1fr;
+
+    > label {
+      grid-area: label;
+    }
+
+    > .content {
+      grid-area: content;
+
+      &.description {
+        padding: 0.7em 2em;
+        color: ${({ theme }) => theme.colors.neutral[25]};
+        font-style: italic;
+        font-size: ${({ theme }) => theme.helpers.getClamped(18)};
+        transition: opacity ${({ theme }) => theme.transitions.fast};
+        pointer-events: none;
+      }
+
+      &.has-value {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.files {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    column-gap: ${({ theme }) => theme.helpers.getMin(20)};
+
+    label {
+      inline-size: 100%;
+    }
+
+    .description {
+      inline-size: fit-content;
+      ${({ theme }) => theme.fonts.sizes.s};
+
+      ${({ theme }) => css`
+        ${theme.mediaQueries.s} {
+          inline-size: 80%;
+
+          + .file-input-wrapper {
+            margin-inline-start: auto;
+          }
+        }
+      `}
+    }
+  }
 `;
 
 export const Label = styled.label`
   ${({ theme }) => theme.helpers.getClamped(18)};
   padding-inline-start: ${({ theme }) => theme.helpers.getMin(12)};
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  &.files {
+    font-weight: bold;
+  }
+
+  & + p {
+    padding-inline-start: ${({ theme }) => theme.helpers.getMin(12)};
+  }
+
+  &.dumb {
+    inline-size: 100%;
+  }
+
+  & + .dumb-description {
+    inline-size: 51%;
+    ${({ theme }) => theme.fonts.sizes.s};
+    ${({ theme }) => css`
+      ${theme.mediaQueries.s} {
+        inline-size: 65%;
+      }
+    `}
+  }
 `;
 
 export const Input = styled.input`
@@ -108,5 +201,101 @@ export const Input = styled.input`
     margin-bottom: -2px;
     padding: 0;
     line-height: 1;
+  }
+`;
+
+export const Textarea = styled.textarea`
+  min-height: ${({ theme }) => theme.helpers.getMin(151)};
+  padding-block: 0.7em;
+  resize: block;
+`;
+
+export const Form = styled.form`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: ${({ theme }) => `${theme.helpers.getMin(32)} ${theme.helpers.getMin(80)}`};
+  margin-block-start: ${({ theme }) => theme.helpers.getMin(128)};
+  margin-block-end: ${({ theme }) => theme.helpers.getMin(45)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      grid-template-columns: 1fr;
+    }
+  `}
+
+  button {
+    &.success,
+    &.error {
+      color: ${({ theme }) => theme.colors.neutral[10]};
+    }
+
+    &.success {
+      background-color: ${({ theme }) => theme.colors.success};
+    }
+
+    &.error {
+      background-color: ${({ theme }) => theme.colors.error};
+    }
+  }
+`;
+
+export const FramedLink = styled.a`
+  display: inline-grid;
+  place-items: center;
+  inline-size: ${({ theme }) => theme.helpers.getMin(42)};
+  flex-shrink: 0;
+  border: ${({ theme }) => `${theme.helpers.getMin(2)} solid ${theme.colors.brand}`};
+  border-radius: ${({ theme }) => theme.radii.frameLink};
+  ${({ theme }) => theme.fonts.sizes.xs};
+
+  &.text-variant {
+    inline-size: ${({ theme }) => theme.helpers.getMin(200)};
+    padding: 0.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      inline-size: 10%;
+    }
+  `}
+`;
+
+export const FilesWrapper = styled.div`
+  display: grid;
+  grid-template: 'input';
+  inline-size: ${({ theme }) => theme.helpers.getMin(42)};
+  block-size: ${({ theme }) => theme.helpers.getMin(33)};
+  ${({ theme }) => css`
+    ${theme.mediaQueries.s} {
+      inline-size: 10%;
+      block-size: auto;
+    }
+  `}
+
+  && {
+    > input {
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    > svg.cloud-arrow-up-icon {
+      border: ${({ theme }) => `${theme.helpers.getMin(2)} solid ${theme.colors.brand}`};
+      border-radius: ${({ theme }) => theme.radii.frameLink};
+    }
+
+    > input,
+    svg.cloud-arrow-up-icon {
+      grid-area: input;
+    }
+  }
+`;
+
+export const FilesList = styled.ol`
+  inline-size: 90%;
+  margin-inline: auto;
+  ${({ theme }) => theme.fonts.sizes.xs};
+
+  > li {
+    list-style-type: decimal;
   }
 `;

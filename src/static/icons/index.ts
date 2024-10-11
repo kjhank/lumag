@@ -30,3 +30,5 @@ export { default as Youtube } from './social-youtube.svg';
 export { default as Spyglass } from './spyglass.svg';
 export { default as Zoom } from './zoom.svg';
 export { default as Menu } from './menu.svg';
+export { default as CloudArrowDown } from './cloud-arrow-down.svg';
+export { default as CloudArrowUp } from './cloud-arrow-up.svg';

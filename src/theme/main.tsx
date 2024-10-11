@@ -103,6 +103,7 @@ const theme: DefaultTheme = {
   },
   radii: {
     buttonLink: '50px',
+    frameLink: '8px',
     input: '4px',
   },
   mediaQueries,
