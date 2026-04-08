@@ -1,5 +1,5 @@
 import {
-  Container, Header, QuoteHero,
+  Container, Header, PeopleGrid, QuoteHero,
 } from '@/components';
 import { Meta } from '@/features/Layout/components/Meta';
 import { GetToKnowUs, WhyDifferent } from '@/features/AboutPage';
@@ -14,6 +14,7 @@ const AboutPage = ({ pageContext: { content } }: AboutPageProps) => (
     />
     <Container>
       <QuoteHero {...content.person} />
+      {content.people ? <PeopleGrid people={content.people.people_list} /> : null}
     </Container>
     <WhyDifferent {...content.whyDifferent} />
     <GetToKnowUs {...content.getToKnowUs} layout="alternating" />
