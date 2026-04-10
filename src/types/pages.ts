@@ -393,6 +393,10 @@ export type AboutItem = {
   title: string;
 };
 
+export type PeopleItem = Omit<Quote, 'quote'>;
+
+export type People = Array<PeopleItem>;
+
 export type AboutUsPageContent = {
   getToKnowUs: {
     heading: string;
@@ -400,6 +404,7 @@ export type AboutUsPageContent = {
     video: Video;
   };
   header: Header;
+  people?: { people_list: People };
   person: Quote;
   whyDifferent: {
     background: ACFImage;

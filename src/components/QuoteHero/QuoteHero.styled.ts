@@ -5,7 +5,7 @@ export const Wrapper = styled.article`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-block-start: ${({ theme }) => theme.helpers.getMax(-110)};
-  padding-block-end: ${({ theme }) => theme.helpers.getMin(40)};
+  padding-block-end: ${({ theme }) => theme.helpers.getMin(118)};
   ${({ theme }) => css`
     ${theme.mediaQueries.s} {
       display: flex;
@@ -18,7 +18,7 @@ export const Wrapper = styled.article`
 export const QuoteWrapper = styled.figure`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.helpers.getMin(25)};
+  gap: ${({ theme }) => theme.helpers.getMin(12)};
   padding: 16%;
   background-color: ${({ theme }) => theme.colors.neutral[17]};
 `;
@@ -33,7 +33,11 @@ export const Author = styled.figcaption`
 export const Subheading = styled.p`
   position: relative;
   z-index: 2;
-  color: ${({ theme }) => theme.colors.brand};
+  align-self: start;
+  padding: ${({ theme }) => `${theme.helpers.getMin(8)} ${theme.helpers.getMin(16)}`};
+  background-color: ${({ theme }) => theme.colors.brand};
+  color: ${({ theme }) => theme.colors.neutral['5']};
+  line-height: 1;
   ${({ theme }) => theme.fonts.sizes.s};
 `;
 
