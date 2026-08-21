@@ -52,6 +52,19 @@ const Layout = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const scriptNode = document.createElement('script');
+
+    scriptNode.type = 'text/javascript';
+    scriptNode.src = 'https://secure.visionary-intuitiveimaginative.com/js/819829.js';
+
+    document.body.appendChild(scriptNode);
+
+    return () => {
+      document.body.removeChild(scriptNode);
+    };
+  }, []);
+
   const contextData: AppContextState = useMemo(() => ({
     contactForms: pageContext?.contactForms,
     defaultNewsThumbnail: pageContext?.options?.defaultNewsThumbnail,
@@ -65,6 +78,12 @@ const Layout = ({
 
   return (
     <AppContext.Provider value={contextData}>
+      <noscript>
+        <img
+          alt="" src="https://secure.visionary-intuitiveimaginative.com/819829.png"
+          style={{ display: 'none' }}
+        />
+      </noscript>
       <Theme>
         <GlobalStyle noScroll={isInfoPopupOpen} />
         <Header
@@ -101,13 +120,13 @@ const Layout = ({
           </Container>
         </CookiesDialog>
         {pageContext.options?.popup && pageContext.options.isPopupActive && (
-          <Modal
-            isLarger={!pageContext.options?.popup.hasImage}
-            isOpen={isInfoPopupOpen} onCloseCallback={toggleInfoPopup}
-            variant="yellow"
-          >
-            <Popup data={pageContext.options?.popup} />
-          </Modal>
+        <Modal
+          isLarger={!pageContext.options?.popup.hasImage}
+          isOpen={isInfoPopupOpen} onCloseCallback={toggleInfoPopup}
+          variant="yellow"
+        >
+          <Popup data={pageContext.options?.popup} />
+        </Modal>
         )}
       </Theme>
     </AppContext.Provider>
